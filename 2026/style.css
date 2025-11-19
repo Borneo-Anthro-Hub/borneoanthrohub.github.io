@@ -1,0 +1,31 @@
+/* === Navbar base === */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px; /* adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: transparent;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1000;
+}
+
+/* === Navbar when scrolled down === */
+.navbar.scrolled {
+  background: linear-gradient(to bottom, #ff7b00, #ffae42); /* 🔶 your custom orange gradient */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* === The dark gradient below the navbar === */
+.navbar-gradient {
+  position: absolute;
+  top: 70px; /* same as navbar height */
+  width: 100%;
+  height: 180px; /* taller dark fade */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent); /* 🌑 dark gradient */
+  z-index: 0;
+}

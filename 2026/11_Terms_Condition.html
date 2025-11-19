@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions | Borneo Anthro Hub</title>
+  <link href="./css/output.css" rel="stylesheet">
+  <link href="/fonts/Fonts/WEB/css/general-sans.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+                
+  <style>
+    #website_body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #105666;
+    }
+                
+    /* ===== SECTION 1: HERO ===== */
+    .hero {
+      position: relative;
+      background-image: url('images/Page Banner-100 1.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 200px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+
+    .hero h1 {
+      font-family: 'General Sans', sans-serif;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+      font-size: 3rem;
+      color: #FFFBE8;
+      text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3)
+    }
+
+  </style>
+
+
+    <script>
+    // Smooth scrolling
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("a[href^='#']").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth"
+          });
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+  <!-- Responsive Navbar -->
+  <div id="navbar"></div>
+  <script src="navbar.js"></script>
+
+
+  <div id="website_body">
+    <!-- SECTION 1: HERO -->
+    <div class="hero">
+      <section>
+        <h1 style="font-size: 72px;">Terms & Condition</h1>
+      </section>
+
+    </div>
+
+    <div class="max-w-5xl mx-auto py-10 px-6">
+    <iframe 
+        src="https://docs.google.com/document/d/e/2PACX-1vT7hRxbs1ZGeMqcKcfcMeHhcTRTXScU60KvV0NrnoE-8J3gSPxiVrBiY4FP2HJDzA/pub?embedded=true"
+        width="100%"
+        height="1500"
+        frameborder="0">
+    </iframe>
+    </div>
+
+
+  </div>
+
+
+
+
+  <div id="footer"></div>
+  <script src="footer.js"></script>
+
+</body>
+
+</html>

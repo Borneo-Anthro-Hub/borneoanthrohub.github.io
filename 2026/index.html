@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Borneo Anthro Hub</title>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <link href="./css/output.css" rel="stylesheet">
+  <link href="/fonts/Fonts/WEB/css/general-sans.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- pictogrammers Material Design Icons 
+   https://pictogrammers.com/library/mdi/
+  -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    html,
+    body {
+      overflow-x: hidden;
+      background-color: #175b68;
+    }
+
+    .horizontal-panels {
+      display: flex;
+      width: 300vw;
+      height: 100vh;
+    }
+
+    .horizontal-panel {
+      min-width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+    }
+
+    /* custom orange */
+    .bg-custom-orange {
+      background-color: #ff7a00 !important;
+    }
+
+    /* optional semi-transparent version */
+    .bg-custom-orange-90 {
+      background-color: rgba(255, 122, 0, 0.90) !important;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.fromTo(".scroll-fade-in", {
+        opacity: 0,
+        y: 50
+      }, {
+        opacity: 1,
+        y: 0,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".scroll-fade-in",
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: false,
+          toggleActions: "play reverse play reverse"
+        }
+      });
+
+      gsap.to(".horizontal-panels", {
+        xPercent: -200,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".Events",
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+          end: () => "+=" + (document.querySelector(".horizontal-panels").offsetWidth - window.innerWidth),
+        },
+      });
+    });
+  </script>
+</head>
+
+
+<body>
+  <!-- Loading screen -->
+
+  <!-- End of loading screen -->
+  <!-- main content  -->
+  <div>
+    <div id="navbar"></div>
+    <div class="navbar-gradient"></div>
+
+    <script src="navbar.js"></script>
+    <!-- 1st -->
+    <!-- Responsive Image Box -->
+    <main class="p-0 m-0">
+      <div class="relative w-screen h-full overflow-hidden">
+        <img src="images/main/BAH 2026_Cover_Gradient.png" alt="Section Background" class="w-full h-full object-cover"
+          style="
+          -webkit-mask-image: linear-gradient(to top, transparent 0%, black 10%);
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-size: 100% 100%;
+          mask-image: linear-gradient(to top, transparent 0%, black 10%);
+          mask-repeat: no-repeat;
+          mask-size: 100% 100%;">
+        <img src="images/main/Cover_Top.png" alt="top cover" class="absolute w-full h-auto z-1 top-[35vw]">
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 mt-[-30vw]">
+          <img src="images/Exports/Homepage/1.Cover/BAH 2026_Title.png" alt="Center Image"
+            class="w-[28vw] h-auto mb-1" />
+
+          <!-- JOIN NOW button -->
+          <a href="1_Ticket.html"
+            class="group relative inline-flex items-center justify-center font-[1000] gap-2 px-[3rem] py-[1.5rem] text-lg bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+            <!-- Blue  -->
+            <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[15.4rem] transition-transform duration-500 
+                      ease-[cubic-bezier(0.34,1.3,0.8,1)] ml-[-2rem] delay-0 group-hover:delay-100"
+              viewBox="0 0 700 113" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path
+                d="M11.3408 0H680.376C685.621 0 692 3.48753 692 7.77223L691.433 31.6868V59.2882V80.2135V104.128C692 108.413 685.479 111.9 680.943 111.9L7.37144 112C5.24504 109.509 0 103.53 0 93.3665C0 66.4626 25.8002 56.7971 25.8002 32.8826C25.8002 20.1281 16.4441 3.58719 11.3408 0Z"
+                fill="#54CCC9" />
+            </svg>
+            <!-- Orange -->
+            <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[15rem] transition-transform duration-500 
+                        ease-in-out ml-[-2rem] delay-0 " viewBox="0 0 700 113" fill="none"
+              xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path
+                d="M0 0H684.425C691.453 0 700 3.5218 700 7.84861L699.24 31.9982V59.8709V81.0018V105.151C700 109.478 691.263 113 685.185 113L49.3827 112.094C41.0256 107.566 30.5793 97.0009 30.5793 84.9261C30.5793 62.3865 43.6847 60.9777 43.6847 39.7462C44.0646 16.301 10.4463 3.82369 0 0Z"
+                fill="#E8804D" />
+            </svg>
+            <span
+              class="relative z-20 transition-all text-3xl text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-1rem] duration-1000">
+              JOIN NOW
+            </span>
+            <svg class="z-10 h-full w-auto group-hover:translate-x-[1rem] duration-1000" width="42" height="41"
+              viewBox="0 0 42 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 20.5L38 20.5" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M20.8501 3L38.25 20.3L20.8501 37.7" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+        <img src="images/main/Cover_Bottom.png" alt="Cover bottom" class="w-full h-full object-cove mt-[-1px] ml-[1px]">
+      </div>
+    </main>
+
+    <!-- 2nd -->
+    <section class="relative w-screen min-h-[1000px] bg-transparent flex items-center justify-center mt-0">
+      <!-- Envelope with date -->
+      <object data="images/main/2-Envelope.svg"
+        class="absolute top-[28vw] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto opacity-90/"></object>
+
+      <!-- Foreground Content -->
+      <div class="relative flex flex-col md:flex-row w-4/5 justify-center items-start mt-[10vw] z-10 gap-6">
+        <!-- hotel image -->
+        <!-- Left Container -->
+        <div class="flex-1 flex justify-center">
+          <a href="https://maps.app.goo.gl/YD1BeyjAbpKy7z498" target="_blank" class="w-full h-auto">
+            <img src="images/main/2-Hotel.svg" class="w-full h-auto mt-[10vw] -rotate-[5deg]"
+              type="image/svg+xml"></img>
+          </a>
+          <!-- <img src="images/main/2-Hotel.png" alt="Left Image"
+          class="w-full h-auto mt-[10vw] -rotate-[5deg]" /> -->
+        </div>
+
+        <!-- Right Container -->
+        <div class="flex-1 flex flex-col items-center relative">
+          <!-- Ticket -->
+          <object data="images/main/2-Ticket_Header.svg" class="w-full h-auto mb-6 pt-[12vw]"
+            type="image/svg+xml"></object>
+
+          <!-- Note -->
+          <div class="relative shrink-0">
+            <object class="w-[25vw] h-auto left-1/2" data="images/main/2-Letter.svg" type="image/svg+xml"></object>
+            <div class="absolute top-[55%] left-[75%] flex flex-col space-y-2 z-20">
+              <!-- button -->
+              <a href="1_Ticket.html"
+                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[1.5vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+                <!-- Blue  -->
+                <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[8.2vw] transition-transform duration-500 
+                            ease-[cubic-bezier(0.34,1.3,0.7,1)] ml-[-2rem] delay-0 group-hover:delay-100"
+                  viewBox="0 0 700 113" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <path
+                    d="M11.3408 0H680.376C685.621 0 692 3.48753 692 7.77223L691.433 31.6868V59.2882V80.2135V104.128C692 108.413 685.479 111.9 680.943 111.9L7.37144 112C5.24504 109.509 0 103.53 0 93.3665C0 66.4626 25.8002 56.7971 25.8002 32.8826C25.8002 20.1281 16.4441 3.58719 11.3408 0Z"
+                    fill="#54CCC9" />
+                </svg>
+                <!-- Orange -->
+                <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[8vw] transition-transform duration-500 
+                              ease-in-out ml-[-2rem] delay-0 " viewBox="0 0 700 113" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <path
+                    d="M0 0H684.425C691.453 0 700 3.5218 700 7.84861L699.24 31.9982V59.8709V81.0018V105.151C700 109.478 691.263 113 685.185 113L49.3827 112.094C41.0256 107.566 30.5793 97.0009 30.5793 84.9261C30.5793 62.3865 43.6847 60.9777 43.6847 39.7462C44.0646 16.301 10.4463 3.82369 0 0Z"
+                    fill="#E8804D" />
+                </svg>
+                <span
+                  class="relative z-20 transition-all text-[1.2vw] text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-0.5rem] duration-1000">
+                  TICKETS
+                </span>
+                <svg class="z-10 h-8 w-auto group-hover:translate-x-[0.5vw] duration-1000" width="42" height="41"
+                  viewBox="0 0 42 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 20.5L38 20.5" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M20.8501 3L38.25 20.3L20.8501 37.7" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+
+              <a href="99_Inprogress.html"
+                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[1.5vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+                <!-- Blue  -->
+                <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[8.2vw] transition-transform duration-500 
+                            ease-[cubic-bezier(0.34,1.3,0.7,1)] ml-[-2rem] delay-0 group-hover:delay-100"
+                  viewBox="0 0 700 113" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <path
+                    d="M11.3408 0H680.376C685.621 0 692 3.48753 692 7.77223L691.433 31.6868V59.2882V80.2135V104.128C692 108.413 685.479 111.9 680.943 111.9L7.37144 112C5.24504 109.509 0 103.53 0 93.3665C0 66.4626 25.8002 56.7971 25.8002 32.8826C25.8002 20.1281 16.4441 3.58719 11.3408 0Z"
+                    fill="#54CCC9" />
+                </svg>
+                <!-- Orange -->
+                <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[8vw] transition-transform duration-500 
+                              ease-in-out ml-[-2rem] delay-0 " viewBox="0 0 700 113" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <path
+                    d="M0 0H684.425C691.453 0 700 3.5218 700 7.84861L699.24 31.9982V59.8709V81.0018V105.151C700 109.478 691.263 113 685.185 113L49.3827 112.094C41.0256 107.566 30.5793 97.0009 30.5793 84.9261C30.5793 62.3865 43.6847 60.9777 43.6847 39.7462C44.0646 16.301 10.4463 3.82369 0 0Z"
+                    fill="#E8804D" />
+                </svg>
+                <span
+                  class="relative z-20 transition-all text-[1.2vw] text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-0.5rem] duration-1000">
+                  VENUE
+                </span>
+                <svg class="z-10 h-8 w-auto group-hover:translate-x-[0.5vw] duration-1000 pl-4" width="42" height="41"
+                  viewBox="0 0 42 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 20.5L38 20.5" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M20.8501 3L38.25 20.3L20.8501 37.7" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3rd -->
+    <!-- First Section -->
+    <section class="relative flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
+      <!-- Left side with stacked images + background -->
+      <div class="flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12 gap-[8vw]"
+        style="background-image: url('images/bg/Confetti_BG_1.svg');">
+        <!-- 1 -->
+        <!-- What is BAH -->
+        <div class="relative">
+          <object data="images/main/Tape.svg" type="image/svg+xml"
+            class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
+          <object data="images/main/3-Note1.svg" type="image/svg+xml"
+            class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+          <div class="w-full h-auto -mt-[5vw] ml-[75%]">
+            <a href="./99_Inprogress.html">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+                <img src="images/btm/Button_Ink 1_Default.png" class="w-50 h-auto transition-opacity hover:opacity-0" />
+                <img src="images/btm/Button_Ink 1_Hover.png"
+                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <!-- Festival Info -->
+        <div class="relative left-[20%]">
+          <object data="images/main/Tape.svg" type="image/svg+xml"
+            class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
+          <object data="images/main/3-Note2.svg" type="image/svg+xml"
+            class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+          <div class="w-full h-auto flex flex-col space-y-[10%] -mt-[25%] ml-[75%]">
+            <a href="./99_Inprogress.html">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+                <img src="images/btm/Button_Ink 2A_Default.png" alt="btm"
+                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                <img src="images/btm/Button_Ink 2A_Hover.png" alt="btm"
+                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </a>
+            <a href="./99_Inprogress.html">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+                <img src="images/btm/Button_Ink 2B_Default.png" alt="btm"
+                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                <img src="images/btm/Button_Ink 2B_Hover.png" alt="btm"
+                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div class="flex-1 relative flex justify-end items-end -right-[30%]">
+        <object data="images/main/3-Book1.svg" type="image/svg+xml" class="shrink-0 w-[160%] h-auto"></object>
+      </div>
+    </section>
+
+    <!-- 4th -->
+    <!-- Second Section -->
+    <section class="relative flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
+      <!-- Left side -->
+      <div class="flex-1 relative flex justify-left item-left w-[40vw] h-auto -left-[29%]">
+        <object data="images/main/4-Book2.svg" type="image/svg+xml" class="shrink-0 w-[150%] h-auto"></object>
+      </div>
+
+      <!-- Right side with stacked images + background -->
+      <div class="flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12 gap-[8vw]"
+        style="background-image: url('images/bg/Confetti_BG_2.svg');">
+
+        <!-- 3 -->
+        <!-- Sabah Travel Guide -->
+        <div class="relative left-[5%]">
+          <object data="images/main/Tape.svg" type="image/svg+xml"
+            class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
+          <object data="images/main/4-Note3.svg" type="image/svg+xml"
+            class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+
+          <div class="w-full h-auto flex flex-col justify-items-end space-y-[8%] -mt-[30%] ml-[75%]">
+            <!-- Food -->
+            <a href="./99_Inprogress.html">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+                <img src="images/btm/Button_Ink 3A_Default.png" alt="btm"
+                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0 pl-[2vw]" />
+                <img src="images/btm/Button_Ink 3A_Hover.png" alt="btm"
+                  class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500 pl-[2vw]" />
+              </div>
+            </a>
+            <!-- Destinations -->
+            <a href="./99_Inprogress.html">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+                <img src="images/btm/Button_Ink 3B_Default.png" alt="btm"
+                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                <img src="images/btm/Button_Ink 3B_Hover.png" alt="btm"
+                  class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </a>
+            <!-- Experiences -->
+            <a href="./99_Inprogress.html">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+                <img src="images/btm/Button_Ink 3C_Default.png" alt="btm"
+                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                <img src="images/btm/Button_Ink 3C_Hover.png" alt="btm"
+                  class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <!-- Be a Part of BAH -->
+        <div class="relative -left-[5%]">
+          <object data="images/main/Tape.svg" type="image/svg+xml"
+            class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
+          <object data="images/main/4-Note4.svg" type="image/svg+xml"
+            class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+          <div class="w-full h-auto flex flex-col space-y-[8%] -mt-[20%] ml-[75%]">
+            <!-- Panelists -->
+            <a href="./99_Inprogress.html">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+                <img src="images/btm/Button_Ink 4A_Default.png" alt="btm"
+                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                <img src="images/btm/Button_Ink 4A_Hover.png" alt="btm"
+                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </a>
+            <!-- Volunteers -->
+            <a href="./99_Inprogress.html">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+                <img src="images/btm/Button_Ink 4B_Default.png" alt="btm"
+                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                <img src="images/btm/Button_Ink 4B_Hover.png" alt="btm"
+                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- END - Directory-->
+    <section class="relative flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
+      <div class="flex-1 relative flex flex-col items-center bg-cover bg-center"
+        style="background-image: url('images/bg/BAH\ Directory_BG.svg');">
+        <div class="relative w-[60vw] flex justify-center">
+          <object data="../images/main/5-BAH_Directory.svg" type="image/svg+xml"
+            class="w-full h-auto pointer-events-none"></object>
+          <div class="absolute mt-[18vw] flex gap-6">
+            <!-- FAQ -->
+            <div>
+              <a href="1_Ticket.html#FAQsec"
+                class="group relative inline-block w-[15vw] cursor-pointer overflow-hidden rounded-[2rem] border-2 border-[#373f52] text-decoration-none shadow-lg transition-transform duration-700 hover:border-[#e8804d]">
+                <div class="absolute inset-0 z-0">
+                  <div class="h-[9rem]"></div>
+                  <div class="h-[50vw] bg-[#373f52]"></div>
+                </div>
+                <div
+                  class="absolute inset-0 z-10 transform bg-[#373f52] transition-transform duration-700 translate-y-full group-hover:translate-y-0 group-hover:bg-[#e8804d] -m-1">
+                </div>
+                <div class="relative z-30 transition-colors duration-300 group-hover:text-white">
+                  <div class="flex h-40 items-start px-6 text-6xl font-bold text-[#373f52] pt-2 group-hover:text-white">
+                    FAQ
+                  </div>
+                  <div
+                    class="flex h-[30px] items-center justify-between bg-transparent px-4 text-gray-200 group-hover:text-white">
+                    <div class="flex flex-row text-2xl font-semibold tracking-wider -mt-4">
+                      <span>
+                        SOUTH ZONE
+                      </span>
+                      <span class="absolute right-5 rotate-45 group-hover:-rotate-0 transition-transform duration-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                          fill="#e3e3e3">
+                          <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- R&R -->
+            <div>
+              <a href="99_Inprogress.html"
+                class="group relative inline-block w-[15vw] cursor-pointer overflow-hidden rounded-[2rem] border-2 border-[#373f52] text-decoration-none shadow-lg transition-transform duration-700 hover:border-[#e8804d]">
+                <div class="absolute inset-0 z-0">
+                  <div class="h-[9rem]"></div>
+                  <div class="h-[50vw] bg-[#373f52]"></div>
+                </div>
+                <div
+                  class="absolute inset-0 z-10 transform bg-[#373f52] transition-transform duration-700 translate-y-full group-hover:translate-y-0 group-hover:bg-[#e8804d] -m-1">
+                </div>
+                <div class="relative z-30 transition-colors duration-300 group-hover:text-white">
+                  <div class="flex h-40 items-start px-6 text-4xl font-bold text-[#373f52] pt-2 group-hover:text-white">
+                    Rules &<br>Regulations
+                  </div>
+                  <div
+                    class="flex h-[30px] items-center justify-between bg-transparent px-4 text-gray-200 group-hover:text-white">
+                    <div class="flex flex-row text-2xl font-semibold tracking-wider -mt-4">
+                      <span>
+                        NORTH ZONE
+                      </span>
+                      <span class="absolute right-5 -rotate-45 group-hover:-rotate-0 transition-transform duration-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                          fill="#e3e3e3">
+                          <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </a>
+            </div>
+            <!-- T&C -->
+            <div>
+              <a href="./11_Terms_Condition.html"
+                class="group relative inline-block w-[15vw] cursor-pointer overflow-hidden rounded-[2rem] border-2 border-[#373f52] text-decoration-none shadow-lg transition-transform duration-700 hover:border-[#e8804d]">
+                <div class="absolute inset-0 z-0">
+                  <div class="h-[9rem]"></div>
+                  <div class="h-[50vw] bg-[#373f52]"></div>
+                </div>
+                <div
+                  class="absolute inset-0 z-10 transform bg-[#373f52] transition-transform duration-700 translate-y-full group-hover:translate-y-0 group-hover:bg-[#e8804d] -m-1">
+                </div>
+                <div class="relative z-30 transition-colors duration-300 group-hover:text-white">
+                  <div class="flex h-40 items-start px-6 text-4xl font-bold text-[#373f52] pt-2 group-hover:text-white">
+                    Terms &<br>Conditions
+                  </div>
+                  <div
+                    class="flex h-[30px] items-center justify-between bg-transparent px-4 text-gray-200 group-hover:text-white">
+                    <div class="flex flex-row text-2xl font-semibold tracking-wider -mt-4">
+                      <span>
+                        CENTRAL ZONE
+                      </span>
+                      <span class="absolute right-5 rotate-90 group-hover:-rotate-0 transition-transform duration-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                          fill="#e3e3e3">
+                          <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <!-- social media -->
+            <div class="absolute mt-[12vw] flex w-[100%]  text-[#373f52]">
+              <div
+                class="flex w-[100%] overflow-hidden rounded-[2rem] border-2 border-[#373f52] text-decoration-none text-4xl text-[#373f52] font-bold pl-6 py-4">
+                <div class="flex flex-row">
+                  <a>MORE NEWS</a>
+                  <!-- FB -->
+                  <a class="absolute right-20 hover:opacity-80 -mt-1" href="https://www.facebook.com/borneo.anthro.hub"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+                      <title>facebook</title>
+                      <path fill="currentColor"
+                        d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+                    </svg>
+                  </a>
+                  <!-- X -->
+                  <a class="absolute right-6 hover:opacity-80" href="https://x.com/BorneoAnthroHub" target="_blank">
+                    <svg width="40" height="40" viewBox="0 0 1200 1227" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg" style="padding-bottom: 2px;padding-top: 3px;">
+                      <title>X</title>
+                      <path
+                        d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
+                    </svg>
+                  </a>
+                  <!-- TG -->
+                  <a class="absolute right-30 hover:opacity-80" href="https://t.me/+air4VsJsNQFhN2Fl" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+                      <title>Telegram</title>
+                      <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <div id="footer"></div>
+    <script src="footer.js" defer></script>
+  </div>
+  <noscript>
+    <style>
+      /* Fullscreen overlay */
+      #noscript-warning {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.85);
+        /* 半透明黑色背景 */
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 1.5rem;
+        padding: 2rem;
+        z-index: 9999;
+      }
+    </style>
+    <div id="noscript-warning">
+      <img src="images/Sean_seem.PNG" alt="Disabled of JS" />
+      ⚠️ JavaScript is disabled in your browser.
+      <br>To use this website properly, please enable JavaScript.
+    </div>
+  </noscript>
+
+
+</body>
+
+</html>
