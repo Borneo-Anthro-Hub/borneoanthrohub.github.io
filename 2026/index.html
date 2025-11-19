@@ -7,13 +7,15 @@
   <title>Borneo Anthro Hub</title>
   <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <link href="./css/output.css" rel="stylesheet">
-  <link href="/fonts/Fonts/WEB/css/general-sans.css" rel="stylesheet">
+  <!-- <link href="./fonts/Fonts/WEB/css/general-sans.css" rel="stylesheet"> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
   <!-- pictogrammers Material Design Icons 
    https://pictogrammers.com/library/mdi/
   -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   <style>
     html,
     body {
@@ -89,12 +91,12 @@
     <div id="navbar"></div>
     <div class="navbar-gradient"></div>
 
-    <script src="navbar.js"></script>
+    <script src="./navbar.js"></script>
     <!-- 1st -->
     <!-- Responsive Image Box -->
     <main class="p-0 m-0">
       <div class="relative w-screen h-full overflow-hidden">
-        <img src="images/main/BAH 2026_Cover_Gradient.png" alt="Section Background" class="w-full h-full object-cover"
+        <img src="./images/main/BAH 2026_Cover_Gradient.png" alt="Section Background" class="w-full h-full object-cover"
           style="
           -webkit-mask-image: linear-gradient(to top, transparent 0%, black 10%);
           -webkit-mask-repeat: no-repeat;
@@ -102,13 +104,13 @@
           mask-image: linear-gradient(to top, transparent 0%, black 10%);
           mask-repeat: no-repeat;
           mask-size: 100% 100%;">
-        <img src="images/main/Cover_Top.png" alt="top cover" class="absolute w-full h-auto z-1 top-[35vw]">
+        <img src="./images/main/Cover_Top.png" alt="top cover" class="absolute w-full h-auto z-1 top-[35vw]">
         <div class="absolute inset-0 flex flex-col items-center justify-center z-10 mt-[-30vw]">
-          <img src="images/main/BAH 2026_Title.png" alt="Center Image"
+          <img src="./images/main/BAH 2026_Title.png" alt="Center Image"
             class="w-[28vw] h-auto mb-1" />
 
           <!-- JOIN NOW button -->
-          <a href="1_Ticket.html"
+          <a href="./1_Ticket.html"
             class="group relative inline-flex items-center justify-center font-[1000] gap-2 px-[3rem] py-[1.5rem] text-lg bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
             <!-- Blue  -->
             <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[15.4rem] transition-transform duration-500 
@@ -139,14 +141,14 @@
             </svg>
           </a>
         </div>
-        <img src="images/main/Cover_Bottom.png" alt="Cover bottom" class="w-full h-full object-cove mt-[-1px] ml-[1px]">
+        <img src="./images/main/Cover_Bottom.png" alt="Cover bottom" class="w-full h-full object-cove mt-[-1px] ml-[1px]">
       </div>
     </main>
 
     <!-- 2nd -->
     <section class="relative w-screen min-h-[1000px] bg-transparent flex items-center justify-center mt-0">
       <!-- Envelope with date -->
-      <object data="images/main/2-Envelope.svg"
+      <object data="./images/main/2-Envelope.svg"
         class="absolute top-[28vw] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto opacity-90/"></object>
 
       <!-- Foreground Content -->
@@ -155,25 +157,23 @@
         <!-- Left Container -->
         <div class="flex-1 flex justify-center">
           <a href="https://maps.app.goo.gl/YD1BeyjAbpKy7z498" target="_blank" class="w-full h-auto">
-            <img src="images/main/2-Hotel.svg" class="w-full h-auto mt-[10vw] -rotate-[5deg]"
+            <img src="./images/main/2-Hotel.svg" class="w-full h-auto mt-[10vw] -rotate-[5deg]"
               type="image/svg+xml"></img>
           </a>
-          <!-- <img src="images/main/2-Hotel.png" alt="Left Image"
-          class="w-full h-auto mt-[10vw] -rotate-[5deg]" /> -->
         </div>
 
         <!-- Right Container -->
         <div class="flex-1 flex flex-col items-center relative">
           <!-- Ticket -->
-          <object data="images/main/2-Ticket_Header.svg" class="w-full h-auto mb-6 pt-[12vw]"
+          <object data="./images/main/2-Ticket_Header.svg" class="w-full h-auto mb-6 pt-[12vw]"
             type="image/svg+xml"></object>
 
           <!-- Note -->
           <div class="relative shrink-0">
-            <object class="w-[25vw] h-auto left-1/2" data="images/main/2-Letter.svg" type="image/svg+xml"></object>
+            <object class="w-[25vw] h-auto left-1/2" data="./images/main/2-Letter.svg" type="image/svg+xml"></object>
             <div class="absolute top-[55%] left-[75%] flex flex-col space-y-2 z-20">
               <!-- button -->
-              <a href="1_Ticket.html"
+              <a href="./1_Ticket.html"
                 class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[1.5vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
                 <!-- Blue  -->
                 <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[8.2vw] transition-transform duration-500 
@@ -204,7 +204,7 @@
                 </svg>
               </a>
 
-              <a href="99_Inprogress.html"
+              <a href="./99_Inprogress.html"
                 class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[1.5vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
                 <!-- Blue  -->
                 <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[8.2vw] transition-transform duration-500 
@@ -249,15 +249,15 @@
         <!-- 1 -->
         <!-- What is BAH -->
         <div class="relative">
-          <object data="images/main/Tape.svg" type="image/svg+xml"
+          <object data="./images/main/Tape.svg" type="image/svg+xml"
             class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
-          <object data="images/main/3-Note1.svg" type="image/svg+xml"
+          <object data="./images/main/3-Note1.svg" type="image/svg+xml"
             class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
           <div class="w-full h-auto -mt-[5vw] ml-[75%]">
             <a href="./99_Inprogress.html">
               <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="images/btm/Button_Ink 1_Default.png" class="w-50 h-auto transition-opacity hover:opacity-0" />
-                <img src="images/btm/Button_Ink 1_Hover.png"
+                <img src="./images/btm/Button_Ink 1_Default.png" class="w-50 h-auto transition-opacity hover:opacity-0" />
+                <img src="./images/btm/Button_Ink 1_Hover.png"
                   class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
@@ -267,24 +267,24 @@
         <!-- 2 -->
         <!-- Festival Info -->
         <div class="relative left-[20%]">
-          <object data="images/main/Tape.svg" type="image/svg+xml"
+          <object data="./images/main/Tape.svg" type="image/svg+xml"
             class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
-          <object data="images/main/3-Note2.svg" type="image/svg+xml"
+          <object data="./images/main/3-Note2.svg" type="image/svg+xml"
             class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
           <div class="w-full h-auto flex flex-col space-y-[10%] -mt-[25%] ml-[75%]">
             <a href="./99_Inprogress.html">
               <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="images/btm/Button_Ink 2A_Default.png" alt="btm"
+                <img src="./images/btm/Button_Ink 2A_Default.png" alt="btm"
                   class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="images/btm/Button_Ink 2A_Hover.png" alt="btm"
+                <img src="./images/btm/Button_Ink 2A_Hover.png" alt="btm"
                   class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
             <a href="./99_Inprogress.html">
               <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="images/btm/Button_Ink 2B_Default.png" alt="btm"
+                <img src="./images/btm/Button_Ink 2B_Default.png" alt="btm"
                   class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="images/btm/Button_Ink 2B_Hover.png" alt="btm"
+                <img src="./images/btm/Button_Ink 2B_Hover.png" alt="btm"
                   class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
@@ -294,7 +294,7 @@
 
       <!-- Right side -->
       <div class="flex-1 relative flex justify-end items-end -right-[30%]">
-        <object data="images/main/3-Book1.svg" type="image/svg+xml" class="shrink-0 w-[160%] h-auto"></object>
+        <object data="./images/main/3-Book1.svg" type="image/svg+xml" class="shrink-0 w-[160%] h-auto"></object>
       </div>
     </section>
 
@@ -303,7 +303,7 @@
     <section class="relative flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
       <!-- Left side -->
       <div class="flex-1 relative flex justify-left item-left w-[40vw] h-auto -left-[29%]">
-        <object data="images/main/4-Book2.svg" type="image/svg+xml" class="shrink-0 w-[150%] h-auto"></object>
+        <object data="./images/main/4-Book2.svg" type="image/svg+xml" class="shrink-0 w-[150%] h-auto"></object>
       </div>
 
       <!-- Right side with stacked images + background -->
@@ -313,36 +313,36 @@
         <!-- 3 -->
         <!-- Sabah Travel Guide -->
         <div class="relative left-[5%]">
-          <object data="images/main/Tape.svg" type="image/svg+xml"
+          <object data="./images/main/Tape.svg" type="image/svg+xml"
             class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
-          <object data="images/main/4-Note3.svg" type="image/svg+xml"
+          <object data="./images/main/4-Note3.svg" type="image/svg+xml"
             class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
 
           <div class="w-full h-auto flex flex-col justify-items-end space-y-[8%] -mt-[30%] ml-[75%]">
             <!-- Food -->
             <a href="./99_Inprogress.html">
               <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="images/btm/Button_Ink 3A_Default.png" alt="btm"
+                <img src="./images/btm/Button_Ink 3A_Default.png" alt="btm"
                   class="w-50 h-auto transition-opacity duration-300 hover:opacity-0 pl-[2vw]" />
-                <img src="images/btm/Button_Ink 3A_Hover.png" alt="btm"
+                <img src="./images/btm/Button_Ink 3A_Hover.png" alt="btm"
                   class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500 pl-[2vw]" />
               </div>
             </a>
             <!-- Destinations -->
             <a href="./99_Inprogress.html">
               <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="images/btm/Button_Ink 3B_Default.png" alt="btm"
+                <img src="./images/btm/Button_Ink 3B_Default.png" alt="btm"
                   class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="images/btm/Button_Ink 3B_Hover.png" alt="btm"
+                <img src="./images/btm/Button_Ink 3B_Hover.png" alt="btm"
                   class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
             <!-- Experiences -->
             <a href="./99_Inprogress.html">
               <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="images/btm/Button_Ink 3C_Default.png" alt="btm"
+                <img src="./images/btm/Button_Ink 3C_Default.png" alt="btm"
                   class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="images/btm/Button_Ink 3C_Hover.png" alt="btm"
+                <img src="./images/btm/Button_Ink 3C_Hover.png" alt="btm"
                   class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
@@ -352,26 +352,26 @@
         <!-- 5 -->
         <!-- Be a Part of BAH -->
         <div class="relative -left-[5%]">
-          <object data="images/main/Tape.svg" type="image/svg+xml"
+          <object data="./images/main/Tape.svg" type="image/svg+xml"
             class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
-          <object data="images/main/4-Note4.svg" type="image/svg+xml"
+          <object data="./images/main/4-Note4.svg" type="image/svg+xml"
             class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
           <div class="w-full h-auto flex flex-col space-y-[8%] -mt-[20%] ml-[75%]">
             <!-- Panelists -->
             <a href="./99_Inprogress.html">
               <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="images/btm/Button_Ink 4A_Default.png" alt="btm"
+                <img src="./images/btm/Button_Ink 4A_Default.png" alt="btm"
                   class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="images/btm/Button_Ink 4A_Hover.png" alt="btm"
+                <img src="./images/btm/Button_Ink 4A_Hover.png" alt="btm"
                   class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
             <!-- Volunteers -->
             <a href="./99_Inprogress.html">
               <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="images/btm/Button_Ink 4B_Default.png" alt="btm"
+                <img src="./images/btm/Button_Ink 4B_Default.png" alt="btm"
                   class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="images/btm/Button_Ink 4B_Hover.png" alt="btm"
+                <img src="./images/btm/Button_Ink 4B_Hover.png" alt="btm"
                   class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
@@ -390,7 +390,7 @@
           <div class="absolute mt-[18vw] flex gap-6">
             <!-- FAQ -->
             <div>
-              <a href="1_Ticket.html#FAQsec"
+              <a href="./1_Ticket.html#FAQsec"
                 class="group relative inline-block w-[15vw] cursor-pointer overflow-hidden rounded-[2rem] border-2 border-[#373f52] text-decoration-none shadow-lg transition-transform duration-700 hover:border-[#e8804d]">
                 <div class="absolute inset-0 z-0">
                   <div class="h-[9rem]"></div>
@@ -422,7 +422,7 @@
             </div>
             <!-- R&R -->
             <div>
-              <a href="99_Inprogress.html"
+              <a href="./99_Inprogress.html"
                 class="group relative inline-block w-[15vw] cursor-pointer overflow-hidden rounded-[2rem] border-2 border-[#373f52] text-decoration-none shadow-lg transition-transform duration-700 hover:border-[#e8804d]">
                 <div class="absolute inset-0 z-0">
                   <div class="h-[9rem]"></div>
@@ -529,7 +529,7 @@
       </div>
     </section>
     <div id="footer"></div>
-    <script src="footer.js" defer></script>
+    <script src="./footer.js" defer></script>
   </div>
   <noscript>
     <style>
@@ -554,7 +554,7 @@
       }
     </style>
     <div id="noscript-warning">
-      <img src="images/Sean_seem.PNG" alt="Disabled of JS" />
+      <img src="./images/Sean_seem.PNG" alt="Disabled of JS" />
       ⚠️ JavaScript is disabled in your browser.
       <br>To use this website properly, please enable JavaScript.
     </div>
