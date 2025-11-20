@@ -41,7 +41,11 @@
         <div class="relative shrink-0">
           <div class="fixed top-[35%] left-[40%] flex flex-col space-y-2 z-20">
             <!-- button -->
-            <a href="" onclick="history.back()"
+             <!-- Add Fallback for History with no previous, and allow with previous to redirect back -1 -->
+            <!-- <a href="javascript:void(0)" onclick="history.back()"
+              class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[2vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden"> -->
+              <a href="javascript:void(0)" 
+              onclick="document.referrer ? history.back() : window.location.href='index.html';"
               class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[2vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
               <!-- Blue  -->
               <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[6em] transition-transform duration-500 
