@@ -1034,65 +1034,67 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠤⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 `);
 
-      const TICKET_START = new Date("2025-11-21T22:00:00+08:00").getTime(); // sell datime
+      // block click
+      //ticketSection.classList.add("pointer-events-none");
 
-      async function startPreSaleCountdown() {
-        const overlay = document.getElementById("preSaleOverlay");
-        const timerEl = document.getElementById("countdownTimer");
-        const ticketSection = document.getElementById("ticketSection");
+      // const TICKET_START = new Date("2025-11-21T22:00:00+08:00").getTime(); // sell datime
 
-        // Get internet time
-        const res = await fetch("https://aisenseapi.com/services/v1/datetime");
-        const data = await res.json();
-        let now = new Date(data.datetime).getTime();
-        let interval;
-        let ended = false;
+      // async function startPreSaleCountdown() {
+      //   const overlay = document.getElementById("preSaleOverlay");
+      //   const timerEl = document.getElementById("countdownTimer");
+      //   const ticketSection = document.getElementById("ticketSection");
 
-        function updateCountdown() {
-          const remaining = TICKET_START - now;
+      //   // Get internet time
+      //   const res = await fetch("https://aisenseapi.com/services/v1/datetime");
+      //   const data = await res.json();
+      //   let now = new Date(data.datetime).getTime();
+      //   let interval;
+      //   let ended = false;
 
-          if (remaining <= 0) {
-            if(!ended)
-            {
-              ended = true; 
-              overlay.remove();
-              ticketSection.classList.remove("pointer-events-none");
-              revealAll();
-              ticket_status();
-              clearInterval(interval);
-            }
-            return;
-          }
+      //   function updateCountdown() {
+      //     const remaining = TICKET_START - now;
 
-          const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
-          const hours = Math.floor(
-            (remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          const minutes = Math.floor(
-            (remaining % (1000 * 60 * 60)) / (1000 * 60)
-          );
-          const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+      //     if (remaining <= 0) {
+      //       if(!ended)
+      //       {
+      //         ended = true; 
+      //         //overlay.remove();
+      //         //ticketSection.classList.remove("pointer-events-none");
+      //         //revealAll();
 
-          const dayText = days > 0 ? `${days}D ` : "";
-          timerEl.textContent = `${dayText}${hours
-            .toString()
-            .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
-            .toString()
-            .padStart(2, "0")}`;
+      //         clearInterval(interval);
+      //       }
+      //       return;
+      //     }
 
-          now += 1000;
-        }
+      //     const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+      //     const hours = Math.floor(
+      //       (remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      //     );
+      //     const minutes = Math.floor(
+      //       (remaining % (1000 * 60 * 60)) / (1000 * 60)
+      //     );
+      //     const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
 
-        // Init
-        updateCountdown();
-        interval = setInterval(updateCountdown, 1000);
+      //     const dayText = days > 0 ? `${days}D ` : "";
+      //     timerEl.textContent = `${dayText}${hours
+      //       .toString()
+      //       .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+      //       .toString()
+      //       .padStart(2, "0")}`;
 
-        // block click
-        ticketSection.classList.add("pointer-events-none");
-      }
+      //     now += 1000;
+      //   }
+
+      //   // Init
+      //   updateCountdown();
+      //   interval = setInterval(updateCountdown, 1000);
+
+      // }
 
       // start countdown
-      startPreSaleCountdown();
+      // startPreSaleCountdown();
+      ticket_status();
     </script>
     <noscript>
       <style>
