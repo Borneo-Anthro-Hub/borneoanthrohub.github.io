@@ -97,7 +97,7 @@
     <!-- Responsive Image Box -->
     <main class="p-0 m-0">
       <div class="relative w-screen h-full overflow-hidden">
-        <img src="./images/main/BAH 2026_Cover_Gradient.png" alt="Section Background" class="w-full h-full object-cover"
+        <img src="./images/main/BAH 2026_Cover_Gradient.png" alt="Section Background" class="w-full h-full scale-[1.3] sm:scale-[1.2] md:scale-100 object-cover "
           style="
           -webkit-mask-image: linear-gradient(to top, transparent 0%, black 10%);
           -webkit-mask-repeat: no-repeat;
@@ -105,12 +105,17 @@
           mask-image: linear-gradient(to top, transparent 0%, black 10%);
           mask-repeat: no-repeat;
           mask-size: 100% 100%;">
-        <img src="./images/main/Cover_Top.png" alt="top cover" class="absolute w-full h-auto z-1 top-[35vw]">
-        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 mt-[-30vw]">
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 mt-[10vw] sm:mt-[-10vw] md:-mt-[25vw] xl:-mt-[40vw]">
           <img src="./images/main/BAH 2026_Title.png" alt="Center Banner Image"
-            class="w-[28vw] h-auto mb-1" />
+            class="w-[60vw]
+                  sm:w-[50vw]
+                  md:w-[35vw]
+                  lg:w-[30vw]
+                  xl:w-[28vw]
+                  h-auto
+                  object-contain z-50" />
 
-          <!-- JOIN NOW button -->
+        <!-- JOIN NOW button -->
           <a href="./1_Ticket.html"
             class="group relative inline-flex items-center justify-center font-[1000] gap-2 px-[3rem] py-[1.5rem] text-lg bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
             <!-- Blue  -->
@@ -142,7 +147,10 @@
             </svg>
           </a>
         </div>
-        <img src="./images/main/Cover_Bottom.png" alt="Cover bottom" class="w-full h-full object-cove mt-[-1px] ml-[1px]">
+        <img src="./images/main/Cover_Top.png" alt="top cover" class="absolute w-full h-auto z-5 scale-[1.3] sm:scale-[1.2] md:scale-100 object-cover 
+                                                                      top-[40vw] md:top-[35vw] xl:top-[35vw]">
+        <img src="./images/main/Cover_Bottom.png" alt="Cover bottom" class="w-full h-full z-2 scale-[1.3] sm:scale-[1.2] md:scale-100 object-cover 
+                                                                            mt-[25vw] sm:mt-[12vw] md:mt-[11.8vw] md:mt-[-1px] ml-[-1px]">
       </div>
     </main>
 
