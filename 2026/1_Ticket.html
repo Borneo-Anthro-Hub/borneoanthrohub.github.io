@@ -196,12 +196,12 @@
         <object
           data="./images/ticket/Registration_Header_1.svg"
           type="image/svg+xml"
-          class="shrink-0 w-[40vw] h-auto"
+          class="shrink-0 w-[70vw] lg:w-[50vw] xl:w-[40vw] h-auto"
         ></object>
         <object
           data="./images/ticket/Tape_B.svg"
           type="image/svg+xml"
-          class="absolute w-[10%] h-auto z-10 left-[26%] -mt-[2%] opacity-100 mix-blend-multiply"
+          class="absolute w-[20%] lg:w-[15%] xl:w-[10%] h-auto z-10 left-[10%] lg:left-[18%] xl:left-[26%] -mt-[5%] lg:-mt-[3%] xl:-mt-[2%] opacity-100 mix-blend-multiply"
         ></object>
         <div class="bg-[#FFFBE8] w-[60vw] rounded-[2rem]">
           <p class="p-[40px] text-[#7F695B]">
@@ -230,11 +230,11 @@
 
       <!-- SECTION 3: Ticket -->
 
-      <section class="py-10 relative" id="ticketSection">
-        <div class="mx-auto px-6">
+      <section class="py-auto relative" id="ticketSection">
+        <div class="mx-auto px-6 justify-center">
           <!-- 3 Vertical Images in a Row (stack on mobile) -->
           <div
-            class="flex flex-col md:flex-row justify-center md:space-x-6 space-y-6 md:space-y-0 gap-10"
+            class="flex flex-col md:flex-row item-center justify-center md:space-x-6 space-y-6 md:space-y-0 gap-10" style="align-items: center;"
           >
             <!-- Attendee -->
             <div class="relative">
@@ -576,7 +576,7 @@
             <object
               data="./images/ticket/FAQ_Header.svg"
               type="image/svg+xml"
-              class="shrink-0 w-[60vw] h-auto"
+              class="shrink-0 w-[90vw] md:w-[70vw] lg:w-[60vw] h-auto"
             ></object>
           </div>
 
@@ -738,11 +738,48 @@
                     <p class="mt-3 text-sm text-white bg-transparent">
                       Participation is only open to individuals aged 16 and above with a valid ticket.
                       <br /><br />
-                      <em>*Individuals aged 16 or 17 must present a signed 
-                      <b>Parental Consent Form</b> during collection at the convention. 
-                      The form can be found
-                      <a href="https://drive.google.com/file/d/10ksaY32pvCRwexwWfJQMttjJ3j7WMOyY/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="underline text-blue-400 hover:text-blue-300 transition">
-                        here</a>.</em>
+                      <em>* Individuals aged 16 or 17 must present a signed 
+                      <b>Parental Consent Form</b> during collection at the convention.<br>
+                      <a href="https://drive.google.com/file/d/10ksaY32pvCRwexwWfJQMttjJ3j7WMOyY/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="underline text-blue-400 hover:text-blue-300 hover:decoration-2 transition">
+                        The Parental / Guardian Consent Form can be found here.</a><br>
+                      * Please print it and have it signed by a parent or guardian.<br>
+                      * Bring the signed form to the convention and submit it at the registration counter during check-in.
+                      </em>
+                    </p>
+                </div>
+              </div>
+
+              <!-- 5. 17 years old when booking the ticket -->
+              <div
+                class="faq-item border-2 border-white/90 rounded-2xl p-4 bg-transparent"
+              >
+                <button
+                  class="faq-question flex items-center justify-between w-full text-left bg-transparent appearance-none border-0 p-0 focus:outline-none"
+                  aria-expanded="false"
+                >
+                  <span class="flex items-center space-x-3">
+                    <span
+                      class="faq-toggle inline-block text-xl font-bold transition-transform duration-200"
+                      >+</span
+                    >
+                    <span class="faq-question-text" style="font-weight: 600; font-size: 24px;"
+                      >I am 17 years old when booking the ticket, but I will be 18 when attending the convention.<br>
+                      Do I still need to submit the Parental / Guardian Consent Form?</span
+                    >
+                  </span>
+                </button>
+
+                <div
+                  class="faq-answer max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out bg-transparent ml-6"
+                  style="max-height: 0px"
+                >
+                  <object
+                    data="./images/ticket/Divider.svg"
+                    type="image/svg+xml"
+                    class="shrink-0 w-auto h-auto"
+                  ></object>
+                    <p class="mt-3 text-[15px] text-white bg-transparent">
+                      If you are 18 during the time of the convention, it is not compulsory to provide the parental consent form, but it is still advisable to provide one for safety reasons.
                     </p>
                 </div>
               </div>
@@ -810,8 +847,6 @@
                   style="font-size:15px; font-weight:400; color:white;">
                     No walk-ins will be accommodated, so we would recommend making arrangements
                     in advance if possible.
-                    <!-- Yes! However, prices and perks may differ so we would
-                    recommend making arrangements in advance if possible. -->
                   </p>
                 </div>
               </div>

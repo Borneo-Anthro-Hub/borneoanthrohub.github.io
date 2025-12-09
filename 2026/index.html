@@ -8,8 +8,8 @@
   <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <link href="./css/output.css" rel="stylesheet">
   <!-- <link href="./fonts/Fonts/WEB/css/general-sans.css" rel="stylesheet"> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> -->
 
   <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
   <!-- pictogrammers Material Design Icons 
@@ -47,39 +47,6 @@
     }
   </style>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      gsap.registerPlugin(ScrollTrigger);
-
-      gsap.fromTo(".scroll-fade-in", {
-        opacity: 0,
-        y: 50
-      }, {
-        opacity: 1,
-        y: 0,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".scroll-fade-in",
-          start: "top 80%",
-          end: "bottom 20%",
-          scrub: false,
-          toggleActions: "play reverse play reverse"
-        }
-      });
-
-      gsap.to(".horizontal-panels", {
-        xPercent: -200,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".Events",
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-          end: () => "+=" + (document.querySelector(".horizontal-panels").offsetWidth - window.innerWidth),
-        },
-      });
-    });
-  </script>
 </head>
 
 
@@ -97,7 +64,7 @@
     <!-- Responsive Image Box -->
     <main class="p-0 m-0">
       <div class="relative w-screen h-full overflow-hidden">
-        <img src="./images/main/BAH 2026_Cover_Gradient.png" alt="Section Background" class="w-full h-full object-cover"
+        <img src="./images/main/BAH 2026_Cover_Gradient.webp" alt="Section Background" class="w-full h-full scale-[1.3] sm:scale-[1.2] md:scale-100 object-cover "
           style="
           -webkit-mask-image: linear-gradient(to top, transparent 0%, black 10%);
           -webkit-mask-repeat: no-repeat;
@@ -105,12 +72,17 @@
           mask-image: linear-gradient(to top, transparent 0%, black 10%);
           mask-repeat: no-repeat;
           mask-size: 100% 100%;">
-        <img src="./images/main/Cover_Top.png" alt="top cover" class="absolute w-full h-auto z-1 top-[35vw]">
-        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 mt-[-30vw]">
-          <img src="./images/main/BAH 2026_Title.png" alt="Center Banner Image"
-            class="w-[28vw] h-auto mb-1" />
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 -mt-[10vw] sm:mt-[-10vw] md:-mt-[25vw] xl:-mt-[40vw]">
+          <img src="./images/main/BAH 2026_Title.webp" alt="Center Banner Image"
+            class="w-[70vw]
+                  sm:w-[50vw]
+                  md:w-[35vw]
+                  lg:w-[30vw]
+                  xl:w-[28vw]
+                  h-auto
+                  object-contain z-50" />
 
-          <!-- JOIN NOW button -->
+        <!-- JOIN NOW button -->
           <a href="./1_Ticket.html"
             class="group relative inline-flex items-center justify-center font-[1000] gap-2 px-[3rem] py-[1.5rem] text-lg bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
             <!-- Blue  -->
@@ -142,7 +114,10 @@
             </svg>
           </a>
         </div>
-        <img src="./images/main/Cover_Bottom.png" alt="Cover bottom" class="w-full h-full object-cove mt-[-1px] ml-[1px]">
+        <img src="./images/main/Cover_Top.png" alt="top cover" class="absolute w-full h-auto z-5 scale-[1.3] sm:scale-[1.2] md:scale-100 object-cover 
+                                                                      top-[40vw] md:top-[35vw] xl:top-[35vw]">
+        <img src="./images/main/Cover_Bottom.png" alt="Cover bottom" class="w-full h-full z-2 scale-[1.3] sm:scale-[1.2] md:scale-100 object-cover 
+                                                                            mt-[25vw] sm:mt-[12vw] md:mt-[11.8vw] md:mt-[-1px] ml-[-1px]">
       </div>
     </main>
 
@@ -150,15 +125,15 @@
     <section class="relative w-screen min-h-[1000px] bg-transparent flex items-center justify-center mt-0">
       <!-- Envelope with date -->
       <object data="./images/main/2-Envelope.svg"
-        class="absolute top-[28vw] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto opacity-90/"></object>
+        class="absolute top-[28vw] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] lg:w-[70%] h-auto opacity-90/"></object>
 
       <!-- Foreground Content -->
-      <div class="relative flex flex-col md:flex-row w-4/5 justify-center items-start mt-[10vw] z-10 gap-6">
+      <div class="relative flex lg:flex-row flex-col lg:w-4/5 justify-center items-start lg:mt-[10vw] z-10 gap-6">
         <!-- hotel image -->
         <!-- Left Container -->
-        <div class="flex-1 flex justify-center">
+        <div class="lg:flex-1 flex lg:justify-center">
           <a href="https://maps.app.goo.gl/YD1BeyjAbpKy7z498" target="_blank" class="w-full h-auto">
-            <img src="./images/main/2-Hotel.svg" class="w-full h-auto mt-[10vw] -rotate-[5deg]"
+            <img src="./images/main/2-Hotel.svg" class="w-[70vw] lg:w-full h-auto mt-[1vw] md:mt-[20vw] ml-[6vw] lg:mt-[4vw] xl:mt-12 -rotate-[5deg]"
               type="image/svg+xml"></img>
           </a>
         </div>
@@ -166,18 +141,18 @@
         <!-- Right Container -->
         <div class="flex-1 flex flex-col items-center relative">
           <!-- Ticket -->
-          <object data="./images/main/2-Ticket_Header.svg" class="w-full h-auto mb-6 pt-[12vw]"
+          <object data="./images/main/2-Ticket_Header.svg" class="w-[90%] lg:w-full h-auto mb-6 pt-[12vw]"
             type="image/svg+xml"></object>
 
           <!-- Note -->
           <div class="relative shrink-0">
-            <object class="w-[25vw] h-auto left-1/2" data="./images/main/2-Letter.svg" type="image/svg+xml"></object>
-            <div class="absolute top-[55%] left-[75%] flex flex-col space-y-2 z-20">
+            <object class="w-[80%] lg:w-[25vw] h-auto left-1/2" data="./images/main/2-Letter.svg" type="image/svg+xml"></object>
+            <div class="absolute top-[55%] left-[60%] lg:left-[75%] flex flex-col space-y-2 z-20">
               <!-- button -->
               <a href="./1_Ticket.html"
-                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[1.5vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-6 px-2 py-3 -top-6 md:top-0 text-lg lg:gap-[1vw] lg:px-[1.5vw] lg:py-[0.6vw] lg:text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
                 <!-- Blue  -->
-                <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[8.2vw] transition-transform duration-500 
+                <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible group-hover:translate-x-[35vw] md:group-hover:translate-x-[22vw] lg:group-hover:translate-x-[8.2vw] transition-transform duration-500 
                             ease-[cubic-bezier(0.34,1.3,0.7,1)] ml-[-2rem] delay-0 group-hover:delay-100"
                   viewBox="0 0 700 113" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                   <path
@@ -185,7 +160,7 @@
                     fill="#54CCC9" />
                 </svg>
                 <!-- Orange -->
-                <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[8vw] transition-transform duration-500 
+                <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[35vw] md:group-hover:translate-x-[22vw] lg:group-hover:translate-x-[8vw] transition-transform duration-500 
                               ease-in-out ml-[-2rem] delay-0 " viewBox="0 0 700 113" fill="none"
                   xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                   <path
@@ -193,7 +168,7 @@
                     fill="#E8804D" />
                 </svg>
                 <span
-                  class="relative z-20 transition-all text-[1.2vw] text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-0.5rem] duration-1000">
+                  class="relative z-20 transition-all text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-0.5rem] duration-1000">
                   TICKETS
                 </span>
                 <svg class="z-10 h-8 w-auto group-hover:translate-x-[0.5vw] duration-1000" width="42" height="41"
@@ -206,9 +181,9 @@
               </a>
 
               <a href="./99_Inprogress.html"
-                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[1.5vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-6 px-2 py-3 -top-6 md:top-0 text-lg lg:gap-[1vw] lg:px-[1.5vw] lg:py-[0.6vw] lg:text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
                 <!-- Blue  -->
-                <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[8.2vw] transition-transform duration-500 
+                <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible group-hover:translate-x-[35vw] md:group-hover:translate-x-[22vw] lg:group-hover:translate-x-[8.2vw] transition-transform duration-500 
                             ease-[cubic-bezier(0.34,1.3,0.7,1)] ml-[-2rem] delay-0 group-hover:delay-100"
                   viewBox="0 0 700 113" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                   <path
@@ -216,7 +191,7 @@
                     fill="#54CCC9" />
                 </svg>
                 <!-- Orange -->
-                <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[8vw] transition-transform duration-500 
+                <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[35vw] md:group-hover:translate-x-[22vw] lg:group-hover:translate-x-[8vw] transition-transform duration-500 
                               ease-in-out ml-[-2rem] delay-0 " viewBox="0 0 700 113" fill="none"
                   xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                   <path
@@ -224,7 +199,7 @@
                     fill="#E8804D" />
                 </svg>
                 <span
-                  class="relative z-20 transition-all text-[1.2vw] text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-0.5rem] duration-1000">
+                  class="relative z-20 transition-all text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-0.5rem] duration-1000">
                   VENUE
                 </span>
                 <svg class="z-10 h-8 w-auto group-hover:translate-x-[0.5vw] duration-1000 pl-4" width="42" height="41"
@@ -245,21 +220,21 @@
     <!-- First Section -->
     <section class="relative flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
       <!-- Left side with stacked images + background -->
-      <div class="flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12 gap-[8vw]"
+      <div class="flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12 gap-[80vw] lg:gap-[8vw]"
         style="background-image: url('images/bg/Confetti_BG_1.svg');">
         <!-- 1 -->
         <!-- What is BAH -->
         <div class="relative">
           <object data="./images/main/Tape.svg" type="image/svg+xml"
-            class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
+            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply"></object>
           <object data="./images/main/3-Note1.svg" type="image/svg+xml"
-            class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+            class="w-[90vw] md:w-[60vw] lg:w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
           <div class="w-full h-auto -mt-[5vw] ml-[75%]">
             <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 1_Default.png" class="w-50 h-auto transition-opacity hover:opacity-0" />
+              <div class="absolute -translate-x-[4rem] -translate-y-[3rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
+                <img src="./images/btm/Button_Ink 1_Default.png" class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity hover:opacity-0" />
                 <img src="./images/btm/Button_Ink 1_Hover.png"
-                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
           </div>
@@ -267,26 +242,26 @@
 
         <!-- 2 -->
         <!-- Festival Info -->
-        <div class="relative left-[20%]">
+        <div class="relative left-[20%] -top-[70vw] lg:top-0">
           <object data="./images/main/Tape.svg" type="image/svg+xml"
-            class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
+            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply"></object>
           <object data="./images/main/3-Note2.svg" type="image/svg+xml"
-            class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+            class="w-[90vw] md:w-[60vw] lg:w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
           <div class="w-full h-auto flex flex-col space-y-[10%] -mt-[25%] ml-[75%]">
             <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
                 <img src="./images/btm/Button_Ink 2A_Default.png" alt="btm"
-                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
                 <img src="./images/btm/Button_Ink 2A_Hover.png" alt="btm"
-                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
             <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
                 <img src="./images/btm/Button_Ink 2B_Default.png" alt="btm"
-                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
                 <img src="./images/btm/Button_Ink 2B_Hover.png" alt="btm"
-                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
           </div>
@@ -294,8 +269,8 @@
       </div>
 
       <!-- Right side -->
-      <div class="flex-1 relative flex justify-end items-end -right-[30%]">
-        <object data="./images/main/3-Book1.svg" type="image/svg+xml" class="shrink-0 w-[160%] h-auto"></object>
+      <div class="flex-1 relative flex justify-end items-end -right-[80%] -top-[40vw] md:-right-[35%] md:top-10 lg:-right-[30%] ">
+        <object data="./images/main/3-Book1.svg" type="image/svg+xml" class="shrink-0 w-[180%] md:w-[250%] lg:w-[160%] h-auto"></object>
       </div>
     </section>
 
@@ -303,8 +278,8 @@
     <!-- Second Section -->
     <section class="relative flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
       <!-- Left side -->
-      <div class="flex-1 relative flex justify-left item-left w-[40vw] h-auto -left-[29%]">
-        <object data="./images/main/4-Book2.svg" type="image/svg+xml" class="shrink-0 w-[150%] h-auto"></object>
+      <div class="flex-1 relative flex justify-left item-left w-[40vw] h-auto -left-[85%] md:-left-[34%]">
+        <object data="./images/main/4-Book2.svg" type="image/svg+xml" class="shrink-0 w-[450%] md:w-[220%] lg:w-[150%] h-auto"></object>
       </div>
 
       <!-- Right side with stacked images + background -->
@@ -315,36 +290,36 @@
         <!-- Sabah Travel Guide -->
         <div class="relative left-[5%]">
           <object data="./images/main/Tape.svg" type="image/svg+xml"
-            class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
+            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply"></object>
           <object data="./images/main/4-Note3.svg" type="image/svg+xml"
-            class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+            class="w-[90vw] md:w-[60vw] lg:w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
 
           <div class="w-full h-auto flex flex-col justify-items-end space-y-[8%] -mt-[30%] ml-[75%]">
             <!-- Food -->
             <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
                 <img src="./images/btm/Button_Ink 3A_Default.png" alt="btm"
-                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0 pl-[2vw]" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 pl-[2vw] hover:opacity-0" />
                 <img src="./images/btm/Button_Ink 3A_Hover.png" alt="btm"
-                  class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500 pl-[2vw]" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 pl-[2vw] hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
             <!-- Destinations -->
             <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+              <div class="absolute mt-[10px] -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
                 <img src="./images/btm/Button_Ink 3B_Default.png" alt="btm"
-                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
                 <img src="./images/btm/Button_Ink 3B_Hover.png" alt="btm"
-                  class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
             <!-- Experiences -->
             <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+              <div class="absolute mt-[10px] -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
                 <img src="./images/btm/Button_Ink 3C_Default.png" alt="btm"
-                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
                 <img src="./images/btm/Button_Ink 3C_Hover.png" alt="btm"
-                  class="w-50 h-auto inset-0 absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
           </div>
@@ -352,28 +327,28 @@
 
         <!-- 5 -->
         <!-- Be a Part of BAH -->
-        <div class="relative -left-[5%]">
+        <div class="relative -left-[5%] mt-10 md:mt-0">
           <object data="./images/main/Tape.svg" type="image/svg+xml"
-            class="absolute w-[30%] h-auto z-10 left-[5%] -mt-[2rem] opacity-100 mix-blend-multiply"></object>
+            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply"></object>
           <object data="./images/main/4-Note4.svg" type="image/svg+xml"
-            class="w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+            class="w-[90vw] md:w-[60vw] lg:w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
           <div class="w-full h-auto flex flex-col space-y-[8%] -mt-[20%] ml-[75%]">
             <!-- Panelists -->
             <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
                 <img src="./images/btm/Button_Ink 4A_Default.png" alt="btm"
-                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
                 <img src="./images/btm/Button_Ink 4A_Hover.png" alt="btm"
-                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
             <!-- Volunteers -->
             <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col">
+              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] mt-[10px] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
                 <img src="./images/btm/Button_Ink 4B_Default.png" alt="btm"
-                  class="w-50 h-auto transition-opacity duration-300 hover:opacity-0" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
                 <img src="./images/btm/Button_Ink 4B_Hover.png" alt="btm"
-                  class="w-50 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
               </div>
             </a>
           </div>
@@ -383,7 +358,7 @@
 
     <!-- END - Directory-->
     <section class="relative flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
-      <div class="flex-1 relative flex flex-col items-center bg-cover bg-center"
+      <div class="flex-1 relative  hidden lg:flex flex-col items-center bg-cover bg-center"
         style="background-image: url('images/bg/BAH\ Directory_BG.svg');">
         <div class="relative w-[60vw] flex justify-center">
           <object data="./images/main/5-BAH_Directory.svg" type="image/svg+xml"

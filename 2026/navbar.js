@@ -19,6 +19,86 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
 
+// 2. 汉堡菜单逻辑 (新增部分)
+      const menuToggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+
+      if (menuToggle && menu) {
+        menuToggle.addEventListener('click', () => {
+          // switch hidden menu
+          menu.classList.toggle('hidden');
+        });
+      }
+
+      const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+      // 获取所有子菜单容器，用于遍历和关闭其他菜单
+      const allDropdownMenus = document.querySelectorAll('.dropdown-menu'); 
+
+      dropdownToggles.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          const dropdownMenu = btn.nextElementSibling;
+          const arrowIcon = btn.querySelector('.arrow-icon');
+          
+          allDropdownMenus.forEach(menuItem => {
+              // 找到当前菜单项的触发按钮 (即上一个兄弟元素)
+              const toggleButton = menuItem.previousElementSibling; 
+              // 找到触发按钮里面的箭头
+              const otherArrow = toggleButton ? toggleButton.querySelector('.arrow-icon') : null;
+
+              // 如果当前的菜单不是我们点击的那个，并且它当前是打开的
+              if (menuItem !== dropdownMenu && !menuItem.classList.contains('hidden')) {
+                  menuItem.classList.add('hidden'); // 关闭其他菜单
+                  if (otherArrow) {
+                      otherArrow.style.transform = ''; // 重置其他箭头方向
+                  }
+              }
+          });
+
+          // 切换当前被点击的菜单的显示/隐藏状态
+          if (dropdownMenu) {
+            dropdownMenu.classList.toggle('hidden');
+            
+            // 切换当前箭头旋转
+            if(arrowIcon) {
+                if (dropdownMenu.classList.contains('hidden')) {
+                     arrowIcon.style.transform = ''; // 关闭时重置
+                } else {
+                     arrowIcon.style.transform = 'rotate(90deg)'; // 打开时旋转
+                }
+            }
+          }
+        });
+      });
+      function resetAllSubmenus() {
+          const allDropdownMenus = document.querySelectorAll('.dropdown-menu'); 
+          allDropdownMenus.forEach(menuItem => {
+              // 只需要重置当前打开的菜单
+              if (!menuItem.classList.contains('hidden')) {
+                  menuItem.classList.add('hidden'); // 强制关闭菜单
+                  
+                  // 找到对应的箭头并重置
+                  const toggleButton = menuItem.previousElementSibling; 
+                  const arrowIcon = toggleButton ? toggleButton.querySelector('.arrow-icon') : null;
+                  
+                  if (arrowIcon) {
+                      arrowIcon.style.transform = ''; // 重置箭头方向
+                  }
+              }
+          });
+      }
+
+      //UX click other place close menu
+      document.addEventListener('click', (e) => {
+        if (menu && !menu.classList.contains('hidden')) {
+          if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+            resetAllSubmenus();
+            menu.classList.add('hidden');
+          }
+        }
+      });
+
       const nav = document.querySelector('header#navbar');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 250) {
