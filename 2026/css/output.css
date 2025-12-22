@@ -384,9 +384,6 @@
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
-  .mt-6 {
-    margin-top: calc(var(--spacing) * 6);
-  }
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
   }
@@ -410,9 +407,6 @@
   }
   .mt-\[18vw\] {
     margin-top: 18vw;
-  }
-  .mt-\[20px\] {
-    margin-top: 20px;
   }
   .mt-\[20vh\] {
     margin-top: 20vh;
@@ -1951,14 +1945,39 @@
       margin-top: calc(3% * -1);
     }
   }
+  .lg\:mt-\[1vw\] {
+    @media (width >= 64rem) {
+      margin-top: 1vw;
+    }
+  }
   .lg\:mt-\[4vw\] {
     @media (width >= 64rem) {
       margin-top: 4vw;
     }
   }
+  .lg\:mt-\[5vw\] {
+    @media (width >= 64rem) {
+      margin-top: 5vw;
+    }
+  }
   .lg\:mt-\[10vw\] {
     @media (width >= 64rem) {
       margin-top: 10vw;
+    }
+  }
+  .lg\:mt-\[14vw\] {
+    @media (width >= 64rem) {
+      margin-top: 14vw;
+    }
+  }
+  .lg\:mt-\[15vw\] {
+    @media (width >= 64rem) {
+      margin-top: 15vw;
+    }
+  }
+  .lg\:mt-\[18vw\] {
+    @media (width >= 64rem) {
+      margin-top: 18vw;
     }
   }
   .lg\:ml-0 {
@@ -2225,9 +2244,59 @@
       margin-top: calc(40vw * -1);
     }
   }
+  .xl\:mt-0 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 0);
+    }
+  }
+  .xl\:mt-2 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 2);
+    }
+  }
+  .xl\:mt-4 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 4);
+    }
+  }
   .xl\:mt-12 {
     @media (width >= 80rem) {
       margin-top: calc(var(--spacing) * 12);
+    }
+  }
+  .xl\:mt-20 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 20);
+    }
+  }
+  .xl\:mt-22 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 22);
+    }
+  }
+  .xl\:mt-24 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 24);
+    }
+  }
+  .xl\:mt-30 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 30);
+    }
+  }
+  .xl\:mt-40 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 40);
+    }
+  }
+  .xl\:mt-42 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 42);
+    }
+  }
+  .xl\:mt-46 {
+    @media (width >= 80rem) {
+      margin-top: calc(var(--spacing) * 46);
     }
   }
   .xl\:w-\[10\%\] {
