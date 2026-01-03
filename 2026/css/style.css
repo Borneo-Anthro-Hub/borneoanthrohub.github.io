@@ -5,3 +5,9 @@
 .nav-btn {
     @apply absolute top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-gray-700 p-2 rounded-full shadow;
   }
+
+body {
+  font-family: "General Sans", sans-serif;
+  margin: 0;
+  background: #105666;
+}
