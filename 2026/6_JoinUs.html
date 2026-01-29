@@ -141,8 +141,8 @@
 
         <!-- SECTION 2: INFO -->
         <section class="info pt-[200px]">
-            <div class="bg-[#E8804D] w-[60vw] rounded-[2rem] mt-[50px]">
-                <p class="p-[40px] text-[#FFFBE8] text-[46px]/[50px]">
+            <div class="bg-[#E8804D] w-[80vw] sm:w-[60vw] rounded-[2rem] mt-[50px]">
+                <p class="p-[40px] text-[#FFFBE8] text-[28px]/[32px] sm:text-[28px]/[32px] md:text-[36px]/[42px] lg:text-[46px]/[50px]">
                     <b>Wanna be a part of us to make things even more BAHsome?
                         Join a BAH clan today!</b>
                     <br>
@@ -163,7 +163,7 @@
                     <!-- Panelists -->
                     <div class="relative">
                         <div id="join_as_panelists">
-                            <div class="relative mt-10 bg-[#54CCC9] text-[#373F52] w-[500px] h-[900px] rounded-[2rem]">
+                            <div class="relative mt-10 bg-[#54CCC9] text-[#373F52] w-[400px] md:w-[500px] h-[1100px] md:h-[960px] rounded-[2rem]">
                                 <div class="grid justify-items-center">
                                     <img src="./images/join_us/Panelist.svg" class="w-[127px] h-auto pt-[50px]"
                                         alt="Panelists" />
@@ -176,7 +176,7 @@
                                         Panelists
                                     </span>
                                 </div>
-                                <p class="px-14 py-5 text-justify font-normal text-[#373F52] text-base tracking-[2%]">
+                                <p class="px-10 md:px-14 py-5 text-justify font-normal text-[#373F52] text-base tracking-[2%]">
                                     The clan of the Shamans is well known for its wisdom and the unique talents of its
                                     members in various fields,
                                     and plays a key role in defining the myriad of programmes we will experience and
@@ -191,13 +191,28 @@
                                     we want by sharing the knowledge we need.
                                     <br>
                                     <br>
-                                    <i>* Upon registration, you are deemed to have read and agreed to be bound to our 
-                                        <a class="underline text-blue-800 hover:text-blue-500 hover:decoration-2 transition" target="_blank" href="https://docs.google.com/document/d/1-i-UD9C4_nMaesIpqhu4F7saUWx-kTo6bpjSllY4Aus/">
+                                    <i>* Upon registration, you are deemed to have read and agreed to be bound to our
+                                        <a class="underline text-blue-800 hover:text-blue-500 hover:decoration-2 transition"
+                                            target="_blank"
+                                            href="https://docs.google.com/document/d/1-i-UD9C4_nMaesIpqhu4F7saUWx-kTo6bpjSllY4Aus/">
                                             Panelist Registration T&C</a>.
                                     </i>
                                 </p>
-                                <a id="join_as_panelists" target="_blank" href="https://forms.gle/6oVbuAUhwogcWT5r6">
-                                    <svg class="absolute px-30 w-[100%] h-auto text-[#373F52] -bottom-15"
+                                <p class="px-14 text-center font-bold">
+                                    <span class="text-center">Recruitment closes on
+                                        <br>
+                                        2026-02-26 23:59:59 UTC+8
+                                    </span>
+                                    <br>
+                                    <br>
+                                    <span id="panelists_remaining_text">Remaining time</span><br>
+                                    <span id="panelists_remaining" class="text-center px-10">
+                                         Loading...
+                                    </span>
+                                    <br>
+                                </p>
+                                <a id="join_as_panelists_btm" target="_blank" href="https://forms.gle/6oVbuAUhwogcWT5r6">
+                                    <svg class="absolute px-18 md:px-30 w-[100%] h-auto text-[#373F52] -bottom-15"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <use href="#join_icon"></use>
                                     </svg>
@@ -208,7 +223,7 @@
                     <!-- Volunteers -->
                     <div class="relative">
                         <div>
-                            <div class="relative mt-10 bg-[#FFCB65] text-[#472B13] w-[500px] h-[900px] rounded-[2rem]">
+                            <div class="relative mt-10 bg-[#FFCB65] text-[#472B13] w-[400px] md:w-[500px] h-[1100px] md:h-[960px] rounded-[2rem]">
                                 <div class="grid justify-items-center">
                                     <img src="./images/join_us/Volunteer.svg" class="w-[127px] h-auto pt-[50px]"
                                         alt="Panelists" />
@@ -221,7 +236,7 @@
                                         Volunteers
                                     </span>
                                 </div>
-                                <p class="px-14 py-5 text-justify font-normal text-[#472B13] text-base tracking-[2%]">
+                                <p class="px-10 md:px-14 py-5 text-justify font-normal text-[#472B13] text-base tracking-[2%]">
                                     The Totem Bearers are the force and the beating heart of BAH, who have sworn to act
                                     as our sword and shield to ensure that the festival runs smoothly so that all
                                     BAHpals may enjoy it to the best.
@@ -235,18 +250,34 @@
                                     Be a part of our team and help our local con grow. Your help means the world to us.
                                     <br>
                                     <br>
-                                    <i>* Upon registration, you are deemed to have read and agreed to be bound to our 
-                                    <a class="underline text-blue-800 hover:text-blue-500 hover:decoration-2 transition" target="_blank" href="https://docs.google.com/document/d/1SMAefoAYJglk8pkhnrZnNHEj55AXFt6dX_nLdM67rAI/">
-                                        Volunteer Registration T&C</a>.
-                                </i>
+                                    <i>* Upon registration, you are deemed to have read and agreed to be bound to our
+                                        <a class="underline text-blue-800 hover:text-blue-500 hover:decoration-2 transition"
+                                            target="_blank"
+                                            href="https://docs.google.com/document/d/1SMAefoAYJglk8pkhnrZnNHEj55AXFt6dX_nLdM67rAI/">
+                                            Volunteer Registration T&C</a>.
+                                    </i>
+                                </p>
+                                <br>
+                                <p class="px-14 pb-5 text-center font-bold">
+                                    <span class="text-center">Recruitment closes on
+                                        <br>
+                                        2026-02-28 23:59:59 UTC+8
+                                    </span>
+                                    <br>
+                                    <br>
+                                    <span id="volunteers_remaining_text">Remaining time</span><br>
+                                    <span id="volunteers_remaining" class="text-center px-10">
+                                        Loading...
+                                    </span>
                                 </p>
                                 <!-- <div class="absolute flex items-center text-[#8C612D] w-[80%] mx-14 bottom-14">
                                     <div class="flex-grow border-t border-[#8C612D]"></div>
                                     <span class="mx-4 italic text-[0.7rem] tracking-[20%] uppercase">Coming soon</span>
                                     <div class="flex-grow border-t border-[#8C612D]"></div>
                                 </div> -->
-                                <a id="join_as_volunteers" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfME-V2ySUY-xKau9BxtQXlkcScb4gF4jSidg-Mih-AbNA-Ig/viewform">
-                                    <svg class="absolute px-30 w-[100%] h-auto text-[#472b13] -bottom-15"
+                                <a id="join_as_volunteers_btm" target="_blank"
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLSfME-V2ySUY-xKau9BxtQXlkcScb4gF4jSidg-Mih-AbNA-Ig/viewform">
+                                    <svg class="absolute px-18 md:px-30 w-[100%] h-auto text-[#472b13] -bottom-15"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <use href="#join_icon"></use>
                                     </svg>
@@ -265,7 +296,7 @@
                 <!-- Title Image centered -->
                 <div class="flex justify-center mb-10">
                     <object data="./images/join_us/clans_FAQ.svg" type="image/svg+xml"
-                        class="shrink-0 w-[90vw] md:w-[70vw] lg:w-[60vw] h-auto"></object>
+                        class="shrink-0 w-[99vw] md:w-[70vw] lg:w-[60vw] h-auto"></object>
                 </div>
 
                 <!-- FAQ list -->
@@ -298,8 +329,10 @@
                                 <object data="./images/ticket/Divider.svg" type="image/svg+xml"
                                     class="shrink-0 w-auto h-auto"></object>
                                 <p class="mt-3 bg-transparent" style="font-size:15px; font-weight:400; color:white;">
-                                    Anyone may do so! We also welcome any topics to be discussed, as long as you have a valid admission ticket for BAH 2026.<br><br>
-                                    A Panelist tag/sticker (or in the form of other objects of identification) will also be given to you on the respective Collection Day.
+                                    Anyone may do so! We also welcome any topics to be discussed, as long as you have a
+                                    valid admission ticket for BAH 2026.<br><br>
+                                    A Panelist tag/sticker (or in the form of other objects of identification) will also
+                                    be given to you on the respective Collection Day.
                                 </p>
                             </div>
                         </div>
@@ -324,8 +357,11 @@
                                     class="shrink-0 w-auto h-auto"></object>
                                 <p class="mt-3 text-sm text-white bg-transparent"
                                     style="font-size:15px; font-weight:400; color:white;">
-                                    <b>No.</b> Panel submissions are manually reviewed and selected after discussion, no guarantees are promised. Accepted panelists will be notified by email, subject to schedule and venue availability.<br><br>
-                                    Please provide sufficient or detailed information which would help us get to know more about your topic and help in the manual review process.
+                                    <b>No.</b> Panel submissions are manually reviewed and selected after discussion, no
+                                    guarantees are promised. Accepted panelists will be notified by email, subject to
+                                    schedule and venue availability.<br><br>
+                                    Please provide sufficient or detailed information which would help us get to know
+                                    more about your topic and help in the manual review process.
                                 </p>
                             </div>
                         </div>
@@ -350,7 +386,8 @@
                                     class="shrink-0 w-auto h-auto"></object>
                                 <p class="mt-3 text-sm text-white bg-transparent"
                                     style="font-size:15px; font-weight:400; color:white;">
-                                    Changes may be discussed, but all adjustments (time and venues) will be determined based on our availability to cater the proposed changes (if available).
+                                    Changes may be discussed, but all adjustments (time and venues) will be determined
+                                    based on our availability to cater the proposed changes (if available).
                                 </p>
                             </div>
                         </div>
@@ -364,7 +401,7 @@
                                     <span
                                         class="faq-toggle inline-block text-xl font-bold transition-transform duration-200">+</span>
                                     <span class="faq-question-text" style="font-weight: 600; font-size: 24px;">
-                                    What are my responsibilities as a Panelist?    
+                                        What are my responsibilities as a Panelist?
                                     </span>
                                 </span>
                             </button>
@@ -401,15 +438,31 @@
                                 <object data="./images/ticket/Divider.svg" type="image/svg+xml"
                                     class="shrink-0 w-auto h-auto"></object>
                                 <p class="mt-3 text-[15px] text-white bg-transparent">
-                                    Yes, but <b>not recommended</b>. Should you choose to do so, you must ensure full compliance with the
-                                    <a class="font-bold underline text-blue-400 hover:text-blue-300 hover:decoration-2 transition" target="_blank" href="https://www.investmalaysia.gov.my/media/3x4fsqum/personal-data-protection-act-2010.pdf">Personal Data Protection Act 2010 (PDPA 2010)</a>
-                                     and the 
-                                    <a class="font-bold underline text-blue-400 hover:text-blue-300 hover:decoration-2 transition" href="https://www.pdp.gov.my/ppdpv1/wp-content/uploads/2024/11/Act-A1727.pdf">Personal Data Protection (Amendment) Act 2024</a>. <br>
-                                    As long as proper notice and consent is provided from attendees, you may collect data for lawful purposes, and never to misuse or sell nor retaining data longer than necessary.<br>
+                                    Yes, but <b>not recommended</b>. Should you choose to do so, you must ensure full
+                                    compliance with the
+                                    <a class="font-bold underline text-blue-400 hover:text-blue-300 hover:decoration-2 transition"
+                                        target="_blank"
+                                        href="https://www.investmalaysia.gov.my/media/3x4fsqum/personal-data-protection-act-2010.pdf">Personal
+                                        Data Protection Act 2010 (PDPA 2010)</a>
+                                    and the
+                                    <a class="font-bold underline text-blue-400 hover:text-blue-300 hover:decoration-2 transition"
+                                        href="https://www.pdp.gov.my/ppdpv1/wp-content/uploads/2024/11/Act-A1727.pdf">Personal
+                                        Data Protection (Amendment) Act 2024</a>. <br>
+                                    As long as proper notice and consent is provided from attendees, you may collect
+                                    data for lawful purposes, and never to misuse or sell nor retaining data longer than
+                                    necessary.<br>
                                     <br>
                                     Please note:<br>
-                                    <i>&#x2022; Any updates to Malaysian privacy laws will be in accordance with official announcements from the <a target="_blank" href="https://www.pdp.gov.my/ppdpv1/en/akta/pdp-act-2010-en/" class="font-bold underline text-blue-400 hover:text-blue-300 hover:decoration-2 transition">Malaysia Personal Data Protection Commissioner Office</a>.</i><br>
-                                    <i>&#x2022; Borneo Anthro Hub assumes no legal lability for your data collection activities. You shall be solely responsible for ensuring that proper notice is given and consent is obtained from attendees. Any legal consequences or claims arising from your collection, use, or retention of data shall be borne entirely by you.</i> 
+                                    <i>&#x2022; Any updates to Malaysian privacy laws will be in accordance with
+                                        official announcements from the <a target="_blank"
+                                            href="https://www.pdp.gov.my/ppdpv1/en/akta/pdp-act-2010-en/"
+                                            class="font-bold underline text-blue-400 hover:text-blue-300 hover:decoration-2 transition">Malaysia
+                                            Personal Data Protection Commissioner Office</a>.</i><br>
+                                    <i>&#x2022; Borneo Anthro Hub assumes no legal lability for your data collection
+                                        activities. You shall be solely responsible for ensuring that proper notice is
+                                        given and consent is obtained from attendees. Any legal consequences or claims
+                                        arising from your collection, use, or retention of data shall be borne entirely
+                                        by you.</i>
                                 </p>
                             </div>
                         </div>
@@ -436,7 +489,9 @@
                                     class="shrink-0 w-auto h-auto"></object>
 
                                 <p class="mt-3 text-white" style="font-size:15px; font-weight:400;">
-                                    You will retain <b>FULL</b> ownership of your content, but grant us a non-exclusive, royalty-free license to host, store and display the content for archival or operational purposes.
+                                    You will retain <b>FULL</b> ownership of your content, but grant us a non-exclusive,
+                                    royalty-free license to host, store and display the content for archival or
+                                    operational purposes.
                                 </p>
 
                             </div>
@@ -463,9 +518,12 @@
                                     class="shrink-0 w-auto h-auto"></object>
                                 <p class="mt-3 text-sm text-white bg-transparent"
                                     style="font-size:15px; font-weight:400; color:white;">
-                                    <b>No.</b> BAH will not be responsible nor liable for any disputes, misuse, indirect or consequential claims or damages arising from panel activities or breaching of rules.<br>
+                                    <b>No.</b> BAH will not be responsible nor liable for any disputes, misuse, indirect
+                                    or consequential claims or damages arising from panel activities or breaching of
+                                    rules.<br>
                                     <br>
-                                    In the event that your panel violates any rules, BAH reserves the right to suspend your panel or restrict panelist access without prior notice.
+                                    In the event that your panel violates any rules, BAH reserves the right to suspend
+                                    your panel or restrict panelist access without prior notice.
                                 </p>
                             </div>
                         </div>
@@ -704,7 +762,7 @@
                         </div>
                     </div>
 
-            </div>
+                </div>
         </section>
     </div>
 
@@ -754,6 +812,81 @@
                 }
             });
         });
+
+        //Remaining time
+        const API = "https://worldtimeapi.org/api/timezone/Asia/Kuala_Lumpur";
+
+        // (UTC+8 -> UTC）
+        const TARGETS = {
+            A: Date.UTC(2026, 1, 26, 23, 59, 59), // 26/2/2026 23:59:59 UTC+8
+            B: Date.UTC(2026, 1, 28, 23, 59, 59)  // 28/2/2026 23:59:59 UTC+8
+        };
+
+        let nowMs = 0;
+
+        function format(ms) {
+            if (ms <= 0) return "-- Registration Closed --";
+
+            const s = Math.floor(ms / 1000);
+            const d = Math.floor(s / 86400);
+            const h = Math.floor((s % 86400) / 3600);
+            const m = Math.floor((s % 3600) / 60);
+            const sec = s % 60;
+            if(d > 0)
+            {
+                return `${d}D ${h}H ${m}M ${sec}S`;
+            }
+            else
+            {
+                return `${h}H ${m}M ${sec}S`;
+            }
+        }
+
+        let onec_rm_join_as_panelists_btm = false;
+        let onec_rm_join_as_volunteers_btm = false;
+
+        function tick() {
+            nowMs += 1000;
+
+            document.getElementById("panelists_remaining").textContent =
+                format(TARGETS.A - nowMs);
+            if(document.getElementById("panelists_remaining").textContent === "-- Registration Closed --")
+            {
+                document.getElementById("panelists_remaining_text").textContent = "";
+                if(!onec_rm_join_as_panelists_btm)
+                {
+                    onec_rm_join_as_panelists_btm = true
+                    document.getElementById("join_as_panelists_btm").className += "hidden";
+                }
+            }
+
+            document.getElementById("volunteers_remaining").textContent =
+                format(TARGETS.B - nowMs);
+            if(document.getElementById("volunteers_remaining").textContent === "-- Registration Closed --")
+            {
+                document.getElementById("volunteers_remaining_text").textContent = "";
+                if(!onec_rm_join_as_volunteers_btm)
+                {
+                    onec_rm_join_as_volunteers_btm = true
+                    document.getElementById("join_as_volunteers_btm").className += "hidden";
+                }
+            }
+        }
+
+        fetch(API)
+            .then(r => r.json())
+            .then(data => {
+                // worldtimeapi seconds
+                nowMs = data.unixtime * 1000;
+
+                tick();
+                setInterval(tick, 1000);
+            })
+            .catch(() => {
+                document.getElementById("panelists_remaining").textContent = "Connection Time Service Error";
+                document.getElementById("volunteers_remaining").textContent = "Connection Time Service Error";
+            });
+
     </script>
 
     <div id="footer"></div>
