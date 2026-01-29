@@ -81,20 +81,6 @@
             display: none;
         }
 
-        /* Firefox */
-        @-moz-document url-prefix() {
-        .fix-br {
-            display: revert;
-        }
-        }
-
-        /* Safari */
-        @supports (-webkit-touch-callout: none) {
-            .fix-br {
-                display: revert;
-            }
-        }
-
     </style>
     <svg style="display: none">
         <symbol id="join_icon" width="252" height="53" viewBox="0 0 252 53" fill="none"
@@ -195,7 +181,7 @@
                                         Panelists
                                     </span>
                                 </div>
-                                <p class="px-10 md:px-13 py-5 text-justify font-normal text-[#373F52] text-base tracking-[2%]">
+                                <p class="px-10 md:px-13 py-5 text-justify font-normal text-[#373F52] text-base tracking-[0.02rem]">
                                     The clan of the Shamans is well known for its wisdom and the unique talents of its
                                     members in various fields,
                                     and plays a key role in defining the myriad of programmes we will experience and
@@ -255,7 +241,7 @@
                                         Volunteers
                                     </span>
                                 </div>
-                                <p class="px-10 md:px-13 py-5 text-justify font-normal text-[#472B13] text-base tracking-[2%]">
+                                <p class="px-10 md:px-13 py-5 text-justify font-normal text-[#472B13] text-base tracking-[0.02rem]">
                                     The Totem Bearers are the force and the beating heart of BAH, who have sworn to act
                                     as our sword and shield to ensure that the festival runs smoothly so that all
                                     BAHpals may enjoy it to the best.
@@ -277,7 +263,7 @@
                                     </i>
                                 </p>
                                 <br>
-                                <br class="fix-br">
+                                <br>
                                 <p class="px-14 pb-5 text-center font-bold">
                                     <span class="text-center">Recruitment closes on
                                         <br>
@@ -326,7 +312,7 @@
                         <div class="faq-item border-white/90 rounded-2xl py-4 bg-transparent">
                             <div class="flex items-center">
                                 <div class="flex-grow border-t border-white"></div>
-                                <span class="mx-16 text-xl tracking-[60%] uppercase font-semibold">Panelist</span>
+                                <span class="mx-16 text-xl tracking-[0.75rem] uppercase font-semibold">Panelist</span>
                                 <div class="flex-grow border-t border-white"></div>
                             </div>
                         </div>
@@ -598,7 +584,7 @@
                         <div class="faq-item border-white/90 rounded-2xl py-4 bg-transparent">
                             <div class="flex items-center">
                                 <div class="flex-grow border-t border-white"></div>
-                                <span class="mx-16 text-xl tracking-[60%] uppercase font-semibold">Volunteer</span>
+                                <span class="mx-16 text-xl tracking-[0.75rem] uppercase font-semibold">Volunteer</span>
                                 <div class="flex-grow border-t border-white"></div>
                             </div>
                         </div>
