@@ -480,6 +480,9 @@
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
   }
+  .mb-16 {
+    margin-bottom: calc(var(--spacing) * 16);
+  }
   .-ml-\[20vw\] {
     margin-left: calc(20vw * -1);
   }
@@ -1412,17 +1415,9 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
-  .tracking-\[0\.02\] {
-    --tw-tracking: 0.02;
-    letter-spacing: 0.02;
-  }
   .tracking-\[0\.02rem\] {
     --tw-tracking: 0.02rem;
     letter-spacing: 0.02rem;
-  }
-  .tracking-\[0\.75\] {
-    --tw-tracking: 0.75;
-    letter-spacing: 0.75;
   }
   .tracking-\[0\.75rem\] {
     --tw-tracking: 0.75rem;
@@ -1431,10 +1426,6 @@
   .tracking-\[1\%\] {
     --tw-tracking: 1%;
     letter-spacing: 1%;
-  }
-  .tracking-\[2\%\] {
-    --tw-tracking: 2%;
-    letter-spacing: 2%;
   }
   .tracking-\[3\%\] {
     --tw-tracking: 3%;
@@ -1447,10 +1438,6 @@
   .tracking-\[20\%\] {
     --tw-tracking: 20%;
     letter-spacing: 20%;
-  }
-  .tracking-\[60\%\] {
-    --tw-tracking: 60%;
-    letter-spacing: 60%;
   }
   .tracking-wider {
     --tw-tracking: var(--tracking-wider);
