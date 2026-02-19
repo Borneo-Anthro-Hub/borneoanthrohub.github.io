@@ -824,8 +824,10 @@
 
         // (UTC+8 -> UTC）
         const TARGETS = {
-            A: Date.UTC(2026, 1, 26, 23, 59, 59), // 26/2/2026 23:59:59 UTC+8
-            B: Date.UTC(2026, 1, 28, 23, 59, 59)  // 28/2/2026 23:59:59 UTC+8
+            A: new Date("2026-02-26T23:59:59+08:00").getTime(),
+            B: new Date("2026-02-28T23:59:59+08:00").getTime()
+            //A: Date.UTC(2026, 1, 26, 23, 59, 59), // 26/2/2026 23:59:59 UTC+8
+            //B: Date.UTC(2026, 1, 28, 23, 59, 59)  // 28/2/2026 23:59:59 UTC+8
         };
 
         let nowMs = 0;
@@ -882,16 +884,39 @@
         fetch(API)
             .then(r => r.json())
             .then(data => {
+                function tickAPI() {
+                    // nowMs = API time in milliseconds + elapsed since fetch
+                    const nowMs = data.unixtime * 1000 + (Date.now() - data.unixtime * 1000);
+                    tick(nowMs);
+                }
+                tickAPI();
+                setInterval(tickAPI, 1000);
+                
                 // worldtimeapi seconds
-                nowMs = data.unixtime * 1000;
+                //nowMs = data.unixtime * 1000;
 
-                tick();
-                setInterval(tick, 1000);
+                //tick();
+                //setInterval(tick, 1000);
             })
             .catch(() => {
-                document.getElementById("panelists_remaining").textContent = "Connection Time Service Error";
-                document.getElementById("volunteers_remaining").textContent = "Connection Time Service Error";
+                console.warn("Time API failed, using local time adjusted to UTC+8.");
+
+                function tickFallback() {
+                    const localNow = Date.now();
+                    const localOffset = new Date().getTimezoneOffset() * 60 * 1000; // local -> UTC
+                    const UTC8Offset = 8 * 60 * 60 * 1000; // UTC+8
+                    nowMs = localNow + localOffset + UTC8Offset;
+
+                    tick();
+            }
+
+            tickFallback();
+            setInterval(tickFallback, 1000);
             });
+            //.catch(() => {
+            //    document.getElementById("panelists_remaining").textContent = "Connection Time Service Error";
+            //    document.getElementById("volunteers_remaining").textContent = "Connection Time Service Error";
+            //});
 
     </script>
 
