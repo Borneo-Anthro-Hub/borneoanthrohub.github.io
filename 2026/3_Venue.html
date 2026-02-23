@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venue | Borneo Anthro Hub</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link href="./css/output.css" rel="stylesheet" />
+    <!-- <link href="./fonts/Fonts/WEB/css/general-sans.css" rel="fonts"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+        /* ===== SECTION 1: HERO ===== */
+        .hero {
+            position: relative;
+            background-image: url("images/Page Banner-100 1.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 200px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .hero h1 {
+            font-family: "General Sans", sans-serif;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            font-size: 3rem;
+            color: #fffbe8;
+            text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== SECTION 2: INFO ===== */
+        .info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 0;
+            padding-top: 40px;
+        }
+
+        .banner-img {
+            width: 80%;
+            /* scale to 80% of the page */
+            max-width: 1000px;
+            /* prevent it from getting too big */
+            height: auto;
+            /* keep original image ratio automatically */
+            border-radius: 10px;
+            /* optional */
+            display: block;
+        }
+
+        /* ===== SECTION 3: BOXES ===== */
+        #section3 {
+            padding: 40px 20px;
+        }
+
+        .fix-br {
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="navbar"></div>
+      <div class="navbar-gradient"></div>
+
+      <script src="./navbar.js"></script>
+        <!-- SECTION 1: HERO -->
+        <div class="hero">
+            <section>
+                <h1 style="font-size: 72px">Venue</h1>
+            </section>
+        </div>
+        <section class="info pt-[200px]">
+          <!-- hotel image -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+              <div class="mx-auto px-4">
+                <img class="w-full max-w-[500px] h-auto" src="./images/venue/hotel.webp" alt="hotel"/>
+              </div>
+              <!-- title -->
+              <div class="w-80 md:w-140 mx-auto">
+                <div class="flex gap-2 ml-55 md:ml-110 justify-start">
+                  <img class="w-auto h-10 md:h-15" src="./images/venue/sean_aminah_tag.svg". alt="sean_tag" />
+                </div>
+                <div class="bg-[#FFFBE8] w-full max-w-[600px] rounded-md mx-auto md:mx-0">
+                  <div class="text-[#4F362F] p-[24px] md:p-[34px] text-2xl/8 md:text-5xl/15 font-bold" >
+                    <p>Where All BAHpals<br>
+                      Share The Joy Under<br>
+                      The Same <span class="italic bg-[#54CCC9] px-[4px]" style="color: #1A2B24 !important; border-radius:13px;">Horizon</span>
+                    </p>
+                  </div>
+                  <div class="bg-[#DDC8AF] h-12 rounded-b-md">
+                    <div class="pt-2 ml-[24px] md:ml-[36px]">
+                      <img class="w-auto h-8" src="./images/venue/deco.svg" alt="deco" />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="p-[24px] md:p-[34px]">
+                    <p class="text-[#FFFBE8] text-[15px]/[21px] md:text-[20px]/[31px]">
+                      In the heart of Kota Kinabalu's commercial and cultural district lies the very place where all BAHpals fill the air with their merriment and zest during the grand festival — Horizon Hotel. As a premier 4-star destination equipped with a state-of-the-art gymnasium, a terrace pool, and a fine selection of restaurants, Horizon Hotel offers an ideal blend of urban convenience and scenic tranquillity.
+                      <br><br>
+                      BAHpals will surely find it a pleasant and ideal experience to be in a furcon that has access to major shopping malls like Suria Sabah. Adventurous BAHpals looking for more than just a conventional furcon experience would also certainly be rewarded with a bountiful journey during their stay in Sabah, with even more additional possibilities to explore at nearby popular destinations outside of BAH such as Gaya Street. The best part? — All that, within walking distance!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    <div>
+
+
+      <div id="footer"></div>
+      <script src="./footer.js" defer></script>
+    </div>
+
+    <noscript>
+        <style>
+          /* Fullscreen overlay */
+          #noscript-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.85);
+            /* semi-transparent black background */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 1.5rem;
+            padding: 2rem;
+            z-index: 9999;
+          }
+        </style>
+        <div id="noscript-warning">
+          <img src="./images/Sean_seem.PNG" alt="Disabled of JS" />
+          ⚠️ JavaScript is disabled in your browser.
+          <br>To use this website properly, please enable JavaScript.
+        </div>
+    </noscript>
+
+  </body>
+</html>
