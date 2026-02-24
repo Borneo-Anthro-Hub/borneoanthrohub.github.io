@@ -1,167 +1,285 @@
 <!doctype html>
 <html lang="en">
-  <head>
-        <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Venue | Borneo Anthro Hub</title>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link href="./css/output.css" rel="stylesheet" />
-    <!-- <link href="./fonts/Fonts/WEB/css/general-sans.css" rel="fonts"> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
-    <link href="./css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css" />
-    <style>
-        /* ===== SECTION 1: HERO ===== */
-        .hero {
-            position: relative;
-            background-image: url("images/Page Banner-100 1.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 200px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            overflow: hidden;
-        }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 0;
-        }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venue | Borneo Anthro Hub</title>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <link href="./css/output.css" rel="stylesheet" />
+  <!-- <link href="./fonts/Fonts/WEB/css/general-sans.css" rel="fonts"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
+  <link href="./css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    body {
+      overflow-x: hidden;
+    }
 
-        .hero h1 {
-            font-family: "General Sans", sans-serif;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-            font-size: 3rem;
-            color: #fffbe8;
-            text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
-        }
+    /* ===== SECTION 1: HERO ===== */
+    .hero {
+      position: relative;
+      background-image: url("images/Page Banner-100 1.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 200px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
 
-        /* ===== SECTION 2: INFO ===== */
-        .info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 40px 0;
-            padding-top: 40px;
-        }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
 
-        .banner-img {
-            width: 80%;
-            /* scale to 80% of the page */
-            max-width: 1000px;
-            /* prevent it from getting too big */
-            height: auto;
-            /* keep original image ratio automatically */
-            border-radius: 10px;
-            /* optional */
-            display: block;
-        }
+    .hero h1 {
+      font-family: "General Sans", sans-serif;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+      font-size: 3rem;
+      color: #fffbe8;
+      text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+    }
 
-        /* ===== SECTION 3: BOXES ===== */
-        #section3 {
-            padding: 40px 20px;
-        }
+    /* ===== SECTION 2: INFO ===== */
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 0;
+      padding-top: 40px;
+    }
 
-        .fix-br {
-            display: none;
-        }
-    </style>
-  </head>
-  <body>
-    <div>
-      <div id="navbar"></div>
-      <div class="navbar-gradient"></div>
+    .banner-img {
+      width: 80%;
+      /* scale to 80% of the page */
+      max-width: 1000px;
+      /* prevent it from getting too big */
+      height: auto;
+      /* keep original image ratio automatically */
+      border-radius: 10px;
+      /* optional */
+      display: block;
+    }
 
-      <script src="./navbar.js"></script>
-        <!-- SECTION 1: HERO -->
-        <div class="hero">
-            <section>
-                <h1 style="font-size: 72px">Venue</h1>
-            </section>
+    /* ===== SECTION 3: BOXES ===== */
+    #section3 {
+      padding: 40px 20px;
+    }
+
+    .fix-br {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div id="navbar"></div>
+    <div class="navbar-gradient"></div>
+
+    <script src="./navbar.js"></script>
+    <!-- SECTION 1: HERO -->
+    <div class="hero">
+      <section>
+        <h1 style="font-size: 72px">Venue</h1>
+      </section>
+    </div>
+    <main class="info mt-[100px]">
+      <!-- hotel image -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="mx-auto px-4">
+          <img class="w-full max-w-[500px] h-auto" src="./images/venue/hotel.webp" alt="hotel" />
         </div>
-        <section class="info pt-[200px]">
-          <!-- hotel image -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              <div class="mx-auto px-4">
-                <img class="w-full max-w-[500px] h-auto" src="./images/venue/hotel.webp" alt="hotel"/>
+        <!-- title -->
+        <div class="w-80 md:w-150 mx-auto">
+          <div class="flex gap-2 ml-55 md:ml-110 justify-start">
+            <img class="w-auto h-10 md:h-15" src="./images/venue/sean_aminah_tag.svg" . alt="sean_tag" />
+          </div>
+          <div class="bg-[#FFFBE8] w-full max-w-[600px] rounded-md mx-auto md:mx-0">
+            <div class="text-[#4F362F] p-[24px] md:p-[34px] text-2xl/8 md:text-5xl/15 font-bold">
+              <p>Where All BAHpals<br>
+                Share The Joy Under<br>
+                The Same <span class="italic bg-[#54CCC9] px-[4px]"
+                  style="color: #1A2B24 !important; border-radius:13px;">Horizon</span>
+              </p>
+            </div>
+            <div class="bg-[#DDC8AF] h-12 rounded-b-md">
+              <div class="pt-2 ml-[24px] md:ml-[36px]">
+                <img class="w-auto h-8" src="./images/venue/deco.svg" alt="deco" />
               </div>
-              <!-- title -->
-              <div class="w-80 md:w-140 mx-auto">
-                <div class="flex gap-2 ml-55 md:ml-110 justify-start">
-                  <img class="w-auto h-10 md:h-15" src="./images/venue/sean_aminah_tag.svg". alt="sean_tag" />
-                </div>
-                <div class="bg-[#FFFBE8] w-full max-w-[600px] rounded-md mx-auto md:mx-0">
-                  <div class="text-[#4F362F] p-[24px] md:p-[34px] text-2xl/8 md:text-5xl/15 font-bold" >
-                    <p>Where All BAHpals<br>
-                      Share The Joy Under<br>
-                      The Same <span class="italic bg-[#54CCC9] px-[4px]" style="color: #1A2B24 !important; border-radius:13px;">Horizon</span>
-                    </p>
+            </div>
+          </div>
+          <div>
+            <div class="pt-[22px] md:pt-[32px]">
+              <p class="text-[#FFFBE8] text-[15px]/[21px] md:text-[20px]/[31px] text-justify">
+                In the heart of Kota Kinabalu's commercial and cultural district lies the very place where all BAHpals
+                fill the air with their merriment and zest during the grand festival — Horizon Hotel. As a premier
+                4-star destination equipped with a state-of-the-art gymnasium, a terrace pool, and a fine selection of
+                restaurants, Horizon Hotel offers an ideal blend of urban convenience and scenic tranquillity.
+                <br><br>
+                BAHpals will surely find it a pleasant and ideal experience to be in a furcon that has access to major
+                shopping malls like Suria Sabah. Adventurous BAHpals looking for more than just a conventional furcon
+                experience would also certainly be rewarded with a bountiful journey during their stay in Sabah, with
+                even more additional possibilities to explore at nearby popular destinations outside of BAH such as Gaya
+                Street. The best part? — All that, within walking distance!
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-2 mt-6">
+            <a href="#"
+              class="group relative inline-flex items-center justify-center font-[600] text-base md:text-xl gap-3 px-5 py-2 bg-[#e8804d] rounded-full hover:bg-[#ffcb65] text-[#FFFBE8] hover:text-[#1F3359] transition-color duration-400 overflow-hidden">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.8457 13.8457L20.7457 0.945801" stroke="currentColor" stroke-width="1.8913"
+                  stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12.3457 0.945801H20.7457V9.3457" stroke="currentColor" stroke-width="1.8913"
+                  stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M9.34534 3.24561H5.24536C2.84536 3.24561 0.945312 5.14565 0.945312 7.54565V16.4457C0.945312 18.8457 2.84536 20.7456 5.24536 20.7456H14.1454C16.5454 20.7456 18.4453 18.8457 18.4453 16.4457V12.3456"
+                  stroke="currentColor" stroke-width="1.8913" stroke-miterlimit="10" stroke-linecap="round" />
+              </svg>
+              Hotel Website
+            </a>
+            <!-- Hotel FB -->
+            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" class="m-1.5">
+                <title>facebook</title>
+                <path fill="currentColor"
+                  d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+              </svg>
+            </a>
+            <!-- Hotel IG -->
+            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="28" height="28"
+                class="m-2.5">
+                <title>instagram</title>
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+              </svg>
+            </a>
+          </div>
+          <div class="mt-6">
+            <div>
+              <img src="./images/venue/deco_tag.svg" alt="deco_tag" class="ml-6" />
+            </div>
+            <div class="bg-[#54CCC9] w-full max-w-[600px] rounded-md mx-auto md:mx-0 italic">
+              <div class="text-[#105666] p-5 text-sm">
+                <span>* Image is for creative visualisation purposes only, and does not represent any items/objects that
+                  will be seen within the premises or offered to guests by the hotel during their stay. The “Horizon
+                  Hotel” logo and photographs belong to Horizon Hotel Kota Kinabalu.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <section>
+      <!-- Map -->
+      <div class="m-5">
+        <div>
+          <div class="flex items-center text-[#54CCC9] mx-2 md:mx-8 my-8">
+            <div class="flex-grow border-t border-[#54CCC9]"></div>
+            <img src="./images/venue/map_pin.svg" alt="" class="mt-1 ml-4" width="16px" />
+            <span class="mx-4 italic text-[1em] tracking-[0.4em] uppercase">location</span>
+            <div class="flex-grow border-t border-[#54CCC9]"></div>
+          </div>
+          <div class="flex justify-center-safe">
+            <!-- Google maps embed -->
+            <div>
+              <div>
+                <iframe class="w-80 h-120 md:w-[1260px] md:h-[600px]" frameborder="0" scrolling="no" marginheight="0"
+                  marginwidth="0"
+                  src="https://maps.google.com/maps?width=1260&amp;height=600&amp;hl=en&amp;q=horizon hotel, sabah&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="grid justify-center-safe mt-5">
+            <div>
+              <img class="w-auto h-8 ml-8" src="./images/venue/deco_hey_tag.svg" alt="deco hey tag" />
+            </div>
+            <div class="grid grid-flow-col grid-rows bg-[#FFFBE8] w-80 h-auto md:w-[1260px] rounded-md mx-auto md:mx-0 ">
+              <div class="row-span-1 text-[#4F362F] p-[24px] md:p-[34px] text-lg">
+                <p>Don’t want to have to face the million-dollar question of “where to eat today ah?” from your friend,
+                  or just wondering what else can you do other than rotting in your hotel room? Check out our super
+                  handy <span class="font-semibold">BAHjet guide</span> and get those plans up and going!
+                </p>
+              </div>
+              <div class="row-span-2 bg-[#DDC8AF] px-20 rounded-r-md">
+                <div class="flex justify-center-safe py-18">
+                  <div class="content-center pr-5">
+                    <img src="./images/venue/dots.svg" alt="deco dot" />
                   </div>
-                  <div class="bg-[#DDC8AF] h-12 rounded-b-md">
-                    <div class="pt-2 ml-[24px] md:ml-[36px]">
-                      <img class="w-auto h-8" src="./images/venue/deco.svg" alt="deco" />
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div class="p-[24px] md:p-[34px]">
-                    <p class="text-[#FFFBE8] text-[15px]/[21px] md:text-[20px]/[31px]">
-                      In the heart of Kota Kinabalu's commercial and cultural district lies the very place where all BAHpals fill the air with their merriment and zest during the grand festival — Horizon Hotel. As a premier 4-star destination equipped with a state-of-the-art gymnasium, a terrace pool, and a fine selection of restaurants, Horizon Hotel offers an ideal blend of urban convenience and scenic tranquillity.
-                      <br><br>
-                      BAHpals will surely find it a pleasant and ideal experience to be in a furcon that has access to major shopping malls like Suria Sabah. Adventurous BAHpals looking for more than just a conventional furcon experience would also certainly be rewarded with a bountiful journey during their stay in Sabah, with even more additional possibilities to explore at nearby popular destinations outside of BAH such as Gaya Street. The best part? — All that, within walking distance!
-                    </p>
-                  </div>
+                  <img src="./images/venue/BAHjet.svg" alt="BAHjet Icon" class="mx-3 content-center-safe"/>
+                  <p class="font-semibold md:text-[26px] text-[#4F362F]">BAHjet Guide</p>
+                  <img src="./images/venue/arrow.svg" alt="deco arrow" class="mx-3 content-center-safe"/>
                 </div>
               </div>
             </div>
-          </section>
-    <div>
-
-
-      <div id="footer"></div>
-      <script src="./footer.js" defer></script>
-    </div>
-
-    <noscript>
-        <style>
-          /* Fullscreen overlay */
-          #noscript-warning {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.85);
-            /* semi-transparent black background */
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            font-size: 1.5rem;
-            padding: 2rem;
-            z-index: 9999;
-          }
-        </style>
-        <div id="noscript-warning">
-          <img src="./images/Sean_seem.PNG" alt="Disabled of JS" />
-          ⚠️ JavaScript is disabled in your browser.
-          <br>To use this website properly, please enable JavaScript.
+          </div>
         </div>
-    </noscript>
+      </div>
+    </section>
+    <section>
+      <div class="flex justify-center-safe mt-30">
+        <div>
+          <div class="flex justify-center-safe">
+            <img src="./images/venue/BAH_nav_guide.svg" alt="BAH Navigation Guide" />
+          </div>
+          <div>
+            <p class="text-[#54CCC9] text-[85px] font-bold">How Do I Get There?</p>
+          </div>
+        </div>
+      </div>
 
-  </body>
+    </section>
+    <p class="my-10">-</p>
+  </div>
+  <div>
+    <div id="footer"></div>
+    <script src="./footer.js" defer></script>
+  </div>
+
+  <noscript>
+    <style>
+      /* Fullscreen overlay */
+      #noscript-warning {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.85);
+        /* semi-transparent black background */
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 1.5rem;
+        padding: 2rem;
+        z-index: 9999;
+      }
+    </style>
+    <div id="noscript-warning">
+      <img src="./images/Sean_seem.PNG" alt="Disabled of JS" />
+      ⚠️ JavaScript is disabled in your browser.
+      <br>To use this website properly, please enable JavaScript.
+    </div>
+  </noscript>
+
+</body>
+
 </html>
