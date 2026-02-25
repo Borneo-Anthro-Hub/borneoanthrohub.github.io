@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pro Schedule - Precision Click (MYT)</title>
+
+<style>
+body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4; overflow: hidden; }
+
+/* Viewport & Layout */
+.viewport { height: 100vh; overflow: auto; position: relative; }
+.table { display: flex; min-width: max-content; position: relative; }
+
+/* Sticky Left Time Axis */
+.time-column {
+  width: 80px; background: #fff; border-right: 1px solid #ccc;
+  position: sticky; left: 0; z-index: 40; flex-shrink: 0;
+}
+
+.time-slot {
+  height: 30px; font-size: 11px; text-align: right; padding-right: 8px;
+  border-bottom: 1px solid #eee; box-sizing: border-box; color: #444;
+  display: flex; align-items: center; justify-content: flex-end;
+}
+
+/* Day & Room Layout */
+.days { display: flex; flex: 1; position: relative; cursor: crosshair; }
+.day { display: flex; flex-direction: column; border-right: 2px solid #ccc; min-width: 450px; }
+
+.day-header {
+  position: sticky; top: 0; height: 32px; background: #fff;
+  text-align: center; line-height: 32px; font-weight: 700; border-bottom: 1px solid #ccc; z-index: 50;
+}
+
+.rooms { display: flex; position: relative; }
+/* .room { flex: 1; border-right: 1px solid #eee; position: relative; background: #fff; } */
+.room {
+  flex: 1;
+  border-right: 1px solid #eee;
+  position: relative;
+}
+
+.room-header {
+  position: sticky; top: 32px; height: 28px; background: #f9f9f9;
+  text-align: center; line-height: 28px; font-size: 12px; border-bottom: 1px solid #ddd; z-index: 45;
+}
+
+/* Events Styling */
+.event {
+  position: absolute; left: 5%; width: 90%; border-radius: 4px; padding: 4px;
+  box-sizing: border-box; font-size: 11px; color: #fff; z-index: 2; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.event-title { font-weight: 700; display: block; }
+.event-subtitle { font-size: 10px; opacity: 0.9; display: block; }
+
+/* Guideline & Click Mark */
+.guide-line {
+  position: absolute; left: 0; right: 0; height: 0;
+  border-top: 1px dashed #ff6600; pointer-events: none; z-index: 100; display: none;
+}
+
+.click-mark {
+  position: absolute; 
+  left: 0; 
+  width: 100%; 
+  height: 0;
+  border-top: 2px solid #007bff; 
+  pointer-events: none; 
+  z-index: 110; 
+  display: none;
+}
+
+/* UPDATED: Badge is now absolute to stay where clicked */
+.click-badge {
+  position: absolute; 
+  top: 0;
+  transform: translate(-50%, -100%); /* Center horizontally on click, place above line */
+  background: #007bff; 
+  color: #fff; 
+  font-size: 10px; 
+  padding: 2px 6px;
+  border-radius: 4px; 
+  font-weight: bold; 
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.past-mask { position: absolute; left: 0; right: 0; background: rgba(0, 0, 0, 0.05); pointer-events: none; z-index: 3; }
+.now-line { position: absolute; left: 0; right: 0; height: 2px; background: red; z-index: 35; }
+</style>
+</head>
+
+<body>
+
+<div class="viewport" id="viewport">
+  <div class="table" id="mainTable">
+    <div id="guideLine" class="guide-line"></div>
+    <div id="clickMark" class="click-mark">
+      <div id="clickBadge" class="click-badge"></div>
+    </div>
+
+    <div class="time-column" id="timeAxis" style="margin-top: 60px;"></div>
+    <div class="days" id="days"></div>
+  </div>
+</div>
+
+<script>
+/* ===== Config ===== */
+const DAY_START = '00:00';
+const DAY_END   = '02:00'; 
+const PX_PER_MIN = 1;
+const TIME_ZONE = 'Asia/Kuala_Lumpur'; 
+
+const rooms = ['Room A', 'Room B', 'Room C'];
+const dates = ['2026-01-21','2026-01-22', '2026-01-23'];
+
+/* ===== Utils ===== */
+function timeToMinute(t) {
+  const [h, m] = t.split(':').map(Number);
+  return h * 60 + m;
+}
+
+function getMYTime() {
+  const now = new Date();
+  const myString = now.toLocaleString("en-US", { timeZone: TIME_ZONE });
+  return new Date(myString);
+}
+
+const startMin = timeToMinute(DAY_START);
+const endMin   = timeToMinute(DAY_END);
+const totalMin = endMin - startMin;
+
+/* ===== Build Time Axis ===== */
+const axis = document.getElementById('timeAxis');
+for (let m = startMin; m <= endMin; m += 30) {
+  const div = document.createElement('div');
+  div.className = 'time-slot';
+  div.style.height = (30 * PX_PER_MIN) + 'px';
+  const h = Math.floor(m / 60);
+  const min = m % 60;
+  div.style.backgroundColor = (h % 2 === 0) ? '#FFF3E0' : '#FFFFFF';
+  div.textContent = `${String(h).padStart(2,'0')}:${String(min).padStart(2,'0')}`;
+  axis.appendChild(div);
+}
+
+/* ===== Build Grid ===== */
+const activeIndicators = [];
+const daysEl = document.getElementById('days');
+const todayMY = getMYTime();
+
+dates.forEach(dateStr => {
+  const day = document.createElement('div');
+  day.className = 'day';
+  const header = document.createElement('div');
+  header.className = 'day-header';
+  header.textContent = dateStr;
+  day.appendChild(header);
+
+  const roomsRow = document.createElement('div');
+  roomsRow.className = 'rooms';
+  roomsRow.style.height = (totalMin * PX_PER_MIN) + 'px';
+
+  const dateObj = new Date(dateStr + 'T00:00');
+  const isToday = dateObj.toDateString() === todayMY.toDateString();
+
+  rooms.forEach(roomName => {
+    const room = document.createElement('div');
+    room.className = 'room';
+    room.dataset.date = dateStr;
+    room.dataset.room = roomName;
+    const rh = document.createElement('div');
+    rh.className = 'room-header';
+    rh.textContent = roomName;
+    room.appendChild(rh);
+
+    if (isToday) {
+      const mask = document.createElement('div');
+      mask.className = 'past-mask';
+      room.appendChild(mask);
+      const nowLine = document.createElement('div');
+      nowLine.className = 'now-line';
+      room.appendChild(nowLine);
+      activeIndicators.push({ mask, nowLine });
+    }
+    roomsRow.appendChild(room);
+  });
+  day.appendChild(roomsRow);
+  daysEl.appendChild(day);
+});
+
+/* ===== Event Rendering ===== */
+function renderEvents(eventsList) {
+  eventsList.forEach(e => {
+    const room = document.querySelector(`.room[data-date="${e.date}"][data-room="${e.room}"]`);
+    if (!room) return;
+    const start = timeToMinute(e.start);
+    const end = timeToMinute(e.end);
+    const top = Math.max(start - startMin, 0);
+    const height = Math.min(end, endMin) - Math.max(start, startMin);
+    if (height <= 0) return;
+
+    const ev = document.createElement('div');
+    ev.className = 'event';
+    ev.style.top = (28 + top * PX_PER_MIN) + 'px'; 
+    ev.style.height = (height * PX_PER_MIN) + 'px';
+    ev.style.backgroundColor = e.color || '#54CCC9';
+    ev.innerHTML = `
+      <span class="event-title">${e.title}</span>
+      <span class="event-subtitle">${e.subtitle || ''}</span>
+    `;
+    room.appendChild(ev);
+  });
+}
+fetch('./events.json').then(res => res.json()).then(data => renderEvents(data)).catch(() => {});
+
+/* ===== Interaction Logic (Precision Position) ===== */
+const viewport = document.getElementById('viewport');
+const guideLine = document.getElementById('guideLine');
+const clickMark = document.getElementById('clickMark');
+const clickBadge = document.getElementById('clickBadge');
+const mainTable = document.getElementById('mainTable');
+
+function calculateTimeFromY(y) {
+  const relativeY = y - 60; // Offset for headers
+  const minutes = (relativeY / PX_PER_MIN) + startMin;
+  const h = Math.floor(minutes / 60);
+  const m = Math.floor(minutes % 60);
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+}
+
+// Hover Guide
+document.addEventListener('mousemove', (e) => {
+  const rect = mainTable.getBoundingClientRect();
+  const relativeY = e.clientY - rect.top;
+
+  if (relativeY >= 60 && relativeY <= rect.height) {
+    guideLine.style.display = 'block';
+    guideLine.style.top = relativeY + 'px';
+  } else {
+    guideLine.style.display = 'none';
+  }
+});
+
+// Click Mark with Exact X and Y
+document.addEventListener('click', (e) => {
+  const rect = mainTable.getBoundingClientRect();
+  const relativeY = e.clientY - rect.top;
+  
+  // Calculate relative X inside the table (considering horizontal scroll)
+  const relativeX = e.clientX - rect.left;
+
+  if (relativeY >= 60 && relativeY <= rect.height) {
+    const timeStr = calculateTimeFromY(relativeY);
+    
+    // Display and position Mark (Y)
+    clickMark.style.display = 'block';
+    clickMark.style.top = relativeY + 'px';
+    
+    // Position Badge (X)
+    clickBadge.style.left = relativeX + 'px';
+    clickBadge.textContent = timeStr;
+  }
+});
+
+/* ===== Real-time Update Loop ===== */
+function updateUI() {
+  const nowMY = getMYTime();
+  const nowMin = nowMY.getHours() * 60 + nowMY.getMinutes();
+  const rawOffset = nowMin - startMin;
+  const isOutOfRange = rawOffset < 0 || rawOffset >= totalMin;
+  const clampedHeight = Math.max(0, Math.min(rawOffset, totalMin));
+
+  activeIndicators.forEach(item => {
+    item.mask.style.top = '28px';
+    item.mask.style.height = (clampedHeight * PX_PER_MIN) + 'px';
+    if (isOutOfRange) {
+        item.nowLine.style.display = 'none';
+    } else {
+        item.nowLine.style.display = 'block';
+        item.nowLine.style.top = (28 + rawOffset * PX_PER_MIN) + 'px';
+    }
+  });
+    // Debug logs
+  console.log(`Time Updated: ${nowMY.toLocaleTimeString()}, Offset: ${rawOffset}, Visible: ${!isOutOfRange}`);
+
+}
+updateUI();
+// setInterval(updateUI, 30000);
+
+// Start recursive scheduler
+(function scheduleNext() {
+  const now = new Date();
+  // Calculate milliseconds remaining until the next minute
+  const msToNextMin = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+  
+  setTimeout(() => {
+    updateUI();
+    scheduleNext();
+  }, msToNextMin);
+})();
+</script>
+
+</body>
+</html>

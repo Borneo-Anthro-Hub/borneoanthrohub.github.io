@@ -1,0 +1,28 @@
+[
+  { 
+    "title": "Team Meeting 34", 
+    "subtitle": "Engineering wwweqwe\nasdas", 
+    "date": "2026-01-21", 
+    "room": "Room A", 
+    "start": "00:15", 
+    "end": "10:30", 
+    "color": "#666" 
+  },
+  { 
+    "title": "Workshop", 
+    "subtitle": "Design", 
+    "date": "2026-01-23", 
+    "room": "Room B", 
+    "start": "11:00", 
+    "end": "13:00", 
+    "color": "#77C9" 
+  },
+  { 
+    "title": "Client Call", 
+    "subtitle": "External", 
+    "date": "2026-01-23", 
+    "room": "Room C", 
+    "start": "14:00", 
+    "end": "15:00" 
+  }
+]
