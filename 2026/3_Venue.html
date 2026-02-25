@@ -14,6 +14,8 @@
   <link href="./css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
     /* ===== SECTION 1: HERO ===== */
     .hero {
       position: relative;
@@ -135,7 +137,7 @@
             </div>
           </div>
           <div class="flex gap-2 mt-6">
-            <a href="#"
+            <a href="https://horizonhotelsabah.com/" target="_blank"
               class="group relative inline-flex items-center justify-center font-[600] text-base md:text-xl gap-3 px-5 py-2 bg-[#e8804d] rounded-full hover:bg-[#ffcb65] text-[#FFFBE8] hover:text-[#1F3359] transition-color duration-400 overflow-hidden">
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.8457 13.8457L20.7457 0.945801" stroke="currentColor" stroke-width="1.8913"
@@ -149,7 +151,8 @@
               Hotel Website
             </a>
             <!-- Hotel FB -->
-            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full" href="#">
+            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full"
+              href="https://www.facebook.com/people/Horizon-Hotel-Kota-Kinabalu/100079982645288/" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" class="m-1.5">
                 <title>facebook</title>
                 <path fill="currentColor"
@@ -157,7 +160,8 @@
               </svg>
             </a>
             <!-- Hotel IG -->
-            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full" href="#">
+            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full"
+              href="https://www.instagram.com/horizonsabah/" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="28" height="28"
                 class="m-2.5">
                 <title>instagram</title>
@@ -166,7 +170,7 @@
               </svg>
             </a>
           </div>
-          <div class="mt-6">
+          <div class="mt-10">
             <div>
               <img src="./images/venue/deco_tag.svg" alt="deco_tag" class="ml-6" />
             </div>
@@ -201,26 +205,37 @@
               </div>
             </div>
           </div>
-          <div class="grid justify-center-safe mt-5">
+          <!-- HEY -->
+          <div class="grid justify-center-safe mt-10">
             <div>
               <img class="w-auto h-8 ml-8" src="./images/venue/deco_hey_tag.svg" alt="deco hey tag" />
             </div>
-            <div
-              class="grid grid-flow-col grid-rows bg-[#FFFBE8] w-80 h-auto md:w-[1260px] rounded-md mx-auto md:mx-0 ">
-              <div class="row-span-1 text-[#4F362F] p-[24px] md:p-[34px] text-lg">
-                <p>Don’t want to have to face the million-dollar question of “where to eat today ah?” from your friend,
-                  or just wondering what else can you do other than rotting in your hotel room? Check out our super
-                  handy <span class="font-semibold">BAHjet guide</span> and get those plans up and going!
+            <div class="bg-[#FFFBE8] rounded-md mx-auto md:mx-0 
+            w-full max-w-md md:max-w-[1260px]
+            flex flex-col md:grid md:grid-cols-2">
+              <div class="text-[#4F362F] p-5 md:p-8 text-base md:text-lg leading-relaxed italic">
+                <p>
+                  Don’t want to have to face the million-dollar question of “where to eat today ah?”
+                  from your friend, or just wondering what else can you do other than rotting in your hotel room?
+                </p>
+
+                <p class="mt-3">
+                  Check out our super handy
+                  <span class="font-semibold">BAHjet guide</span>
+                  and get those plans up and going!
                 </p>
               </div>
-              <div class="row-span-2 bg-[#DDC8AF] px-20 rounded-r-md">
-                <div class="flex justify-center-safe py-18">
-                  <div class="content-center pr-5">
-                    <img src="./images/venue/dots.svg" alt="deco dot" />
-                  </div>
-                  <img src="./images/venue/BAHjet.svg" alt="BAHjet Icon" class="mx-3 content-center-safe" />
-                  <p class="font-semibold md:text-[26px] text-[#4F362F]">BAHjet Guide</p>
-                  <img src="./images/venue/arrow.svg" alt="deco arrow" class="mx-3 content-center-safe" />
+
+              <!-- Right block -->
+              <div class="bg-[#DDC8AF] rounded-b-md md:rounded-r-md md:rounded-b-none py-2 md:px-10 md:py-10">
+
+                <div class="flex flex-wrap items-center justify-center-safe gap-3 text-center md:text-left md:py-12">
+                  <img src="./images/venue/dots.svg" alt="deco dot" class="w-18 md:w-auto" />
+                  <img src="./images/venue/BAHjet.svg" alt="BAHjet Icon" class="w-8 md:w-auto" />
+                  <p class="font-semibold text-lg md:text-[26px] text-[#4F362F]">
+                    BAHjet Guide
+                  </p>
+                  <img src="./images/venue/arrow.svg" alt="deco arrow" class="w-5 md:w-auto" />
                 </div>
               </div>
             </div>
@@ -228,20 +243,108 @@
         </div>
       </div>
     </section>
+    <!-- How to go there -->
     <section>
       <div class="flex justify-center-safe mt-30">
         <div>
           <div class="flex justify-center-safe">
             <img src="./images/venue/BAH_nav_guide.svg" alt="BAH Navigation Guide" />
           </div>
-          <div>
-            <p class="text-[#54CCC9] text-[85px] font-bold text-center">How Do I Get There?</p>
+          <div class="mb-20">
+            <p class="text-[#54CCC9] text-[48px] md:text-[85px] font-bold text-center mt-5">
+              How Do I Get There?</p>
           </div>
         </div>
       </div>
-                <div class="w-full h-64 bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)]">
-            asdasdasd
+      <div class="w-full h-800 bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] justify-center p-px">
+        <div class="w-full h-780 bg-[#FFFBE8] mt-10 items-center flex flex-col" style="box-shadow: 0px 0px 10px 2px">
+          <div class="flex md:w-232 gap-5 pt-10 pb-5">
+            <img src="./images/venue/page1_deco.svg" class="w-80" alt="" />
+            <img src="./images/venue/sean_aminah.svg" class="w-30" alt="" />
           </div>
+          <!-- blue card -->
+          <div class="bg-[#54CCC9] rounded-2xl mx-auto md:mx-0 
+            flex flex-col md:grid md:grid-flow-col w-75
+            md:w-232">
+            <div class="p-5 md:p-8 flex justify-center md:block">
+              <img src="./images/venue/scenario_1.svg" class="w-48 md:w-auto" alt="" />
+            </div>
+            <div class="px-5 pb-6 md:px-0 md:mx-10">
+              <div class="flex justify-end mb-4 md:mb-2 pt-6">
+                <img src="./images/venue/scenatio_icon.svg" alt="deco dot" />
+              </div>
+              <div class="text-[#373F52] font-light text-base md:text-xl leading-relaxed">
+                <p>
+                  If you are a BAHpal flying into Sabah from somewhere else, you would find yourself landing at
+                  <span class="font-semibold">Terminal 1 of KKIA</span>
+                  (Kota Kinabalu International Airport) as your starting point.
+                </p>
+
+                <p class="mt-3">
+                  From there, you will have several transport options to navigate towards Horizon Hotel,
+                  including Airport Taxis, local e-Hailing services or pre-booked services.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10">
+            <div class="flex w-full md:w-232">
+              <div class="flex inline-flex items-center border-2 border-[#4F362F]
+              rounded-full overflow-hidden">
+                <div class="w-14 h-14 flex items-center justify-center">
+                  <img src="./images/venue/Icon_E-hailing.svg" alt="" />
+                </div>
+                <div class="px-6 py-2 text-[#4F362F] text-2xl font-semibold">
+                  E-hailing
+                </div>
+              </div>
+              <div class="text-[#4F362F] flex-1 justify-center-safe my-auto mx-4">
+                <hr class="hr_dot">
+              </div>
+            </div>
+          </div>
+          <div class="w-full md:w-232 flex justify-center mt-10">
+            <div class="flex flex-col md:flex-row items-center gap-8 mx-auto">
+              <img src="./images/venue/grab.svg" alt="grab" class="h-48 w-auto" />
+              <img src="./images/venue/airasia_move.svg" alt="AirAsia Move" class="h-48 w-auto" />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 mt-10 md:w-232 m-16">
+            <div>
+              <div>
+                <img src="./images/venue/Journal_Deco 1.svg" alt="" class="h-3 w-auto" />
+              </div>
+              <div class="m-5 tracking-wider text-[#4F362F]">
+                <p>Using e-hailing services is one of the main ways to get around here. The <span
+                    class="bg-[#54CCC9] font-semibold rounded-md">Grab</span> or <span
+                    class="bg-[#54CCC9] font-semibold rounded-md">AirAsia MOVE</span> Apps
+                  are some of the more popular services widely used within Kota Kinabalu.</p>
+                <div class="md:ml-100 ml-90 mt-2">
+                  <img src="./images/venue/bah_foot_icon.svg" alt="deco foot" class="h-10 w-auto" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="bg-[#DDC8AF] w-108 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))]">
+                <div class="mx-6 mt-6">
+                  <img src="./images/venue/tip_deco.svg" alt="tip" class="h-6 w-auto" />
+                  <p class="text-[#4F362F] italic text-sm tracking-wide mt-2 mx-auto">
+                    You may use<spa class="bg-[#DC9F45] font-semibold rounded-md"> KFC KKIA (T1) </spa>or the<span
+                      class="bg-[#DC9F45] font-semibold rounded-md"> Airport Cafe KKIA </span>as
+                    nearby pickup stations as there are no enforced designated waiting stations in KKIA.
+                    <br><br>
+                    Subsequently,
+                    you may walk to Arrival Hall 3 or Pillar No. 5 for pickups via Grab. Please follow the
+                    instructions as provided by the Grab App.
+                  </p>
+                  <img src="./images/venue/aminah_fly.webp" alt="Aminah fly deco" class="w-50 h-auto ml-48"/>
+                </div>
+                <div class="w-0 border-t-[32px] border-l-[32px] border-t-[#CBB9A8] border-l-transparent drop-shadow-sm" style="box-shadow: -5px 5px 10px 3px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </section>
     <p class="my-10">-</p>
@@ -250,6 +353,13 @@
     <div id="footer"></div>
     <script src="./footer.js" defer></script>
   </div>
+
+  <style>
+    .hr_dot {
+      border: none;
+      border-top: 5px dotted #DDC8AF;
+    }
+  </style>
 
   <noscript>
     <style>
@@ -281,5 +391,4 @@
   </noscript>
 
 </body>
-
 </html>
