@@ -1,0 +1,199 @@
+<!-- <html>
+    <head>
+        <title>test</title>
+          <link href="./css/output.css" rel="stylesheet" />
+    </head>
+    <body>
+<div class="reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out">
+  左边进来
+</div>
+
+<div class="reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-200">
+  右边进来
+</div>
+
+<div class="reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
+  往上浮
+</div>
+
+<div class="reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out">
+  往下掉
+</div>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.remove(
+        'opacity-0',
+        '-translate-x-10',
+        'translate-x-10',
+        'translate-y-10',
+        '-translate-y-10',
+        'blur-sm'
+      );
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+</script>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Text entrance animation */
+        .slide-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .active .slide-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Step image floating animation */
+        .step-container {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+<body class="bg-[#fef9f1] flex items-center justify-center min-h-screen p-6">
+
+    <div class="relative w-full max-w-5xl">
+        <div class="left-6 z-30 w-28 h-28 md:w-36 md:h-36 pt-16 ml-6 pointer-events-none">
+            <div id="step-track" class="relative w-full h-full">
+                <img src="./images/venue/step1.svg" 
+                     class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-100 scale-100" 
+                     id="step-img-0">
+                <img src="./images/venue/step2.svg" 
+                     class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-0 scale-50" 
+                     id="step-img-1">
+                <img src="./images/venue/step3.svg" 
+                     class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-0 scale-50" 
+                     id="step-img-2">
+            </div>
+        </div>
+
+        <div class="overflow-hidden rounded-2xl bg-[#4a3733] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-b-8 border-[#3a2b28]">
+            
+            <div id="main-track" class="flex transition-transform duration-700 ease-in-out">
+                
+                <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12 active">
+                    <div class="md:w-1/2">
+                        <div class="aspect-[4/3] bg-stone-200 rounded-lg overflow-hidden border-[10px] border-[#d9c5b2]">
+                             <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-white mt-8 md:mt-0">
+                        <div class="slide-content delay-300">
+                            <p class="text-xl leading-relaxed italic">Once leaving the security checking, turn left towards the <strong class="text-amber-300 font-bold">KFC</strong> escalator.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12">
+                    <div class="md:w-1/2">
+                        <div class="aspect-[4/3] bg-stone-200 rounded-lg overflow-hidden border-[10px] border-[#d9c5b2]">
+                             <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-white mt-8 md:mt-0">
+                        <div class="slide-content">
+                            <p class="text-xl leading-relaxed italic">Exit through the <strong class="text-amber-300 font-bold">side door</strong> to the outer section.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12">
+                    <div class="md:w-1/2">
+                        <div class="aspect-[4/3] bg-stone-200 rounded-lg overflow-hidden border-[10px] border-[#d9c5b2]">
+                             <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-white mt-8 md:mt-0">
+                        <div class="slide-content">
+                            <p class="text-xl leading-relaxed italic">Wait at the designated <strong class="text-amber-300 font-bold">Pick-up point</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-12 flex items-center justify-center gap-10">
+            <button onclick="changeSlide(-1)" class="w-12 h-12 rounded-full border-2 border-stone-300 flex items-center justify-center hover:bg-white transition-all active:scale-90">
+                <svg class="w-6 h-6 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            
+            <div class="flex gap-4" id="dots-container">
+                <div class="dot w-3 h-3 rounded-full bg-red-500 ring-4 ring-red-100"></div>
+                <div class="dot w-3 h-3 rounded-full bg-stone-300"></div>
+                <div class="dot w-3 h-3 rounded-full bg-stone-300"></div>
+            </div>
+
+            <button onclick="changeSlide(1)" class="w-12 h-12 rounded-full border-2 border-stone-300 flex items-center justify-center hover:bg-white transition-all active:scale-90">
+                <svg class="w-6 h-6 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Carousel logic
+         */
+        let currentIndex = 0;
+        const totalSlides = 3;
+        
+        function updateUI() {
+            // 1. Move the content track
+            const mainTrack = document.getElementById('main-track');
+            mainTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // 2. Animate Step Images (Outside the box)
+            // We use opacity and scale to switch between step images
+            const stepImages = document.querySelectorAll('.step-img');
+            stepImages.forEach((img, i) => {
+                if (i === currentIndex) {
+                    img.classList.remove('opacity-0', 'scale-50');
+                    img.classList.add('opacity-100', 'scale-100');
+                } else {
+                    img.classList.remove('opacity-100', 'scale-100');
+                    img.classList.add('opacity-0', 'scale-50');
+                }
+            });
+
+            // 3. Trigger text animations inside the active slide
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+
+            // 4. Update dots
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                if (i === currentIndex) {
+                    dot.className = "dot w-3 h-3 rounded-full bg-red-500 ring-4 ring-red-100 transition-all";
+                } else {
+                    dot.className = "dot w-3 h-3 rounded-full bg-stone-300 transition-all";
+                }
+            });
+        }
+
+        function changeSlide(dir) {
+            currentIndex = (currentIndex + dir + totalSlides) % totalSlides;
+            updateUI();
+        }
+
+        // Initialize on load
+        updateUI();
+    </script>
+</body>
+</html>
