@@ -242,11 +242,11 @@
                 <div class="flex flex-wrap items-center justify-center-safe gap-3 text-center md:text-left md:py-12
                 reveal opacity-0 translate-x-10 translate-y-10 duration-700 ease-out delay-350">
                   <img src="./images/venue/dots.svg" alt="deco dot" class="w-18 md:w-auto" />
-                  <img src="./images/venue/BAHjet.svg" alt="BAHjet Icon" class="w-8 md:w-auto" />
+                  <img src="./images/venue/BAHjet.svg" alt="BAHjet Icon" class="h-8" />
                   <p class="font-semibold text-lg md:text-[26px] text-[#4F362F]">
                     BAHjet Guide
                   </p>
-                  <img src="./images/venue/arrow.svg" alt="deco arrow" class="w-5 md:w-auto" />
+                  <img src="./images/venue/arrow.svg" alt="deco arrow" class="h-5" />
                 </div>
               </div>
             </div>
@@ -267,9 +267,9 @@
           </div>
         </div>
       </div>
-      <div class="w-full h-1080 bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] justify-center p-px">
+      <div class="w-full md:h-1420 h-1770 bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] justify-center p-px">
         <!-- The note -->
-        <div class="w-full h-1000 bg-[#FFFBE8] mt-10 items-center flex flex-col" style="box-shadow: 0px 0px 10px 2px">
+        <div class="w-full md:h-1400 h-1750 bg-[#FFFBE8] mt-10 items-center flex flex-col" style="box-shadow: 0px 0px 10px 2px">
           <div class="flex md:w-232 gap-5 pt-10 pb-5">
             <img src="./images/venue/page1_deco.svg" class="w-60" alt="page 1 deco" />
             <img src="./images/venue/sean_aminah.svg" class="w-25" alt="" />
@@ -341,13 +341,13 @@
               </div>
               <div>
                 <!-- sticky note -->
-                 <!-- Tips -->
+                <!-- Tips -->
                 <div
-                  class="bg-[#DDC8AF] md:w-108 w-74 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))]">
+                  class="bg-[#DDC8AF] md:w-108 w-74 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))] relative">
                   <div class="mx-6 mt-6">
                     <img src="./images/venue/tip_deco.svg" alt="tip" class="h-6 w-auto" />
                     <p class="text-[#4F362F] italic text-sm tracking-wide mt-2 mx-auto">
-                      You may use<spa class="bg-[#DC9F45] font-semibold rounded-md"> KFC KKIA (T1) </spa>or the<span
+                      You may use<span class="bg-[#DC9F45] font-semibold rounded-md"> KFC KKIA (T1) </span>or the<span
                         class="bg-[#DC9F45] font-semibold rounded-md"> Airport Cafe KKIA </span>as
                       nearby pickup stations as there are no enforced designated waiting stations in KKIA.
                       <br><br>
@@ -355,8 +355,10 @@
                       you may walk to Arrival Hall 3 or Pillar No. 5 for pickups via Grab. Please follow the
                       instructions as provided by the Grab App.
                     </p>
+                    <br>
                     <img src="./images/venue/aminah_fly.webp" alt="Aminah fly deco"
-                      class="w-50 h-auto md:ml-48 ml-16" />
+                      class="h-8 w-auto absolute right-5" />
+                    <br>
                   </div>
                   <div
                     class="w-0 border-t-[32px] border-l-[32px] border-t-[#CBB9A8] border-l-transparent drop-shadow-sm"
@@ -364,6 +366,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- Aminah's Guide -->
             <div class="mt-10">
               <div class="md:w-232 w-75">
                 <p class="text-2xl md:text-4xl md:block hidden" style="font-family: 'Caveat', cursive;">Aminah's Guide
@@ -464,7 +468,8 @@
                           class="md:w-1/2 rounded-lg overflow-hidden bg-[#d9c5b2] border-[20px] border-[#d9c5b2] cursor-zoom-in"
                           onclick="openModal('./images/venue/Venue_Scenario1_Img03.webp')">
                           <div class="aspect-4/3 bg-stone-200">
-                            <img src="./images/venue/Venue_Scenario1_Img03.webp" alt="Scenario 1 step 3" class="w-full h-full object-cover" />
+                            <img src="./images/venue/Venue_Scenario1_Img03.webp" alt="Scenario 1 step 3"
+                              class="w-full h-full object-cover" />
                           </div>
                           <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
                             <img src="./images/venue/camera_icon.svg" alt="camera icon deco" class="h-3 w-auto ml-2" />
@@ -620,10 +625,13 @@
                   <img src="./images/venue/Journal_Deco 1.svg" alt="" class="h-3 w-auto" />
                 </div>
                 <div class="m-2 md:m-5 tracking-wider text-[#4F362F]">
-                  <p>Another option is to book a taxi at the airport. 
-                    These taxis are<span class="bg-[#54CCC9] font-semibold rounded-md">  operated officially by the airport</span>, 
-                    so just look for the<span class="bg-[#54CCC9] font-semibold rounded-md">  designated counter</span>, pay upfront (fixed price) 
+                  <p>Another option is to book a taxi at the airport.
+                    These taxis are<span class="bg-[#54CCC9] font-semibold rounded-md"> operated officially by the
+                      airport</span>,
+                    so just look for the<span class="bg-[#54CCC9] font-semibold rounded-md"> designated counter</span>,
+                    pay upfront (fixed price)
                     and receive one based on their available schedule.</p>
+                  <br>
                   <div class="md:ml-100 ml-90 mt-2">
                     <img src="./images/venue/bah_foot_icon.svg" alt="deco foot" class="h-10 w-auto" />
                   </div>
@@ -631,16 +639,20 @@
               </div>
               <div>
                 <!-- sticky note -->
-                 <!-- Tips -->
+                <!-- Tips -->
                 <div
-                  class="bg-[#DDC8AF] md:w-108 w-74 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))]">
+                  class="bg-[#DDC8AF] md:w-108 w-74 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))] relative">
                   <div class="mx-6 mt-6">
                     <img src="./images/venue/tip_deco.svg" alt="tip" class="h-6 w-auto" />
                     <p class="text-[#4F362F] italic text-sm tracking-wide mt-2 mx-auto">
-                     Fares are fixed and guaranteed, but subject to traffic conditions and availability.
+                      Fares are <span class="bg-[#DC9F45] font-semibold rounded-md">fixed</span> and <span
+                        class="bg-[#DC9F45] font-semibold rounded-md">guaranteed</span>, but subject to traffic
+                      conditions and availability.
                     </p>
+                    <br>
                     <img src="./images/venue/aminah_fly.webp" alt="Aminah fly deco"
-                      class="w-50 h-auto md:ml-48 ml-16" />
+                      class="h-8 w-auto absolute right-5" />
+                    <br>
                   </div>
                   <div
                     class="w-0 border-t-[32px] border-l-[32px] border-t-[#CBB9A8] border-l-transparent drop-shadow-sm"
@@ -648,16 +660,18 @@
                 </div>
                 <!-- Look out sticky note -->
                 <div
-                  class="bg-[#ff6e6e] md:w-108 w-74 h-auto mt-10 p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))]">
+                  class="bg-[#ff6e6e] md:w-108 w-74 h-auto mt-10 p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))] relative">
                   <div class="mx-6 mt-6">
                     <img src="./images/venue/lookup_tag.svg" alt="look out tag deco" class="h-6 w-auto" />
                     <p class="text-[#FFFBE8] italic text-sm tracking-wide mt-2 mx-auto">
-                     If you are approached by individuals offering taxi or private car services,<span class="bg-[#ff2c4d] font-semibold rounded-md"> do not engage </span>
-                     with them as they might be<span class="bg-[#ff2c4d] font-semibold rounded-md"> unlicensed </span>and<span class="bg-[#ff2c4d] font-semibold rounded-md">  scam operators</span>.
+                      If you are approached by individuals offering taxi or private car services,<span
+                        class="bg-[#ff2c4d] font-semibold rounded-md"> do not engage </span>
+                      with them as they might be<span class="bg-[#ff2c4d] font-semibold rounded-md"> unlicensed
+                      </span>and<span class="bg-[#ff2c4d] font-semibold rounded-md"> scam operators</span>.
                     </p>
-                    <!-- <img src="./images/venue/aminah_fly.webp" alt="Aminah fly deco"
-                      class="w-50 h-auto md:ml-48 ml-16" /> -->
-                      <br>
+                    <br>
+                    <img src="./images/venue/soul.webp" alt="soul warning deco" class="h-9 w-auto absolute right-5" />
+                    <br>
                   </div>
                   <div
                     class="w-0 border-t-[32px] border-l-[32px] border-t-[#ff6e6e] border-l-transparent drop-shadow-sm"
@@ -665,46 +679,37 @@
                 </div>
               </div>
             </div>
-
-
-            
-
-
-
           </div>
 
-
-          <!--Change from here-->
-          <!--Travel Info Box-->
-          <div class="flex md:w-232 grid justify-center-safe mt-10 ">
-            <div class="reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-600">
-              <img class="w-auto h-8 ml-8" src="./images/venue/deco_hey_tag.svg" alt="deco hey tag" />
+          <!--Travel Info-->
+          <div class="grid relative md:w-232 justify-center-safe mt-10 mb-25">
+            <div class="reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-600 z-50">
+              <img src="./images/venue/deco_hey_tag.svg" alt="deco hey tag" class="w-auto h-8 ml-8 z-50" />
             </div>
-            <div class="bg-[#FFFBE8] rounded-md mx-auto md:mx-0 
+            <div
+              class="bg-[#FFFBE8] rounded-md mx-auto md:mx-0 
             w-full max-w-md md:max-w-[1260px]
-            flex flex-col md:grid md:grid-cols-2 shadow-2xl
-            reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300 z-20">
+            flex flex-col md:grid md:grid-cols-2 
+            reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300 shadow-[0_5px_50px_rgba(0,0,0,0.3)]">
               <div class="text-[#4F362F] p-5 md:p-8 text-base md:text-lg leading-relaxed italic
               reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-350">
                 <p>
                   Entering Sabah from somewhere else (including Sarawak & West Malaysia) for the first time?
                 </p>
-
-                <p class="mt-3
-                reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-500">
-                  You might want to check out our
-                  <span class="font-semibold">Travel Information</span>
-                  page to learn more about local immigration policies and other general info to take note of.
+                <p class="mt-3 reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-500">
+                  You might want to check out our <strong>Travel Information</strong> page to learn more about local
+                  immigration policies and other
+                  general info to take note of.
                 </p>
               </div>
 
               <!-- Right block -->
               <div class="bg-[#DDC8AF] rounded-b-md md:rounded-r-md md:rounded-b-none py-2 md:px-10 md:py-10">
 
-                <div class="flex flex-wrap items-center justify-center-safe gap-3 text-center md:text-left md:py-12
+                <div class="flex flex-wrap items-center justify-center-safe gap-3 text-center md:text-left md:py-16
                 reveal opacity-0 translate-x-10 translate-y-10 duration-700 ease-out delay-350">
                   <img src="./images/venue/dots.svg" alt="deco dot" class="w-18 md:w-auto" />
-                  <img src="./images/venue/Venue_Icon_Info.svg" alt="Icon" class="w-8" />
+                  <img src="./images/venue/info_icon.svg" alt="Info Icon" class="w-8" />
                   <p class="font-semibold text-lg md:text-[26px] text-[#4F362F]">
                     Travel Info
                   </p>
@@ -715,28 +720,26 @@
           </div>
 
           <!--Scenario 2 By Land-->
-          <div class="flex md:w-232 gap-5 pt-10 pb-5">
+          <div class="flex md:w-232 gap-5 mt-25 pb-5">
             <img src="./images/venue/page2_deco.svg" class="w-60" alt="page 1 deco" />
             <img src="./images/venue/sean_aminah.svg" class="w-25" alt="" />
           </div>
-          <!-- blue card -->
           <div class="bg-[#54CCC9] rounded-2xl mx-auto md:mx-0 
             flex flex-col md:grid md:grid-flow-col w-75
             md:w-232">
-            <div class="p-5 md:p-8 flex justify-center md:block">
-              
-              <img src="./images/venue/scenario_2.svg" class="w-48" alt="" />
+            <div class="p-5 md:p-8 flex justify-center items-center md:block">
+              <img src="./images/venue/scenario_2.svg" class="w-48 md:w-auto" alt="scenario_2 by land" />
             </div>
             <div class="px-5 pb-6 md:px-0 md:mx-10">
-              <div class="flex justify-end mb-4 md:mb-2 pt-6">
-                <!--issue here-->
-                <img src="./images/venue/Venue_Scenario 2_Icons.svg" alt="deco dot"/>
+              <div class="flex justify-end mb-4 md:mb-2 pt-6 md:my-auto">
+                <img src="./images/venue/scenario2_icons.svg" alt="deco dot" class="h-5 " />
               </div>
-              <div class="text-[#373F52] font-light text-base md:text-xl leading-relaxed">
+              <div class="text-[#373F52] font-light text-base md:text-xl leading-relaxed mt-5">
                 <p>
-                  Seems like someone enjoys a relaxing road trip! Not only your eyes get to enjoy a grandseeing feast of the views that sabah could offer
-                  along the way, driving a car there may be a good option, especially if you have access to one and are living nearby or within the area. It is also 
-                  good choice if you plan to rent a car and explore Kota Kinabalu at your own pace freely.  
+                  Seems like someone enjoys a relaxing road trip! Not only your eyes get to enjoy a grand sightseeing
+                  feast of the views that Sabah could offer along the way, driving a car there may be a good option,
+                  especially if you have access to one and are living nearby or within the area. It is also a good
+                  choice if you plan to rent a car and explore Kota Kinabalu at your own pace freely.
                 </p>
               </div>
             </div>
@@ -766,10 +769,14 @@
                   <img src="./images/venue/Journal_Deco 1.svg" alt="" class="h-3 w-auto" />
                 </div>
                 <div class="m-2 md:m-5 tracking-wider text-[#4F362F]">
-                  <p>Driving to Horizon Hotel is fairly straightforward, but if it's your first time navigating around Koto Kinabalu, we recommend using your favourite 
-				            trustworthy<span class="bg-[#54CCC9] font-semibold rounded-md">  navigation app </span>
-                    to find your way there. While parking at the hotel shouldn't be a huge issue, you may need to take note that 
-					        <span class="bg-[#54CCC9] font-semibold rounded-md">only cashless payment methods </span> are accepted there.</p>
+                  <p>Driving to Horizon Hotel is fairly straightforward, but if it's your first time navigating around
+                    Koto Kinabalu, we recommend using your favourite
+                    trustworthy<span class="bg-[#54CCC9] font-semibold rounded-md"> navigation app </span>
+                    to find your way there. While parking at the hotel shouldn't be a huge issue, you may need to take
+                    note that
+                    <span class="bg-[#54CCC9] font-semibold rounded-md">only cashless payment methods </span> are
+                    accepted there.
+                  </p>
                   <div class="md:ml-100 ml-90 mt-2">
                     <img src="./images/venue/bah_foot_icon.svg" alt="deco foot" class="h-10 w-auto" />
                   </div>
@@ -777,17 +784,20 @@
               </div>
               <div>
                 <!-- sticky note -->
-                 <!-- Tips -->
+                <!-- Tips -->
                 <div
-                  class="bg-[#DDC8AF] md:w-108 w-74 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))]">
-                  <div class="mx-6 mt-6">
+                  class="bg-[#DDC8AF] md:w-108 w-74 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))] relative">
+                  <div class="mx-6 mt-6 ">
                     <img src="./images/venue/tip_deco.svg" alt="tip" class="h-6 w-auto" />
                     <p class="text-[#4F362F] italic text-sm tracking-wide mt-2 mx-auto">
-                     Be sure to always check and make sure that you have 
-                    <spa class="bg-[#DC9F45] font-semibold rounded-md"> enough fuel </spa>					 
-                    before setting off!	</p>
+                      Be sure to always check and make sure that you have
+                      <spa class="bg-[#DC9F45] font-semibold rounded-md"> enough fuel </spa>
+                      before setting off!
+                    </p>
+                    <br>
                     <img src="./images/venue/aminah_fly.webp" alt="Aminah fly deco"
-                      class="w-50 h-auto md:ml-48 ml-16" />
+                      class="h-8 w-auto absolute right-5" />
+                    <br>
                   </div>
                   <div
                     class="w-0 border-t-[32px] border-l-[32px] border-t-[#CBB9A8] border-l-transparent drop-shadow-sm"
@@ -795,21 +805,19 @@
                 </div>
               </div>
             </div>
-
           </div>
-            <!--Tips for driving-->
-
-          <!--Sean Guide to Navigating -->
-              <div class="md:w-232 w-75">
-                <p class="text-2xl md:text-4xl md:block hidden" style="font-family: 'Caveat', cursive;">Sean's Guide
-                  to
-                  Navigating & Parking Your Car At Horizon Hotel!</p>
-                <p class="text-2xl md:text-2xl md:hidden" style="font-family: 'Caveat', cursive;">Sean's Guide
-                  to
-                <br>Navigating & Parking Your Car At Horizon Hotel!</p>
-                <br>
-                <img src="./images/venue/memo_deco.svg" alt="memo deco" class="h-2.5 w-auto" />
-              </div>
+          <!-- Sean’s Guide -->
+          <div class="mt-10">
+            <div class="w-75 md:w-232">
+              <p class="text-2xl md:text-4xl md:block hidden" style="font-family: 'Caveat', cursive;">
+                Sean’s Guide to Navigating & Parking Your Car At Horizon Hotel!</p>
+              <p class="text-2xl md:text-2xl md:hidden" style="font-family: 'Caveat', cursive;">
+                Sean’s Guide to Navigating &<br>Parking Your Car At Horizon Hotel!</p>
+              <br>
+              <img src="./images/venue/memo_deco.svg" alt="memo deco" class="h-2.5 w-auto" />
+            </div>
+            <div>
+              <!--  -->
               <!-- showcase Step 1 2 3-->
               <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/90 flex items-center justify-center p-4"
                 onclick="closeModal()">
@@ -822,102 +830,149 @@
                 <div class="relative">
                   <div class="left-6 z-30 w-28 h-28 md:w-36 md:h-36 pt-16 ml-6 pointer-events-none">
                     <div id="step-track" class="relative w-full h-full">
-                      <img src="./images/venue/step1.svg"
-                        class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-100 scale-100"
-                        id="step-img-0">
                       <img src="./images/venue/step2.svg"
-                        class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-0 scale-50"
-                        id="step-img-1">
+                        class="sstep-img-byland absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-100 scale-100"
+                        id="step-img-0-by-land">
+                      <img src="./images/venue/step1.svg"
+                        class="step-img-byland absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-0 scale-50"
+                        id="step-img-1-by-land">
                     </div>
                   </div>
 
                   <div
                     class="overflow-hidden rounded-2xl bg-[#4a3733] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-b-8 border-[#3a2b28]">
-                    <div id="main-track2"
+                    <div id="main-track-by-land"
                       class="flex transition-transform duration-700 ease-in-out cursor-grab active:cursor-grabbing">
 
-                      <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12 relative active">
+                      <div class="slide_byland min-w-full flex flex-col md:flex-row p-8 md:p-12 relative active">
                         <div
-                          class="md:w-1/2 rounded-lg overflow-hidden bg-[#d9c5b2] border-[20px] border-[#d9c5b2] cursor-zoom-in"
-                          onclick="openModal('./images/venue/Venue_Scenario1_Img01.webp')">
+                          class="md:w-1/2 rounded-lg overflow-hidden bg-[#d9c5b2] border-[20px] border-[#d9c5b2] cursor-zoom-in">
                           <div class="aspect-4/3 bg-stone-200">
-                            
-                            <iframe width="600" height="300" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.0899034858435!2d116.07267427364077!3d5.982358094002569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b698fbf9444f3%3A0x915b80971570fd6!2sHorizon%20Hotel!5e0!3m2!1sen!2smy!4v1772437007223!5m2!1sen!2smy" 
-							  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div class="embed-map-responsive-by-land">
+                              <div class="embed-map-container-by-land">
+                                <iframe class="embed-map-frame-by-land" frameborder="0"
+                                  scrolling="no" marginheight="0" marginwidth="0"
+                                  src="https://maps.google.com/maps?width=412&height=326&hl=en&q=Horizon%20hotel%20sabah&t=&z=17&ie=UTF8&iwloc=B&output=embed"></iframe>
+                              </div>
+                              <style>
+                                .embed-map-responsive-by-land {
+                                  position: relative;
+                                  text-align: right;
+                                  width: 100%;
+                                  height: 0;
+                                  padding-bottom: 79.12621359223301%;
+                                }
+
+                                .embed-map-container-by-land {
+                                  overflow: hidden;
+                                  background: none !important;
+                                  width: 100%;
+                                  height: 100%;
+                                  position: absolute;
+                                  top: 0;
+                                  left: 0;
+                                }
+
+                                .embed-map-frame-by-land {
+                                  width: 100% !important;
+                                  height: 100% !important;
+                                  position: absolute;
+                                  top: 0;
+                                  left: 0;
+                                }
+                              </style>
+                            </div>
+
                           </div>
                           <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
-                            <img src="./images/venue/camera_icon.svg" alt="camera icon deco" class="h-3 w-auto ml-2" />
-                            <p class="text-[#A88C76] text-[11px] leading-none tracking-wider font-bold">INFO FROM GOOGLE MAPS</p>
+                            <img src="./images/venue/location_icon.svg" alt="camera icon deco"
+                              class="h-3 w-auto ml-2" />
+                            <p class="text-[#A88C76] text-[11px] leading-none tracking-wider font-bold capitalize">
+                              info from google maps</p>
                           </div>
                         </div>
                         <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-white mt-8 md:mt-0">
                           <div class="slide-content delay-300">
-                            <p class="text-lg italic">Search for “<strong class="text-amber-300 font-bold">Horizon Hotel Kota Kinabalu</strong>” on Google Maps or your preferred navigation app. Make sure it is the correct location and drive towards the destination as instructed.
+                            <p class="text-lg italic">Search for <strong class="text-amber-300 font-bold">&#34Horizon
+                                Hotel
+                                Kota Kinabalu&#34</strong> on Google Maps or your preferred navigation app.
+                              <br><br>
+                              Make sure it is the correct location and drive towards the destination as instructed.
                             </p>
                             <br><br>
                           </div>
                           <div class="absolute mr-3 right-6 bottom-6">
-                            <img src="./images/venue/Venue_Scenario 2_Icons01.svg" alt="walk step 1 deco" class="h-8 w-auto" />
+                            <img src="./images/venue/Venue_Scenario 2_Icons01.svg" alt="walk step 1 deco"
+                              class="h-8 w-auto" />
                           </div>
                         </div>
                       </div>
 
-                      <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12 relative">
+                      <div class="slide_byland min-w-full flex flex-col md:flex-row p-8 md:p-12 relative">
                         <div
                           class="md:w-1/2 rounded-lg overflow-hidden bg-[#d9c5b2] border-[20px] border-[#d9c5b2] cursor-zoom-in"
                           onclick="openModal('./images/venue/Venue_Scenario1_Img02.webp')">
                           <div class="aspect-4/3 bg-stone-200">
-                            <iframe  width="600" height="300"src="https://www.google.com/maps/embed?pb=!4v1772437073858!6m8!1m7!1sNGyQ0CFpMtNEfnoX6jNRhw!2m2!1d5.982593499445715!2d116.0755350719889!3f298.86753969160526!4f-0.6984732527592854!5f0.7820865974627469" 
-								            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-							  
+                            <div class="embed-map-responsive-by-land">
+                              <div class="embed-map-container-by-land">
+                                <iframe src="https://www.google.com/maps/embed?pb=!4v1772475479620!6m8!1m7!1sNGyQ0CFpMtNEfnoX6jNRhw!2m2!1d5.982593499445715!2d116.0755350719889!3f293.50033240774!4f-3.0625430516003007!5f0.7820865974627469" width="412" height="326" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                              </div>
+                            </div>
+
                           </div>
                           <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
-                            <img src="./images/venue/camera_icon.svg" alt="camera icon deco" class="h-3 w-auto ml-2" />
-                            <p class="text-[#A88C76] text-[11px] font-bold tracking-wider uppercase">INFO FROM GOOGLE MAPS</p>
+                            <img src="./images/venue/location_icon.svg" alt="camera icon deco"
+                              class="h-3 w-auto ml-2" />
+                            <p class="text-[#A88C76] text-[11px] font-bold tracking-wider capitalize">info from google
+                              maps
+                            </p>
                           </div>
                         </div>
                         <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-white mt-8 md:mt-0">
                           <div class="slide-content">
                             <p class="text-lg italic">
-                              Once you arrive and see the main entrance to the hotel, you should see the 
-                              <strong class="text-amber-300 font-bold">"car park" sign</strong>.                             
-                              pointing towards entry to the car park, situated 
-                              <strong class="text-amber-300 font-bold">"right next to the Deco Café & Grill.</strong>.  
-                              *NOTE 1: The car park fully implements a cashless payment system. Please ensure that you have a 
-                              <strong class="text-amber-300 font-bold">credit / debit card</strong>.                              
+                              Once you arrive and see the main entrance to the hotel, you should see the
+                              <strong class="text-amber-300 font-bold">&#34car park&#34 sign</strong>.
+                              pointing towards entry to the car park, situated
+                              <strong class="text-amber-300 font-bold">"right next to the Deco Café & Grill.</strong>.
+                              *NOTE 1: The car park fully implements a cashless payment system. Please ensure that you
+                              have
+                              a
+                              <strong class="text-amber-300 font-bold">credit / debit card</strong>.
                               on hand for a seamless experience.
 
                               <br><br>
-                              *NOTE 2: A flat rate of 
-                              <strong class="text-amber-300 font-bold">"RM5 </strong>.                              
-                              will be charged 
-                              <strong class="text-amber-300 font-bold">"per entry.</strong>.                             
-                              Please remember to bring along your card  (that you've used to enter) to
-                              <strong class="text-amber-300 font-bold">"get it validated at the reception</strong>.                               
+                              *NOTE 2: A flat rate of
+                              <strong class="text-amber-300 font-bold">"RM5 </strong>.
+                              will be charged
+                              <strong class="text-amber-300 font-bold">"per entry.</strong>.
+                              Please remember to bring along your card (that you've used to enter) to
+                              <strong class="text-amber-300 font-bold">"get it validated at the reception</strong>.
                               before leaving the car park.
+                            </p>
                           </div>
                           <div class="absolute mr-3 right-6 bottom-6">
-                            <img src="./images/venue/Venue_Scenario 2_Icons02.svg" alt="step 2 deco" class="h-8 w-auto" />
+                            <img src="./images/venue/Venue_Scenario 2_Icons02.svg" alt="step 2 deco"
+                              class="h-8 w-auto" />
                           </div>
                         </div>
                       </div>
-
                     </div>
                   </div>
 
                   <div class="mt-12 flex items-center justify-center gap-10">
-                    <button onclick="changeSlide2(-1)"
+                    <button onclick="changeSlide_byLand(-1)"
                       class="w-12 h-12 rounded-full bg-[#DDC8AF] flex items-center justify-center hover:bg-[#FF6E6E] transition-all active:scale-90">
                       <svg class="w-6 h-6 text-[#FFFBE8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-width="4" d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
-                    <div class="flex gap-4" id="dots-container">
-                      <div class="dot w-3 h-3 rounded-full bg-[#FF6E6E] ring-4 ring-red-100 transition-all"></div>
-                      <div class="dot w-3 h-3 rounded-full bg-stone-300 transition-all"></div>
-                      <div class="dot w-3 h-3 rounded-full bg-stone-300 transition-all"></div>
+                    <div class="flex gap-4" id="dots-container-by-land">
+                      <div class="dot_byland w-3 h-3 rounded-full bg-[#FF6E6E] ring-4 ring-red-100 transition-all">
+                      </div>
+                      <div class="dot_byland w-3 h-3 rounded-full bg-stone-300 transition-all"></div>
                     </div>
-                    <button onclick="changeSlide2(1)"
+                    <button onclick="changeSlide_byLand(1)"
                       class="w-12 h-12 rounded-full bg-[#DDC8AF] flex items-center justify-center hover:bg-[#FF6E6E] transition-all active:scale-90">
                       <svg class="w-6 h-6 text-[#FFFBE8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-width="4" d="M9 5l7 7-7 7" />
@@ -925,99 +980,97 @@
                     </button>
                   </div>
                 </div>
+                <div class="mt-25">
+                  <div class="grid items-center-safe justify-center-safe">
+                    <img src="./images/venue/page_footer.png" alt="footer doco" class="w-auto h-30 md:h-60" />
+                  </div>
+                </div>
               </div>
-
               <script>
-                          /**
-                          * State Management
-                          */
-                          let currentIndex2 = 0;
-                          const totalSlides2 = 2;
-                          const mainTrack2 = document.getElementById('main-track2');
+                /**
+                 * State Management for Land Scenario
+                 */
+                let currentIndex_byLand = 0;
+                const totalSlides_byLand = 2;
+                // Fix: Use the correct ID reference
+                const mainTrack_byLand = document.getElementById('main-track-by-land');
 
-                          /**
-                          * 1. TOUCH SWIPE LOGIC (Mobile Friendly)
-                          * Detects horizontal swipes to switch slides
-                          */
-                          let touchStartX2 = 0;
-                          mainTrack2.addEventListener('touchstart', e => {
-                            touchStartX2 = e.changedTouches[0].screenX;
-                          }, { passive: true });
+                /**
+                 * 1. TOUCH SWIPE LOGIC
+                 * Corrected variable names from 'mainTrack' to 'mainTrack_byLand'
+                 */
+                let touchStartX_byLand = 0;
+                if (mainTrack_byLand) {
+                  mainTrack_byLand.addEventListener('touchstart', e => {
+                    touchStartX_byLand = e.changedTouches[0].screenX;
+                  }, { passive: true });
 
-                          mainTrack2.addEventListener('touchend', e => {
-                            const touchEndX2 = e.changedTouches[0].screenX;
-                            const diff = touchStartX2 - touchEndX2;
-                            const threshold = 50; // Minimum distance to trigger slide change
+                  mainTrack_byLand.addEventListener('touchend', e => {
+                    const touchEndX_byLand = e.changedTouches[0].screenX;
+                    const diff_byLand = touchStartX_byLand - touchEndX_byLand;
+                    const threshold_byLand = 50;
 
-                            if (Math.abs(diff) > threshold) {
-                              changeSlide2(diff > 0 ? 1 : -1);
-                            }
-                          }, { passive: true });
+                    if (Math.abs(diff_byLand) > threshold_byLand) {
+                      changeSlide_byLand(diff_byLand > 0 ? 1 : -1);
+                    }
+                  }, { passive: true });
+                }
 
-                          /**
-                          * 2. LIGHTBOX MODAL LOGIC
-                          * Opens and closes the full-screen image view
-                          */
-                          function openModal(src) {
-                            const modal = document.getElementById('imageModal');
-                            const modalImg = document.getElementById('modalImg');
-                            modalImg.src = src;
-                            modal.classList.remove('hidden');
-                            document.body.style.overflow = 'hidden'; // Disable background scroll
-                          }
+                /**
+                 * 2. UI UPDATE LOGIC
+                 * Fixed: Variable scoping and inconsistent naming
+                 */
+                function updateUI_byLand() {
+                  if (!mainTrack_byLand) return;
 
-                          function closeModal() {
-                            document.getElementById('imageModal').classList.add('hidden');
-                            document.body.style.overflow = 'auto'; // Re-enable background scroll
-                          }
+                  // Move main carousel track
+                  mainTrack_byLand.style.transform = `translateX(-${currentIndex_byLand * 100}%)`;
 
-                          /**
-                          * 3. UI UPDATE LOGIC
-                          * Synchronizes all visual elements (track, steps, dots)
-                          */
-                          function updateUI() {
-                            // Move main carousel
-                            mainTrack2.style.transform = `translateX(-${currentIndex2 * 100}%)`;
+                  // Update floating step images (step1, step2...)
+                  // Ensure HTML has class "step-img-byland"
+                  document.querySelectorAll('.step-img-byland').forEach((img, i) => {
+                    const isActive = i === currentIndex_byLand;
+                    img.classList.toggle('opacity-100', isActive);
+                    img.classList.toggle('scale-100', isActive);
+                    img.classList.toggle('opacity-0', !isActive);
+                    img.classList.toggle('scale-50', !isActive);
+                  });
 
-                            // Update floating step images (01, 02, 03)
-                            document.querySelectorAll('.step-img').forEach((img, i) => {
-                              const isActive = i === currentIndex2;
-                              img.classList.toggle('opacity-100', isActive);
-                              img.classList.toggle('scale-100', isActive);
-                              img.classList.toggle('opacity-0', !isActive);
-                              img.classList.toggle('scale-50', !isActive);
-                            });
+                  // Update slides active state
+                  document.querySelectorAll('.slide_byland').forEach((slide, i) => {
+                    slide.classList.toggle('active', i === currentIndex_byLand);
+                  });
 
-                            // Update slides active state
-                            document.querySelectorAll('.slide').forEach((slide, i) => {
-                              slide.classList.toggle('active', i === currentIndex2);
-                            });
+                  // Update pagination dots
+                  document.querySelectorAll('.dot_byland').forEach((dot, i) => {
+                    if (i === currentIndex_byLand) {
+                      dot.className = "dot_byland w-3 h-3 rounded-full bg-[#FF6E6E] ring-4 ring-red-100 transition-all";
+                    } else {
+                      dot.className = "dot_byland w-3 h-3 rounded-full bg-stone-300 transition-all";
+                    }
+                  });
+                }
 
-                            // Update pagination dots
-                            document.querySelectorAll('.dot').forEach((dot, i) => {
-                              if (i === currentIndex2) {
-                                dot.className = "dot w-3 h-3 rounded-full bg-[#FF6E6E] ring-4 ring-red-100 transition-all";
-                              } else {
-                                dot.className = "dot w-3 h-3 rounded-full bg-stone-300 transition-all";
-                              }
-                            });
-                          }
+                /**
+                 * Change slide based on direction
+                 * @param {number} dir - 1 for next, -1 for previous
+                 */
+                function changeSlide_byLand(dir) {
+                  currentIndex_byLand = (currentIndex_byLand + dir + totalSlides_byLand) % totalSlides_byLand;
+                  updateUI_byLand();
+                }
 
-                          function changeSlide2(dir) {
-                            currentIndex2 = (currentIndex2 + dir + totalSlides2) % totalSlides2;
-                            updateUI();
-                          }
+                // Initial UI sync
+                document.addEventListener('DOMContentLoaded', updateUI_byLand);
+              </script>
 
-                          // Initial load
-                          updateUI();
-                        </script>
-
-          <!--Design image-->
-
+              <!--  -->
+            </div>
+          </div>
         </div>
       </div>
-
     </section>
+
     <p class="my-10">-</p>
   </div>
   <div>
