@@ -143,9 +143,9 @@
               </p>
             </div>
           </div>
-          <div class="flex gap-2 mt-6">
+          <div class="flex gap-2 mt-6 reveal opacity-0 translate-y-10 transition-all duration-400 ease-out delay-300">
             <a href="https://horizonhotelsabah.com/" target="_blank"
-              class="group relative inline-flex items-center justify-center font-[600] text-base md:text-xl gap-3 px-5 py-2 bg-[#e8804d] rounded-full hover:bg-[#ffcb65] text-[#FFFBE8] hover:text-[#1F3359] transition-color duration-400 overflow-hidden reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
+              class="group relative inline-flex items-center justify-center font-[600] text-base md:text-xl gap-3 px-5 py-2 bg-[#e8804d] rounded-full hover:bg-[#ffcb65] text-[#FFFBE8] hover:text-[#1F3359] transition-color overflow-hidden duration-400">
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.8457 13.8457L20.7457 0.945801" stroke="currentColor" stroke-width="1.8913"
                   stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -158,7 +158,7 @@
               Hotel Website
             </a>
             <!-- Hotel FB -->
-            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-250"
+            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full reveal opacity-70 hover:opacity-100 hover:duration-100 translate-x-10 transition-all duration-700 ease-out delay-250 group"
               href="https://www.facebook.com/people/Horizon-Hotel-Kota-Kinabalu/100079982645288/" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" class="m-1.5">
                 <title>facebook</title>
@@ -167,7 +167,7 @@
               </svg>
             </a>
             <!-- Hotel IG -->
-            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-350"
+            <a class="text-[#FFF] align-middle bg-[#FFFFFF26] w-12 h-12 rounded-full reveal opacity-70 hover:opacity-100 hover:duration-100 translate-x-10 transition-all duration-700 ease-out delay-350 group"
               href="https://www.instagram.com/horizonsabah/" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="28" height="28"
                 class="m-2.5">
@@ -320,7 +320,7 @@
             <div class="mt-10 w-80 md:w-232">
               <div class="flex w-full">
                 <div class="flex items-center border-2 border-[#4F362F]
-              rounded-full overflow-hidden
+              rounded-full overflow-hidden ml-5 md:ml-0
               reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
                   <div class="w-14 h-14 flex items-center justify-center
                   reveal opacity-0 -translate-x-10 transition-all duration-1000 ease-out delay-500">
@@ -378,7 +378,8 @@
                         nearby pickup stations as there are no enforced designated waiting stations in KKIA.
                         <br><br>
                         Subsequently,
-                        you may walk to Arrival Hall 3 or Pillar No. 5 for pickups via Grab. Please follow the
+                        you may walk to <span class="bg-[#DC9F45] font-semibold rounded-md">Arrival Hall 3</span> or 
+                        <span class="bg-[#DC9F45] font-semibold rounded-md">Pillar No. 5</span> for pickups via Grab. Please follow the
                         instructions as provided by the Grab App.
                       </p>
                     </div>
@@ -429,6 +430,9 @@
                       <img src="./images/venue/step3.svg"
                         class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-0 scale-50"
                         id="step-img-2">
+                        <img src="./images/venue/step3.svg"
+                        class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-0 scale-50"
+                        id="step-img-3">
                     </div>
                   </div>
 
@@ -449,7 +453,8 @@
                             <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
                               <img src="./images/venue/camera_icon.svg" alt="camera icon deco"
                                 class="h-3 w-auto ml-2" />
-                              <p class="text-[#A88C76] text-[11px] leading-none tracking-wider font-bold">SHOT ON
+                              <p class="text-[#A88C76] text-[11px] leading-none tracking-wider font-medium uppercase">
+                                SHOT ON
                                 BAHMATE
                                 PRO X</p>
                             </div>
@@ -459,9 +464,10 @@
                             reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-600">
                               <p class="text-lg italic">Once leaving the security checking (in Arrival Hall 1/2), turn
                                 left
-                                and head towards the <strong class="text-amber-300 font-bold">KFC</strong>. Exit through
+                                and head towards the <strong class="text-[#FF6E6E]  font-bold">KFC</strong>. Exit through
                                 the
-                                <strong class="text-amber-300 font-bold">side door</strong>
+                                <strong class="text-[#FF6E6E]  font-bold">side door</strong> 
+                                located in front to the outer section of the airport.
                               </p>
                               <br><br>
                             </div>
@@ -483,7 +489,7 @@
                             <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
                               <img src="./images/venue/camera_icon.svg" alt="camera icon deco"
                                 class="h-3 w-auto ml-2" />
-                              <p class="text-[#A88C76] text-[11px] font-bold tracking-wider uppercase">
+                              <p class="text-[#A88C76] text-[11px] font-medium tracking-wider uppercase">
                                 Shot on BAHmate Pro X
                               </p>
                             </div>
@@ -492,7 +498,7 @@
                             <div
                               class="slide-content reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-400">
                               <p class="text-lg italic">Walk past some eateries and head all the way down to <strong
-                                  class="text-amber-300 font-bold">Arrival Hall 3</strong>.</p>
+                                  class="text-[#FF6E6E]  font-bold">Arrival Hall 3</strong>.</p>
                             </div>
                             <div class="absolute mr-3 right-6 bottom-6 
                               reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-800">
@@ -512,7 +518,7 @@
                             <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
                               <img src="./images/venue/camera_icon.svg" alt="camera icon deco"
                                 class="h-3 w-auto ml-2" />
-                              <p class="text-[#A88C76] text-[11px] font-bold tracking-wider uppercase">Shot on BAHmate
+                              <p class="text-[#A88C76] text-[11px] font-medium tracking-wider uppercase">Shot on BAHmate
                                 Pro
                                 X
                               </p>
@@ -521,8 +527,8 @@
                           <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-[#FFFBE8] mt-8 md:mt-0">
                             <div
                               class="slide-content reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-400">
-                              <p class="text-lg italic">You would see <strong class="text-amber-300 font-bold">
-                                  Pillar 5</strong> on your right. You may select that as your pickup spot.</p>
+                              <p class="text-lg italic">You would see <strong class="text-[#FF6E6E]  font-bold">
+                                  Pillar 5 - Within Sabah Arrivals</strong> on your right. You may select that as your pickup spot.</p>
                             </div>
                             <div
                               class="absolute mr-3 right-6 bottom-6 reveal opacity-0 -translate-x-10 transition-all duration-1000 ease-out delay-800">
@@ -531,6 +537,35 @@
                           </div>
                         </div>
 
+
+                        <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12 relative">
+                          <div
+                            class="md:w-1/2 rounded-lg overflow-hidden bg-[#d9c5b2] border-20 border-[#d9c5b2] cursor-zoom-in"
+                            onclick="openModal('./images/venue/Venue_Scenario-1_Img03b.webp')">
+                            <div class="aspect-4/3 bg-stone-200">
+                              <img src="./images/venue/Venue_Scenario-1_Img03b.webp" alt="Scenario 1 step 3"
+                                class="w-full h-full object-cover" />
+                            </div>
+                            <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
+                              <img src="./images/venue/screenshot_icon.svg" alt="camera icon deco"
+                                class="h-3 w-auto ml-2" />
+                              <p class="text-[#A88C76] text-[11px] font-medium tracking-wider uppercase">
+                                Screenshot from Grab App
+                              </p>
+                            </div>
+                          </div>
+                          <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-[#FFFBE8] mt-8 md:mt-0">
+                            <div
+                              class="slide-content reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-400">
+                              <p class="text-lg italic">You would see <strong class="text-[#FF6E6E]  font-bold">
+                                  Pillar 5 - Within Sabah Arrivals</strong> on your right. You may select that as your pickup spot.</p>
+                            </div>
+                            <div
+                              class="absolute mr-3 right-6 bottom-6 reveal opacity-0 -translate-x-10 transition-all duration-1000 ease-out delay-800">
+                              <img src="./images/venue/walk_step3.svg" alt="step 3 deco" class="h-8 w-auto" />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -543,6 +578,7 @@
                       </button>
                       <div class="flex gap-4" id="dots-container">
                         <div class="dot w-3 h-3 rounded-full bg-[#FF6E6E] ring-4 ring-red-100 transition-all"></div>
+                        <div class="dot w-3 h-3 rounded-full bg-stone-300 transition-all"></div>
                         <div class="dot w-3 h-3 rounded-full bg-stone-300 transition-all"></div>
                         <div class="dot w-3 h-3 rounded-full bg-stone-300 transition-all"></div>
                       </div>
@@ -562,7 +598,7 @@
                  * State Management
                  */
                 let currentIndex = 0;
-                const totalSlides = 3;
+                const totalSlides = 4;
                 const mainTrack = document.getElementById('main-track');
 
                 /**
@@ -649,7 +685,7 @@
             <div class="mt-10 w-80 md:w-232">
               <div class="flex w-full">
                 <div class="flex inline-flex items-center border-2 border-[#4F362F]
-              rounded-full overflow-hidden
+              rounded-full overflow-hidden ml-5 md:ml-0
               reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
                   <div class="w-14 h-14 flex items-center justify-center
                   reveal opacity-0 -translate-x-10 transition-all duration-1000 ease-out delay-500">
@@ -815,10 +851,11 @@
             <div class="mt-10 w-80 md:w-232">
               <div class="flex w-full">
                 <div class="flex items-center border-2 border-[#4F362F] rounded-full overflow-hidden
+                ml-5 md:ml-0
                 reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
                   <div class="w-14 h-14 flex items-center justify-center
                   reveal opacity-0 -translate-x-10 transition-all duration-1000 ease-out delay-500">
-                    <img src="./images/venue/Icon_taxi.svg" alt="Taxi Icon deco" />
+                    <img src="./images/venue/Driving_icon.svg" alt="Taxi Icon deco" />
                   </div>
                   <div class="px-6 py-2 text-[#4F362F] text-2xl font-semibold">
                     Driving
@@ -962,7 +999,7 @@
                               <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
                                 <img src="./images/venue/location_icon.svg" alt="camera icon deco"
                                   class="h-3 w-auto ml-2" />
-                                <p class="text-[#A88C76] text-[11px] leading-none tracking-wider font-bold capitalize">
+                                <p class="text-[#A88C76] text-[11px] leading-none tracking-wider font-medium uppercase">
                                   info from google maps</p>
                               </div>
                             </div>
@@ -970,7 +1007,7 @@
                               <div
                                 class="slide-content delay-300 reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-600">
                                 <p class="text-lg italic">Search for <strong
-                                    class="text-amber-300 font-bold">&#34Horizon
+                                    class="text-[#FF6E6E]  font-bold">&#34Horizon
                                     Hotel
                                     Kota Kinabalu&#34</strong> on Google Maps or your preferred navigation app.
                                   <br><br>
@@ -1004,7 +1041,7 @@
                               <div class="bg-[#d9c5b2] flex items-center py-2 gap-2">
                                 <img src="./images/venue/location_icon.svg" alt="camera icon deco"
                                   class="h-3 w-auto ml-2" />
-                                <p class="text-[#A88C76] text-[11px] font-bold tracking-wider capitalize">info from
+                                <p class="text-[#A88C76] text-[11px] font-medium tracking-wider uppercase">info from
                                   google
                                   maps
                                 </p>
@@ -1014,28 +1051,17 @@
                               <div
                                 class="slide-content reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-600">
                                 <p class="text-lg italic">
-                                  Once you arrive and see the main entrance to the hotel, you should see the
-                                  <strong class="text-amber-300 font-bold">&#34car park&#34 sign</strong>.
-                                  pointing towards entry to the car park, situated
-                                  <strong class="text-amber-300 font-bold">"right next to the Deco Café &
-                                    Grill.</strong>.
-                                  *NOTE 1: The car park fully implements a cashless payment system. Please ensure that
-                                  you
-                                  have
-                                  a
-                                  <strong class="text-amber-300 font-bold">credit / debit card</strong>.
-                                  on hand for a seamless experience.
-
-                                  <br><br>
-                                  *NOTE 2: A flat rate of
-                                  <strong class="text-amber-300 font-bold">"RM5 </strong>.
-                                  will be charged
-                                  <strong class="text-amber-300 font-bold">"per entry.</strong>.
-                                  Please remember to bring along your card (that you've used to enter) to
-                                  <strong class="text-amber-300 font-bold">"get it validated at the reception</strong>.
-                                  before leaving the car park.
+                                  Locate the car park entrance <strong class="text-[#FF6E6E]">adjacent to Deco Café & Grill</strong>,
+                                   as indicated by the <strong class="text-[#FF6E6E]">'Car Park' signs</strong>.
+                                </p>
+                                <p class="text-[15px] italic">
+                                   <br>
+                                   Payment: *Cashless Only (Credit/debit card required)<br>
+                                   Rate: <span class="text-[#FF6E6E] font-semibold">RM5.00 / Entry </span><br>
+                                   Validation: Please validate your entry card at Reception before leaving to secure the flat rate.
                                 </p>
                               </div>
+                              <br>
                               <div
                                 class="absolute mr-3 right-6 bottom-6 reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-800">
                                 <img src="./images/venue/Venue_Scenario 2_Icons02.svg" alt="step 2 deco"
