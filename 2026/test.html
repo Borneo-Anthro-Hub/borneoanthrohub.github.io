@@ -1,0 +1,222 @@
+<!-- <html>
+    <head>
+        <title>test</title>
+          <link href="./css/output.css" rel="stylesheet" />
+    </head>
+    <body>
+<div class="reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
+  左边进来
+</div>
+
+<div class="reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-300">
+  右边进来
+</div>
+
+<div class="reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
+  往上浮
+</div>
+
+<div class="reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-300">
+  往下掉
+</div>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.remove(
+        'opacity-0',
+        '-translate-x-10',
+        'translate-x-10',
+        'translate-y-10',
+        '-translate-y-10',
+        'blur-sm'
+      );
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+</script>
+    </body>
+</html> -->
+<div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/90 flex items-center justify-center p-4" onclick="closeModal()">
+    <span class="absolute top-6 right-6 text-white text-3xl cursor-pointer">&times;</span>
+    <img id="modalImg" src="" class="max-w-full max-h-full rounded-lg shadow-2xl transition-transform duration-300" />
+</div>
+
+<div class="relative w-full max-w-5xl mx-auto">
+    <div class="absolute -top-12 left-6 z-30 w-24 h-24 md:w-36 md:h-36 pointer-events-none">
+        <div id="step-track" class="relative w-full h-full">
+            <img src="./images/venue/step1.svg" class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-100 scale-100" id="step-img-0">
+            <img src="./images/venue/step2.svg" class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-0 scale-50" id="step-img-1">
+            <img src="./images/venue/step3.svg" class="step-img absolute inset-0 w-full h-full object-contain transition-all duration-500 opacity-0 scale-50" id="step-img-2">
+        </div>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl bg-[#4a3733] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-b-8 border-[#3a2b28]">
+        <div id="main-track" class="flex transition-transform duration-700 ease-in-out">
+
+            <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12 relative active">
+                <div class="md:w-1/2 rounded-lg overflow-hidden border-[10px] border-[#d9c5b2] cursor-zoom-in" onclick="openModal('./images/venue/Venue_Scenario1_Img01.webp')">
+                    <div class="aspect-[4/3] bg-stone-200">
+                        <img src="./images/venue/Venue_Scenario1_Img01.webp" alt="scenario 1" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="bg-[#d9c5b2] flex items-center py-2 px-4 gap-2">
+                        <img src="./images/venue/camera_icon.svg" alt="icon" class="h-3 w-auto" />
+                        <p class="text-[#A88C76] text-[11px] leading-none tracking-wider uppercase font-bold">Shot on BAHmate Pro X</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-white mt-8 md:mt-0">
+                    <div class="slide-content delay-300">
+                        <p class="text-lg italic leading-relaxed">Once leaving the security checking (in Arrival Hall 1/2), turn left and head towards the <strong class="text-amber-300 font-bold">KFC</strong>. Exit through the <strong class="text-amber-300 font-bold">side door</strong> to the outer section.</p>
+                    </div>
+                    <div class="absolute right-6 bottom-6">
+                        <img src="./images/venue/walk_step1.svg" class="h-10 w-auto opacity-80" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12 relative">
+                <div class="md:w-1/2 rounded-lg overflow-hidden border-[10px] border-[#d9c5b2] cursor-zoom-in" onclick="openModal('./images/venue/Venue_Scenario1_Img02.webp')">
+                    <div class="aspect-[4/3] bg-stone-200">
+                        <img src="./images/venue/Venue_Scenario1_Img02.webp" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="bg-[#d9c5b2] flex items-center py-2 px-4 gap-2">
+                        <img src="./images/venue/camera_icon.svg" class="h-3 w-auto" />
+                        <p class="text-[#A88C76] text-[11px] leading-none tracking-wider uppercase font-bold">Shot on BAHmate Pro X</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-white mt-8 md:mt-0">
+                    <div class="slide-content">
+                        <p class="text-lg italic leading-relaxed">Walk past some eateries (Dunkin / Starbucks / Kopi Ping) and head all the way down to <strong class="text-amber-300 font-bold">Arrival Hall 3</strong>.</p>
+                    </div>
+                    <div class="absolute right-6 bottom-6">
+                        <img src="./images/venue/walk_step2.svg" class="h-10 w-auto opacity-80" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide min-w-full flex flex-col md:flex-row p-8 md:p-12 relative">
+                <div class="md:w-1/2 rounded-lg overflow-hidden border-[10px] border-[#d9c5b2] cursor-zoom-in" onclick="openModal('./images/venue/Venue_Scenario1_Img03.webp')">
+                    <div class="aspect-[4/3] bg-stone-200">
+                        <img src="./images/venue/Venue_Scenario1_Img03.webp" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="bg-[#d9c5b2] flex items-center py-2 px-4 gap-2">
+                        <img src="./images/venue/camera_icon.svg" class="h-3 w-auto" />
+                        <p class="text-[#A88C76] text-[11px] leading-none tracking-wider uppercase font-bold">Shot on BAHmate Pro X</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12 flex flex-col justify-center text-white mt-8 md:mt-0">
+                    <div class="slide-content">
+                        <p class="text-lg italic leading-relaxed">You would see a <strong class="text-amber-300 font-bold">Pillar 5 - Within Sabah Arrivals</strong> on your right. You may select that as your pickup spot.</p>
+                    </div>
+                    <div class="absolute right-6 bottom-6">
+                        <img src="./images/venue/walk_step3.svg" class="h-10 w-auto opacity-80" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mt-12 flex items-center justify-center gap-10">
+        <button onclick="changeSlide(-1)" class="w-12 h-12 rounded-full bg-[#DDC8AF] flex items-center justify-center hover:bg-[#FF6E6E] transition-all active:scale-90">
+            <svg class="w-6 h-6 text-[#FFFBE8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="4" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <div class="flex gap-4" id="dots-container">
+            <div class="dot w-3 h-3 rounded-full bg-[#FF6E6E] ring-4 ring-red-100"></div>
+            <div class="dot w-3 h-3 rounded-full bg-stone-300"></div>
+            <div class="dot w-3 h-3 rounded-full bg-stone-300"></div>
+        </div>
+        <button onclick="changeSlide(1)" class="w-12 h-12 rounded-full bg-[#DDC8AF] flex items-center justify-center hover:bg-[#FF6E6E] transition-all active:scale-90">
+            <svg class="w-6 h-6 text-[#FFFBE8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="4" d="M9 5l7 7-7 7" /></svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const totalSlides = 3;
+    const mainTrack = document.getElementById('main-track');
+
+    // --- 1. 滑动切换逻辑 (Touch Swipe) ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    mainTrack.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    mainTrack.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // 滑动超过50px才触发
+        if (touchStartX - touchEndX > swipeThreshold) {
+            changeSlide(1); // 向左滑，看下一张
+        } else if (touchEndX - touchStartX > swipeThreshold) {
+            changeSlide(-1); // 向右滑，看上一张
+        }
+    }
+
+    // --- 2. 图片放大逻辑 (Image Zoom) ---
+    function openModal(src) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        modalImg.src = src;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // 禁止背景滚动
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // --- 3. 核心 UI 更新逻辑 ---
+    function updateUI() {
+        // 移动轨道
+        mainTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        // 外部 Step 图片动画
+        const stepImages = document.querySelectorAll('.step-img');
+        stepImages.forEach((img, i) => {
+            if (i === currentIndex) {
+                img.classList.replace('opacity-0', 'opacity-100');
+                img.classList.replace('scale-50', 'scale-100');
+            } else {
+                img.classList.replace('opacity-100', 'opacity-0');
+                img.classList.replace('scale-100', 'scale-50');
+            }
+        });
+
+        // 幻灯片内部动画状态
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === currentIndex);
+        });
+
+        // 更新指示点
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+            if (i === currentIndex) {
+                dot.className = "dot w-3 h-3 rounded-full bg-[#FF6E6E] ring-4 ring-red-100 transition-all";
+            } else {
+                dot.className = "dot w-3 h-3 rounded-full bg-stone-300 transition-all";
+            }
+        });
+    }
+
+    function changeSlide(dir) {
+        currentIndex = (currentIndex + dir + totalSlides) % totalSlides;
+        updateUI();
+    }
+
+    // 初始化
+    updateUI();
+</script>
