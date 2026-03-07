@@ -2381,11 +2381,19 @@
       }
     }
   }
-  .hover\:duration-100 {
+  .hover\:duration-400 {
     &:hover {
       @media (hover: hover) {
-        --tw-duration: 100ms;
-        transition-duration: 100ms;
+        --tw-duration: 400ms;
+        transition-duration: 400ms;
+      }
+    }
+  }
+  .hover\:duration-500 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-duration: 500ms;
+        transition-duration: 500ms;
       }
     }
   }
