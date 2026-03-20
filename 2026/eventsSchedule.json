@@ -1,26 +1,41 @@
 [
   { 
-    "title": "Team Meeting 34", 
-    "subtitle": "Engineering wwweqwe\nasdas", 
-    "date": "2026-01-21", 
+    "title": "Ticket Redemption", 
+    "subtitle": "For Sponsor and Super Sponsor\n\nS and SS", 
+    "date": "2026-03-10", 
     "room": "Room A", 
-    "start": "00:15", 
-    "end": "10:30", 
-    "color": "#666" 
+    "start": "8:30", 
+    "end": "22:30", 
+    "color": "#FACA65",
+    "titleText_color":"#000",
+    "subtitleText_color":"#2F2613"
+  },
+    { 
+    "title": "Ticket Redemption", 
+    "subtitle": "For Sponsor and Super Sponsor\n\nS and SS", 
+    "date": "2026-03-11", 
+    "room": "Room A", 
+    "start": "8:30", 
+    "end": "22:30", 
+    "color": "#FACA65",
+    "titleText_color":"#000",
+    "subtitleText_color":"#2F2613"
   },
   { 
     "title": "Workshop", 
     "subtitle": "Design", 
-    "date": "2026-01-23", 
+    "date": "2026-03-11", 
     "room": "Room B", 
     "start": "11:00", 
     "end": "13:00", 
-    "color": "#77C9" 
+    "color": "#77C9",
+    "titleText_color":"#0089",
+    "subtitleText_color":"#44F919"
   },
   { 
     "title": "Client Call", 
     "subtitle": "External", 
-    "date": "2026-01-23", 
+    "date": "2026-06-21", 
     "room": "Room C", 
     "start": "14:00", 
     "end": "15:00" 
