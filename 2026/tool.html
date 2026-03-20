@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Cropper</title>
+
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 20px 16px 28px;
+}
+
+body.dragover {
+  background: #e8f4ff;
+}
+
+#canvas,
+.overlay {
+  width: min(78vh, calc(100vw - 32px), 720px);
+  height: auto;
+}
+
+#canvas {
+  background: #000;
+  touch-action: none;
+  border-radius: 10px;
+  display: block;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wrapper.dragover {
+  transform: scale(1.01);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.16);
+}
+
+.drop-hint {
+  margin-top: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+#magnifier {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  pointer-events: none;
+  display: none;
+}
+
+#magnifier.fixed {
+  top: 12px;
+  right: 12px;
+  left: auto;
+  bottom: auto;
+  transform: none;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+}
+</style>
+</head>
+<body>
+
+<h2>Avatar Crop (1000x1000)</h2>
+<input type="file" id="upload" accept="image/*"><br><br>
+<div class="drop-hint">Drag and drop an image anywhere on the page to load it automatically</div>
+
+<div class="wrapper" id="dropZone">
+  <canvas id="canvas" width="1000" height="1000"></canvas>
+  <canvas id="overlay" width="1000" height="1000" class="overlay"></canvas>
+  <canvas id="magnifier" width="140" height="140"></canvas>
+</div>
+
+<br>
+<button id="export">Export Avatar</button>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const overlay = document.getElementById("overlay");
+const octx = overlay.getContext("2d");
+const mag = document.getElementById("magnifier");
+const mctx = mag.getContext("2d");
+const pageBody = document.body;
+const uploadInput = document.getElementById("upload");
+const dropZone = document.getElementById("dropZone");
+
+let img = new Image();
+let scale = 1;
+let minScale = 1;
+let x = 0, y = 0;
+let originalFileName = "avatar.png";
+
+function toPngName(filename) {
+  if (!filename) return "avatar.png";
+  const dot = filename.lastIndexOf(".");
+  const base = dot > 0 ? filename.slice(0, dot) : filename;
+  return `${base}.png`;
+}
+
+function addSuffix(filename, suffix) {
+  const dot = filename.lastIndexOf(".");
+  const base = dot > 0 ? filename.slice(0, dot) : filename;
+  const ext = dot > 0 ? filename.slice(dot) : "";
+  return `${base}${suffix}${ext || ".png"}`;
+}
+
+let isDragging = false;
+let startX, startY;
+let lastPointer = { x: 500, y: 500 };
+
+let lastTouchDist = 0;
+let dragDepth = 0;
+
+function getCanvasPoint(clientX, clientY) {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: ((clientX - rect.left) / rect.width) * canvas.width,
+    y: ((clientY - rect.top) / rect.height) * canvas.height
+  };
+}
+
+// 遮罩（圆形）
+function drawOverlay() {
+  octx.clearRect(0,0,1000,1000);
+  octx.fillStyle = "rgba(0,0,0,0.6)";
+  octx.beginPath();
+  octx.rect(0, 0, 1000, 1000);
+  octx.arc(500, 500, 500, 0, Math.PI * 2, true);
+  octx.fill("evenodd");
+
+  octx.strokeStyle = "#fff";
+  octx.lineWidth = 3;
+  octx.beginPath();
+  octx.arc(500,500,500,0,Math.PI*2);
+  octx.stroke();
+}
+drawOverlay();
+
+function loadImageFile(file) {
+  if (!file) return;
+  if (!file.type.startsWith("image/")) return;
+
+  originalFileName = toPngName(file.name);
+  const reader = new FileReader();
+  reader.onload = ev => {
+    img.onload = () => {
+      minScale = Math.max(1000 / img.width, 1000 / img.height);
+      scale = minScale;
+
+      x = (1000 - img.width * scale)/2;
+      y = (1000 - img.height * scale)/2;
+
+      draw();
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+uploadInput.onchange = e => {
+  loadImageFile(e.target.files[0]);
+};
+
+["dragenter", "dragover"].forEach(eventName => {
+  window.addEventListener(eventName, e => {
+    e.preventDefault();
+    if (eventName === "dragenter") {
+      dragDepth += 1;
+    }
+    pageBody.classList.add("dragover");
+    dropZone.classList.add("dragover");
+  });
+});
+
+window.addEventListener("dragleave", e => {
+  e.preventDefault();
+  dragDepth = Math.max(0, dragDepth - 1);
+  if (dragDepth > 0) return;
+  pageBody.classList.remove("dragover");
+  dropZone.classList.remove("dragover");
+});
+
+window.addEventListener("drop", e => {
+  e.preventDefault();
+  dragDepth = 0;
+  pageBody.classList.remove("dragover");
+  dropZone.classList.remove("dragover");
+  const file = e.dataTransfer.files[0];
+  loadImageFile(file);
+  if (file) {
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(file);
+    uploadInput.files = dataTransfer.files;
+  }
+});
+
+function draw() {
+  ctx.clearRect(0,0,1000,1000);
+  ctx.drawImage(img, x, y, img.width*scale, img.height*scale);
+}
+
+function drawMagnifier(cx, cy) {
+  if (!img.src) return;
+
+  const lensSize = mag.width;
+  const zoom = 5;
+
+  const imgX = (cx - x) / scale;
+  const imgY = (cy - y) / scale;
+
+  const srcSize = lensSize / zoom;
+  const sx = Math.max(0, Math.min(img.width - srcSize, imgX - srcSize / 2));
+  const sy = Math.max(0, Math.min(img.height - srcSize, imgY - srcSize / 2));
+
+  mctx.clearRect(0, 0, lensSize, lensSize);
+  mctx.save();
+  mctx.beginPath();
+  mctx.arc(lensSize / 2, lensSize / 2, lensSize / 2 - 1, 0, Math.PI * 2);
+  mctx.clip();
+  mctx.drawImage(img, sx, sy, srcSize, srcSize, 0, 0, lensSize, lensSize);
+  mctx.restore();
+}
+
+/*function showMagnifier(cx, cy, fixed = false) {
+  if (!img.src) return;
+  mag.style.display = "block";
+  if (fixed) {
+    mag.classList.add("fixed");
+  } else {
+    mag.classList.remove("fixed");
+    mag.style.left = `${cx - mag.width / 2}px`;
+    mag.style.top = `${cy - mag.height / 2}px`;
+  }
+  drawMagnifier(cx, cy);
+}*/
+
+function hideMagnifier() {
+  mag.style.display = "none";
+}
+
+function clamp() {
+  const w = img.width * scale;
+  const h = img.height * scale;
+
+  x = Math.min(0, Math.max(1000 - w, x));
+  y = Math.min(0, Math.max(1000 - h, y));
+}
+
+// 鼠标拖动
+canvas.onmousedown = e => {
+  const point = getCanvasPoint(e.clientX, e.clientY);
+  isDragging = true;
+  startX = e.clientX - x;
+  startY = e.clientY - y;
+  lastPointer = point;
+  // showMagnifier(e.offsetX, e.offsetY, false);
+};
+
+window.onmouseup = () => {
+  isDragging = false;
+  hideMagnifier();
+};
+
+canvas.onmouseleave = () => hideMagnifier();
+
+window.onmousemove = e => {
+  if (!isDragging) return;
+  x = e.clientX - startX;
+  y = e.clientY - startY;
+
+  lastPointer = getCanvasPoint(e.clientX, e.clientY);
+
+  clamp();
+  draw();
+  // showMagnifier(lastPointer.x, lastPointer.y, false);
+};
+
+// 滚轮缩放
+canvas.onwheel = e => {
+  e.preventDefault();
+
+  const zoom = e.deltaY < 0 ? 1.1 : 0.9;
+  const newScale = Math.max(minScale, scale * zoom);
+
+  const point = getCanvasPoint(e.clientX, e.clientY);
+  const mx = point.x;
+  const my = point.y;
+
+  x = mx - (mx - x) * (newScale / scale);
+  y = my - (my - y) * (newScale / scale);
+
+  scale = newScale;
+  clamp();
+  draw();
+  // showMagnifier(mx, my, false);
+};
+
+// 手机触控
+canvas.addEventListener("touchstart", e => {
+  if (e.touches.length === 1) {
+    const point = getCanvasPoint(e.touches[0].clientX, e.touches[0].clientY);
+    isDragging = true;
+    startX = e.touches[0].clientX - x;
+    startY = e.touches[0].clientY - y;
+    lastPointer = point;
+    // showMagnifier(lastPointer.x, lastPointer.y, true);
+  } else if (e.touches.length === 2) {
+    lastTouchDist = getDist(e);
+  }
+});
+
+canvas.addEventListener("touchmove", e => {
+  e.preventDefault();
+
+  if (e.touches.length === 1 && isDragging) {
+    x = e.touches[0].clientX - startX;
+    y = e.touches[0].clientY - startY;
+    lastPointer = getCanvasPoint(e.touches[0].clientX, e.touches[0].clientY);
+    clamp();
+    draw();
+    // showMagnifier(lastPointer.x, lastPointer.y, true);
+  }
+
+  if (e.touches.length === 2) {
+    let dist = getDist(e);
+    let zoom = dist / lastTouchDist;
+
+    let newScale = Math.max(minScale, scale * zoom);
+
+    scale = newScale;
+    lastTouchDist = dist;
+
+    clamp();
+    draw();
+    // showMagnifier(lastPointer.x, lastPointer.y, true);
+  }
+});
+
+canvas.addEventListener("touchend", () => {
+  isDragging = false;
+  hideMagnifier();
+});
+
+function getDist(e) {
+  const dx = e.touches[0].clientX - e.touches[1].clientX;
+  const dy = e.touches[0].clientY - e.touches[1].clientY;
+  return Math.sqrt(dx*dx + dy*dy);
+}
+
+// 导出头像
+document.getElementById("export").onclick = () => {
+  // Full 500x500 image
+  const outFull = document.createElement("canvas");
+  outFull.width = 1000;
+  outFull.height = 1000;
+  const of = outFull.getContext("2d");
+  of.drawImage(canvas, 0, 0);
+
+  const linkFull = document.createElement("a");
+  linkFull.download = addSuffix(originalFileName, "_sq");
+  linkFull.href = outFull.toDataURL();
+  linkFull.click();
+
+  // Circle image with suffix
+  const outCircle = document.createElement("canvas");
+  outCircle.width = 1000;
+  outCircle.height = 1000;
+  const oc = outCircle.getContext("2d");
+
+  oc.save();
+  oc.beginPath();
+  oc.arc(500,500,500,0,Math.PI*2);
+  oc.clip();
+  oc.drawImage(canvas,0,0);
+  oc.restore();
+
+  const linkCircle = document.createElement("a");
+  linkCircle.download = originalFileName;
+  linkCircle.href = outCircle.toDataURL();
+  linkCircle.click();
+};
+</script>
+
+</body>
+</html>

@@ -47,11 +47,19 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
 
 /* Events Styling */
 .event {
-  position: absolute; left: 5%; width: 90%; border-radius: 4px; padding: 4px;
-  box-sizing: border-box; font-size: 11px; color: #fff; z-index: 2; overflow: hidden;
+  position: absolute; 
+  left: 5%; 
+  width: 90%; 
+  border-radius: 4px; 
+  padding: 4px;
+  box-sizing: border-box; 
+  font-size: 11px; 
+  /* color: #fff;  */
+  z-index: 2; 
+  overflow: hidden;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-.event-title { font-weight: 700; display: block; }
+.event-title { font-weight: 700; display: block; color:#fff}
 .event-subtitle { font-size: 10px; opacity: 0.9; display: block; }
 
 /* Guideline & Click Mark */
@@ -86,7 +94,7 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.past-mask { position: absolute; left: 0; right: 0; background: rgba(0, 0, 0, 0.05); pointer-events: none; z-index: 3; }
+.past-mask { position: absolute; left: 0; right: 0; background: rgba(0, 0, 0, 0.2); pointer-events: none; z-index: 3; }
 .now-line { position: absolute; left: 0; right: 0; height: 2px; background: red; z-index: 35; }
 </style>
 </head>
@@ -107,13 +115,13 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
 
 <script>
 /* ===== Config ===== */
-const DAY_START = '00:00';
-const DAY_END   = '02:00'; 
+const DAY_START = '07:30';
+const DAY_END   = '23:30'; 
 const PX_PER_MIN = 1;
 const TIME_ZONE = 'Asia/Kuala_Lumpur'; 
 
 const rooms = ['Room A', 'Room B', 'Room C'];
-const dates = ['2026-01-21','2026-01-22', '2026-01-23'];
+const dates = ['2026-03-10','2026-03-11', '2026-06-21'];
 
 /* ===== Utils ===== */
 function timeToMinute(t) {
@@ -162,7 +170,9 @@ dates.forEach(dateStr => {
   roomsRow.style.height = (totalMin * PX_PER_MIN) + 'px';
 
   const dateObj = new Date(dateStr + 'T00:00');
-  const isToday = dateObj.toDateString() === todayMY.toDateString();
+  const todayStart = new Date(todayMY.getFullYear(), todayMY.getMonth(), todayMY.getDate());
+  const isToday = dateObj.toDateString() === todayStart.toDateString();
+  const isPastDay = dateObj < todayStart;
 
   rooms.forEach(roomName => {
     const room = document.createElement('div');
@@ -174,7 +184,13 @@ dates.forEach(dateStr => {
     rh.textContent = roomName;
     room.appendChild(rh);
 
-    if (isToday) {
+    if (isPastDay) {
+      const mask = document.createElement('div');
+      mask.className = 'past-mask';
+      mask.style.top = '28px';
+      mask.style.height = (totalMin * PX_PER_MIN) + 28 + 'px';
+      room.appendChild(mask);
+    } else if (isToday) {
       const mask = document.createElement('div');
       mask.className = 'past-mask';
       room.appendChild(mask);
@@ -205,14 +221,16 @@ function renderEvents(eventsList) {
     ev.style.top = (28 + top * PX_PER_MIN) + 'px'; 
     ev.style.height = (height * PX_PER_MIN) + 'px';
     ev.style.backgroundColor = e.color || '#54CCC9';
+    var tittleTextColor = e.titleText_color || '#FFF';
+    var subtitleTextColor = e.subtitleText_color || '#FFF';
     ev.innerHTML = `
-      <span class="event-title">${e.title}</span>
-      <span class="event-subtitle">${e.subtitle || ''}</span>
+      <span class="event-title" style="color:${tittleTextColor}">${e.title}</span>
+      <span class="event-subtitle" style="color:${subtitleTextColor}">${e.subtitle || ''}</span>
     `;
     room.appendChild(ev);
   });
 }
-fetch('./events.json').then(res => res.json()).then(data => renderEvents(data)).catch(() => {});
+fetch('./eventsSchedule.json').then(res => res.json()).then(data => renderEvents(data)).catch(() => {});
 
 /* ===== Interaction Logic (Precision Position) ===== */
 const viewport = document.getElementById('viewport');
