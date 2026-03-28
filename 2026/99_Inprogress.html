@@ -31,24 +31,21 @@
     <script src="navbar.js"></script>
     <!-- 1st -->
     <!-- Responsive Image Box -->
-    <main class="p-0 m-0 flex-grow">
-      <div class="relative overflow-hidden flex items-start justify-center px-6 py-4">
+    <main class="m-0 flex-grow px-6 py-8 md:px-10">
+      <div class="mx-auto flex min-h-[calc(100vh-10rem)] w-full max-w-6xl items-center justify-center">
+        <div class="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(280px,34vw)] lg:gap-16">
+          <div class="order-2 text-center lg:order-1 lg:text-left">
+            <h1 class="text-3xl font-bold leading-tight text-[#FFFBE8] sm:text-4xl md:text-5xl lg:text-6xl">
+              Page Currently Still in Progress
+            </h1>
+            <p class="mt-4 max-w-2xl text-sm font-bold leading-relaxed text-[#FFFBE8] sm:text-base md:text-lg">
+              Our woffy duo is out of time and out of coffee. Updates will resume once they stop speed-coding in panic mode.
+            </p>
 
-        <a class="absolute mxl:text-6xl md:text-4xl font-bold text-[#FFFBE8] mt-[20vh] -ml-[20vw]">Page Currently still
-          in Progress<br>
-          <span class="absolute text-xs font-bold text-[#FFFBE8] mt-2">Our woffy duo is out of time and out
-            of coffee. Updates will resume once they stop speed-coding in panic mode</span>
-        </a>
-
-        <div class="relative shrink-0">
-          <div class="fixed top-[35%] left-[40%] flex flex-col space-y-2 z-20">
-            <!-- button -->
-             <!-- Add Fallback for History with no previous, and allow with previous to redirect back -1 -->
-            <!-- <a href="javascript:void(0)" onclick="history.back()"
-              class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[2vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden"> -->
+            <div class="mt-8 flex justify-center lg:justify-start">
               <a href="javascript:void(0)" 
               onclick="document.referrer ? history.back() : window.location.href='index.html';"
-              class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-[1vw] px-[2vw] py-[0.6vw] text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+              class="z-10 group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#e8804d] px-6 py-3 text-base font-[1000] text-[#fffbe8] transition-colors duration-1000 hover:bg-[#ffcb65] sm:px-8 sm:py-4 sm:text-lg md:gap-4">
               <!-- Blue  -->
               <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[6em] transition-transform duration-500 
                             ease-[cubic-bezier(0.34,1.3,0.7,1)] ml-[-2rem] delay-0 group-hover:delay-100"
@@ -66,7 +63,7 @@
                   fill="#E8804D" />
               </svg>
               <span
-                class="relative z-20 transition-all text-[1.2vw] text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-0.5rem] duration-1000">
+                class="relative z-20 text-base text-[#fffbe8] transition-all duration-1000 group-hover:translate-x-[-0.5rem] group-hover:text-[#1f3359] sm:text-lg">
                 BACK
               </span>
               <svg class="z-10 h-8 w-auto group-hover:translate-x-[0.5vw] duration-1000" width="42" height="41"
@@ -76,11 +73,16 @@
                 <path d="M20.8501 3L38.25 20.3L20.8501 37.7" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
                   stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-            </a>
+              </a>
+            </div>
           </div>
-          <img src="images/A.png" alt="Section Background"
-            class="ml-[40vw] mt-[5vw] w-[20vw] md:mt-[15vh] h-auto object-contain" />
+
+          <div class="order-1 flex justify-center lg:order-2 lg:justify-end">
+            <img src="images/A.png" alt="Section Background"
+              class="w-[68vw] max-w-[420px] h-auto object-contain sm:w-[52vw] md:w-[42vw] lg:w-full" />
+          </div>
         </div>
+      </div>
     </main>
 
   </div>
