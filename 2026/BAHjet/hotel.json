@@ -1,0 +1,30 @@
+[
+    {
+        "index":        1,
+        "hotel_name":   "Pantai Inn",
+        "price":        "$-$$",
+        "distance_icon":"walk",
+        "distance":     "45m",
+        "desc":         "This budget 1-star hotel is located in front of our BAH venue. It provides basic air-conditioned rooms with free Wi-Fi, cable TV, and private bathrooms. Affordable rates! Enjoy local Malaysian-Chinese cuisine next door at Thien Thien Restaurant.",
+        "google_map":   "https://www.google.com/maps/place/Pantai+Inn/data=!4m2!3m1!19sChIJFVojnY9pOzIRmiP3vyTdT94"
+
+    },
+    {
+        "index":        2,
+        "hotel_name":   "Mandarin Hotel",
+        "price":        "$$",
+        "distance_icon":"walk",
+        "distance":     "66m",
+        "desc":         "Located on bustling Gaya Street, Mandarin Hotel Kota Kinabalu is surrounded by cafés and restaurants, including Peppermint and MOGINUM Restobar, within 50 metres. The hotel offers air-conditioned accommodations with free Wi-Fi, flat-screen TVs, and private bathrooms. Additional services include daily housekeeping, a 24-hour front desk, luggage storage, tour help, lift access, paid laundry, and an airport shuttle on request.",
+        "google_map":   "https://www.google.com/maps/place/Mandarin+Hotel/data=!4m2!3m1!19sChIJ36tk7Y9pOzIRN2WgyL7GPWU"
+    },
+    {
+        "index":        3,
+        "hotel_name":   "The City Inn Hotel",
+        "price":        "$$-$$$",
+        "distance_icon":"walk",
+        "distance":     "Next to Horizon Hotel",
+        "desc":         "Located right in the heart of Kota Kinabalu, the City Inn Hotel offers a warm and inviting stay. Just a stone’s throw away from Horizon Hotel and adjacent to Gaya Street, it provides comfortable air-conditioned rooms equipped with free Wi-Fi. With a 24-hour front desk and daily breakfast available, you can feel right at home. Plus, you’ll find an array of nearby shops, convenience stores, pharmacies, and money changers, ensuring that all your essential needs are easily met during your city-centre visit.",
+        "google_map":   "https://www.google.com/maps/place/THE+CITYINN+HOTEL/data=!4m2!3m1!19sChIJb17iQQ9pOzIRpslkRTk_U28"
+    }
+]
