@@ -65,6 +65,14 @@ function renderDistanceIcon(distanceIcon) {
         return `<span class="text-base font-[20px] uppercase tracking-[0.08em]">${escapeHtml(fallbackLabel)}</span>`;
     }
 
+    if (iconKey === "walk") {
+        return `<svg class="block h-[20px] w-[20px]" aria-label="${escapeHtml(fallbackLabel)}" role="img" viewBox="0 0 12 20"><use href="#icon_walk"></use></svg>`;
+    }
+
+    if (iconKey === "car") {
+        return `<svg class="block h-[20px] w-[20px]" aria-label="${escapeHtml(fallbackLabel)}" role="img" viewBox="0 0 27 13"><use href="#icon_car"></use></svg>`;
+    }
+
     return `<img class="block h-[20px] w-[20px] object-contain" src="./images/BAHjet/icon_${escapeHtml(iconKey)}.svg" alt="${escapeHtml(fallbackLabel)}" loading="lazy" />`;
 }
 

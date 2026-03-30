@@ -1,0 +1,118 @@
+[
+    {
+        "index":1,
+        "destinations":           "Gaya Street",
+        "distance_icon":          "walk",
+        "distance":               "100m",
+        "desc":                   "Take a single stroll down along, and you’ll realise that everything you need during your stay at BAH is right at your doorstep — Gaya Street is a vibrant hub adorned with charming shops, cafés, and heritage buildings, making it a perfect blend of culture, history, and modern-day energy.",
+        "activities":[
+            {
+                "activities_name":"Api-Api Night Food Market",
+                "activities_desc":"On Friday and Saturday nights, Gaya Street shifts into a food-focused stretch where stalls line the road and the air fills with the smell of grilling and frying. Visitors move from booth to booth picking up local bites, seafood, snacks, and drinks while eating as they walk. It’s less of a formal market and more of an evening hangout — simple, busy, and centred around trying different foods in one place."
+            },
+            {
+                "activities_name":"Sunday Market",
+                "activities_desc":"This Sunday Market transforms Gaya Street into a lively open-air bazaar, with the road closed to make way for rows of stalls. Visitors can browse fresh produce, local snacks, flowers, handmade crafts, souvenirs, and assorted curiosities, community-driven atmosphere. It starts as early as 6:00am and starts closing at 12:00pm."
+            }
+        ],
+        "google_map":             "https://www.google.com/maps/place/Gaya+Street+Market/data=!4m2!3m1!19sChIJtTcGh49pOzIRbVb66G8asPs"
+    },
+    {
+    "index":2,
+    "destinations":           "Jesselton Point Ferry Terminal",
+    "distance_icon":          "car",
+    "distance":               "1.5Km",
+    "desc":                   "Jesselton Point Ferry Terminal in Kota Kinabalu is the gateway to the stunning Tunku Abdul Rahman Marine Park, offering easy access to island-hopping adventures. Beyond its ferries, the terminal charms visitors with a nostalgic waterfront vibe, colorful murals, and seaside cafés perfect for relaxing before or after a trip.",
+    "activities":[
+        {
+            "activities_name":"Island Hopping",
+            "activities_desc":"Island hopping here is an easy way to spend a day out at sea, with short boat rides between a few nearby islands in Tunku Abdul Rahman Marine Park. Most trips stop at places like Sapi Island, Manukan Island, or Mamutik Island, where you can snorkel in clear water, swim near the shore, or just relax on the beach. It’s simple, laid-back, and perfect if you want some island time without going far."
+        }
+    ],
+    "google_map":             "https://www.google.com/maps/place/Jesselton+Point+Ferry+Terminal+-+South+Jetty/data=!4m2!3m1!19sChIJyQOAgodpOzIRynXeo1uoJyE"       
+},
+{
+    "index":3,
+    "destinations":           "Atkinson Clock Tower",
+    "distance_icon":          "walk",
+    "distance":               "290m",
+    "desc":                   "Built in 1905, the Atkinson Clock Tower was put up as a memorial to Francis George Atkinson, a district officer who passed away at a young age. The clock mechanism was brought over from England, and the small wooden tower has survived wars and major changes around it while much of the old town did not. Today, people stop by to take photos, read about its past, or enjoy a quiet pause at one of the area’s oldest remaining landmarks.",
+    "activities":[
+        {
+            "activities_name":"Sightseeing",
+            "activities_desc":"A perfect location to indulge in the sights, or maybe just the perfect place to get that next Fursuit Friday material you needed — the choice is yours."
+        }
+    ],
+    "google_map":             "https://www.google.com/maps/place/Atkinson+Clock+Tower/data=!4m2!3m1!19sChIJy7ObEI1pOzIRKCKIN_C8ZqM"
+},
+{
+    "index":4,
+    "destinations":           "Signal Hill Observatory Platform",
+    "distance_icon":          "car",
+    "distance":               "1.6Km",
+    "desc":                   "The Signal Hill Observatory Platform is a hilltop lookout offering wide panoramic views of the city, nearby islands, and the sea beyond. It’s an open viewing deck where visitors come to take photos, enjoy the breeze, and catch the sunset.",
+    "activities":[
+        {
+            "activities_name":"Sightseeing",
+            "activities_desc":"A perfect location to indulge in the sights, or maybe just the perfect place to get that next Fursuit Friday material you needed — the choice is yours."
+        }
+    ],
+    "google_map":             "https://www.google.com/maps/place/KK+City+Overlooking/data=!4m2!3m1!19sChIJse5QWABpOzIRfl6VVkq6Nv0"
+},
+{
+    "index":5,
+    "destinations":           "Sabah State Museum",
+    "distance_icon":          "car",
+    "distance":               "6.5Km",
+    "desc":                   "This museum beautifully showcases the diverse aspects of our region's history and culture all in one location. The charming traditional-style architecture and the outdoor heritage houses truly enhance your visit, creating an engaging and immersive experience!",
+    "activities":[
+        {
+            "activities_name":"Museum Tour",
+            "activities_desc":"Tourists will embark on a journey through Sabah’s rich cultural and natural heritage, exploring exhibits on archaeology, ethnography, and traditional crafts. The tour also includes the Heritage Village, where visitors can step inside life-sized replicas of indigenous houses to experience the state’s diverse ethnic traditions."
+        }
+    ],
+    "google_map":             "https://www.google.com/maps/place/Sabah+State+Museum/data=!4m2!3m1!19sChIJL0Z-z7BpOzIRIEUWpx2lhNw"
+},
+{
+    "index":6,
+    "destinations":           "Handicraft Market",
+    "distance_icon":          "walk",
+    "distance":               "500m",
+    "desc":                   "“The Handicraft Market, often known as the Filipino Market, is a lively stretch of stalls selling local crafts and souvenirs. Visitors can browse handmade beadwork, batik fabrics, woven items, wood carvings, traditional accessories, and locally sourced pearls. Bargaining is common, and the busy, colourful atmosphere makes it as much about the experience as it is about shopping.",
+    "activities":[
+        {
+            "activities_name":"Souvenirs",
+            "activities_desc":"If there's a second most awesome place after the dealer's den, this might be it!"
+        }
+    ],
+    "google_map":             "https://www.google.com/maps/place/Handicraft+Market/data=!4m2!3m1!19sChIJl4pkGY5pOzIROCcbCzKGqZ4"
+},
+{
+    "index":7,
+    "destinations":           "Filipino Night Market",
+    "distance_icon":          "walk",
+    "distance":               "500m",
+    "desc":                   "The Filipino Night Market is best known for its lively pick-and-cook seafood experience, where visitors choose fresh fish, prawns, squid, or shellfish and have them cooked on the spot! These stalls also provide you with tables where you can sit down and eat! Aside from just seafoods, nearby stalls also sell drinks, local desserts, and street snacks! These stalls usually open at 5:30pm!",
+    "activities":[
+        {
+            "activities_name":"Pick-And-Cook-Seafood",
+            "activities_desc":"If you can't resist the sight of freshly caught seafod grilled or cooked to order right before your eyes, then this is the place for seafood lovers like you. The bustling atmosphere, smoky aromas, and affordable prices make it a must-try for an authentic local dining experience."
+        }
+    ],
+    "google_map":             "https://www.google.com/maps/place/Night+Food+Market/data=!4m2!3m1!19sChIJAYGq-5FpOzIRHzYWRBnxJmI"
+},
+{
+    "index":8,
+    "destinations":           "Maybank - Gaya Street Branch",
+    "distance_icon":          "walk",
+    "distance":               "400m",
+    "desc":                   "As amusing as it may seem, after its moment in the social media spotlight, this location has become a popular photo stop for both tourists and locals and capture some pictures during their walk at Gaya Street.",
+    "activities":[
+        {
+            "activities_name":"Sightseeing",
+            "activities_desc":"A perfect location to indulge in the sights, or maybe just the perfect place to get that next Fursuit Friday material you needed — the choice is yours."
+        }
+    ],
+    "google_map":             "https://maps.app.goo.gl/EtNduQBVnyvPYrjH9"
+}
+]
