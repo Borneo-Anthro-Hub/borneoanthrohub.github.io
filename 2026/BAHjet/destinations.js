@@ -113,8 +113,12 @@ function setupDestinationCarousel(destinations) {
     const trackEl = document.getElementById("main-track-by-land");
     const dotsEl = document.getElementById("dots-container-by-land");
     const controlsEl = document.getElementById("destination-controls");
-    const prevButton = document.getElementById("destination-prev");
-    const nextButton = document.getElementById("destination-next");
+    const prevButtons = Array.from(
+        document.querySelectorAll('[data-destination-nav="prev"]'),
+    );
+    const nextButtons = Array.from(
+        document.querySelectorAll('[data-destination-nav="next"]'),
+    );
 
     if (!carouselEl || !trackEl || !dotsEl || !controlsEl) {
         return;
@@ -143,6 +147,13 @@ function setupDestinationCarousel(destinations) {
         carouselEl.style.height = `${activeSlide.offsetHeight}px`;
     }
 
+    function scheduleHeightSync() {
+        window.cancelAnimationFrame(resizeFrame);
+        resizeFrame = window.requestAnimationFrame(() => {
+            syncCarouselHeight();
+        });
+    }
+
     function updateUI() {
         trackEl.style.transform = `translateX(-${currentIndex * 100}%)`;
 
@@ -154,7 +165,7 @@ function setupDestinationCarousel(destinations) {
             dot.className = index === currentIndex ? ACTIVE_DOT_CLASSES : IDLE_DOT_CLASSES;
         });
 
-        syncCarouselHeight();
+        scheduleHeightSync();
     }
 
     function changeSlide(direction) {
@@ -162,8 +173,12 @@ function setupDestinationCarousel(destinations) {
         updateUI();
     }
 
-    prevButton?.addEventListener("click", () => changeSlide(-1));
-    nextButton?.addEventListener("click", () => changeSlide(1));
+    prevButtons.forEach((button) => {
+        button.addEventListener("click", () => changeSlide(-1));
+    });
+    nextButtons.forEach((button) => {
+        button.addEventListener("click", () => changeSlide(1));
+    });
 
     dotsEl.addEventListener("click", (event) => {
         const target = event.target.closest("[data-destination-dot]");
@@ -197,10 +212,15 @@ function setupDestinationCarousel(destinations) {
         { passive: true },
     );
 
-    window.addEventListener("resize", () => {
-        window.cancelAnimationFrame(resizeFrame);
-        resizeFrame = window.requestAnimationFrame(syncCarouselHeight);
+    trackEl.querySelectorAll("img").forEach((image) => {
+        if (!image.complete) {
+            image.addEventListener("load", scheduleHeightSync, { once: true });
+            image.addEventListener("error", scheduleHeightSync, { once: true });
+        }
     });
+
+    window.addEventListener("resize", scheduleHeightSync);
+    window.addEventListener("load", scheduleHeightSync, { once: true });
 
     updateUI();
 
