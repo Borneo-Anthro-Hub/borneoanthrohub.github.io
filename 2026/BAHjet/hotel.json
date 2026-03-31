@@ -2,7 +2,7 @@
     {
         "index":        1,
         "hotel_name":   "Pantai Inn",
-        "price":        "$-$$",
+        "price":        "$—$$",
         "distance_icon":"walk",
         "distance":     "45m",
         "desc":         "This budget 1-star hotel is located in front of our BAH venue. It provides basic air-conditioned rooms with free Wi-Fi, cable TV, and private bathrooms. Affordable rates! Enjoy local Malaysian-Chinese cuisine next door at Thien Thien Restaurant.",
@@ -21,7 +21,7 @@
     {
         "index":        3,
         "hotel_name":   "The City Inn Hotel",
-        "price":        "$$-$$$",
+        "price":        "$$—$$$",
         "distance_icon":"walk",
         "distance":     "Next to Horizon Hotel",
         "desc":         "Located right in the heart of Kota Kinabalu, the City Inn Hotel offers a warm and inviting stay. Just a stone’s throw away from Horizon Hotel and adjacent to Gaya Street, it provides comfortable air-conditioned rooms equipped with free Wi-Fi. With a 24-hour front desk and daily breakfast available, you can feel right at home. Plus, you’ll find an array of nearby shops, convenience stores, pharmacies, and money changers, ensuring that all your essential needs are easily met during your city-centre visit.",
