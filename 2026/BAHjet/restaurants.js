@@ -58,14 +58,14 @@ function renderPrice(price) {
     return Array.from(priceString)
         .map((character) => {
             if (character === "$") {
-                return '<img class="block h-[20px] w-[20px] object-contain" src="./images/BAHjet/icon_money.svg" alt="$" loading="lazy" />';
+                return '<img class="block h-[20px] object-contain" src="./images/BAHjet/icon_money.svg" alt="$" loading="lazy" />';
             }
 
             if (character.trim() === "") {
                 return "";
             }
 
-            return `<span class="text-[20px] leading-none font-bold text-[#4F362F]">${escapeHtml(character)}</span>`;
+            return `<span class="text-[20px] leading-none font-bold text-[#4F362F] px-1">${escapeHtml(character)}</span>`;
         })
         .join("");
 }

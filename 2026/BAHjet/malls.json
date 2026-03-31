@@ -3,7 +3,7 @@
         "index":        1,
         "mall_name":    "Imago Shopping Mall",       
         "distance_icon":"car",
-        "distance":     "2Km",
+        "distance":     "2km",
         "desc":         "It’s a large, modern shopping complex. Recognize for its wide range of international and local brands, dining outlets, and entertainment spaces spread across multiple levels. The fully indoor, air-conditioned layout makes it a popular spot for shopping, eating, and spending time comfortably away from the heat.",
         "google_map":   "https://www.google.com/maps/place/Imago+Shopping+Mall/data=!4m2!3m1!19sChIJGwRDk79pOzIRjM0ywHUkgDM"   
     },
@@ -35,7 +35,7 @@
         "index":        5,
         "mall_name":    "Komplex Karamunsing",
         "distance_icon": "car",
-        "distance":     "2.1Km",
+        "distance":     "2.1km",
         "desc":         "It’s an older commercial complex best known for electronics and tech-related services. The building is filled with computer shops, phone repair outlets, printing services, and stores selling gadgets and accessories. It functions more as a specialist hub for repairs, upgrades, and custom technical services. If this is something your into feel free and drop by!",
         "google_map":   "https://www.google.com/maps/place/Kompleks+Karamunsing/data=!4m2!3m1!19sChIJn0XAjWNpOzIRfJFWAd7l1OQ"
     }

@@ -21,7 +21,7 @@
     "index":2,
     "destinations":           "Jesselton Point Ferry Terminal",
     "distance_icon":          "car",
-    "distance":               "1.5Km",
+    "distance":               "1.5km",
     "desc":                   "Jesselton Point Ferry Terminal in Kota Kinabalu is the gateway to the stunning Tunku Abdul Rahman Marine Park, offering easy access to island-hopping adventures. Beyond its ferries, the terminal charms visitors with a nostalgic waterfront vibe, colorful murals, and seaside cafés perfect for relaxing before or after a trip.",
     "activities":[
         {
@@ -49,7 +49,7 @@
     "index":4,
     "destinations":           "Signal Hill Observatory Platform",
     "distance_icon":          "car",
-    "distance":               "1.6Km",
+    "distance":               "1.6km",
     "desc":                   "The Signal Hill Observatory Platform is a hilltop lookout offering wide panoramic views of the city, nearby islands, and the sea beyond. It’s an open viewing deck where visitors come to take photos, enjoy the breeze, and catch the sunset.",
     "activities":[
         {
@@ -63,7 +63,7 @@
     "index":5,
     "destinations":           "Sabah State Museum",
     "distance_icon":          "car",
-    "distance":               "6.5Km",
+    "distance":               "6.5km",
     "desc":                   "This museum beautifully showcases the diverse aspects of our region's history and culture all in one location. The charming traditional-style architecture and the outdoor heritage houses truly enhance your visit, creating an engaging and immersive experience!",
     "activities":[
         {
