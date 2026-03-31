@@ -1,0 +1,7 @@
+[
+  { "id": "all", "name": "All", "icon": "icon_all" },
+  { "id": "muslim_friendly", "name": "Muslim-friendly", "icon": "icon_muslim_friendly" },
+  { "id": "pork_free", "name": "Pork-free", "icon": "icon_pork_free" },
+  { "id": "serves_alcohol", "name": "Serves Alcohol", "icon": "icon_serves_alcohol" },
+  { "id": "veg", "name": "Vegetarian", "icon": "icon_veg" }
+]

@@ -238,8 +238,8 @@
               </div>
 
               <!-- Right block -->
-              <a id="link_"
-                class="bg-[#DDC8AF] rounded-b-md md:rounded-b-none md:rounded-tr-md md:rounded-br-md hover:cursor-not-allowed">
+              <a href="./31_BAHjet.html"
+                class="bg-[#DDC8AF] rounded-b-md md:rounded-b-none md:rounded-tr-md md:rounded-br-md">
                 <div class="py-2 md:px-10 md:py-10 relative">
                   <div class="flex flex-wrap items-center justify-center-safe gap-3 text-center md:text-left md:py-12
                   reveal opacity-0 translate-x-10 translate-y-10 duration-700 ease-out delay-350">
@@ -250,12 +250,12 @@
                     </p>
                     <img src="./images/venue/arrow.svg" alt="deco arrow" class="h-5" />
                   </div>
-                  <div
+                  <!-- <div
                     class="absolute right-20 reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-600">
                     <p class="-mt-13 font-semibold text-[#FFFBE8] bg-[#4F362F] italic px-3 ">
                       Coming Soon
                     </p>
-                  </div>
+                  </div> -->
                 </div>
               </a>
               <div id="HowDoIGetThere"></div>
@@ -279,7 +279,7 @@
         </div>
       </div>
       <div
-        class="w-full md:h-1430 h-1750 bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] justify-center p-px relative">
+        class="w-full md:h-1420 h-1740 bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] justify-center p-px relative">
         <!-- The note -->
         <div class="w-full md:h-1400 h-1720 bg-[#FFFBE8] mt-10 items-center-safe flex flex-col relative"
           style="box-shadow: 0px 0px 10px 2px">
@@ -730,12 +730,13 @@
                 <!-- sticky note -->
                 <!-- Tips -->
                 <div
-                  class="bg-[#DDC8AF] md:w-108 w-74 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))] relative">
+                  class="bg-[#DDC8AF] md:w-108 w-74 h-auto p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))] relative
+                  reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
                   <div class="mx-6 mt-6">
                     <img src="./images/venue/tip_deco.svg" alt="tip" class="h-6 w-auto
-                    reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300" />
+                    reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-600" />
                     <p class="text-[#4F362F] italic text-sm tracking-wide mt-2 mx-auto
-                    reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-300">
+                    reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-600">
                       Fares are <span class="bg-[#DC9F45] font-semibold rounded-md">fixed</span> and <span
                         class="bg-[#DC9F45] font-semibold rounded-md">guaranteed</span>, but subject to traffic
                       conditions and availability.
@@ -751,12 +752,13 @@
                 </div>
                 <!-- Look out sticky note -->
                 <div
-                  class="bg-[#ff6e6e] md:w-108 w-74 h-auto mt-10 p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))] relative">
+                  class="bg-[#ff6e6e] md:w-108 w-74 h-auto mt-10 p-px [clip-path:polygon(0_0,100%_0,100%_100%,32px_100%,0_calc(100%-32px))] relative
+                  reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
                   <div class="mx-6 mt-6">
                     <img src="./images/venue/lookup_tag.svg" alt="look out tag deco" class="h-6 w-auto
-                    reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-300" />
+                    reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-600" />
                     <p class="text-[#FFFBE8] italic text-sm tracking-wide mt-2 mx-auto
-                    reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
+                    reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-600">
                       If you are approached by individuals offering taxi or private car services,<span
                         class="bg-[#ff2c4d] font-semibold rounded-md"> do not engage </span>
                       with them as they might be<span class="bg-[#ff2c4d] font-semibold rounded-md"> unlicensed
@@ -1230,30 +1232,7 @@
       border-top: 5px dotted #DDC8AF;
     }
   </style>
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove(
-            'opacity-0',
-            '-translate-x-10',
-            'translate-x-10',
-            'translate-y-10',
-            '-translate-y-10',
-            '-translate-x-5',
-            'translate-x-5',
-            'translate-y-5',
-            '-translate-y-5',
-            'blur-sm'
-          );
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal').forEach(el => {
-      observer.observe(el);
-    });
-  </script>
+  <script src="./js/animation.js"></script>
 
   <noscript>
     <style>

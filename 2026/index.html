@@ -47,7 +47,7 @@
       background-color: rgba(255, 122, 0, 0.90) !important;
     }
   </style>
-
+<script src="./js/animation.js"></script>
 </head>
 
 
@@ -81,11 +81,13 @@
                   lg:w-[30vw]
                   xl:w-[28vw]
                   h-auto
-                  object-contain z-50" />
+                  object-contain z-50
+                  reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300" />
 
         <!-- JOIN NOW button -->
           <a href="./1_Ticket.html"
-            class="group relative inline-flex items-center justify-center font-[1000] gap-2 px-[3rem] py-[1.5rem] text-lg bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+            class="group relative inline-flex items-center justify-center font-[1000] gap-2 px-[3rem] py-[1.5rem] text-lg bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden
+            reveal opacity-0 translate-y-10 transition-all ease-out delay-300">
             <!-- Blue  -->
             <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[15.4rem] transition-transform duration-500 
                       ease-[cubic-bezier(0.34,1.3,0.8,1)] ml-[-2rem] delay-0 group-hover:delay-100"
@@ -126,13 +128,14 @@
     <section class="relative w-screen min-h-[1000px] bg-transparent flex items-center justify-center mt-0">
       <!-- Envelope with date -->
       <object data="./images/main/2-Envelope.svg"
-        class="absolute top-[28vw] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] lg:w-[70%] h-auto opacity-90/"></object>
+        class="absolute top-[28vw] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] lg:w-[70%] h-auto opacity-90"></object>
 
       <!-- Foreground Content -->
       <div class="relative flex lg:flex-row flex-col lg:w-4/5 justify-center items-start lg:mt-[10vw] z-10 gap-6">
         <!-- hotel image -->
         <!-- Left Container -->
-        <div class="lg:flex-1 flex lg:justify-center">
+        <div class="lg:flex-1 flex lg:justify-center mt-28
+        reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
           <a href="https://maps.app.goo.gl/YD1BeyjAbpKy7z498" target="_blank" class="w-full h-auto">
             <img src="./images/main/2-Hotel.svg" class="w-[70vw] lg:w-full h-auto mt-[1vw] md:mt-[20vw] ml-[6vw] lg:mt-[4vw] xl:mt-46 -rotate-[5deg]"
               type="image/svg+xml" alt="Horizon Hotel - Event Hotel"></img>
@@ -142,16 +145,18 @@
         <!-- Right Container -->
         <div class="flex-1 flex flex-col items-center relative">
           <!-- Ticket -->
-          <object data="./images/main/2-Ticket_Header.svg" class="w-[90%] lg:w-full h-auto mb-6 pt-[12vw]"
+          <object data="./images/main/2-Ticket_Header.svg" class="w-[90%] lg:w-full h-auto mb-6 pt-[12vw]
+          reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-300"
             type="image/svg+xml"></object>
 
           <!-- Note -->
           <div class="relative shrink-0">
-            <object class="w-[80%] lg:w-[25vw] h-auto left-1/2" data="./images/main/2-Letter.svg" type="image/svg+xml"></object>
+            <object class="w-[80%] lg:w-[25vw] h-auto left-1/2 reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300" data="./images/main/2-Letter.svg" type="image/svg+xml"></object>
             <div class="absolute top-[55%] left-[60%] lg:left-[75%] flex flex-col space-y-2 z-20">
               <!-- button -->
               <a href="./1_Ticket.html"
-                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-6 px-2 py-3 -top-6 md:top-0 text-lg lg:gap-[1vw] lg:px-[1.5vw] lg:py-[0.6vw] lg:text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-6 px-2 py-3 -top-6 md:top-0 text-lg lg:gap-[1vw] lg:px-[1.5vw] lg:py-[0.6vw] lg:text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden
+                reveal opacity-0 translate-y-10 transition-all ease-out delay-300">
                 <!-- Blue  -->
                 <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible group-hover:translate-x-[35vw] md:group-hover:translate-x-[22vw] lg:group-hover:translate-x-[8.2vw] transition-transform duration-500 
                             ease-[cubic-bezier(0.34,1.3,0.7,1)] ml-[-2rem] delay-0 group-hover:delay-100"
@@ -182,7 +187,8 @@
               </a>
 
               <a href="./3_Venue.html"
-                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-6 px-2 py-3 -top-6 md:top-0 text-lg lg:gap-[1vw] lg:px-[1.5vw] lg:py-[0.6vw] lg:text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
+                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-6 px-2 py-3 -top-6 md:top-0 text-lg lg:gap-[1vw] lg:px-[1.5vw] lg:py-[0.6vw] lg:text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden
+                reveal opacity-0 translate-y-10 transition-all ease-out delay-300">
                 <!-- Blue  -->
                 <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible group-hover:translate-x-[35vw] md:group-hover:translate-x-[22vw] lg:group-hover:translate-x-[8.2vw] transition-transform duration-500 
                             ease-[cubic-bezier(0.34,1.3,0.7,1)] ml-[-2rem] delay-0 group-hover:delay-100"
@@ -227,16 +233,18 @@
         <!-- What is BAH -->
         <div class="relative">
           <object data="./images/main/Tape.svg" type="image/svg+xml"
-            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply"></object>
-          <object data="./images/main/3-Note1.svg" type="image/svg+xml"
-            class="w-[90vw] md:w-[60vw] lg:w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
-          <div class="w-full h-auto -mt-[5vw] ml-[75%]">
-            <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-[4rem] -translate-y-[3rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 1_Default.png" class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity hover:opacity-0" alt="About Us"/>
-                <img src="./images/btm/Button_Ink 1_Hover.png"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" alt="About Us"/>
-              </div>
+            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply 
+            reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300"></object>
+          <div
+            class="relative w-[90vw] md:w-[60vw] lg:w-[40vw] reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
+            <object data="./images/main/3-Note1.svg" type="image/svg+xml"
+              class="block w-full h-auto"></object>
+            <a href="./99_Inprogress.html"
+              class="group absolute left-[79%] top-[75%] z-20 block w-[31%] -translate-x-1/2 -translate-y-1/2">
+              <img src="./images/btm/Button_Ink 1_Default.png"
+                class="block w-full h-auto transition-opacity duration-300 group-hover:opacity-0" alt="About Us" />
+              <img src="./images/btm/Button_Ink 1_Hover.png"
+                class="absolute inset-0 block w-full h-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100" alt="About Us" />
             </a>
           </div>
         </div>
@@ -245,33 +253,34 @@
         <!-- Festival Info -->
         <div class="relative left-[20%] -top-[70vw] lg:top-0">
           <object data="./images/main/Tape.svg" type="image/svg+xml"
-            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply"></object>
-          <object data="./images/main/3-Note2.svg" type="image/svg+xml"
-            class="w-[90vw] md:w-[60vw] lg:w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
-          <div class="w-full h-auto flex flex-col space-y-[10%] -mt-[25%] ml-[75%]">
-            <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 2A_Default.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="./images/btm/Button_Ink 2A_Hover.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </a>
-            <a href="./3_Venue.html#HowDoIGetThere">
-              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 2B_Default.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="./images/btm/Button_Ink 2B_Hover.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </a>
+            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply
+            reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-300"></object>
+          <div
+            class="relative w-[90vw] md:w-[60vw] lg:w-[40vw] reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-300">
+            <object data="./images/main/3-Note2.svg" type="image/svg+xml"
+              class="block w-full h-auto"></object>
+            <div class="absolute left-[79%] top-[69%] z-20 flex w-[31%] -translate-x-1/2 -translate-y-1/2 flex-col gap-[10%]">
+              <a href="./99_Inprogress.html" class="group relative block w-full">
+                <img src="./images/btm/Button_Ink 2A_Default.png" alt="Festival Info"
+                  class="block w-full h-auto transition-opacity duration-300 group-hover:opacity-0" />
+                <img src="./images/btm/Button_Ink 2A_Hover.png" alt="Festival Info"
+                  class="absolute inset-0 block w-full h-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </a>
+              <a href="./3_Venue.html#HowDoIGetThere" class="group relative block w-full">
+                <img src="./images/btm/Button_Ink 2B_Default.png" alt="How Do I Get There"
+                  class="block w-full h-auto transition-opacity duration-300 group-hover:opacity-0" />
+                <img src="./images/btm/Button_Ink 2B_Hover.png" alt="How Do I Get There"
+                  class="absolute inset-0 block w-full h-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Right side -->
-      <div class="flex-1 relative flex justify-end items-end -right-[80%] -top-[40vw] md:-right-[35%] md:top-10 lg:-right-[30%] ">
-        <object data="./images/main/3-Book1.svg" type="image/svg+xml" class="shrink-0 w-[180%] md:w-[250%] lg:w-[160%] h-auto"></object>
+      <div class="flex-1 relative flex justify-end items-end overflow-visible pl-[12vw] pr-0 -top-[18vw] -right-[70%] md:-right-[35%] md:top-10 lg:-right-[25%]
+      reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-300">
+        <object data="./images/main/3-Book1.svg" type="image/svg+xml" class="ml-auto shrink-0 w-[200%] md:w-[170%] lg:w-[160%] h-auto"></object>
       </div>
     </section>
 
@@ -279,8 +288,9 @@
     <!-- Second Section -->
     <section class="relative flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
       <!-- Left side -->
-      <div class="flex-1 relative flex justify-left item-left w-[40vw] h-auto -left-[85%] md:-left-[34%]">
-        <object data="./images/main/4-Book2.svg" type="image/svg+xml" class="shrink-0 w-[450%] md:w-[220%] lg:w-[150%] h-auto"></object>
+      <div class="flex-1 relative flex justify-end items-end overflow-visible pl-[12vw] pr-0 -top-[18vw] right-[10%] md:-right-[35%] md:top-10 lg:right-[15%]
+      reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
+        <object data="./images/main/4-Book2.svg" type="image/svg+xml" class="shrink-0 w-[200%] md:w-[170%] lg:w-[160%] h-auto"></object>
       </div>
 
       <!-- Right side with stacked images + background -->
@@ -291,38 +301,36 @@
         <!-- Sabah Travel Guide -->
         <div class="relative left-[5%]">
           <object data="./images/main/Tape.svg" type="image/svg+xml"
-            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply"></object>
-          <object data="./images/main/4-Note3.svg" type="image/svg+xml"
-            class="w-[90vw] md:w-[60vw] lg:w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
+            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply
+            reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-300"></object>
+          <div
+            class="relative w-[90vw] md:w-[60vw] lg:w-[40vw] reveal opacity-0 translate-x-10 transition-all duration-700 ease-out delay-300">
+            <object data="./images/main/4-Note3.svg" type="image/svg+xml"
+              class="block w-full h-auto"></object>
 
-          <div class="w-full h-auto flex flex-col justify-items-end space-y-[8%] -mt-[30%] ml-[75%]">
-            <!-- Food -->
-            <a href="./99_Inprogress.html">
-              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 3A_Default.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 pl-[2vw] hover:opacity-0" />
-                <img src="./images/btm/Button_Ink 3A_Hover.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 pl-[2vw] hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </a>
-            <!-- Destinations -->
-            <a href="./99_Inprogress.html">
-              <div class="absolute mt-[10px] -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 3B_Default.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="./images/btm/Button_Ink 3B_Hover.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </a>
-            <!-- Experiences -->
-            <a href="./99_Inprogress.html">
-              <div class="absolute mt-[10px] -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 3C_Default.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="./images/btm/Button_Ink 3C_Hover.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </a>
+            <div class="absolute left-[80%] top-[62%] z-20 flex w-[32%] -translate-x-1/2 -translate-y-1/2 flex-col gap-[8%]">
+              <!-- Food -->
+              <a href="./31_BAHjet.html#food" class="group relative flex w-full justify-end">
+                <img src="./images/btm/Button_Ink 3A_Default.png" alt="Food"
+                  class="block w-[88%] h-auto transition-opacity duration-300 group-hover:opacity-0" />
+                <img src="./images/btm/Button_Ink 3A_Hover.png" alt="Food"
+                  class="absolute top-0 right-0 block w-[88%] h-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </a>
+              <!-- Destinations -->
+              <a href="./31_BAHjet.html#destinations" class="group relative block w-full">
+                <img src="./images/btm/Button_Ink 3B_Default.png" alt="Destinations"
+                  class="block w-full h-auto transition-opacity duration-300 group-hover:opacity-0" />
+                <img src="./images/btm/Button_Ink 3B_Hover.png" alt="Destinations"
+                  class="absolute inset-0 block w-full h-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </a>
+              <!-- Experiences -->
+              <a href="./99_Inprogress.html" class="group relative block w-full">
+                <img src="./images/btm/Button_Ink 3C_Default.png" alt="Experiences"
+                  class="block w-full h-auto transition-opacity duration-300 group-hover:opacity-0" />
+                <img src="./images/btm/Button_Ink 3C_Hover.png" alt="Experiences"
+                  class="absolute inset-0 block w-full h-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -330,28 +338,28 @@
         <!-- Be a Part of BAH -->
         <div class="relative -left-[5%] mt-10 md:mt-0 mb-16">
           <object data="./images/main/Tape.svg" type="image/svg+xml"
-            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply"></object>
-          <object data="./images/main/4-Note4.svg" type="image/svg+xml"
-            class="w-[90vw] md:w-[60vw] lg:w-[40vw] h-auto flex-1 relative flex flex-col justify-center items-end bg-cover bg-center pr-12"></object>
-          <div class="w-full h-auto flex flex-col space-y-[8%] -mt-[20%] ml-[75%]">
-            <!-- Panelists -->
-            <a href="./6_JoinUs.html">
-              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 4A_Default.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="./images/btm/Button_Ink 4A_Hover.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </a>
-            <!-- Volunteers -->
-            <a href="./6_JoinUs.html">
-              <div class="absolute -translate-x-[4rem] -translate-y-[1rem] mt-[10px] lg:-translate-x-1/2 lg:-translate-y-1/2 flex flex-col">
-                <img src="./images/btm/Button_Ink 4B_Default.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto transition-opacity duration-300 hover:opacity-0" />
-                <img src="./images/btm/Button_Ink 4B_Hover.png" alt="btm"
-                  class="w-50 scale-130 md:scale-120 lg:scale-100 h-auto absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </a>
+            class="absolute w-[30%] lg:w-[30%] h-auto z-10 left-[5%] -mt-[1rem] lg:-mt-[2rem] opacity-100 mix-blend-multiply
+            reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300"></object>
+          <div
+            class="relative w-[90vw] md:w-[60vw] lg:w-[40vw] reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
+            <object data="./images/main/4-Note4.svg" type="image/svg+xml"
+              class="block w-full h-auto"></object>
+            <div class="absolute left-[79%] top-[67%] z-20 flex w-[31%] -translate-x-1/2 -translate-y-1/2 flex-col gap-2 md:gap-3">
+              <!-- Panelists -->
+              <a href="./6_JoinUs.html" class="group relative block w-full">
+                <img src="./images/btm/Button_Ink 4A_Default.png" alt="Panelists"
+                  class="block w-full h-auto transition-opacity duration-300 group-hover:opacity-0" />
+                <img src="./images/btm/Button_Ink 4A_Hover.png" alt="Panelists"
+                  class="absolute inset-0 block w-full h-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </a>
+              <!-- Volunteers -->
+              <a href="./6_JoinUs.html" class="group relative block w-full">
+                <img src="./images/btm/Button_Ink 4B_Default.png" alt="Volunteers"
+                  class="block w-full h-auto transition-opacity duration-300 group-hover:opacity-0" />
+                <img src="./images/btm/Button_Ink 4B_Hover.png" alt="Volunteers"
+                  class="absolute inset-0 block w-full h-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -361,7 +369,7 @@
     <section class="hidden relative lg:flex flex-col md:flex-row w-full min-h-screen mt-[10vw] gap-6">
       <div class="flex-1 relative flex flex-col items-center bg-cover bg-center"
         style="background-image: url('images/bg/BAH\ Directory_BG.svg');">
-        <div class="relative w-[60vw] flex justify-center">
+        <div class="relative w-[60vw] flex justify-center reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
           <object data="./images/main/5-BAH_Directory.svg" type="image/svg+xml"
             class="w-full h-auto pointer-events-none"></object>
           <div class="absolute mt-[20vw] flex gap-6">
@@ -507,6 +515,7 @@
     </section>
     <div id="footer"></div>
     <script src="./footer.js" defer></script>
+    
   </div>
   <noscript>
     <style>

@@ -1,0 +1,42 @@
+[
+    {
+        "index":        1,
+        "mall_name":    "Imago Shopping Mall",       
+        "distance_icon":"car",
+        "distance":     "2km",
+        "desc":         "It’s a large, modern shopping complex. Recognize for its wide range of international and local brands, dining outlets, and entertainment spaces spread across multiple levels. The fully indoor, air-conditioned layout makes it a popular spot for shopping, eating, and spending time comfortably away from the heat.",
+        "google_map":   "https://www.google.com/maps/place/Imago+Shopping+Mall/data=!4m2!3m1!19sChIJGwRDk79pOzIRjM0ywHUkgDM"   
+    },
+    {
+        "index":        2,
+        "mall_name":    "Suria Sabah Shopping Mall",
+        "distance_icon":"walk",
+        "distance":   "550m",
+        "desc":         "This mall is located near Jesselton Point and offers a range of retail outlets, eateries, and cafés. What makes it stand out is its direct access to the waterfront promenade just outside, allowing visitors to step out for a seaside walk or sunset view after shopping or dining. Its convenient location and relaxed atmosphere make it an easy stop for both locals and visitors exploring the area.",
+        "google_map":   "https://www.google.com/maps/place/Suria+Sabah+Shopping+Mall/data=!4m2!3m1!19sChIJZzdhHIZpOzIRr_9CABl11w8"
+    },
+    {
+        "index":        3,
+        "mall_name":    "Wisma Merdeka",
+        "distance_icon":"walk",
+        "distance":     "450m",
+        "desc":         "It’s one of Kota Kinabalu’s long-standing shopping complexes, known for its practical, everyday appeal. Inside is a mix of small retail shops, service outlets, and local eateries offering budget-friendly goods and services. What makes it stand out is its old-school, local character, reflecting the daily shopping habits and routines of city residents rather than a modern lifestyle mall experience.",
+        "google_map":   "https://www.google.com/maps/place/Wisma+Merdeka/data=!4m2!3m1!19sChIJcyR-UI9pOzIRZMlZt7wUqik"
+    },
+    {
+        "index":        4,
+        "mall_name":    "Centre Point Sabah",
+        "distance_icon":"walk",
+        "distance":     "600m",
+        "desc":         "This multi-level shopping complex is known for its central location and steady flow of visitors throughout the day. It brings together retail stores, service outlets, and affordable dining options under one roof, creating a busy and straightforward shopping environment. It’s a familiar city landmark for quick stops, meals, and meet-ups.",
+        "google_map":   "https://www.google.com/maps/place/Centre+Point+Sabah/data=!4m2!3m1!19sChIJkce5cZFpOzIRjIoLqYz9yDE"
+    },
+    {
+        "index":        5,
+        "mall_name":    "Komplex Karamunsing",
+        "distance_icon": "car",
+        "distance":     "2.1km",
+        "desc":         "It’s an older commercial complex best known for electronics and tech-related services. The building is filled with computer shops, phone repair outlets, printing services, and stores selling gadgets and accessories. It functions more as a specialist hub for repairs, upgrades, and custom technical services. If this is something your into feel free and drop by!",
+        "google_map":   "https://www.google.com/maps/place/Kompleks+Karamunsing/data=!4m2!3m1!19sChIJn0XAjWNpOzIRfJFWAd7l1OQ"
+    }
+]

@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Borneo Anthro Hub</title>
-  <link href="./css/output.css" rel="stylesheet">
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+     <link href="./css/output.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
@@ -21,71 +22,76 @@
 </head>
 
 
-<body class="min-h-screen flex flex-col text-[#FFFBE8]">
+<body class="min-h-screen flex flex-col">
 
   <div>
     <div id="navbar"></div>
     <div class="navbar-gradient"></div>
 
     <script src="navbar.js"></script>
-    <main class="flex-grow">
-      <section class="relative overflow-hidden">
-        <div class="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-20">
-          <div class="grid items-center gap-10 lg:grid-cols-2">
-            <div class="order-2 lg:order-1">
-              <h1 class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl text-center lg:text-left">
-                Page Currently Still in Progress
-              </h1>
-              <p class="mt-4 max-w-xl text-sm font-semibold leading-relaxed text-[#FFFBE8]/90 sm:text-base text-center lg:text-left">
-                Our woffy coder is out of time and out of coffee. Updates will resume once they stop speed-coding in
-                panic mode.
-              </p>
+    <!-- 1st -->
+    <!-- Responsive Image Box -->
+    <main class="m-0 flex-grow px-6 py-8 md:px-10">
+      <div class="mx-auto flex min-h-[calc(100vh-10rem)] w-full max-w-6xl items-center justify-center">
+        <div class="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(280px,34vw)] lg:gap-16">
+          <div class="order-2 text-center lg:order-1 lg:text-left">
+            <h1 class="text-3xl font-bold leading-tight text-[#FFFBE8] sm:text-4xl md:text-5xl lg:text-6xl">
+              Page Currently Still in Progress
+            </h1>
+            <p class="mt-4 max-w-2xl text-sm font-bold leading-relaxed text-[#FFFBE8] sm:text-base md:text-lg">
+              Our woffy duo is out of time and out of coffee. Updates will resume once they stop speed-coding in panic mode.
+            </p>
 
-              <div class="pt-15 justify-center-safe text-center">
-                <a href="javascript:void(0)"
-                  onclick="document.referrer ? history.back() : window.location.href='index.html';"
-                class="z-10 group relative inline-flex items-center justify-center font-[1000] gap-6 px-2 py-3 -top-6 md:top-0 text-lg lg:gap-[1vw] lg:px-[1.5vw] lg:py-[0.6vw] lg:text-[1.2vw] bg-[#e8804d] rounded-full hover:bg-[#ffcb65] transition-color duration-1000 overflow-hidden">
-                <!-- Blue  -->
-                <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible group-hover:translate-x-[35vw] md:group-hover:translate-x-[22vw] lg:group-hover:translate-x-[8.2vw] transition-transform duration-500 
+            <div class="mt-8 flex justify-center lg:justify-start">
+              <a href="javascript:void(0)" 
+              onclick="document.referrer ? history.back() : window.location.href='index.html';"
+              class="z-10 group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#e8804d] px-6 py-3 text-base font-[1000] text-[#fffbe8] transition-colors duration-1000 hover:bg-[#ffcb65] sm:px-8 sm:py-4 sm:text-lg md:gap-4">
+              <!-- Blue  -->
+              <svg class="absolute inset-0 max-w-[120%] h-full z-0 transform group-hover:visible  group-hover:translate-x-[6em] transition-transform duration-500 
                             ease-[cubic-bezier(0.34,1.3,0.7,1)] ml-[-2rem] delay-0 group-hover:delay-100"
-                  viewBox="0 0 700 113" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                  <path
-                    d="M11.3408 0H680.376C685.621 0 692 3.48753 692 7.77223L691.433 31.6868V59.2882V80.2135V104.128C692 108.413 685.479 111.9 680.943 111.9L7.37144 112C5.24504 109.509 0 103.53 0 93.3665C0 66.4626 25.8002 56.7971 25.8002 32.8826C25.8002 20.1281 16.4441 3.58719 11.3408 0Z"
-                    fill="#54CCC9" />
-                </svg>
-                <!-- Orange -->
-                <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[35vw] md:group-hover:translate-x-[22vw] lg:group-hover:translate-x-[8vw] transition-transform duration-500 
+                viewBox="0 0 700 113" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path
+                  d="M11.3408 0H680.376C685.621 0 692 3.48753 692 7.77223L691.433 31.6868V59.2882V80.2135V104.128C692 108.413 685.479 111.9 680.943 111.9L7.37144 112C5.24504 109.509 0 103.53 0 93.3665C0 66.4626 25.8002 56.7971 25.8002 32.8826C25.8002 20.1281 16.4441 3.58719 11.3408 0Z"
+                  fill="#54CCC9" />
+              </svg>
+              <!-- Orange -->
+              <svg class="absolute inset-0 max-w-[120%] h-full z-10 transform group-hover:visible group-hover:translate-x-[6em] transition-transform duration-500 
                               ease-in-out ml-[-2rem] delay-0 " viewBox="0 0 700 113" fill="none"
-                  xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                  <path
-                    d="M0 0H684.425C691.453 0 700 3.5218 700 7.84861L699.24 31.9982V59.8709V81.0018V105.151C700 109.478 691.263 113 685.185 113L49.3827 112.094C41.0256 107.566 30.5793 97.0009 30.5793 84.9261C30.5793 62.3865 43.6847 60.9777 43.6847 39.7462C44.0646 16.301 10.4463 3.82369 0 0Z"
-                    fill="#E8804D" />
-                </svg>
-                <span
-                  class="relative z-20 transition-all text-[#fffbe8] group-hover:text-[#1f3359] group-hover:translate-x-[-0.5rem] duration-1000">
-                  BACK
-                </span>
-                <svg class="z-10 h-8 w-auto group-hover:translate-x-[0.5vw] duration-1000 pl-4" width="42" height="41"
-                  viewBox="0 0 42 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 20.5L38 20.5" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
-                    stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M20.8501 3L38.25 20.3L20.8501 37.7" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
-                    stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path
+                  d="M0 0H684.425C691.453 0 700 3.5218 700 7.84861L699.24 31.9982V59.8709V81.0018V105.151C700 109.478 691.263 113 685.185 113L49.3827 112.094C41.0256 107.566 30.5793 97.0009 30.5793 84.9261C30.5793 62.3865 43.6847 60.9777 43.6847 39.7462C44.0646 16.301 10.4463 3.82369 0 0Z"
+                  fill="#E8804D" />
+              </svg>
+              <span
+                class="relative z-20 text-base text-[#fffbe8] transition-all duration-1000 group-hover:translate-x-[-0.5rem] group-hover:text-[#1f3359] sm:text-lg">
+                BACK
+              </span>
+              <svg class="z-10 h-8 w-auto group-hover:translate-x-[0.5vw] duration-1000" width="42" height="41"
+                viewBox="0 0 42 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 20.5L38 20.5" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20.8501 3L38.25 20.3L20.8501 37.7" stroke="#FFFBE8" stroke-width="6" stroke-miterlimit="10"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
               </a>
-              </div>
-            </div>
-
-            <div class="order-1 flex justify-center lg:order-2 lg:justify-end">
-              <img src="images/A.png" alt="In-progress mascot illustration"
-                class="h-auto w-[55vw] max-w-[280px] object-contain sm:w-[42vw] sm:max-w-[330px] lg:w-[28vw] lg:max-w-[380px]" />
             </div>
           </div>
+
+          <div class="order-1 flex justify-center lg:order-2 lg:justify-end">
+            <img src="images/A.png" alt="Section Background"
+              class="w-[68vw] max-w-[420px] h-auto object-contain sm:w-[52vw] md:w-[42vw] lg:w-full" />
+          </div>
         </div>
-      </section>
+      </div>
     </main>
 
   </div>
+  <!-- <div class="inprogress">
+    <h1 class="message">Website Currently in Progress</h1>
+    <div class="image-placeholder">
+      <img src="images/A.png" alt="Coming Soon" style="max-width:100%; border-radius:12px;">
+    </div>
+  </div> -->
 
   <div id="footer"></div>
   <script src="footer.js"></script>

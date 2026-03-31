@@ -1,0 +1,123 @@
+[
+  {
+    "index":1,
+    "name": "Kopi Ping Cafe",
+    "res_tag": ["muslim_friendly"],
+    "res_type":["Local", "Variety"],
+    "price":"$$",
+    "distance_icon":"walk",
+    "distance":"550m",
+    "desc":"Kopi Ping Cafe is a laid-back local kopitiam known for its signature kopi ping (iced coffee) and classic Malaysian comfort food. It’s a popular stop for a quick coffee or casual meal while exploring Gaya Street! They provide indoor and outdoor seating.",
+    "google_map":"https://www.google.com/maps/place/Kopi+Ping+Cafe+@+Gaya+Street/data=!4m2!3m1!19sChIJycdi4YVpOzIRp2-QxjomXEU"
+  },
+  {
+    "index":2,
+    "name": "Chilli Vanilla",
+    "res_tag": ["pork_free","serves_alcohol"],
+    "res_type":["Hungarian", "Comfort Food"],
+    "price":"$$",
+    "distance_icon":"walk",
+    "distance":"250m",
+    "desc":"Chilli Vanilla is a European-style restaurant on Gaya Street, best known for its Hungarian-inspired comfort food like Beef Gulyas (goulash), Lesco (a Hungarian-style Ratatouille), Chicken Roulade, and some other more!",
+    "google_map":"https://www.google.com/maps/place/Chilli+Vanilla/data=!4m2!3m1!19sChIJwzu-ZY9pOzIRWvoLGweqNNY"
+  },
+  {
+    "index":3,
+    "name": "Peppermint",
+    "res_tag": ["muslim_friendly"],
+    "res_type":["Vietnamese"],
+    "price":"$$",
+    "distance_icon":"walk",
+    "distance":"400m",
+    "desc":"Offering a taste of Vietnamese with a local twist! Peppermint serves beloved dishes like pho, spring rolls, and chicken rice. With a menu centered mainly on chicken and beef, alongside traditional Vietnamese coffee and soft drinks!",
+    "google_map":"https://www.google.com/maps/place/Peppermint+(Jalan+Gaya)/data=!4m2!3m1!19sChIJT-mlj4VpOzIRGsxWD_TbFHM"
+  },
+{
+    "index":4,
+    "name": "Little Sulap",
+    "res_tag": ["pork_free","serves_alcohol"],
+    "res_type":["Local"],
+    "price":"$$",
+    "distance_icon":"walk",
+    "distance":"550m",
+    "desc":"Little Sulap is a cozy, kampung-style café serving authentic, pork-free Sabahan cuisine. Enjoy traditional dishes like ambuyat, local set meals, and native vegetables in a relaxed setting, complete with local coffee and occasional rice wine.",
+    "google_map":"https://www.google.com/maps/place/Little+Sulap/data=!4m2!3m1!19sChIJU0wSH61nOzIR7ANkOVGl7PI"
+  },
+  {
+    "index":5,
+    "name": "Borenos Fried Chicken",
+    "res_tag": ["muslim_friendly"],
+    "res_type":["Local", "Fast Food"],
+    "price":"$$",
+    "distance_icon":"car",
+    "distance":"1.3km",
+    "desc":"Borenos is a popular local fast-food chain, best known for its signature Broasted Chicken! It’s crispy on the outside and tender from the inside. Alongside their famous chicken, they serve local favourites like nasi lemak and Malay-style sauces, offering a quick, flavourful taste of Kota Kinabalu.",
+    "google_map":"https://www.google.com/maps/place/Borenos+Fried+Chicken+(Asia+City)/data=!4m2!3m1!19sChIJB_kD3ZZpOzIREdFM9IY4ds0"
+  },
+  {
+    "index":6,
+    "name": "Living Seed Vegetarian",
+    "res_tag": ["muslim_friendly","veg"],
+    "res_type":["Local", "Chinese", "Fusion"],
+    "price":"$$",
+    "distance_icon":"walk",
+    "distance":"650m",
+    "desc":"This restaurant, located on the LG Floor of Centre Point Sabah mall, serves vegetarian dishes as well! If this is something your craving for, it’s the perfect and affordable choice for you!",
+    "google_map":"https://www.google.com/maps/place/Living+Seed+Vegetarian+Restaurant/data=!4m2!3m1!19sChIJFaa31_JpOzIRymTnmEmyR3M"
+  },
+  {
+    "index":7,
+    "name": "Liew Chai Vegetarian",
+    "res_tag": ["muslim_friendly","veg"],
+    "res_type":["Local", "Chinese"],
+    "price":"$",
+    "distance_icon":"walk",
+    "distance":"600m",
+    "desc":"This restaurant, located on the LG Floor of Centre Point Sabah mall, serves vegetarian dishes as well! If this is something your craving for, it’s the perfect and affordable choice for you!",
+    "google_map":"https://www.google.com/maps/place/Centre+Point+Sabah/data=!4m2!3m1!19sChIJkce5cZFpOzIRjIoLqYz9yDE"
+  },
+  {
+    "index":8,
+    "name": "Satay Jawi",
+    "res_tag": ["muslim_friendly"],
+    "res_type":["Javanese"],
+    "price":"$$—$$$",
+    "distance_icon":"walk",
+    "distance":"250m",
+    "desc":"This restaurant on Jalan Gaya specializes in a regional dish, 'satay', featuring grilled meat skewers, served with a liver-and-spice gravy. There is seating available both indoors and outdoors!",
+    "google_map":"https://www.google.com/maps/place/Satay+Jawi/data=!4m2!3m1!19sChIJ54c9jQBpOzIR9BEUvk1IObA"
+  },
+  {
+    "index":9,
+    "name": "Pasta Pasta",
+    "res_tag": ["muslim_friendly"],
+    "res_type":["Italian"],
+    "price":"$—$$",
+    "distance_icon":"walk",
+    "distance":"450m",
+    "desc":"Located on the vibrant Gaya Street, Pasta Pasta is your ideal destination for a fresh, customised Italian meal. Pasta Pasta believes that the best pasta is the one you create yourself. Begin by selecting your favourite pasta shape, then pair it with a house-made sauce, and top it off with your choice of toppings—all made to order for a lively and affordable dining experience.",
+    "google_map":"https://www.google.com/maps/place/Pasta+Pasta/data=!4m2!3m1!19sChIJLee6f4VpOzIRIzBwSan7GfU"
+  },
+  {
+    "index":10,
+    "name": "SugarBun",
+    "res_tag": ["muslim_friendly"],
+    "res_type":["Local", "Fast Food"],
+    "price":"$$",
+    "distance_icon":"walk",
+    "distance":"140m",
+    "desc":"SugarBun is a Malaysian fast-food chain that’s especially popular in Sabah and Sarawak. It’s known for its rice sets, burgers, and other local-friendly meals, often seen as a homegrown alternative to international fast-food brands and a familiar comfort food for many locals.",
+    "google_map":"https://www.google.com/maps/place/SugarBun+Gaya+Street/data=!4m2!3m1!19sChIJrcMFcUJpOzIRAbjU2rPxLtw"
+  },
+  {
+    "index":11,
+    "name": "Moginum Restobar",
+    "res_tag": ["pork_free","serves_alcohol"],
+    "res_type":["Western", "Local", "Fusion"],
+    "price":"$$",
+    "distance_icon":"walk",
+    "distance":"180m",
+    "desc":"It’s a laid-back bar in Kota Kinabalu known for its relaxed casual nightlife atmosphere. It offers a mix of cocktails and mocktails, including drinks infused with local wines like lihing and montoku, as well as non-alcoholic options. With table seating and bar-style seats available, it’s a comfortable spot for unwinding and socialising with friends.",
+    "google_map":"https://www.google.com/maps/place/MOGINUM+Restobar/data=!4m2!3m1!19sChIJEUdgIvNpOzIRsa5Gjs-sJW0"
+  }
+]
