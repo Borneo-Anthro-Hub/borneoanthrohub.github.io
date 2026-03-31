@@ -81,7 +81,7 @@ function renderDestinationSlides(destinations) {
                                     <a class="group flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[#DDC8AF] px-[18px] py-3 text-base font-bold leading-none tracking-[0.06em] text-[#DDC8AF] uppercase no-underline transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#DDC8AF] hover:text-[#4F362F]"
                                         href="${window.BAHjetGuide.escapeHtml(destination.google_map ?? "#")}"
                                         target="_blank" rel="noopener noreferrer">
-                                        <svg class="h-[17px] w-[17px] shrink-0 text-[#DDC8AF] group-hover:text-[#4F362F]" aria-hidden="true">
+                                        <svg class="h-[17px] w-[17px] shrink-0 text-[#DDC8AF] group-hover:text-[#4F362F]" role="img" viewBox="0 0 32 32" aria-hidden="true">
                                             <use href="#map_pin"></use>
                                         </svg>
                                         <span>TAKE ME THERE!</span>

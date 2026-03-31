@@ -80,11 +80,11 @@ function renderDistanceIcon(distanceIcon) {
     }
 
     if (iconKey === "walk") {
-        return `<svg class="block h-[20px] w-[20px]" aria-label="${escapeHtml(fallbackLabel)}" role="img" viewBox="0 0 12 20"><use href="#icon_walk"></use></svg>`;
+        return `<svg class="block h-[20px] w-[20px]" aria-label="${escapeHtml(fallbackLabel)}" role="img" viewBox="0 0 32 32"><use href="#icon_walk"></use></svg>`;
     }
 
     if (iconKey === "car") {
-        return `<svg class="block h-[20px] w-[20px]" aria-label="${escapeHtml(fallbackLabel)}" role="img" viewBox="0 0 27 13"><use href="#icon_car"></use></svg>`;
+        return `<svg class="block h-[20px] w-[20px]" aria-label="${escapeHtml(fallbackLabel)}" role="img" viewBox="0 0 43.18 32""><use href="#icon_car"></use></svg>`;
     }
 
     return `<img class="block h-[20px] w-[20px] object-contain" src="./images/BAHjet/icon_${escapeHtml(iconKey)}.svg" alt="${escapeHtml(fallbackLabel)}" loading="lazy" />`;
@@ -269,7 +269,7 @@ function renderRestaurantCards() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <svg class="h-[17px] w-[17px] shrink-0 text-[#4F362F] group-hover:text-[#DDC8AF]" aria-hidden="true">
+                                        <svg class="h-[17px] w-[17px] shrink-0 text-[#4F362F] group-hover:text-[#DDC8AF]" role="img" viewBox="0 0 32 32" aria-hidden="true">
                                             <use href="#map_pin"></use>
                                         </svg>
                                         <span>TAKE ME THERE!</span>
