@@ -27,7 +27,7 @@ function renderActivities(activities) {
                     <img src="./images/BAHjet/highlight.svg" alt="highlight" class="w-[88px] max-w-full shrink-0" />
                 </div>
                 <div class="text-center md:text-left">
-                    <p class="pb-2 text-xl font-bold text-[#FFFBE8]">
+                    <p class="pb-2 text-xl font-bold text-[#FFFBE8] tracking-wide uppercase">
                         ${window.BAHjetGuide.escapeHtml(activity.activities_name ?? "")}
                     </p>
                     <p class="text-sm/6 font-light italic text-[#DDC8AF]">
@@ -67,7 +67,7 @@ function renderDestinationSlides(destinations) {
                             <p>${window.BAHjetGuide.escapeHtml(destination.distance ?? "")}</p>
                         </div>
                         <div class="justify-center font-normal">
-                            <p>${safeDescription}</p>
+                            <p class="leading-[1.8]">${safeDescription}</p>
                         </div>
                         <div class="bottom-1 mt-10 flex justify-center">
                             <img class="justify-center" src="./images/BAHjet/bottom_line.svg" alt="deco line" />
@@ -78,7 +78,7 @@ function renderDestinationSlides(destinations) {
                             <div class="grid grid-cols-1 gap-x-6 gap-y-3 md:grid-cols-[88px_minmax(0,1fr)]">
                                 ${renderActivities(destination.activities)}
                                 <div class="col-span-full mt-auto w-full pt-6">
-                                    <a class="group flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[#DDC8AF] px-[18px] py-3 text-base font-bold leading-none tracking-[0.06em] text-[#DDC8AF] uppercase no-underline transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#DDC8AF] hover:text-[#4F362F]"
+                                    <a class="group flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[#DDC8AF] px-[18px] py-3 text-base font-medium leading-none tracking-widest text-[#DDC8AF] uppercase no-underline transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#DDC8AF] hover:text-[#4F362F]"
                                         href="${window.BAHjetGuide.escapeHtml(destination.google_map ?? "#")}"
                                         target="_blank" rel="noopener noreferrer">
                                         <svg class="h-[17px] w-[17px] shrink-0 text-[#DDC8AF] group-hover:text-[#4F362F]" role="img" viewBox="0 0 32 32" aria-hidden="true">

@@ -142,7 +142,8 @@ function renderGuideCards(items, options) {
                                 <p class="mt-6 w-full flex-1 text-left text-base leading-[1.75] text-[#4F362F]">${safeDescription}</p>
                                 <div class="mt-auto w-full pt-6">
                                     <a
-                                        class="group flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[#4F362F] px-[18px] py-3 text-base font-bold leading-none tracking-[0.06em] text-[#4F362F] uppercase no-underline transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#4F362F] hover:text-[#DDC8AF]"
+                                        class="group flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[#4F362F] px-[18px] py-3
+                                        text-base font-medium leading-none tracking-widest text-[#4F362F] uppercase no-underline transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#4F362F] hover:text-[#DDC8AF]"
                                         href="${escapeHtml(item.google_map ?? "#")}"
                                         target="_blank"
                                         rel="noopener noreferrer"

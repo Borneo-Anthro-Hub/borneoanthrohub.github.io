@@ -127,8 +127,8 @@ function renderTagIcons(tagIds) {
             const label = filterMeta?.name || prettifyLabel(tagId);
 
             return `
-                    <span class="inline-flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full border-[1.5px] border-[#4F362F] bg-[#FFFBE8]/20" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">
-                        <svg class="h-5 w-5" aria-hidden="true">
+                    <span class="inline-flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full border-[1.5px] border-[#4F362F] bg-[#FFFBE8]/20" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">
+                        <svg class="h-7.5 w-7.5" aria-hidden="true">
                             <use href="#${escapeHtml(iconId)}"></use>
                         </svg>
                     </span>
@@ -145,7 +145,7 @@ function renderTypeChips(types) {
     return types
         .map(
             (type) => `
-                <span class="inline-flex min-h-[18px] items-center justify-center rounded-full bg-[#A88C76] px-2 py-1 text-xs font-bold leading-none tracking-[0.06em] text-[#DDC8AF] uppercase">${escapeHtml(type)}</span>
+                <span class="inline-flex min-h-[18px] items-center justify-center rounded-full bg-[#A88C76] px-2 py-1 text-xs font-medium leading-none tracking-[0.06em] text-[#DDC8AF] uppercase italic">${escapeHtml(type)}</span>
             `,
         )
         .join("");
@@ -241,16 +241,16 @@ function renderRestaurantCards() {
                         </div>
                         <div class="absolute left-0 top-[190px] z-[1] flex h-[710px] w-[372px] flex-col overflow-hidden rounded-[32px] bg-[#DDC8AF] text-[#4F362F] shadow-[0_0px_3px_rgba(0,0,0,0.3)] max-[520px]:relative max-[520px]:top-0 max-[520px]:h-auto max-[520px]:min-h-[710px] max-[520px]:w-full">
                             <div class="flex h-full flex-1 flex-col items-center px-[30px] pb-6 pt-[72px] text-center max-[520px]:px-[22px] max-[520px]:pt-16">
-                                <div class="flex min-h-[52px] flex-wrap items-center justify-center gap-2">
+                                <div class="flex min-h-[52px] flex-wrap items-center justify-center gap-2 font-medium">
                                     ${renderTagIcons(restaurant.res_tag)}
                                 </div>
                                 <p class="mt-4 flex min-h-[88px] max-w-[280px] items-center justify-center text-4xl font-bold leading-[1.2] text-[#4F362F]">
                                     ${escapeHtml(restaurant.name)}
                                 </p>
-                                <div class="mt-2 flex min-h-[52px] flex-wrap content-start justify-center gap-1.5 text-base font-medium">
+                                <div class="mt-2 flex min-h-[52px] flex-wrap content-start justify-center gap-1.5 text-base">
                                     ${renderTypeChips(restaurant.res_type)}
                                 </div>
-                                <div class="mt-5 flex flex-wrap items-center justify-center gap-4">
+                                <div class="flex flex-wrap items-center justify-center gap-4">
                                     <div class="flex flex-wrap items-center justify-center h-[24px]">
                                         ${renderPrice(restaurant.price)}
                                     </div>
@@ -264,7 +264,8 @@ function renderRestaurantCards() {
                                 <p class="mt-6 w-full flex-1 text-left text-base leading-[1.75] text-[#4F362F]">${safeDescription}</p>
                                 <div class="mt-auto w-full pt-6">
                                     <a
-                                        class="group flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[#4F362F] px-[18px] py-3 text-base font-bold leading-none tracking-[0.06em] text-[#4F362F] uppercase no-underline transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#4F362F] hover:text-[#DDC8AF]"
+                                        class="group flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[#4F362F] px-[18px] py-3 
+                                        text-base font-medium leading-none tracking-widest text-[#4F362F] uppercase no-underline transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#4F362F] hover:text-[#DDC8AF]"
                                         href="${escapeHtml(restaurant.google_map ?? "#")}"
                                         target="_blank"
                                         rel="noopener noreferrer"
