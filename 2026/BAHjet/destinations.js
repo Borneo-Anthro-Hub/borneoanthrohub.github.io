@@ -30,7 +30,7 @@ function renderActivities(activities) {
                     <p class="pb-2 text-xl font-bold text-[#FFFBE8] tracking-wide uppercase">
                         ${window.BAHjetGuide.escapeHtml(activity.activities_name ?? "")}
                     </p>
-                    <p class="text-sm/6 font-light italic text-[#DDC8AF]">
+                    <p class="text-sm tracking-[0.01em] font-light italic text-[#DDC8AF]">
                         ${window.BAHjetGuide.escapeHtml(activity.activities_desc ?? "")}
                     </p>
                 </div>
@@ -46,6 +46,17 @@ function renderDestinationSlides(destinations) {
             const isLastSlide = index === destinations.length - 1;
             const directionAsset = isLastSlide ? "finish.svg" : "arrow.svg";
             const directionAlt = isLastSlide ? "finish deco" : "arrow deco";
+            const renovationNotice = destination.under_renovation
+                ? `
+                <div class="absolute right-20">
+                    <div class="reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-800">
+                        <p class="rounded-b-lg bg-[#DDC8AF] px-3 font-semibold italic text-[#4F362F]">
+                            Under Renovation
+                        </p>
+                    </div>
+                </div>
+                `
+                : "";
             const safeDescription = window.BAHjetGuide
                 .escapeHtml(destination.desc ?? "")
                 .replace(/\n/g, "<br>");
@@ -86,6 +97,7 @@ function renderDestinationSlides(destinations) {
                                         </svg>
                                         <span>TAKE ME THERE!</span>
                                     </a>
+                                    ${renovationNotice}
                                 </div>
                             </div>
                             <br><br>

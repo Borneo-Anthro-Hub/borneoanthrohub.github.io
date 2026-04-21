@@ -8,7 +8,7 @@
         "activities":[
             {
                 "activities_name":"Api-Api Night Food Market",
-                "activities_desc":"On Friday and Saturday nights, Gaya Street shifts into a food-focused stretch where stalls line the road and the air fills with the smell of grilling and frying. Visitors move from booth to booth picking up local bites, seafood, snacks, and drinks while eating as they walk. It’s less of a formal market and more of an evening hangout — simple, busy, and centred around trying different foods in one place."
+                "activities_desc":"On Friday and Saturday nights, Gaya Street shifts into a food-focused stretch where stalls line the road and the air filled with the smell of grilling and frying. Visitors move from booth to booth picking up local bites, seafood, snacks, and drinks while eating as they walk. It’s less of a formal market and more of an evening hangout — simple, busy, and centred around trying different foods in one place."
             },
             {
                 "activities_name":"Sunday Market",
@@ -71,14 +71,15 @@
             "activities_desc":"Tourists will embark on a journey through Sabah’s rich cultural and natural heritage, exploring exhibits on archaeology, ethnography, and traditional crafts. The tour also includes the Heritage Village, where visitors can step inside life-sized replicas of indigenous houses to experience the state’s diverse ethnic traditions."
         }
     ],
-    "google_map":             "https://www.google.com/maps/place/Sabah+State+Museum/data=!4m2!3m1!19sChIJL0Z-z7BpOzIRIEUWpx2lhNw"
+    "google_map":             "https://www.google.com/maps/place/Sabah+State+Museum/data=!4m2!3m1!19sChIJL0Z-z7BpOzIRIEUWpx2lhNw",
+    "under_renovation":       true
 },
 {
     "index":6,
     "destinations":           "Handicraft Market",
     "distance_icon":          "walk",
     "distance":               "500m",
-    "desc":                   "“The Handicraft Market, often known as the Filipino Market, is a lively stretch of stalls selling local crafts and souvenirs. Visitors can browse handmade beadwork, batik fabrics, woven items, wood carvings, traditional accessories, and locally sourced pearls. Bargaining is common, and the busy, colourful atmosphere makes it as much about the experience as it is about shopping.",
+    "desc":                   "The Handicraft Market, often known as the Filipino Market, is a lively stretch of stalls selling local crafts and souvenirs. Visitors can browse handmade beadwork, batik fabrics, woven items, wood carvings, traditional accessories, and locally sourced pearls. Bargaining is common, and the busy, colourful atmosphere makes it as much about the experience as it is about shopping.",
     "activities":[
         {
             "activities_name":"Souvenirs",
@@ -106,7 +107,7 @@
     "destinations":           "Maybank - Gaya Street Branch",
     "distance_icon":          "walk",
     "distance":               "400m",
-    "desc":                   "As amusing as it may seem, after its moment in the social media spotlight, this location has become a popular photo stop for both tourists and locals and capture some pictures during their walk at Gaya Street.",
+    "desc":                   "As amusing as it may seem, after its moment in the social media spotlight, this location has become a popular photo stop for both tourists and locals to capture some pictures during their walk at Gaya Street.",
     "activities":[
         {
             "activities_name":"Sightseeing",
