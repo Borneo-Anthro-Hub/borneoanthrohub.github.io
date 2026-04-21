@@ -71,7 +71,8 @@
             "activities_desc":"Tourists will embark on a journey through Sabah’s rich cultural and natural heritage, exploring exhibits on archaeology, ethnography, and traditional crafts. The tour also includes the Heritage Village, where visitors can step inside life-sized replicas of indigenous houses to experience the state’s diverse ethnic traditions."
         }
     ],
-    "google_map":             "https://www.google.com/maps/place/Sabah+State+Museum/data=!4m2!3m1!19sChIJL0Z-z7BpOzIRIEUWpx2lhNw"
+    "google_map":             "https://www.google.com/maps/place/Sabah+State+Museum/data=!4m2!3m1!19sChIJL0Z-z7BpOzIRIEUWpx2lhNw",
+    "under_renovation":       true
 },
 {
     "index":6,
