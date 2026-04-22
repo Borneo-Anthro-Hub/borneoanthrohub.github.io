@@ -317,6 +317,55 @@
         }
     }
 
+    function setupMobileTocFooterAvoidance() {
+        const mobileBarEl = document.getElementById("travel-info-toc-mobile-bar");
+        const footerHostEl = document.getElementById("footer");
+        const mediaQuery = window.matchMedia("(max-width: 1023px)");
+
+        if (!mobileBarEl || !footerHostEl) {
+            return;
+        }
+
+        let frameId = null;
+
+        function updateOffset() {
+            frameId = null;
+
+            if (!mediaQuery.matches || mobileBarEl.hidden) {
+                mobileBarEl.style.removeProperty("--travel-toc-mobile-offset");
+                return;
+            }
+
+            const footerBoundaryEl = footerHostEl.querySelector("footer") || footerHostEl;
+            const footerTop = footerBoundaryEl.getBoundingClientRect().top;
+            const overlap = Math.max(0, window.innerHeight - footerTop);
+
+            mobileBarEl.style.setProperty("--travel-toc-mobile-offset", `${overlap}px`);
+        }
+
+        function scheduleUpdate() {
+            if (frameId !== null) {
+                return;
+            }
+
+            frameId = window.requestAnimationFrame(updateOffset);
+        }
+
+        if (!mobileBarEl.dataset.footerAware) {
+            window.addEventListener("scroll", scheduleUpdate, { passive: true });
+            window.addEventListener("resize", scheduleUpdate);
+            window.addEventListener("load", scheduleUpdate);
+            mediaQuery.addEventListener("change", scheduleUpdate);
+
+            const footerObserver = new MutationObserver(scheduleUpdate);
+            footerObserver.observe(footerHostEl, { childList: true, subtree: true });
+
+            mobileBarEl.dataset.footerAware = "true";
+        }
+
+        scheduleUpdate();
+    }
+
     function highlightActiveTocLink(id) {
         const links = Array.from(document.querySelectorAll(".travel-toc__link"));
         let activeLink = null;
@@ -419,6 +468,7 @@
             buildTableOfContents(headings);
             setupTocToggle();
             setupMobileTocDrawer();
+            setupMobileTocFooterAvoidance();
             setupTocScrollspy(headings);
             statusEl.hidden = true;
             statusEl.textContent = "";

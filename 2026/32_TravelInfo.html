@@ -470,7 +470,7 @@
             .travel-toc-mobile-bar {
                 position: fixed;
                 right: 0;
-                bottom: 0;
+                bottom: var(--travel-toc-mobile-offset, 0px);
                 left: 0;
                 z-index: 40;
                 display: flex;
@@ -629,13 +629,19 @@
         <section>
             <div class="relative w-full bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] px-px pt-px pb-[50px]">
                 <div class="relative mt-10 flex flex-col items-center bg-[#FFFBE8] px-4 pb-14 md:px-5 md:pb-[72px]"
-                    style="box-shadow: 0px 0px 10px 2px">
+                    style="box-shadow: 0px 0px 10px 2px">                    
                     <div class="mx-auto w-full max-w-[1080px] px-4 pt-12 md:px-8 md:pt-16">
+                        <div class="flex md:w-232 gap-5 
+                        reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
+                            <img src="./images/TravelInfo/JournalNote.svg" class="w-60" alt="page 1 deco" />
+                            <img src="./images/TravelInfo/Venue_Journal_Doodle.svg" class="w-25" alt="" />
+                        </div>
                         <div id="travel-info-status"
                             class="rounded-[20px] border border-[#4F362F]/15 bg-[#FFFBE8] px-5 py-4 text-center text-base text-[#4F362F]">
                             Loading travel information...
                         </div>
-                        <div class="travel-layout mt-8">
+                        <div class="travel-layout mt-8
+                        reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-300">
                             <article id="travel-info-content"
                                 class="travel-markdown rounded-[28px] bg-[#FFFBE8] px-6 py-8 md:px-10 md:py-10">
                             </article>
