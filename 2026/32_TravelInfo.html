@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Info | Borneo Anthro Hub</title>
+    <link href="./css/output.css" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+        body.travel-toc-mobile-open {
+            overflow: hidden;
+        }
+
+        .travel-markdown h1,
+        .travel-markdown h2,
+        .travel-markdown h3,
+        .travel-markdown h4,
+        .travel-markdown h5,
+        .travel-markdown h6 {
+            color: #4f362f;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .travel-markdown h1 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            scroll-margin-top: 7rem;
+        }
+
+        .travel-markdown h2 {
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            scroll-margin-top: 7rem;
+        }
+
+        .travel-markdown h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+            scroll-margin-top: 7rem;
+        }
+
+        .travel-markdown h4,
+        .travel-markdown h5,
+        .travel-markdown h6 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .travel-markdown p,
+        .travel-markdown li {
+            color: #4f362f;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .travel-markdown p {
+            margin: 0 0 1.1rem;
+        }
+
+        .travel-markdown ul,
+        .travel-markdown ol {
+            margin: 0 0 1.5rem;
+            padding-left: 1.5rem;
+            list-style-position: outside;
+        }
+
+        .travel-markdown ul {
+            list-style-type: disc;
+        }
+
+        .travel-markdown ol {
+            list-style-type: decimal;
+        }
+
+        .travel-markdown ul ul,
+        .travel-markdown ul ol,
+        .travel-markdown ol ul,
+        .travel-markdown ol ol {
+            margin-top: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .travel-markdown ul ul {
+            list-style-type: circle;
+        }
+
+        .travel-markdown ul ul ul {
+            list-style-type: square;
+        }
+
+        .travel-markdown li + li {
+            margin-top: 0.6rem;
+        }
+
+        .travel-markdown hr {
+            margin: 1.75rem 0;
+            border: 0;
+            border-top: 2px dashed rgba(79, 54, 47, 0.24);
+        }
+
+        .travel-markdown a {
+            color: #8c5f43;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+
+        .travel-markdown strong {
+            font-weight: 700;
+        }
+
+        .travel-markdown em {
+            font-style: italic;
+        }
+
+        .travel-markdown mark {
+            padding: 0.12em 0.36em;
+            border-radius: 0.35em;
+            color: #4f362f;
+            box-shadow: inset 0 -0.08em 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .travel-markdown .md-highlight {
+            background: #f6d98b;
+        }
+
+        .travel-markdown .md-highlight--yellow {
+            background: #DC9F45;
+        }
+
+        .travel-markdown .md-highlight--red {
+            background: #ff2c4d;
+            color:#FFFBE8;
+        }
+
+        .travel-markdown .md-highlight--green {
+            background: #c7e7be;
+        }
+
+        .travel-markdown .md-highlight--blue {
+            background: #54CCC9;
+        }
+
+        .travel-markdown .md-highlight--pink {
+            background: #f4c4db;
+        }
+
+        .travel-markdown .md-highlight--purple {
+            background: #dac8ef;
+        }
+
+        .travel-markdown .md-highlight--orange {
+            background: #f2c9a1;
+        }
+
+        .travel-markdown .md-highlight--teal {
+            background: #bde4de;
+        }
+
+        .travel-markdown .md-callout {
+            margin: 1.5rem 0;
+            padding: 1rem 1.15rem 1.1rem;
+            border: 1.5px solid rgba(79, 54, 47, 0.12);
+            border-radius: 1rem;
+            background: #fff6e8;
+            box-shadow: 0 10px 24px rgba(79, 54, 47, 0.06);
+        }
+
+        .travel-markdown .md-callout__title {
+            margin-bottom: 0.65rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .travel-markdown .md-callout__body>*:last-child {
+            margin-bottom: 0;
+        }
+
+        .travel-markdown .md-callout--warning {
+            border-color: rgba(220, 159, 69, 0.45);
+            background: #ff6e6e;
+        }
+
+        .travel-markdown .md-callout--warning .md-callout__title {
+            color: #923e3f;
+        }
+
+        .travel-markdown .md-callout--info {
+            border-color: rgba(84, 204, 201, 0.45);
+            background: #ebfbfb;
+        }
+
+        .travel-markdown .md-callout--info .md-callout__title {
+            color: #0f6f74;
+        }
+
+        .travel-markdown .md-callout--success {
+            border-color: rgba(97, 161, 84, 0.4);
+            background: #eef8ea;
+        }
+
+        .travel-markdown .md-callout--success .md-callout__title {
+            color: #396f2c;
+        }
+
+        .travel-markdown .md-callout--note {
+            border-color: rgba(127, 102, 183, 0.35);
+            background: #f3eefb;
+        }
+
+        .travel-markdown .md-callout--note .md-callout__title {
+            color: #6a4ea2;
+        }
+
+        .travel-markdown code {
+            padding: 0.15em 0.4em;
+            border-radius: 0.45em;
+            background: rgba(79, 54, 47, 0.08);
+            font-size: 0.95em;
+            color: #6d483d;
+        }
+
+        .travel-markdown pre {
+            overflow-x: auto;
+            margin: 0 0 1.5rem;
+            padding: 1rem 1.1rem;
+            border-radius: 1rem;
+            background: #4f362f;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .travel-markdown pre code {
+            padding: 0;
+            background: transparent;
+            color: #fff7e8;
+        }
+
+        .travel-markdown blockquote {
+            margin: 0 0 1.5rem;
+            padding: 0.9rem 1rem 0.9rem 1.2rem;
+            border-left: 4px solid #a88c76;
+            background: rgba(168, 140, 118, 0.12);
+            border-radius: 0 1rem 1rem 0;
+        }
+
+        .travel-markdown blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .travel-markdown img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .travel-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .travel-toc {
+            position: relative;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            color: #4F362F;
+            overflow: visible;
+        }
+
+        .travel-toc[hidden] {
+            display: none;
+        }
+
+        .travel-toc__inner {
+            position: relative;
+            z-index: 2;
+            min-height: 100%;
+            padding: 1.3rem 1.3rem 2.2rem;
+            background: #DDC8AF;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 44px 100%, 0 calc(100% - 44px));
+        }
+
+        .travel-toc__inner::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(315deg,  #CBB9A8 50% 100%);
+            pointer-events: none;
+            box-shadow: -5px 5px 10px 3px; 
+            margin-left: -1px;
+        }
+
+        .travel-toc__title {
+            margin: 0;
+            color: #4F362F;
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .travel-toc__header {
+            display: block;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .travel-toc__toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.5rem;
+            padding: 0.55rem 0.9rem;
+            border: 1px solid rgba(79, 54, 47, 0.18);
+            border-radius: 999px;
+            background: rgba(255, 251, 232, 0.55);
+            color: #4F362F;
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .travel-toc__toggle-icon {
+            display: inline-block;
+            margin-left: 0.45rem;
+            transition: transform 180ms ease;
+        }
+
+        .travel-toc.is-open .travel-toc__toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .travel-toc__body {
+            display: block;
+        }
+
+        .travel-toc__deco {
+            position: absolute;
+            right: 1rem;
+            bottom: 0.6rem;
+            z-index: 4;
+            width: auto;
+            height: 2rem;
+            pointer-events: none;
+        }
+
+        .travel-toc__list,
+        .travel-toc__sublist {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .travel-toc__item + .travel-toc__item {
+            margin-top: 0.5rem;
+        }
+
+        .travel-toc__sublist {
+            margin-top: 0.45rem;
+            padding-left: 1rem;
+        }
+
+        .travel-toc__link {
+            position: relative;
+            display: inline-block;
+            color: #4F362F;
+            font-weight: 600;
+            line-height: 1.5;
+            text-decoration: none;
+            transition: color 180ms ease, transform 180ms ease;
+        }
+
+        .travel-toc__link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.12rem;
+            width: 100%;
+            height: 1.5px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 180ms ease;
+        }
+
+        .travel-toc__link:hover {
+            color: #8C5F43;
+            transform: translateX(2px);
+        }
+
+        .travel-toc__link:hover::after,
+        .travel-toc__link.is-active::after {
+            transform: scaleX(1);
+        }
+
+        .travel-toc__link.is-active {
+            color: #8C5F43;
+        }
+
+        .travel-toc__link--level-3 {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .travel-toc-mobile-bar {
+            display: none;
+        }
+
+        .travel-toc-mobile-overlay {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .travel-layout {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 300px;
+                align-items: start;
+                gap: 2rem;
+            }
+
+            .travel-toc {
+                position: sticky;
+                top: 7rem;
+                order: 2;
+                margin-top: 0.2rem;
+                min-height: 30rem;
+            }
+
+            .travel-markdown {
+                order: 1;
+            }
+
+            .travel-toc__toggle {
+                display: none;
+            }
+
+            .travel-toc__body {
+                display: block !important;
+            }
+
+            .travel-toc__inner {
+                min-height: 32rem;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .travel-markdown {
+                padding-bottom: 6.5rem;
+            }
+
+            .travel-toc {
+                display: none;
+            }
+
+            .travel-toc-mobile-bar {
+                position: fixed;
+                right: 0;
+                bottom: var(--travel-toc-mobile-offset, 0px);
+                left: 0;
+                z-index: 40;
+                display: flex;
+                align-items: stretch;
+                justify-content: space-between;
+                border-top: 2px solid rgba(79, 54, 47, 0.28);
+                background: #DDC8AF;
+                color: #4F362F;
+                box-shadow: 0 -12px 28px rgba(79, 54, 47, 0.12);
+            }
+
+            .travel-toc-mobile-bar__button {
+                flex: 1;
+                padding: 1.15rem 1.25rem 1.2rem;
+                text-align: left;
+                font-size: 1rem;
+                font-weight: 800;
+                color: #4F362F;
+            }
+
+            .travel-toc-mobile-bar__button:last-child {
+                flex: 0 0 5.2rem;
+                border-left: 1.5px solid rgba(79, 54, 47, 0.22);
+                text-align: center;
+                font-size: 1.75rem;
+                line-height: 1;
+            }
+
+            .travel-toc-mobile-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 50;
+                display: none;
+                background: rgba(34, 24, 20, 0.35);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 180ms ease;
+            }
+
+            .travel-toc-mobile-overlay.is-open {
+                display: block;
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .travel-toc-mobile-overlay__backdrop {
+                position: absolute;
+                inset: 0;
+            }
+
+            .travel-toc-mobile-panel {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                max-height: min(78vh, 760px);
+                overflow: hidden;
+                border-top: 2px solid rgba(79, 54, 47, 0.28);
+                border-radius: 1.2rem 1.2rem 0 0;
+                background: #DDC8AF;
+                color: #4F362F;
+                box-shadow: 0 -20px 40px rgba(79, 54, 47, 0.16);
+                transform: translateY(100%);
+                transition: transform 220ms ease;
+            }
+
+            .travel-toc-mobile-overlay.is-open .travel-toc-mobile-panel {
+                transform: translateY(0);
+            }
+
+            .travel-toc-mobile-panel__header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                border-bottom: 1px solid rgba(79, 54, 47, 0.18);
+            }
+
+            .travel-toc-mobile-panel__title {
+                padding: 1.25rem 1.2rem;
+                font-size: 1.05rem;
+                font-weight: 800;
+            }
+
+            .travel-toc-mobile-panel__close {
+                flex: 0 0 5.2rem;
+                align-self: stretch;
+                border-left: 1.5px solid rgba(79, 54, 47, 0.22);
+                font-size: 1.85rem;
+                color: #8C5F43;
+            }
+
+            .travel-toc-mobile-panel__body {
+                max-height: calc(min(78vh, 760px) - 4.6rem);
+                overflow-y: auto;
+                padding: 1rem 1.2rem 1.6rem;
+            }
+
+            .travel-toc-mobile-panel .travel-toc__list,
+            .travel-toc-mobile-panel .travel-toc__sublist {
+                list-style: none;
+                margin: 0;
+                padding-left: 0;
+            }
+
+            .travel-toc-mobile-panel .travel-toc__item + .travel-toc__item {
+                margin-top: 0.55rem;
+            }
+
+            .travel-toc-mobile-panel .travel-toc__sublist {
+                margin-top: 0.45rem;
+                padding-left: 1rem;
+            }
+
+            .travel-toc-mobile-panel .travel-toc__link {
+                display: inline-block;
+                padding: 0.4rem 0;
+                font-size: 1rem;
+                font-weight: 700;
+                transform: none;
+            }
+
+            .travel-toc-mobile-panel .travel-toc__link--level-3 {
+                font-size: 0.95rem;
+                font-weight: 600;
+            }
+
+            .travel-toc-mobile-panel .travel-toc__link.is-active {
+                color: #8C5F43;
+            }
+
+            .travel-toc-mobile-panel .travel-toc__link::after {
+                bottom: 0.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="navbar"></div>
+        <div class="navbar-gradient"></div>
+
+        <script src="./navbar.js"></script>
+        <!-- SECTION 1: HERO -->
+        <section class="relative flex items-center justify-center overflow-hidden py-[200px] text-center text-white">
+            <img src="./images/Page Banner-100 1.png" alt="" aria-hidden="true"
+                class="absolute inset-0 h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-black/30"></div>
+            <h1
+                class="relative z-10 text-[72px] font-semibold text-[#FFFBE8] [text-shadow:3px_5px_5px_rgba(0,0,0,0.3)]">
+                Travel Info
+            </h1>
+        </section>
+        <div><br><br></div>
+        <section>
+            <div class="relative w-full bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] px-px pt-px pb-[50px]">
+                <div class="relative mt-10 flex flex-col items-center bg-[#FFFBE8] px-4 pb-14 md:px-5 md:pb-[72px]"
+                    style="box-shadow: 0px 0px 10px 2px">                    
+                    <div class="mx-auto w-full max-w-[1080px] px-4 pt-12 md:px-8 md:pt-16">
+                        <div class="flex md:w-232 gap-5 
+                        reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
+                            <img src="./images/TravelInfo/JournalNote.svg" class="w-60" alt="page 1 deco" />
+                            <img src="./images/TravelInfo/Venue_Journal_Doodle.svg" class="w-25" alt="" />
+                        </div>
+                        <div id="travel-info-status"
+                            class="rounded-[20px] border border-[#4F362F]/15 bg-[#FFFBE8] px-5 py-4 text-center text-base text-[#4F362F]">
+                            Loading travel information...
+                        </div>
+                        <div class="travel-layout mt-8
+                        reveal opacity-0 -translate-y-10 transition-all duration-800 ease-out delay-300">
+                            <article id="travel-info-content"
+                                class="travel-markdown rounded-[28px] bg-[#FFFBE8] px-6 py-8 md:px-10 md:py-10">
+                            </article>
+                            <nav id="travel-info-toc" class="travel-toc" aria-label="Travel guide table of contents"
+                                hidden>
+                                <div class="travel-toc__inner reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300">
+                                    <div class="travel-toc__header">
+                                        <p class="travel-toc__title">Table of Contents</p>
+                                        <button id="travel-info-toc-toggle" class="travel-toc__toggle" type="button"
+                                            aria-expanded="false" aria-controls="travel-info-toc-body">
+                                            <span class="travel-toc__toggle-label">Open</span>
+                                            <span class="travel-toc__toggle-icon">▾</span>
+                                        </button>
+                                    </div>
+                                    <div id="travel-info-toc-body" class="travel-toc__body">
+                                        <div id="travel-info-toc-list"></div>
+                                    </div>
+                                    <img src="./images/venue/aminah_fly.webp" alt="Aminah fly deco"
+                                        class="travel-toc__deco reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out delay-300" />
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="my-50"></div>
+        </section>
+    </div>
+    <div id="travel-info-toc-mobile-bar" class="travel-toc-mobile-bar" hidden>
+        <button id="travel-info-toc-mobile-open" class="travel-toc-mobile-bar__button" type="button">
+            Table of Contents
+        </button>
+        <button id="travel-info-toc-mobile-open-icon" class="travel-toc-mobile-bar__button" type="button"
+            aria-label="Open table of contents">
+            +
+        </button>
+    </div>
+    <div id="travel-info-toc-mobile-overlay" class="travel-toc-mobile-overlay" hidden>
+        <div id="travel-info-toc-mobile-backdrop" class="travel-toc-mobile-overlay__backdrop"></div>
+        <section class="travel-toc-mobile-panel" aria-label="Mobile table of contents">
+            <header class="travel-toc-mobile-panel__header">
+                <div class="travel-toc-mobile-panel__title">Table of Contents</div>
+                <button id="travel-info-toc-mobile-close" class="travel-toc-mobile-panel__close" type="button"
+                    aria-label="Close table of contents">
+                    ×
+                </button>
+            </header>
+            <div class="travel-toc-mobile-panel__body">
+                <div id="travel-info-toc-mobile-list"></div>
+            </div>
+        </section>
+    </div>
+    <div>
+        <div id="footer"></div>
+        <script src="./footer.js" defer></script>
+    </div>
+    <script src="./js/animation.js"></script>
+    <script src="./js/marked.min.js"></script>
+    <script src="./js/travelinfo.js" defer></script>
+    <noscript>
+        <div id="noscript-warning"
+            class="fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center bg-black/85 p-8 text-center font-sans text-2xl text-white">
+            <img src="./images/Sean_seem.PNG" alt="Disabled of JS" class="max-w-[240px]" />
+            ⚠️ JavaScript is disabled in your browser.
+            <br />To use this website properly, please enable JavaScript.
+        </div>
+    </noscript>
+</body>
+
+</html>
