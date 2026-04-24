@@ -87,7 +87,7 @@ While we aim to keep things accurate and practical, travel conditions, transport
 - When transiting via the same airline, typically you would not be required to collect your luggage. Feel free to head straight to the Transit or Domestic Transfer area for your next flight.
 - You may be required to re-clear immigration and perform a security checking, based on local procedures from time to time.
 - However, for different airlines, in most cases, you would need to re-collect your baggages, head to the correct terminal and re-check in them accordingly.
-- Make sure to also allow sufficient transit time in the event of a flight reschedule or delay.
+- Make sure to also **allow sufficient transit time in the event of a flight reschedule or delay**.
 
 ### 2. Travel Reminders
 
@@ -106,12 +106,12 @@ While we aim to keep things accurate and practical, travel conditions, transport
 ### 1. Cash Payments and ATMs in Malaysia
 
 - Cash remains widely accepted across Malaysia, especially at smaller shops, hawker stalls and night markets. ATMs are also available in malls, petrol stations or nearby banks, where most machines generally accept Visa, MasterCard or UnionPay, with some that might support International Cards like AMEX and JCB.
-- When using foreign cards or banks than your own, please be aware of any possible withdrawal fees or card-network switching fees.
+- When using foreign cards or banks than your own, please **be aware of any possible withdrawal fees or card-network switching fees**.
 - ATMs generally dispense RM50 or RM100 denominations, and might have varying withdrawal limits between banks.
 
 ### 2. E-Wallets and Cashless Options
 
 - The most common local e-Wallets include **Touch 'n Go eWallet** as well as **Boost**, which are widely accepted in retail stores, parking lots and food stalls.
 - GrabPay and ShopeePay are also commonly used, but it is mainly available for restaurants, cafes or supermarkets.
-- Foreigners may enjoy using these e-Wallets, but some may require a Malaysian Bank Account to perform any form of credit top-ups.
-- Most major shops, supermarkets also accept debit/credit cards or any payment channels that is compatible with the DuitNow QR (Malaysia's unified QR Payment System)
+- Foreigners may enjoy using these e-Wallets, but some may **require a Malaysian Bank Account** to perform any form of credit top-ups.
+- Most major shops, supermarkets also accept debit/credit cards or any payment channels that is **compatible with the DuitNow QR (Malaysia's Unified QR Payment System)**
