@@ -1,113 +1,291 @@
-  <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Borneo Anthro Hub</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <style>
-    html, body {
-      overflow-x: hidden;
-      background-color: #ffffff;
-      /* background-color: #175b68; */
-    }
-    .horizontal-panels {
-      display: flex;
-      width: 300vw;
-      height: 100vh;
-    }
-    .horizontal-panel {
-      min-width: 100vw;
-      height: 100vh;
-      flex-shrink: 0;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;  /* horizontal center */
-      align-items: center;      /* vertical center */
-      text-align: center;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-    }
-    .inprogress {
-      max-width: 800px;
-    }
-    .message {
-      font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 30px;
-      color: #333;
-    }
-    .image-placeholder {
-      width: 100%;
-      max-width: 500px;
-      height: 300px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #666;
-      font-size: 1.2rem;
-      margin: 0 auto;
-    }
-  </style>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      gsap.registerPlugin(ScrollTrigger);
-
-      gsap.fromTo(".scroll-fade-in",
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".scroll-fade-in",
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: false,
-            toggleActions: "play reverse play reverse"
-          }
-        }
-      );
-
-      gsap.to(".horizontal-panels", {
-        xPercent: -200,
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".Events",
-            pin: true,
-            scrub: 1,
-            anticipatePin: 1,
-            end: () => "+=" + (document.querySelector(".horizontal-panels").offsetWidth - window.innerWidth),
-        },
-        });
-    });
-  </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guidelines | Borneo Anthro Hub</title>
+    <link href="./css/output.css" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
 </head>
 
-
 <body>
+    <div>
+        <div id="navbar"></div>
+        <div class="navbar-gradient"></div>
 
-
-  <div class="inprogress">
-    <div class="message">Website Currently in Progress</div>
-    <div class="image-placeholder">
-      <img src="images/A.png" alt="Coming Soon" style="max-width:100%; border-radius:12px;">
+        <script src="./navbar.js"></script>
+        <!-- SECTION 1: HERO -->
+        <section class="relative flex items-center justify-center overflow-hidden py-[200px] text-center text-white">
+            <img src="./images/Page Banner-100 1.png" alt="" aria-hidden="true"
+                class="absolute inset-0 h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-black/30"></div>
+            <h1
+                class="relative z-10 text-[72px] font-semibold text-[#FFFBE8] [text-shadow:3px_5px_5px_rgba(0,0,0,0.3)]">
+                Guidelines
+            </h1>
+        </section>
+        <div><br><br></div>
+        <section>
+            <div class="relative w-full bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] px-px pt-px pb-12.5">
+                <div
+                    class="relative mt-10 flex flex-col items-center overflow-hidden bg-[#FFFBE8] px-4 pb-14 shadow-[0_18px_40px_rgba(79,54,47,0.12)] md:px-5 md:pb-18">
+                    <div
+                        class="flex w-full max-w-315 gap-5 pt-10 pb-5 reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
+                        <img src="./images/guideline/page_deco.svg" class="w-75" alt="page 1 deco" />
+                        <img src="./images/BAHjet/sean_aminah.svg" class="w-25" alt="" />
+                    </div>
+                    <div
+                        class="pointer-events-none absolute left-6 top-6 h-16 w-16 rounded-full bg-[#DDC8AF]/30 blur-2xl">
+                    </div>
+                    <div
+                        class="pointer-events-none absolute bottom-10 right-6 h-20 w-20 rounded-full bg-[#54CCC9]/12 blur-3xl">
+                    </div>
+                    <div class="mx-auto w-full max-w-270 px-4 pt-12 md:px-8 md:pt-16">
+                        <article class="text-wrap text-[#4F362F]">
+                            <div class="pb-10 reveal opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                                <div data-guideline-grid
+                                    class="mx-auto grid max-w-96 grid-cols-1 gap-4 md:max-w-240 md:grid-cols-3">
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_1.png" alt="Guideline 1"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">1.</strong> Always wear your
+                                            designated badge within con spaces.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_2.png" alt="Guideline 2"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">2.</strong> If you feel unwell,
+                                            please quarantine, wear a mask, and maintain distance.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_3.png" alt="Guideline 3"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">3.</strong> Dress appropriately.
+                                            Explicit or indecent attire is not permitted.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_4.png" alt="Guideline 4"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">4.</strong> Smoking or vaping is
+                                            not permitted within con spaces or hotel premises.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_5.png" alt="Guideline 5"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">5.</strong> Imitation weaponry or
+                                            props must be approved by the Security Team.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_6.png" alt="Guideline 6"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">6.</strong> Contraband or being
+                                            under the influence may result in ejection.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_7.png" alt="Guideline 7"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">7.</strong> Avoid vandalizing hotel
+                                            property. Damage will be held accountable.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_8.png" alt="Guideline 8"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">8.</strong> No photography or
+                                            videography within the Fursuit Lounge.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_9.png" alt="Guideline 9"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">9.</strong> Harassment of any kind
+                                            will not be tolerated.</p>
+                                    </div>
+                                    <div data-guideline-card
+                                        class="flex flex-col items-center rounded-[1.1rem] border border-[rgba(168,140,118,0.25)] px-3.5 pb-[1.1rem] pt-4 shadow-[0_10px_24px_rgba(79,54,47,0.05)] will-change-transform md:col-start-2 md:min-h-57 md:px-[0.85rem] md:py-4">
+                                        <img src="./images/guideline/image_10.png" alt="Guideline 10"
+                                            class="h-auto w-38 md:w-45" />
+                                        <p
+                                            class="mt-3.5 w-full text-center text-base leading-[1.55] text-[#4f362f] md:mt-3.25 md:leading-[1.45]">
+                                            <strong class="font-bold text-[#d97941]">10.</strong> Seek assistance at the
+                                            Con Ops Room for support or inquiries.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mx-auto mb-10 mt-8 w-full max-w-[860px]">
+                                <div class="mt-25">
+                                    <div
+                                        class="grid items-center-safe justify-center-safe reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-300">
+                                        <img src="./images/venue/page_footer.png" alt="footer doco"
+                                            class="block h-auto w-full" />
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="my-50"></div>
+        </section>
     </div>
-  </div>
+    <div>
+        <div id="footer"></div>
+        <script src="./footer.js" defer></script>
+    </div>
+    <script src="./js/animation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.querySelector('[data-guideline-grid]');
+            const cards = Array.from(document.querySelectorAll('[data-guideline-card]'));
 
+            if (!grid || cards.length === 0 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
 
-</body> 
+            const breakpoint = window.matchMedia('(min-width: 768px)');
+            let isDesktop = breakpoint.matches;
+            let previousRects = captureRects(cards);
+            let updateFrame = 0;
+            let layoutAnimationPending = false;
 
+            function captureRects(elements) {
+                return elements.map((element) => element.getBoundingClientRect());
+            }
 
+            function refreshRects() {
+                previousRects = captureRects(cards);
+            }
+
+            function animateLayoutShift() {
+                const nextRects = captureRects(cards);
+
+                cards.forEach((card, index) => {
+                    const previousRect = previousRects[index];
+                    const nextRect = nextRects[index];
+
+                    if (!previousRect || !nextRect) {
+                        return;
+                    }
+
+                    const deltaX = previousRect.left - nextRect.left;
+                    const deltaY = previousRect.top - nextRect.top;
+
+                    if (Math.abs(deltaX) < 1 && Math.abs(deltaY) < 1) {
+                        return;
+                    }
+
+                    card.getAnimations().forEach((animation) => animation.cancel());
+                    card.animate(
+                        [
+                            {
+                                transform: `translate(${deltaX}px, ${deltaY}px)`,
+                                opacity: 0.86
+                            },
+                            {
+                                transform: 'translate(0, 0)',
+                                opacity: 1
+                            }
+                        ],
+                        {
+                            duration: 520,
+                            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                            fill: 'both'
+                        }
+                    );
+                });
+
+                previousRects = nextRects;
+            }
+
+            function triggerLayoutAnimation(nextIsDesktop) {
+                if (layoutAnimationPending || nextIsDesktop === isDesktop) {
+                    return;
+                }
+
+                layoutAnimationPending = true;
+                isDesktop = nextIsDesktop;
+
+                window.cancelAnimationFrame(updateFrame);
+                updateFrame = window.requestAnimationFrame(() => {
+                    animateLayoutShift();
+                    layoutAnimationPending = false;
+                });
+            }
+
+            function scheduleRectRefresh() {
+                if (layoutAnimationPending) {
+                    return;
+                }
+
+                if (breakpoint.matches !== isDesktop) {
+                    triggerLayoutAnimation(breakpoint.matches);
+                    return;
+                }
+
+                window.cancelAnimationFrame(updateFrame);
+                updateFrame = window.requestAnimationFrame(() => {
+                    refreshRects();
+                });
+            }
+
+            function handleBreakpointChange(event) {
+                triggerLayoutAnimation(event.matches);
+            }
+
+            if (typeof breakpoint.addEventListener === 'function') {
+                breakpoint.addEventListener('change', handleBreakpointChange);
+            } else if (typeof breakpoint.addListener === 'function') {
+                breakpoint.addListener(handleBreakpointChange);
+            }
+
+            window.addEventListener('resize', scheduleRectRefresh);
+            window.addEventListener('orientationchange', scheduleRectRefresh);
+
+            if (document.fonts?.ready) {
+                document.fonts.ready.then(() => {
+                    refreshRects();
+                });
+            }
+        });
+    </script>
+    <noscript>
+        <div id="noscript-warning"
+            class="fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center bg-black/85 p-8 text-center font-sans text-2xl text-white">
+            <img src="./images/Sean_seem.PNG" alt="Disabled of JS" class="max-w-[240px]" />
+            ⚠️ JavaScript is disabled in your browser.
+            <br />To use this website properly, please enable JavaScript.
+        </div>
+    </noscript>
+</body>
 
 </html>
