@@ -15,6 +15,7 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
 .time-column {
   width: 80px; background: #fff; border-right: 1px solid #ccc;
   position: sticky; left: 0; z-index: 40; flex-shrink: 0;
+  overflow: visible;
 }
 
 .time-slot {
@@ -23,9 +24,31 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
   display: flex; align-items: center; justify-content: flex-end;
 }
 
+.time-slot-current {
+  background: #ffe0b2 !important;
+  color: #b34700;
+  font-weight: 700;
+}
+
+.time-now-badge {
+  position: absolute;
+  right: 8px;
+  transform: translateY(-50%);
+  background: #d40000;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+  z-index: 60;
+  pointer-events: none;
+}
+
 /* Day & Room Layout */
 .days { display: flex; flex: 1; position: relative; cursor: crosshair; }
-.day { display: flex; flex-direction: column; border-right: 2px solid #ccc; min-width: 450px; }
+.day { display: flex; flex-direction: column; border-right: 2px solid #ccc; min-width: 950px; }
 
 .day-header {
   position: sticky; top: 0; height: 32px; background: #fff;
@@ -38,6 +61,7 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
   flex: 1;
   border-right: 1px solid #eee;
   position: relative;
+  background: #fff;
 }
 
 .room-header {
@@ -45,22 +69,77 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
   text-align: center; line-height: 28px; font-size: 12px; border-bottom: 1px solid #ddd; z-index: 45;
 }
 
+.room-lane {
+  position: absolute;
+  top: 28px;
+  bottom: 0;
+  border-right: 1px dashed rgba(0, 0, 0, 0.14);
+  pointer-events: none;
+}
+
 /* Events Styling */
 .event {
   position: absolute; 
-  left: 5%; 
-  width: 90%; 
   border-radius: 4px; 
   padding: 4px;
   box-sizing: border-box; 
   font-size: 11px; 
-  /* color: #fff;  */
   z-index: 2; 
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.event-title { font-weight: 700; display: block; color:#fff}
-.event-subtitle { font-size: 10px; opacity: 0.9; display: block; }
+.event.compact {
+  padding: 3px 4px;
+  gap: 1px;
+}
+
+.event-title {
+  font-weight: 700;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+.event-host {
+  display: inline-block;
+  align-self: flex-start;
+  max-width: 100%;
+  padding: 1px 1px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-subtitle {
+  font-size: 10px;
+  opacity: 0.9;
+  display: block;
+  line-height: 1.15;
+  white-space: pre-line;
+}
+
+.event.compact .event-subtitle,
+.event.tight .event-subtitle {
+  display: none;
+}
+
+.event.compact .event-title {
+  -webkit-line-clamp: 1;
+}
+
+.event.compact .event-host {
+  font-size: 9px;
+}
 
 /* Guideline & Click Mark */
 .guide-line {
@@ -96,6 +175,21 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
 
 .past-mask { position: absolute; left: 0; right: 0; background: rgba(0, 0, 0, 0.2); pointer-events: none; z-index: 3; }
 .now-line { position: absolute; left: 0; right: 0; height: 2px; background: red; z-index: 35; }
+.now-line-badge {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #d40000;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+}
 </style>
 </head>
 
@@ -115,13 +209,21 @@ body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4;
 
 <script>
 /* ===== Config ===== */
-const DAY_START = '07:30';
-const DAY_END   = '23:30'; 
+const DAY_START = '00:00';
+const DAY_END   = '24:00'; 
 const PX_PER_MIN = 1;
 const TIME_ZONE = 'Asia/Kuala_Lumpur'; 
+const LANE_GAP = 6;
+const ROOM_PADDING = 6;
 
-const rooms = ['Room A', 'Room B', 'Room C'];
-const dates = ['2026-03-10','2026-03-11', '2026-06-21'];
+const rooms = ['Horizon Hall','Likas Hall','Papar Hall','Luyang Hall'];
+const roomConfigs = {
+  'Horizon Hall': { lanes: 4, width: 1.75 },
+  'Likas Hall': { lanes: 1, width: 1.05 },
+  'Papar Hall': { lanes: 1, width: 0.8 },
+  'Luyang Hall': { lanes: 1, width: 0.8 }
+};
+const dates = ['2026-04-29','2026-04-30'];
 
 /* ===== Utils ===== */
 function timeToMinute(t) {
@@ -135,22 +237,55 @@ function getMYTime() {
   return new Date(myString);
 }
 
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[char]);
+}
+
 const startMin = timeToMinute(DAY_START);
 const endMin   = timeToMinute(DAY_END);
-const totalMin = endMin - startMin;
+const totalMin = endMin - startMin + 30;
+
+function getRoomLaneCount(roomName) {
+  const laneCount = Number(roomConfigs[roomName]?.lanes);
+  if (!Number.isFinite(laneCount)) return 1;
+  return Math.max(1, Math.floor(laneCount));
+}
+
+function getRoomWidthWeight(roomName) {
+  const widthWeight = Number(roomConfigs[roomName]?.width);
+  if (!Number.isFinite(widthWeight)) return 1;
+  return Math.max(0.5, widthWeight);
+}
 
 /* ===== Build Time Axis ===== */
 const axis = document.getElementById('timeAxis');
-for (let m = startMin; m <= endMin; m += 30) {
-  const div = document.createElement('div');
-  div.className = 'time-slot';
-  div.style.height = (30 * PX_PER_MIN) + 'px';
-  const h = Math.floor(m / 60);
-  const min = m % 60;
-  div.style.backgroundColor = (h % 2 === 0) ? '#FFF3E0' : '#FFFFFF';
-  div.textContent = `${String(h).padStart(2,'0')}:${String(min).padStart(2,'0')}`;
-  axis.appendChild(div);
+const timeSlotEntries = [];
+const nowTimeBadge = document.createElement('div');
+nowTimeBadge.className = 'time-now-badge';
+nowTimeBadge.style.display = 'none';
+axis.appendChild(nowTimeBadge);
+
+function buildTimeAxis(axisElement) {
+  for (let m = startMin; m < endMin; m += 30) {
+    const div = document.createElement('div');
+    div.className = 'time-slot';
+    div.style.height = (30 * PX_PER_MIN) + 'px';
+    const h = Math.floor(m / 60);
+    const min = m % 60;
+    div.style.backgroundColor = (h % 2 === 0) ? '#FFF3E0' : '#FFFFFF';
+    div.textContent = `${String(h).padStart(2,'0')}:${String(min).padStart(2,'0')}`;
+    axisElement.appendChild(div);
+    timeSlotEntries.push({ minute: m, element: div });
+  }
 }
+
+buildTimeAxis(axis);
 
 /* ===== Build Grid ===== */
 const activeIndicators = [];
@@ -175,14 +310,25 @@ dates.forEach(dateStr => {
   const isPastDay = dateObj < todayStart;
 
   rooms.forEach(roomName => {
+    const laneCount = getRoomLaneCount(roomName);
+    const widthWeight = getRoomWidthWeight(roomName);
     const room = document.createElement('div');
     room.className = 'room';
     room.dataset.date = dateStr;
     room.dataset.room = roomName;
+    room.dataset.laneCount = String(laneCount);
+    room.style.flex = `${widthWeight} ${widthWeight} 0`;
     const rh = document.createElement('div');
     rh.className = 'room-header';
     rh.textContent = roomName;
     room.appendChild(rh);
+
+    for (let laneIndex = 1; laneIndex < laneCount; laneIndex += 1) {
+      const laneDivider = document.createElement('div');
+      laneDivider.className = 'room-lane';
+      laneDivider.style.left = `calc(${(laneIndex / laneCount) * 100}% - ${LANE_GAP / 2}px)`;
+      room.appendChild(laneDivider);
+    }
 
     if (isPastDay) {
       const mask = document.createElement('div');
@@ -196,8 +342,11 @@ dates.forEach(dateStr => {
       room.appendChild(mask);
       const nowLine = document.createElement('div');
       nowLine.className = 'now-line';
+      const nowLineBadge = document.createElement('div');
+      // nowLineBadge.className = 'now-line-badge';
+      // nowLine.appendChild(nowLineBadge);
       room.appendChild(nowLine);
-      activeIndicators.push({ mask, nowLine });
+      activeIndicators.push({ mask, nowLine, nowLineBadge });
     }
     roomsRow.appendChild(room);
   });
@@ -206,26 +355,76 @@ dates.forEach(dateStr => {
 });
 
 /* ===== Event Rendering ===== */
+function normalizeLane(laneValue, laneCount) {
+  const lane = Number(laneValue);
+  if (!Number.isFinite(lane)) return 1;
+  return Math.min(Math.max(Math.floor(lane), 1), laneCount);
+}
+
+function getLanePlacement(event, laneCount) {
+  const rawStart = event.laneStart ?? event.laneFrom ?? event.lane;
+  const laneStart = normalizeLane(rawStart, laneCount);
+
+  let laneEnd;
+  if (event.laneEnd != null || event.laneTo != null) {
+    laneEnd = normalizeLane(event.laneEnd ?? event.laneTo, laneCount);
+  } else {
+    const spanValue = Number(event.laneSpan ?? event.mergeCell);
+    const safeSpan = Number.isFinite(spanValue) ? Math.max(1, Math.floor(spanValue)) : 1;
+    laneEnd = normalizeLane(laneStart + safeSpan - 1, laneCount);
+  }
+
+  return {
+    laneStart: Math.min(laneStart, laneEnd),
+    laneEnd: Math.max(laneStart, laneEnd)
+  };
+}
+
 function renderEvents(eventsList) {
   eventsList.forEach(e => {
     const room = document.querySelector(`.room[data-date="${e.date}"][data-room="${e.room}"]`);
     if (!room) return;
+    const laneCount = getRoomLaneCount(e.room);
     const start = timeToMinute(e.start);
     const end = timeToMinute(e.end);
     const top = Math.max(start - startMin, 0);
     const height = Math.min(end, endMin) - Math.max(start, startMin);
     if (height <= 0) return;
+    const placement = getLanePlacement(e, laneCount);
+    const laneIndex = placement.laneStart - 1;
+    const laneSpan = placement.laneEnd - placement.laneStart + 1;
+    const laneWidth = `((100% - ${ROOM_PADDING * 2}px) - ${(laneCount - 1) * LANE_GAP}px) / ${laneCount}`;
 
     const ev = document.createElement('div');
     ev.className = 'event';
     ev.style.top = (28 + top * PX_PER_MIN) + 'px'; 
     ev.style.height = (height * PX_PER_MIN) + 'px';
+    ev.style.left = `calc(${ROOM_PADDING}px + (${laneWidth} + ${LANE_GAP}px) * ${laneIndex})`;
+    ev.style.width = `calc((${laneWidth} * ${laneSpan}) + ${Math.max(0, laneSpan - 1) * LANE_GAP}px)`;
     ev.style.backgroundColor = e.color || '#54CCC9';
-    var tittleTextColor = e.titleText_color || '#FFF';
-    var subtitleTextColor = e.subtitleText_color || '#FFF';
+    const titleTextColor = e.titleText_color || '#FFF';
+    const subtitleTextColor = e.subtitleText_color || '#FFF';
+    const hostTextColor = e.hostText_color || titleTextColor;
+    const hostBgColor = e.hostBg_color || 'rgba(255,255,255,0.18)';
+    const durationMin = height / PX_PER_MIN;
+    const safeTitle = escapeHtml(e.title);
+    const safeSubtitle = escapeHtml(e.subtitle || '');
+    const safeHost = escapeHtml(e.host || '');
+
+    if (durationMin <= 45) {
+      ev.classList.add('compact');
+    } else if (durationMin <= 75) {
+      ev.classList.add('tight');
+    }
+
+    ev.title = [e.title, e.host ? `Host: ${e.host}` : '', e.subtitle || '', `${e.start} - ${e.end}`]
+      .filter(Boolean)
+      .join('\n');
+
     ev.innerHTML = `
-      <span class="event-title" style="color:${tittleTextColor}">${e.title}</span>
-      <span class="event-subtitle" style="color:${subtitleTextColor}">${e.subtitle || ''}</span>
+      <span class="event-title" style="color:${titleTextColor}">${safeTitle}</span>
+      ${safeHost ? `<span class="event-host" style="color:${hostTextColor}; background:${hostBgColor}">by ${safeHost}</span>` : ''}
+      <span class="event-subtitle" style="color:${subtitleTextColor}">${safeSubtitle}</span>
     `;
     room.appendChild(ev);
   });
@@ -286,10 +485,11 @@ function updateUI() {
   const nowMY = getMYTime();
   const nowMin = nowMY.getHours() * 60 + nowMY.getMinutes();
   const rawOffset = nowMin - startMin;
-  const isOutOfRange = rawOffset < 0 || rawOffset >= totalMin;
+  const isOutOfRange = rawOffset < 0 || rawOffset > totalMin;
   const clampedHeight = Math.max(0, Math.min(rawOffset, totalMin));
+  const currentTimeLabel = `${String(nowMY.getHours()).padStart(2,'0')}:${String(nowMY.getMinutes()).padStart(2,'0')}`;
 
-  activeIndicators.forEach(item => {
+  activeIndicators.forEach((item, index) => {
     item.mask.style.top = '28px';
     item.mask.style.height = (clampedHeight * PX_PER_MIN) + 'px';
     if (isOutOfRange) {
@@ -297,10 +497,23 @@ function updateUI() {
     } else {
         item.nowLine.style.display = 'block';
         item.nowLine.style.top = (28 + rawOffset * PX_PER_MIN) + 'px';
+        item.nowLineBadge.textContent = currentTimeLabel;
+        item.nowLineBadge.style.display = index === 0 ? 'block' : 'none';
     }
   });
-    // Debug logs
-  console.log(`Time Updated: ${nowMY.toLocaleTimeString()}, Offset: ${rawOffset}, Visible: ${!isOutOfRange}`);
+
+  timeSlotEntries.forEach(slot => {
+    const inCurrentSlot = nowMin >= slot.minute && nowMin < slot.minute + 30;
+    slot.element.classList.toggle('time-slot-current', inCurrentSlot && !isOutOfRange);
+  });
+
+  if (isOutOfRange) {
+    nowTimeBadge.style.display = 'none';
+  } else {
+    nowTimeBadge.style.display = 'block';
+    nowTimeBadge.style.top = (clampedHeight * PX_PER_MIN) + 'px';
+    nowTimeBadge.textContent = currentTimeLabel;
+  }
 
 }
 updateUI();
