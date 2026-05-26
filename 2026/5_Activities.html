@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | Borneo Anthro Hub</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link href="./css/output.css" rel="stylesheet" />
+    <!-- <link href="./fonts/Fonts/WEB/css/general-sans.css" rel="fonts"> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> -->
+    <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+        /* ===== SECTION 1: HERO ===== */
+        .hero {
+            position: relative;
+            background-image: url("images/Page Banner-100 1.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 200px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .hero h1 {
+            font-family: "General Sans", sans-serif;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            font-size: 3rem;
+            color: #fffbe8;
+            text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== SECTION 2: INFO ===== */
+        .info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 0;
+            padding-top: 40px;
+        }
+
+        .banner-img {
+            width: 80%;
+            /* scale to 80% of the page */
+            max-width: 1000px;
+            /* prevent it from getting too big */
+            height: auto;
+            /* keep original image ratio automatically */
+            border-radius: 10px;
+            /* optional */
+            display: block;
+        }
+
+        /* ===== SECTION 3: BOXES ===== */
+        #section3 {
+            padding: 40px 20px;
+        }
+
+        .fix-br {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="navbar"></div>
+        <div class="navbar-gradient"></div>
+
+        <script src="./navbar.js"></script>
+        <!-- SECTION 1: HERO -->
+        <div class="hero">
+            <section>
+                <h1 style="font-size: 72px">Event & Activities</h1>
+            </section>
+        </div>
+        <div><br><br></div>
+        <section>
+            <div class="relative w-full bg-[linear-gradient(to_right,#A88C76_55%,#B29786_100%)] px-px pt-px pb-12.5">
+                <div class="about-card relative mt-10 flex flex-col items-center overflow-hidden bg-[#FFFBE8] px-4 pb-14 md:px-5 md:pb-18"
+                    style="box-shadow: 0px 0px 10px 2px">
+                    <div
+                        class="pointer-events-none absolute left-6 top-6 h-16 w-16 rounded-full bg-[#DDC8AF]/30 blur-2xl">
+                    </div>
+                    <div
+                        class="pointer-events-none absolute bottom-10 right-6 h-20 w-20 rounded-full bg-[#54CCC9]/12 blur-3xl">
+                    </div>
+                    <div
+                        class="flex w-full max-w-[1260px] gap-5 pt-10 pb-5 reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
+                        <img src="./images/timelineSchedule/page_deco.svg" class="w-75" alt="page 1 deco" />
+                        <img src="./images/BAHjet/sean_aminah.svg" class="w-25" alt="" />
+                    </div>
+                    <div class="mx-auto w-full max-w-480 px-0.5 pt-12 md:px-8 md:pt-16">
+                        <article class="text-wrap text-[#4F362F]">
+                            <div
+                                class="mx-auto mb-10 max-w-[760px] text-center reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-200">
+                                <p class="text-[24px] font-semibold leading-tight text-[#4F362F] md:text-[34px]">
+                                    Event Time Schedule
+                                </p>
+                                <p class="mx-auto mt-4 max-w-[680px] text-[15px] leading-relaxed text-[#4F362F]/80 md:text-[17px]">
+                                    Swipe left or right to roam through the day’s activities. <br>
+                                    Spot something interesting? Tap it once to reveal the exact time and details.
+                                </p>
+                            </div>
+                            <div class="flex justify-center items-center reveal opacity-0 translate-y-10 transition-all duration-700 ease-out delay-300">
+                                <div class="flex justify-center-safe w-full">
+                                    <iframe src="./timelineSchedule.html" title="Schedule" class="w-100 h-240 md:w-364 md:h-240"></iframe>
+                                </div>
+                            </div>
+                            <div class="mx-auto mb-20 mt-8 w-full max-w-[860px] md:pt-2">
+                                <div class="mt-25">
+                                    <div
+                                        class="grid items-center-safe justify-center-safe reveal opacity-0 -translate-y-10 transition-all duration-700 ease-out delay-300">
+                                        <img src="./images/venue/page_footer.png" alt="footer doco"
+                                            class="block h-auto w-full" />
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="my-50"></div>
+        </section>
+    </div>
+
+    <div>
+        
+    </div>
+    <div>
+        <div id="footer"></div>
+        <script src="./footer.js" defer></script>
+    </div>
+    <script src="./js/animation.js"></script>
+    <noscript>
+        <div id="noscript-warning"
+            class="fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center bg-black/85 p-8 text-center font-sans text-2xl text-white">
+            <img src="./images/Sean_seem.PNG" alt="Disabled of JS" class="max-w-[240px]" />
+            ⚠️ JavaScript is disabled in your browser.
+            <br />To use this website properly, please enable JavaScript.
+        </div>
+    </noscript>
+</body>
+
+</html>

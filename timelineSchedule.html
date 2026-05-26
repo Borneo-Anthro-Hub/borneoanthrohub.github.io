@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Events Schedule | Borneo Anthro Hub</title>
-<link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
+<title>Pro Schedule - Precision Click (MYT)</title>
+
 <style>
-body { margin: 0;  font-family: "General Sans", sans-serif; background-color: #FFFBE8; overflow: hidden; }
+body { margin: 0; font-family: system-ui, sans-serif; background-color: #f4f4f4; overflow: hidden; }
 
 /* Viewport & Layout */
 .viewport { height: 100vh; overflow: auto; position: relative; }
@@ -48,10 +48,10 @@ body { margin: 0;  font-family: "General Sans", sans-serif; background-color: #F
 
 /* Day & Room Layout */
 .days { display: flex; flex: 1; position: relative; cursor: crosshair; }
-.day { display: flex; flex-direction: column; border-right: 20px solid #ccc; min-width: 950px; }
+.day { display: flex; flex-direction: column; border-right: 5px solid #ccc; min-width: 950px; }
 
 .day-header {
-  position: sticky; top: 0; height: 32px; background: #FFFBE8;
+  position: sticky; top: 0; height: 32px; background: #fff;
   text-align: center; line-height: 32px; font-weight: 700; border-bottom: 1px solid #ccc; z-index: 50;
 }
 
@@ -61,7 +61,7 @@ body { margin: 0;  font-family: "General Sans", sans-serif; background-color: #F
   flex: 1;
   border-right: 0;
   position: relative;
-  /* background: #fff; */
+  background: #fff;
 }
 
 .room:not(:last-child) {
@@ -69,27 +69,9 @@ body { margin: 0;  font-family: "General Sans", sans-serif; background-color: #F
 }
 
 .room-header {
-  position: sticky; 
-  top: 32px; 
-  height: 28px; 
-  background: #54CCC9;
-  color: #FFFBE8;
-  text-align: center; font-size: 12px; border-bottom: 1px solid #ddd; z-index: 45;
+  position: sticky; top: 32px; height: 28px; background: #f9f9f9;
+  text-align: center; line-height: 28px; font-size: 12px; border-bottom: 1px solid #ddd; z-index: 45;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  overflow: hidden;
-  padding: 0 6px;
-  box-sizing: border-box;
-}
-
-.room-header-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  flex-shrink: 0;
 }
 
 .room-lane {
@@ -169,13 +151,6 @@ img.event-decor {
   mask-size: cover;
 }
 
-.event-decor-bg {
-  display: block;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .event-title,
 .event-host,
 .event-subtitle {
@@ -194,7 +169,7 @@ img.event-decor {
   display: inline-block;
   align-self: flex-start;
   max-width: 100%;
-  padding: 2px 4px;
+  padding: 1px 1px;
   border-radius: 999px;
   font-size: 10px;
   font-weight: 700;
@@ -290,7 +265,7 @@ img.event-decor {
 <script>
 /* ===== Config ===== */
 const DAY_START = '08:00';
-const DAY_END   = '22:30'; 
+const DAY_END   = '24:00'; 
 const PX_PER_MIN = 1;
 const TIME_ZONE = 'Asia/Kuala_Lumpur'; 
 const LANE_GAP = 6;
@@ -303,7 +278,6 @@ const roomConfigs = {
   'Papar Hall': { lanes: 1, width: 1.25 },
   'Luyang Hall': { lanes: 1, width: 1.25 }
 };
-const ROOM_ICON_POSITION = 'left'; 
 const dates = ['2026-06-20','2026-06-21'];
 
 /* ===== Utils ===== */
@@ -347,68 +321,12 @@ function isSvgImage(value) {
   return /\.svg(?:[?#].*)?$/i.test(String(value || '')) || /^data:image\/svg\+xml/i.test(String(value || ''));
 }
 
-const svgTextCache = new Map();
-
-function colorizeSvgText(svgText, color) {
-  const safeColor = String(color || '').replace(/[<>"']/g, '');
-  if (!safeColor) return svgText;
-  return String(svgText || '')
-    .replace(/fill:\s*(?!none\b)[^;"']+/gi, `fill:${safeColor}`)
-    .replace(/fill="(?!none\b)[^"]*"/gi, `fill="${safeColor}"`)
-    .replace(/fill='(?!none\b)[^']*'/gi, `fill='${safeColor}'`);
-}
-
-function svgDataUrl(svgText) {
-  return `url("data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svgText)}")`;
-}
-
-function applyColorizedSvgBackground(element, imagePath, color) {
-  element.style.backgroundImage = cssUrl(imagePath);
-  if (!imagePath || !color) return;
-
-  if (!svgTextCache.has(imagePath)) {
-    svgTextCache.set(
-      imagePath,
-      fetch(imagePath)
-        .then(res => res.ok ? res.text() : '')
-        .catch(() => '')
-    );
-  }
-
-  svgTextCache.get(imagePath).then(svgText => {
-    if (!svgText) return;
-    element.style.backgroundImage = svgDataUrl(colorizeSvgText(svgText, color));
-  });
-}
-
-function roomNameToImage(roomName) {
-  return String(roomName || '')
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '_')
-    .replace(/^_+|_+$/g, '') + '.png';
-}
-
-function formatDateHeader(dateStr, dayIndex) {
-  const [year, month, day] = String(dateStr || '').split('-');
-  if (!year || !month || !day) return `${dateStr} (Day ${dayIndex + 1})`;
-  return `${day}-${month}-${year} (Day ${dayIndex + 1})`;
-}
-
 function normalizeCssLength(value, fallback = '0px') {
   if (value == null || value === '') return fallback;
   if (typeof value === 'number' && Number.isFinite(value)) return `${value}px`;
   const text = String(value).trim();
   if (!text) return fallback;
   return /^-?\d+(?:\.\d+)?$/.test(text) ? `${text}px` : text;
-}
-
-function normalizePercentLength(value, fallback = '45%') {
-  if (value == null || value === '') return fallback;
-  if (typeof value === 'number' && Number.isFinite(value)) return `${Math.max(0, value)}%`;
-  const text = String(value).trim();
-  if (!text) return fallback;
-  return /^-?\d+(?:\.\d+)?$/.test(text) ? `${Math.max(0, Number(text))}%` : text;
 }
 
 function normalizePositionPart(value, axis) {
@@ -443,8 +361,7 @@ function getBackgroundPosition(basePosition, offsetX, offsetY) {
 
 const startMin = timeToMinute(DAY_START);
 const endMin   = timeToMinute(DAY_END);
-const scheduleMin = endMin - startMin;
-const totalMin = scheduleMin + 30;
+const totalMin = endMin - startMin + 30;
 
 function getRoomLaneCount(roomName) {
   const laneCount = Number(roomConfigs[roomName]?.lanes);
@@ -487,12 +404,12 @@ const activeIndicators = [];
 const daysEl = document.getElementById('days');
 const todayMY = getMYTime();
 
-dates.forEach((dateStr, dateIndex) => {
+dates.forEach(dateStr => {
   const day = document.createElement('div');
   day.className = 'day';
   const header = document.createElement('div');
   header.className = 'day-header';
-  header.textContent = formatDateHeader(dateStr, dateIndex);
+  header.textContent = dateStr;
   day.appendChild(header);
 
   const roomsRow = document.createElement('div');
@@ -515,23 +432,7 @@ dates.forEach((dateStr, dateIndex) => {
     room.style.flex = `${widthWeight} ${widthWeight} 0`;
     const rh = document.createElement('div');
     rh.className = 'room-header';
-    const roomLabel = document.createElement('span');
-    roomLabel.textContent = roomName;
-    const roomIcon = document.createElement('img');
-    roomIcon.className = 'room-header-icon';
-    roomIcon.src = `./images/timelineSchedule/${roomNameToImage(roomName)}`;
-    roomIcon.alt = '';
-    roomIcon.loading = 'lazy';
-    if (ROOM_ICON_POSITION === 'left') 
-    {
-      rh.appendChild(roomIcon);
-      rh.appendChild(roomLabel);
-    }
-    else 
-    {
-      rh.appendChild(roomLabel);
-      rh.appendChild(roomIcon);
-    }
+    rh.textContent = roomName;
     room.appendChild(rh);
 
     for (let laneIndex = 1; laneIndex < laneCount; laneIndex += 1) {
@@ -545,7 +446,7 @@ dates.forEach((dateStr, dateIndex) => {
       const mask = document.createElement('div');
       mask.className = 'past-mask';
       mask.style.top = '28px';
-      mask.style.height = (scheduleMin * PX_PER_MIN) + 'px';
+      mask.style.height = (totalMin * PX_PER_MIN) + 28 + 'px';
       room.appendChild(mask);
     } else if (isToday) {
       const mask = document.createElement('div');
@@ -595,19 +496,12 @@ function normalizeScheduleData(scheduleData) {
   if (Array.isArray(scheduleData)) return scheduleData;
 
   const events = [];
-  Object.entries(scheduleData || {}).forEach(([date, roomsOrLocations]) => {
-    Object.entries(roomsOrLocations || {}).forEach(([roomOrLocation, value]) => {
-      if (Array.isArray(value)) {
-        value.forEach(event => {
-          events.push({ ...event, date, room: roomOrLocation });
-        });
-        return;
-      }
-
-      Object.entries(value || {}).forEach(([room, roomEvents]) => {
+  Object.entries(scheduleData || {}).forEach(([date, locations]) => {
+    Object.entries(locations || {}).forEach(([location, roomsByName]) => {
+      Object.entries(roomsByName || {}).forEach(([room, roomEvents]) => {
         if (!Array.isArray(roomEvents)) return;
         roomEvents.forEach(event => {
-          events.push({ ...event, date, location: roomOrLocation, room });
+          events.push({ ...event, date, location, room });
         });
       });
     });
@@ -640,7 +534,7 @@ function renderEvents(eventsList) {
     const titleTextColor = e.titleText_color || '#FFF';
     const subtitleTextColor = e.subtitleText_color || '#FFF';
     const hostTextColor = e.hostText_color || titleTextColor;
-    const hostBgColor = e.hostBg_color || 'rgba(255,255,255,0.45)';
+    const hostBgColor = e.hostBg_color || 'rgba(255,255,255,0.18)';
     const durationMin = height / PX_PER_MIN;
     const safeTitle = escapeHtml(e.title || '').replace(/\n/g, '<br>');
     const safeSubtitle = formatRichText(e.subtitle);
@@ -658,15 +552,10 @@ function renderEvents(eventsList) {
     const decorImage = e.decorImage ? String(e.decorImage) : '';
     const decorColor = e.decorColor || e.decor_color || '';
     const decorOpacity = Math.min(Math.max(Number(e.decorOpacity ?? 0.22), 0), 1);
-    const decorHeight = normalizePercentLength(e.decorHeight, '45%');
+    const decorHeight = Math.min(Math.max(Number(e.decorHeight ?? 45), 10), 100);
     const decorFit = e.decorFit === 'contain' ? 'contain' : 'cover';
-    const decorRepeat = e.decorRepeat || 'no-repeat';
-    const rawDecorSize = e.decorSize ?? e.decorBgSize;
-    const decorSize = rawDecorSize != null && rawDecorSize !== '' ? normalizeCssLength(rawDecorSize) : decorFit;
-    const decorPosition = e.decorPosition || 'bottom center';
-    const useDecorColorSvg = Boolean(decorColor && isSvgImage(decorImage));
-    const useDecorBackground = Boolean(useDecorColorSvg || decorRepeat !== 'no-repeat' || rawDecorSize || e.decorPosition);
-    const useColorBackgroundSvg = Boolean(backgroundImageColor && isSvgImage(backgroundImage));
+    const useBackgroundMask = Boolean(backgroundImageColor && isSvgImage(backgroundImage));
+    const useDecorMask = Boolean(decorColor && isSvgImage(decorImage));
 
     if (durationMin <= 45) {
       ev.classList.add('compact');
@@ -686,13 +575,17 @@ function renderEvents(eventsList) {
 
     if (backgroundImage) {
       const background = document.createElement('span');
-      background.className = 'event-bg';
+      background.className = useBackgroundMask ? 'event-bg event-bg-mask' : 'event-bg';
       background.style.opacity = String(backgroundOpacity);
 
-      if (useColorBackgroundSvg) {
-        applyColorizedSvgBackground(background, backgroundImage, backgroundImageColor);
-        background.style.backgroundSize = backgroundSize;
-        background.style.backgroundPosition = finalBackgroundPosition;
+      if (useBackgroundMask) {
+        background.style.backgroundColor = backgroundImageColor;
+        background.style.webkitMaskImage = cssUrl(backgroundImage);
+        background.style.maskImage = cssUrl(backgroundImage);
+        background.style.webkitMaskSize = backgroundSize;
+        background.style.maskSize = backgroundSize;
+        background.style.webkitMaskPosition = finalBackgroundPosition;
+        background.style.maskPosition = finalBackgroundPosition;
       } else {
         background.style.backgroundImage = cssUrl(backgroundImage);
         background.style.backgroundSize = backgroundSize;
@@ -703,20 +596,17 @@ function renderEvents(eventsList) {
     }
 
     if (decorImage) {
-      const decor = document.createElement(useDecorBackground ? 'span' : 'img');
-      decor.className = useDecorBackground ? 'event-decor event-decor-bg' : 'event-decor';
+      const decor = document.createElement(useDecorMask ? 'span' : 'img');
+      decor.className = useDecorMask ? 'event-decor event-decor-mask' : 'event-decor';
       decor.style.opacity = String(decorOpacity);
-      decor.style.height = decorHeight;
+      decor.style.height = `${decorHeight}%`;
 
-      if (useDecorBackground) {
-        if (useDecorColorSvg) {
-          applyColorizedSvgBackground(decor, decorImage, decorColor);
-        } else {
-          decor.style.backgroundImage = cssUrl(decorImage);
-        }
-        decor.style.backgroundRepeat = decorRepeat;
-        decor.style.backgroundSize = decorSize;
-        decor.style.backgroundPosition = decorPosition;
+      if (useDecorMask) {
+        decor.style.backgroundColor = decorColor;
+        decor.style.webkitMaskImage = cssUrl(decorImage);
+        decor.style.maskImage = cssUrl(decorImage);
+        decor.style.webkitMaskSize = decorFit;
+        decor.style.maskSize = decorFit;
       } else {
         decor.src = decorImage;
         decor.alt = '';
@@ -785,8 +675,8 @@ function updateUI() {
   const nowMY = getMYTime();
   const nowMin = nowMY.getHours() * 60 + nowMY.getMinutes();
   const rawOffset = nowMin - startMin;
-  const isOutOfRange = rawOffset < 0 || rawOffset > scheduleMin;
-  const clampedHeight = Math.max(0, Math.min(rawOffset, scheduleMin));
+  const isOutOfRange = rawOffset < 0 || rawOffset > totalMin;
+  const clampedHeight = Math.max(0, Math.min(rawOffset, totalMin));
   const currentTimeLabel = `${String(nowMY.getHours()).padStart(2,'0')}:${String(nowMY.getMinutes()).padStart(2,'0')}`;
 
   activeIndicators.forEach((item, index) => {

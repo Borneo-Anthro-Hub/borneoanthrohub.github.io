@@ -56,19 +56,19 @@ Each event is rendered into the matching:
 Look for the config section near the top of the script:
 
 ```js
-const DAY_START = '00:00';
+const DAY_START = '08:00';
 const DAY_END   = '24:00';
 const PX_PER_MIN = 1;
 const TIME_ZONE = 'Asia/Kuala_Lumpur';
 
 const rooms = ['Horizon Hall', 'Likas Hall', 'Papar Hall', 'Luyang Hall'];
 const roomConfigs = {
-  'Horizon Hall': { lanes: 4, width: 1.75 },
-  'Likas Hall': { lanes: 1, width: 1.05 },
-  'Papar Hall': { lanes: 1, width: 0.8 },
-  'Luyang Hall': { lanes: 1, width: 0.8 }
+  'Horizon Hall': { lanes: 6, width: 6.75 },
+  'Likas Hall': { lanes: 1, width: 1.25 },
+  'Papar Hall': { lanes: 1, width: 1.25 },
+  'Luyang Hall': { lanes: 1, width: 1.25 }
 };
-const dates = ['2026-04-29', '2026-04-30'];
+const dates = ['2026-06-20', '2026-06-21'];
 ```
 
 ### What These Settings Mean
@@ -123,26 +123,39 @@ This is useful when:
 
 ## Event Data Format
 
-Each event in `eventsSchedule.json` is a JSON object.
+`eventsSchedule.json` is organized from broad to specific:
+
+1. date
+2. room
+3. event list
+
+This keeps the repeated `date` and `room` values outside each event.
 
 Example:
 
 ```json
 {
-  "title": "Fursuit Dance",
-  "host": "Gravity Fox",
-  "subtitle": "5:00pm - 6:30pm",
-  "date": "2026-04-29",
-  "room": "Horizon Hall",
-  "start": "17:00",
-  "end": "18:30",
-  "color": "#FACA65",
-  "titleText_color": "#373f52",
-  "subtitleText_color": "#2F2613",
-  "lane": 1,
-  "laneSpan": 2
+  "2026-06-20": {
+    "Horizon Hall": [
+      {
+        "title": "Fursuit Dance",
+        "host": "Gravity Fox",
+        "subtitle": "5:00pm - 6:30pm",
+        "start": "17:00",
+        "end": "18:30",
+        "color": "#FACA65",
+        "titleText_color": "#373f52",
+        "subtitleText_color": "#2F2613",
+        "lane": 1,
+        "laneSpan": 2
+      }
+    ]
+  }
 }
 ```
+
+The renderer also supports an optional extra location layer if a future schedule needs it:
+`date -> location -> room -> event list`.
 
 ## Standard Event Fields
 
@@ -150,22 +163,22 @@ Example:
 
 - `title`
   Event title.
-- `date`
-  Must match one of the entries in `dates`.
-  Format: `YYYY-MM-DD`
-- `room`
-  Must match one of the entries in `rooms`.
 - `start`
   Start time in 24-hour format, for example `17:00`
 - `end`
   End time in 24-hour format, for example `18:30`
 
+The date key must match one of the entries in `dates`, and the room key must match one of the entries in `rooms`.
+
 ### Common Optional Fields
 
 - `host`
-  Displays as `by Host Name`
+  Displays the host label on the event card.
 - `subtitle`
   Secondary text shown under the title
+  Line breaks can be written with `\n`.
+  Basic formatting is supported with these tags:
+  `<b>`, `<strong>`, `<i>`, `<em>`, and `<br>`.
 - `color`
   Background color of the event card
 - `titleText_color`
@@ -297,6 +310,25 @@ Use text color fields to improve contrast:
 "hostText_color": "#4f362f",
 "hostBg_color": "#fff3d6"
 ```
+
+### Room Separation Lines
+
+Room boundaries are controlled in `timelineSchedule.html` with the `.room:not(:last-child)` CSS rule.
+
+Example:
+
+```css
+.room:not(:last-child) {
+  border-right: 2px solid rgba(0, 0, 0, 0.28);
+}
+```
+
+To make room boundaries clearer:
+
+- increase `2px` to `3px` or `4px`
+- increase `0.28` to a higher opacity such as `0.35`
+
+Lane dividers inside a room use `.room-lane` and should usually stay lighter than room boundaries.
 
 ## Current-Time Features
 
@@ -481,6 +513,212 @@ For long-term editing, this workflow is the safest:
   "host": "Gravity Fox",
   "hostText_color": "#4f362f",
   "hostBg_color": "#fff3d6"
+}
+```
+
+### Event Background Image
+
+Use `backgroundImage` when an event card needs a full background image.
+
+Example:
+
+```json
+"backgroundImage": "./images/timelineSchedule/bg.png",
+"backgroundOpacity": 0.5,
+"backgroundFit": "cover",
+"backgroundPosition": "center center"
+```
+
+Supported fields:
+
+- `backgroundImage`
+  Image path for the card background.
+- `backgroundOpacity`
+  Background transparency from `0` to `1`.
+  Example: `0.2` is subtle, `0.6` is stronger.
+- `backgroundFit`
+  Accepts `"cover"` or `"contain"`.
+  Default is `"cover"`.
+- `backgroundPosition`
+  CSS background position.
+  Examples: `"center center"`, `"bottom right"`, `"50% 70%"`.
+
+Image paths are relative to `timelineSchedule.html`.
+For example, because the HTML file is inside `2026/`, this path:
+
+```json
+"backgroundImage": "./images/timelineSchedule/bg.png"
+```
+
+points to:
+
+```text
+2026/images/timelineSchedule/bg.png
+```
+
+### Custom Background Size
+
+Use `backgroundSize` when `"cover"` or `"contain"` is not precise enough.
+
+Example:
+
+```json
+"backgroundImage": "./images/timelineSchedule/bg.png",
+"backgroundSize": "150px auto",
+"backgroundPosition": "center center"
+```
+
+Other examples:
+
+```json
+"backgroundSize": "80%"
+```
+
+```json
+"backgroundSize": "100% 60%"
+```
+
+If `backgroundSize` is provided, it overrides `backgroundFit`.
+If `backgroundSize` is not provided, the schedule uses `backgroundFit`.
+
+### Background Position Offset
+
+Use `backgroundOffsetX` and `backgroundOffsetY` to move the background image without shrinking or clipping the background layer.
+
+Move the image to the right and down:
+
+```json
+"backgroundOffsetX": 12,
+"backgroundOffsetY": 8
+```
+
+Move the image to the left and up:
+
+```json
+"backgroundOffsetX": -12,
+"backgroundOffsetY": -8
+```
+
+You can also use CSS length values:
+
+```json
+"backgroundOffsetX": "10%",
+"backgroundOffsetY": "-6px"
+```
+
+Direction rules:
+
+- positive `backgroundOffsetX` moves the image right
+- negative `backgroundOffsetX` moves the image left
+- positive `backgroundOffsetY` moves the image down
+- negative `backgroundOffsetY` moves the image up
+
+These offset fields work together with `backgroundPosition`.
+For example, this starts from the top center, then moves the image down slightly:
+
+```json
+"backgroundPosition": "center top",
+"backgroundOffsetX": 0,
+"backgroundOffsetY": 4
+```
+
+### SVG Background Recoloring
+
+If the background image is an SVG, it can be recolored with `backgroundImageColor`.
+
+Example:
+
+```json
+"backgroundImage": "./images/timelineSchedule/bg.svg",
+"backgroundImageColor": "rgba(255,255,255,0.35)",
+"backgroundOpacity": 1,
+"backgroundSize": "80%",
+"backgroundPosition": "center center"
+```
+
+Important:
+
+- SVG recoloring works best for single-color or silhouette-style SVGs.
+- If `backgroundImage` is PNG, JPG, WebP, or another non-SVG format, `backgroundImageColor` is ignored and the original image is shown.
+
+### Bottom Decorative Image
+
+```json
+"decorImage": "./images/decor.png",
+"decorOpacity": 0.22,
+"decorHeight": 45,
+"decorFit": "contain",
+"decorRepeat": "repeat-x",
+"decorSize": "auto 100%",
+"decorPosition": "left bottom"
+```
+
+Use `decorImage` for a decorative image placed at the bottom of the event card.
+
+Supported fields:
+
+- `decorImage`
+  Image path for the bottom decoration.
+- `decorOpacity`
+  Decoration transparency from `0` to `1`.
+- `decorHeight`
+  Height of the decoration as a percentage of the event card.
+  Example: `45` means 45% of the card height.
+  CSS lengths are also supported, such as `"7px"` or `"12%"`.
+- `decorFit`
+  Accepts `"cover"` or `"contain"`.
+- `decorRepeat`
+  Optional CSS repeat mode, such as `"repeat-x"`, when the decoration should tile instead of stretch.
+- `decorSize`
+  Optional CSS background size for repeated decorations.
+  Example: `"auto 100%"` keeps the tile proportional to the decoration height.
+- `decorPosition`
+  Optional CSS background position.
+  Example: `"left bottom"`.
+
+### SVG Decorative Image Recoloring
+
+For SVG decoration, add `decorColor`.
+
+```json
+"decorImage": "./images/decor.svg",
+"decorColor": "#ffffff",
+"decorOpacity": 0.22,
+"decorHeight": 45,
+"decorFit": "contain"
+```
+
+As with background SVG recoloring:
+
+- SVG files can be recolored.
+- PNG/JPG/WebP files keep their original colors.
+- Recoloring turns the SVG into a single-color mask.
+
+### Background And Decoration Layer Order
+
+When both `backgroundImage` and `decorImage` are used on the same event:
+
+1. `backgroundImage` is rendered at the bottom layer.
+2. `decorImage` is rendered above the background, usually at the bottom of the card.
+3. Event text, host, and subtitle are rendered above both images.
+
+Example using both:
+
+```json
+{
+  "title": "Opening Ceremony",
+  "subtitle": "10:30am - 12:00pm",
+  "backgroundImage": "./images/timelineSchedule/bg.png",
+  "backgroundOpacity": 0.5,
+  "backgroundSize": "150px auto",
+  "backgroundPosition": "center top",
+  "backgroundOffsetX": 0,
+  "backgroundOffsetY": 4,
+  "decorImage": "./images/timelineSchedule/deco_1.svg",
+  "decorColor": "#ffffff",
+  "decorOpacity": 1,
+  "decorHeight": 30,
+  "decorFit": "contain"
 }
 ```
 

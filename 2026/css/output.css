@@ -868,8 +868,8 @@
   .h-120 {
     height: calc(var(--spacing) * 120);
   }
-  .h-267\.5 {
-    height: calc(var(--spacing) * 267.5);
+  .h-240 {
+    height: calc(var(--spacing) * 240);
   }
   .h-1720 {
     height: calc(var(--spacing) * 1720);
@@ -1054,6 +1054,9 @@
   .w-95 {
     width: calc(var(--spacing) * 95);
   }
+  .w-100 {
+    width: calc(var(--spacing) * 100);
+  }
   .w-\[15vw\] {
     width: 15vw;
   }
@@ -1189,6 +1192,9 @@
   .max-w-315 {
     max-width: calc(var(--spacing) * 315);
   }
+  .max-w-480 {
+    max-width: calc(var(--spacing) * 480);
+  }
   .max-w-\[28rem\] {
     max-width: 28rem;
   }
@@ -1209,6 +1215,9 @@
   }
   .max-w-\[600px\] {
     max-width: 600px;
+  }
+  .max-w-\[680px\] {
+    max-width: 680px;
   }
   .max-w-\[760px\] {
     max-width: 760px;
@@ -2080,6 +2089,9 @@
   .p-px {
     padding: 1px;
   }
+  .px-0\.5 {
+    padding-inline: calc(var(--spacing) * 0.5);
+  }
   .px-1 {
     padding-inline: calc(var(--spacing) * 1);
   }
@@ -2480,6 +2492,9 @@
   }
   .text-\[\#4F362F\] {
     color: #4F362F;
+  }
+  .text-\[\#4F362F\]\/80 {
+    color: color-mix(in oklab, #4F362F 80%, transparent);
   }
   .text-\[\#4f362f\] {
     color: #4f362f;
@@ -3576,9 +3591,9 @@
       height: calc(var(--spacing) * 60);
     }
   }
-  .md\:h-267\.5 {
+  .md\:h-240 {
     @media (width >= 48rem) {
-      height: calc(var(--spacing) * 267.5);
+      height: calc(var(--spacing) * 240);
     }
   }
   .md\:h-1400 {
@@ -3980,6 +3995,11 @@
     @media (width >= 48rem) {
       font-size: var(--text-xl);
       line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+  .md\:text-\[17px\] {
+    @media (width >= 48rem) {
+      font-size: 17px;
     }
   }
   .md\:text-\[26px\] {
