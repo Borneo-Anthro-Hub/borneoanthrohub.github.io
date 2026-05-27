@@ -152,7 +152,7 @@
         "backgroundFit": "contain",
         "backgroundOffsetX": 5,
         "backgroundOffsetY": -10,
-        "backgroundPosition": "bottom right",
+        "backgroundPosition": "top right",
         "decorImage": "./images/timelineSchedule/deco_3.svg",
         "decorOpacity": 0.8,
         "decorHeight": "20px",
