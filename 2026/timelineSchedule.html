@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Events Schedule | Borneo Anthro Hub</title>
 <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
 <style>
@@ -61,20 +60,22 @@ body { margin: 0;  font-family: "General Sans", sans-serif; background-color: #F
   font-weight: 700;
   border-bottom: 1px solid #ccc;
   box-sizing: border-box;
+  overflow: hidden;
   z-index: 50;
 }
 
 .day-header-label {
-  position: sticky;
-  left: 80px;
-  width: calc(100vw - 80px);
-  max-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   line-height: 1;
-  vertical-align: top;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .rooms { display: flex; position: relative; }
@@ -508,6 +509,7 @@ buildTimeAxis(axis);
 const activeIndicators = [];
 const viewport = document.getElementById('viewport');
 const daysEl = document.getElementById('days');
+const dayHeaderItems = [];
 const todayMY = getMYTime();
 
 dates.forEach((dateStr, dateIndex) => {
@@ -520,6 +522,7 @@ dates.forEach((dateStr, dateIndex) => {
   headerLabel.textContent = formatDateHeader(dateStr, dateIndex);
   header.appendChild(headerLabel);
   day.appendChild(header);
+  dayHeaderItems.push({ day, label: headerLabel });
 
   const roomsRow = document.createElement('div');
   roomsRow.className = 'rooms';
@@ -590,6 +593,27 @@ dates.forEach((dateStr, dateIndex) => {
   day.appendChild(roomsRow);
   daysEl.appendChild(day);
 });
+
+function updateDayHeaderLabels() {
+  const axisWidth = axis.offsetWidth || 80;
+  const visibleWidth = Math.max(0, viewport.clientWidth - axisWidth);
+  const visibleStart = viewport.scrollLeft + axisWidth - daysEl.offsetLeft;
+
+  dayHeaderItems.forEach(({ day, label }) => {
+    const dayWidth = day.clientWidth;
+    const labelWidth = Math.min(visibleWidth, dayWidth);
+    const rawLeft = visibleStart - day.offsetLeft;
+    const maxLeft = Math.max(0, dayWidth - labelWidth);
+    const clampedLeft = Math.min(Math.max(rawLeft, 0), maxLeft);
+
+    label.style.width = `${labelWidth}px`;
+    label.style.transform = `translateX(${clampedLeft}px)`;
+  });
+}
+
+viewport.addEventListener('scroll', updateDayHeaderLabels, { passive: true });
+window.addEventListener('resize', updateDayHeaderLabels);
+updateDayHeaderLabels();
 
 /* ===== Event Rendering ===== */
 function normalizeLane(laneValue, laneCount) {
