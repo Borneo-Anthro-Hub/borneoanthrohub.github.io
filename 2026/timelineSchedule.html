@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Events Schedule | Borneo Anthro Hub</title>
 <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet" />
 <style>
@@ -51,8 +52,29 @@ body { margin: 0;  font-family: "General Sans", sans-serif; background-color: #F
 .day { display: flex; flex-direction: column; border-right: 20px solid #ccc; min-width: 1250px;}
 
 .day-header {
-  position: sticky; top: 0; height: 32px; background: #FFFBE8;
-  text-align: center; line-height: 32px; font-weight: 700; border-bottom: 1px solid #ccc; z-index: 50;
+  position: sticky;
+  top: 0;
+  height: 32px;
+  background: #FFFBE8;
+  text-align: center;
+  line-height: 32px;
+  font-weight: 700;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  z-index: 50;
+}
+
+.day-header-label {
+  position: sticky;
+  left: 80px;
+  width: calc(100vw - 80px);
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  line-height: 1;
+  vertical-align: top;
 }
 
 .rooms { display: flex; position: relative; }
@@ -484,6 +506,7 @@ buildTimeAxis(axis);
 
 /* ===== Build Grid ===== */
 const activeIndicators = [];
+const viewport = document.getElementById('viewport');
 const daysEl = document.getElementById('days');
 const todayMY = getMYTime();
 
@@ -492,7 +515,10 @@ dates.forEach((dateStr, dateIndex) => {
   day.className = 'day';
   const header = document.createElement('div');
   header.className = 'day-header';
-  header.textContent = formatDateHeader(dateStr, dateIndex);
+  const headerLabel = document.createElement('span');
+  headerLabel.className = 'day-header-label';
+  headerLabel.textContent = formatDateHeader(dateStr, dateIndex);
+  header.appendChild(headerLabel);
   day.appendChild(header);
 
   const roomsRow = document.createElement('div');
@@ -732,7 +758,6 @@ function renderEvents(eventsList) {
 fetch('./eventsSchedule.json').then(res => res.json()).then(data => renderEvents(normalizeScheduleData(data))).catch(() => {});
 
 /* ===== Interaction Logic (Precision Position) ===== */
-const viewport = document.getElementById('viewport');
 const guideLine = document.getElementById('guideLine');
 const clickMark = document.getElementById('clickMark');
 const clickBadge = document.getElementById('clickBadge');
