@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173e37">
+  <meta name="description" content="BAH 2027 is coming soon.">
+  <title>BAH 2027 — Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --cursor-x: 50%;
+      --cursor-y: 45%;
+      --glow-x: 50vw;
+      --glow-y: 45vh;
+      --shift-x: 0px;
+      --shift-y: 0px;
+      --shift-x-small: 0px;
+      --shift-y-small: 0px;
+      --shift-x-inverse: 0px;
+      --shift-y-inverse: 0px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #163d36;
+      color: #fff8df;
+      font-family: "General Sans", sans-serif;
+    }
+
+    .page {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      min-height: 100svh;
+      padding: clamp(1.25rem, 3.5vw, 3.5rem);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255, 229, 121, .16), transparent 25rem),
+        linear-gradient(180deg, #498b81 0%, #216054 43%, #173e37 100%);
+    }
+
+    .page::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(rgba(255, 252, 207, .55) 1px, transparent 1.6px);
+      background-size: 3.7rem 3.7rem;
+      mask-image: linear-gradient(to bottom, #000, transparent 78%);
+      opacity: .32;
+      content: "";
+    }
+
+    .page::after {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 32rem;
+      height: 32rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 238, 142, .32), rgba(255, 226, 110, .1) 33%, transparent 70%);
+      transform: translate3d(var(--glow-x), var(--glow-y), 0) translate3d(-50%, -50%, 0);
+      will-change: transform;
+      pointer-events: none;
+      content: "";
+    }
+
+    .masthead, .footnote {
+      z-index: 3;
+      align-items: center;
+      gap: 1rem;
+      align-self: start;
+    }
+
+    .masthead {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .brand, .edition, .footnote {
+      margin: 0;
+      font-size: clamp(.63rem, .9vw, .78rem);
+      font-weight: 650;
+      letter-spacing: .16em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
+    }
+
+    .brand svg {
+      display: block;
+      width: clamp(3.7rem, 6vw, 5.2rem);
+      height: auto;
+    }
+
+    .edition, .footnote { color: rgba(255, 248, 223, .76); }
+
+    .hero {
+      z-index: 3;
+      display: grid;
+      align-self: center;
+      justify-items: center;
+      padding: 1rem 0 4rem;
+      text-align: center;
+      transform: translate(var(--shift-x-small), var(--shift-y-small));
+      transition: transform .25s ease-out;
+      will-change: transform;
+    }
+
+    .eyebrow, .coming-soon {
+      margin: 0;
+      color: #fff0ab;
+      font-size: clamp(.65rem, 1vw, .82rem);
+      font-weight: 650;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow { margin-bottom: clamp(.9rem, 2vh, 1.4rem); }
+
+    h1 {
+      margin: 0;
+      color: #fff8db;
+      font-size: clamp(5.4rem, 17.5vw, 17rem);
+      font-weight: 700;
+      letter-spacing: -.1em;
+      line-height: .72;
+      text-shadow: 0 .05em 0 #bd5e68, 0 .1em 0 rgba(80, 41, 58, .22), 0 .15em .45em rgba(10, 58, 45, .42);
+    }
+
+    .year {
+      margin: clamp(.65rem, 1.7vh, 1.2rem) 0 0;
+      color: #ffcc73;
+      font-size: clamp(1.25rem, 3.7vw, 3rem);
+      font-weight: 650;
+      letter-spacing: .27em;
+      line-height: 1;
+      text-indent: .27em;
+      text-shadow: 0 2px 0 #98505c;
+    }
+
+    .theme-tease {
+      margin: clamp(1rem, 2.6vh, 1.45rem) 0 0;
+      color: rgba(255, 248, 223, .94);
+      font-size: clamp(.61rem, .96vw, .75rem);
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .theme-tease span { color: #ffcc73; }
+
+    .theme-note {
+      max-width: 20rem;
+      margin: .65rem 0 0;
+      color: rgba(255, 248, 223, .7);
+      font-size: clamp(.58rem, .85vw, .7rem);
+      font-weight: 500;
+      letter-spacing: .06em;
+      line-height: 1.5;
+    }
+
+    .rule {
+      width: clamp(8rem, 18vw, 13rem);
+      height: 3px;
+      margin: clamp(1.6rem, 4vh, 2.7rem) 0 clamp(.9rem, 1.7vh, 1.2rem);
+      border-radius: 99px;
+      background: repeating-linear-gradient(90deg, #f7bd66 0 12px, #d97177 12px 24px, #fff2c3 24px 36px);
+      box-shadow: 0 3px 0 rgba(78, 43, 50, .2);
+    }
+
+    .footnote {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      width: 100%;
+      align-self: end;
+    }
+
+    .archive-link, .social-links a {
+      color: #fff1b9;
+      text-decoration: none;
+      transition: color .2s ease, opacity .2s ease;
+    }
+
+    .archive-link {
+      justify-self: center;
+      padding: .35rem .55rem;
+      border-bottom: 1px solid rgba(255, 241, 185, .5);
+    }
+
+    .copyright { white-space: nowrap; }
+
+    .archive-link:hover, .social-links a:hover { color: #fff; }
+    .archive-link:focus-visible, .social-links a:focus-visible { outline: 2px solid #fff1b9; outline-offset: 3px; }
+
+    .social-links {
+      display: flex;
+      justify-self: end;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      display: grid;
+      place-items: center;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .social-links svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+
+    .forest, .fireflies {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .forest { z-index: 1; inset: auto 0 0; height: 44%; }
+
+    .forest::before, .forest::after {
+      position: absolute;
+      bottom: -3.2rem;
+      width: 58%;
+      height: 110%;
+      border-radius: 48% 52% 0 0;
+      background: repeating-linear-gradient(74deg, transparent 0 4.3rem, rgba(21, 71, 53, .78) 4.4rem 5.6rem), #155442;
+      box-shadow: inset 0 2rem 3rem rgba(123, 209, 135, .1);
+      content: "";
+    }
+
+    .forest::before { left: -17%; transform: skewX(-4deg); }
+    .forest::after { right: -17%; transform: skewX(4deg); }
+
+    .fireflies {
+      z-index: 2;
+      inset: 0;
+      transform: translate(var(--shift-x-small), var(--shift-y-small));
+      transition: transform .25s ease-out;
+      will-change: transform;
+    }
+
+    .firefly {
+      position: absolute;
+      width: .38rem;
+      height: .38rem;
+      border-radius: 50%;
+      background: #fff4a8;
+      box-shadow: 0 0 .35rem .1rem #ffe97a, 0 0 1.2rem .25rem rgba(255, 224, 95, .55);
+      animation: drift var(--duration) ease-in-out var(--delay) infinite alternate, blink 2.4s ease-in-out var(--delay) infinite;
+    }
+
+    .firefly:nth-child(1) { top: 23%; left: 12%; --duration: 6s; --delay: -2s; }
+    .firefly:nth-child(2) { top: 36%; left: 24%; --duration: 8s; --delay: -5s; }
+    .firefly:nth-child(3) { top: 19%; left: 72%; --duration: 7s; --delay: -1s; }
+    .firefly:nth-child(4) { top: 43%; left: 85%; --duration: 9s; --delay: -6s; }
+    .firefly:nth-child(5) { top: 64%; left: 16%; --duration: 7.5s; --delay: -4s; }
+    .firefly:nth-child(6) { top: 72%; left: 38%; --duration: 8.5s; --delay: -7s; }
+    .firefly:nth-child(7) { top: 61%; left: 66%; --duration: 6.5s; --delay: -3s; }
+    .firefly:nth-child(8) { top: 77%; left: 83%; --duration: 9.5s; --delay: -1.5s; }
+    .firefly:nth-child(9) { top: 31%; left: 49%; --duration: 7.3s; --delay: -5.5s; }
+    .firefly:nth-child(10) { top: 51%; left: 54%; --duration: 8.7s; --delay: -2.5s; }
+    .firefly:nth-child(11) { top: 16%; left: 38%; --duration: 6.8s; --delay: -6.2s; }
+    .firefly:nth-child(12) { top: 54%; left: 93%; --duration: 7.8s; --delay: -3.4s; }
+
+    @keyframes drift {
+      from { transform: translate3d(-1.2rem, .8rem, 0); }
+      to { transform: translate3d(1.8rem, -1.4rem, 0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: .24; }
+      46% { opacity: 1; }
+      62% { opacity: .38; }
+    }
+
+    .motion-button {
+      display: none;
+      position: absolute;
+      right: clamp(1.25rem, 3.5vw, 3.5rem);
+      bottom: clamp(3.6rem, 7vw, 5.5rem);
+      z-index: 5;
+      padding: .65rem .85rem;
+      border: 1px solid rgba(255, 247, 201, .75);
+      border-radius: 999px;
+      background: rgba(38, 89, 72, .72);
+      color: #fff7c9;
+      font: 650 .62rem/1 "General Sans", sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .motion-button.is-visible { display: block; }
+    .motion-button[hidden] { display: none; }
+    .motion-button:focus-visible { outline: 2px solid #fff7c9; outline-offset: 3px; }
+
+    @media (max-width: 560px) {
+      .page { padding: 1.3rem 1.2rem 1.5rem; }
+      .masthead { align-items: flex-start; }
+      .edition { max-width: 8rem; text-align: right; }
+      .hero { padding-bottom: 5.5rem; }
+      h1 { font-size: clamp(4.7rem, 25vw, 7rem); }
+      .theme-tease { letter-spacing: .1em; }
+      .forest { height: 35%; }
+      .footnote { font-size: .52rem; letter-spacing: .1em; gap: .45rem; }
+      .social-links { gap: .45rem; }
+    }
+
+    @media (max-width: 350px) {
+      .footnote { font-size: .47rem; letter-spacing: .03em; }
+      .archive-link { padding-inline: .3rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero, .fireflies { transition: none; }
+      .page::after { display: none; }
+      .firefly { animation: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="Borneo Anthro Hub home">
+        <svg width="55" height="28" viewBox="0 0 55 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28.5 32.0125C27.8 31.0125 26.7 30.2125 25.4 29.7125C24.1 29.2125 22.7 28.9125 22 29.2125C21 29.5125 20.1 30.7125 19.4 32.3125C18.6 34.0125 18.6 36.6125 18.8 37.4125C19 38.3125 19.8 38.8125 20.5 39.2125C21.1 39.6125 22.3 39.9125 23.1 40.0125C24 40.1125 25 39.9125 25.7 39.2125C25.5 39.7125 25.2 40.2125 25.2 40.2125C25.7 40.2125 27.7 39.7125 28.4 39.3125C28.4 39.3125 29.1 32.9125 28.5 32.0125ZM23.5 37.5125C22.6 37.5125 22.2 36.1125 22.3 34.9125C22.4 33.9125 23 32.5125 24.1 32.6125C24.9 32.7125 25.1 33.8125 25.1 34.9125C25.2 35.9125 24.6 37.5125 23.5 37.5125Z" fill="#FFFBE8"></path>
+        <path d="M50.7 27.1122C48.7 27.1122 46.2 28.0122 42 31.0122C42.9 24.9122 43 15.9122 40.9 7.51215C40 3.81215 38.3 0.912155 37.8 0.312155C37.3 -0.287845 35.4 0.0121558 33.3 0.912156C30.8 2.01216 29.9 3.01215 29.9 3.01215C35.9 13.4122 38.3 23.5122 38.3 33.7122C36.8 35.1122 36.1 36.2122 36.1 37.5122C36.1 39.3122 37.4 40.0122 39.9 39.7122C39.9 39.7122 39.7 38.5122 39.9 38.2122C40.2 37.7122 41.2 37.2122 43.3 36.3122C45.5 35.4122 48.1 34.9122 48.5 35.6122C48.9 36.2122 48.9 38.6122 48.9 38.6122C51.4 38.5122 52.8 37.8122 53.7 34.7122C54.7 32.1122 54 27.1122 50.7 27.1122Z" fill="#FFFBE8"></path>
+        <path d="M30.2 10.2123C28.8 10.3123 27.4 10.0123 26.1 9.21231C25.9 7.8123 26.1 6.3123 26.8 5.1123C27.7 5.6123 28.5 6.31231 29.1 7.31231C29.7 8.21231 30 9.21231 30.2 10.2123Z" fill="#FFFBE8"></path>
+        <path d="M33.2 17.5125C31.8 17.3125 30.5 16.7125 29.4 15.7125C29.5 14.3125 30 12.9125 30.9 11.8125C31.7 12.5125 32.3 13.4125 32.7 14.4125C33.2 15.4125 33.3 16.5125 33.2 17.5125Z" fill="#FFFBE8"></path>
+        <path d="M34.7 25.2123C33.4 24.7123 32.2 23.8123 31.4 22.6123C31.8 21.2123 32.6 20.0123 33.7 19.1123C34.3 19.9123 34.7 20.9123 34.9 22.0123C35.1 23.1123 35 24.3123 34.7 25.2123Z" fill="#FFFBE8"></path>
+        <path d="M34.5 33.1117C33.3 32.3117 32.3 31.2117 31.8 29.9117C32.5 28.6117 33.5 27.6117 34.8 27.0117C35.2 27.9117 35.4 29.0117 35.4 30.1117C35.4 31.2117 35 32.2117 34.5 33.1117Z" fill="#FFFBE8"></path>
+        <path d="M32.7 40.8125C31.7 39.8125 31 38.5125 30.7 37.1125C31.6 36.0125 32.8 35.2125 34.2 34.8125C34.4 35.8125 34.4 36.9125 34.1 37.9125C33.8 38.9125 33.4 40.0125 32.7 40.8125Z" fill="#FFFBE8"></path>
+        <path d="M16.8 31.5119C16.5 30.5119 14.1 28.6119 12.1 28.6119C9.50001 28.6119 6.5 29.9119 5 31.0119C5 31.0119 9.90001 24.0119 13.2 17.7119C15 14.3119 15.8 11.1119 15.8 10.4119C15.8 9.71191 14.5 8.91191 12.3 8.11191C9.70002 7.21191 8.20001 7.21191 8.20001 7.21191C6.50001 15.7119 4.2 26.2119 0 34.5119C0 34.5119 2.40001 38.4119 7.70001 39.5119C7.90001 39.1119 8.00001 38.8119 8.10001 38.8119C8.70001 37.5119 9.10002 36.1119 9.30002 34.7119C9.30002 34.4119 9.59999 34.2119 9.89999 34.2119C10.2 34.2119 10.4 34.5119 10.4 34.8119C10.2 36.3119 9.80001 37.8119 9.10001 39.2119C9.10001 39.3119 8.99999 39.5119 8.89999 39.7119C10.2 39.9119 11.4 39.8119 12.2 39.7119C12.3 39.4119 12.5 39.1119 12.5 39.0119C13.1 37.7119 13.5 36.3119 13.7 34.8119C13.7 34.5119 14 34.3119 14.3 34.3119C14.6 34.3119 14.8 34.6119 14.8 34.9119C14.6 36.4119 14.2 37.9119 13.5 39.3119C14.2 39.1119 14.6 38.8119 14.8 38.7119C15.3 38.3119 16.2 36.8119 16.6 35.2119C17 33.8119 17 32.1119 16.8 31.5119Z" fill="#FFFBE8"></path>
+      </svg>
+      </a>
+      <p class="edition">A curious new chapter</p>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Borneo Anthro Hub</p>
+      <h1 id="page-title">BAH</h1>
+      <p class="year">2027</p>
+      <p class="theme-tease"><span>X X X X X X X X X X X X X X X</span></p>
+      <p class="theme-note">Not the official theme<br>Just a glimpse of what’s coming</p>
+      <div class="rule" aria-hidden="true"></div>
+      <p class="coming-soon">Coming Soon</p>
+    </section>
+
+    <div class="forest" aria-hidden="true"></div>
+    <div class="fireflies" aria-hidden="true">
+      <i class="firefly"></i><i class="firefly"></i><i class="firefly"></i><i class="firefly"></i>
+      <i class="firefly"></i><i class="firefly"></i><i class="firefly"></i><i class="firefly"></i>
+      <i class="firefly"></i><i class="firefly"></i><i class="firefly"></i><i class="firefly"></i>
+    </div>
+
+    <footer class="footnote">
+      <span>Kota Kinabalu, Sabah · <span class="copyright">© 2026 Borneo Anthro Hub</span></span>
+      <a class="archive-link" href="../2026/">2026</a>
+      <nav class="social-links" aria-label="BAH social links">
+        <a href="https://www.facebook.com/borneo.anthro.hub" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <svg width="100%" height="100%" viewBox="0 0 2084 2076" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                <g transform="matrix(1,0,0,1,-416.666667,-416.666667)">
+                    <g transform="matrix(4.166667,0,0,4.166667,0,0)">
+                        <g transform="matrix(1,0,0,1,600,348.169)">
+                            <path d="M0,1.831C0,-136.24 -111.929,-248.169 -250,-248.169C-388.071,-248.169 -500,-136.24 -500,1.831C-500,119.076 -419.285,217.453 -310.394,244.469L-310.394,78.227L-361.946,78.227L-361.946,1.831L-310.394,1.831L-310.394,-31.088C-310.394,-116.18 -271.886,-155.62 -188.346,-155.62C-172.508,-155.62 -145.179,-152.515 -133.999,-149.409L-133.999,-80.155C-139.9,-80.776 -150.148,-81.087 -162.881,-81.087C-203.874,-81.087 -219.713,-65.559 -219.713,-25.187L-219.713,1.831L-138.054,1.831L-152.082,78.227L-219.713,78.227L-219.713,250C-95.927,235.049 0,129.649 0,1.831" style="fill-rule:nonzero;"/>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </a>
+        <a href="https://x.com/BorneoAnthroHub" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <svg viewBox="0 0 1200 1227" aria-hidden="true"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" /></svg>
+        </a>
+        <a href="https://t.me/+air4VsJsNQFhN2Fl" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09" /></svg>
+        </a>
+      </nav>
+    </footer>
+    <button class="motion-button" type="button" hidden>Enable motion</button>
+  </main>
+
+  <script>
+    (() => {
+      const page = document.querySelector('.page');
+      const motionButton = document.querySelector('.motion-button');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      if (reducedMotion) return;
+
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+      let frameId = 0;
+      let queuedX = 0;
+      let queuedY = 0;
+
+      function moveScene(x, y) {
+        const horizontal = clamp(x, -1, 1);
+        const vertical = clamp(y, -1, 1);
+        page.style.setProperty('--cursor-x', `${50 + horizontal * 20}%`);
+        page.style.setProperty('--cursor-y', `${45 + vertical * 18}%`);
+        page.style.setProperty('--glow-x', `${window.innerWidth * (.5 + horizontal * .2)}px`);
+        page.style.setProperty('--glow-y', `${window.innerHeight * (.45 + vertical * .18)}px`);
+        page.style.setProperty('--shift-x', `${horizontal * 10}px`);
+        page.style.setProperty('--shift-y', `${vertical * 8}px`);
+        page.style.setProperty('--shift-x-small', `${horizontal * 3}px`);
+        page.style.setProperty('--shift-y-small', `${vertical * 2}px`);
+        page.style.setProperty('--shift-x-inverse', `${horizontal * -10}px`);
+        page.style.setProperty('--shift-y-inverse', `${vertical * -8}px`);
+      }
+
+      function queueScene(x, y) {
+        queuedX = x;
+        queuedY = y;
+        if (frameId) return;
+        frameId = requestAnimationFrame(() => {
+          moveScene(queuedX, queuedY);
+          frameId = 0;
+        });
+      }
+
+      if (finePointer) {
+        window.addEventListener('pointermove', (event) => {
+          queueScene(event.clientX / window.innerWidth * 2 - 1, event.clientY / window.innerHeight * 2 - 1);
+        }, { passive: true });
+        return;
+      }
+
+      if (!('DeviceOrientationEvent' in window)) return;
+
+      const handleOrientation = (event) => {
+        if (event.gamma === null || event.beta === null) return;
+        queueScene(event.gamma / 32, (event.beta - 28) / 46);
+      };
+
+      const startOrientation = () => {
+        window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+        motionButton.hidden = true;
+      };
+
+      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        motionButton.hidden = false;
+        motionButton.classList.add('is-visible');
+        motionButton.addEventListener('click', async () => {
+          try {
+            if (await DeviceOrientationEvent.requestPermission() === 'granted') startOrientation();
+          } catch (_) {
+            // The page remains fully usable if access is declined.
+          }
+        });
+      } else {
+        startOrientation();
+      }
+    })();
+  </script>
+</body>
+
+</html>
