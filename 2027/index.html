@@ -292,8 +292,8 @@
     .motion-button {
       display: none;
       position: absolute;
-      right: clamp(1.25rem, 3.5vw, 3.5rem);
-      bottom: clamp(3.6rem, 7vw, 5.5rem);
+      left: clamp(1.25rem, 3.5vw, 3.5rem);
+      bottom: calc(clamp(1.25rem, 3.5vw, 3.5rem) + 2.5rem);
       z-index: 5;
       padding: .65rem .85rem;
       border: 1px solid rgba(255, 247, 201, .75);
@@ -310,6 +310,34 @@
     .motion-button[hidden] { display: none; }
     .motion-button:focus-visible { outline: 2px solid #fff7c9; outline-offset: 3px; }
 
+    .animation-toggle {
+      position: absolute;
+      bottom: calc(clamp(1.25rem, 3.5vw, 3.5rem) + 2.5rem);
+      right: clamp(1.25rem, 3.5vw, 3.5rem);
+      z-index: 5;
+      padding: .65rem .85rem;
+      border: 1px solid rgba(255, 247, 201, .75);
+      border-radius: 999px;
+      background: rgba(38, 89, 72, .72);
+      color: #fff7c9;
+      font: 650 .62rem/1 "General Sans", sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .animation-toggle:focus-visible { outline: 2px solid #fff7c9; outline-offset: 3px; }
+
+    .page.animations-paused::after {
+      transform: translate3d(50vw, 50vh, 0) translate3d(-50%, -50%, 0);
+    }
+    .page.animations-paused .firefly { animation: none; opacity: .38; }
+    .page.animations-paused .hero,
+    .page.animations-paused .fireflies {
+      transform: none;
+      transition: none;
+    }
+
     @media (max-width: 560px) {
       .page { padding: 1.3rem 1.2rem 1.5rem; }
       .masthead { align-items: flex-start; }
@@ -320,6 +348,7 @@
       .forest { height: 35%; }
       .footnote { font-size: .52rem; letter-spacing: .1em; gap: .45rem; }
       .social-links { gap: .45rem; }
+      .motion-button, .animation-toggle { bottom: calc(1.5rem + 2.5rem); }
     }
 
     @media (max-width: 350px) {
@@ -394,6 +423,7 @@
         </a>
       </nav>
     </footer>
+    <button class="animation-toggle" type="button" aria-pressed="true">Animation: On</button>
     <button class="motion-button" type="button" hidden>Enable motion</button>
   </main>
 
@@ -401,18 +431,38 @@
     (() => {
       const page = document.querySelector('.page');
       const motionButton = document.querySelector('.motion-button');
+      const animationToggle = document.querySelector('.animation-toggle');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-      if (reducedMotion) return;
-
-      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+      const touchDevice = window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+      const motionPreference = document.cookie.match(/(?:^|; )bah2027_motion=([^;]*)/)?.[1];
 
       let frameId = 0;
       let queuedX = 0;
       let queuedY = 0;
+      let animationsPaused = motionPreference === 'off' || (motionPreference !== 'on' && reducedMotion);
+
+      function setAnimationState(paused, savePreference = false) {
+        animationsPaused = paused;
+        page.classList.toggle('animations-paused', paused);
+        animationToggle.textContent = paused ? 'Animation: Off' : 'Animation: On';
+        animationToggle.setAttribute('aria-pressed', String(!paused));
+        if (savePreference) {
+          document.cookie = `bah2027_motion=${paused ? 'off' : 'on'}; Max-Age=31536000; Path=/; SameSite=Lax`;
+        }
+        if (paused && frameId) {
+          cancelAnimationFrame(frameId);
+          frameId = 0;
+        }
+      }
+
+      animationToggle.addEventListener('click', () => setAnimationState(!animationsPaused, true));
+      setAnimationState(animationsPaused);
+
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
       function moveScene(x, y) {
+        if (animationsPaused) return;
         const horizontal = clamp(x, -1, 1);
         const vertical = clamp(y, -1, 1);
         page.style.setProperty('--cursor-x', `${50 + horizontal * 20}%`);
@@ -428,6 +478,7 @@
       }
 
       function queueScene(x, y) {
+        if (animationsPaused) return;
         queuedX = x;
         queuedY = y;
         if (frameId) return;
@@ -444,7 +495,7 @@
         return;
       }
 
-      if (!('DeviceOrientationEvent' in window)) return;
+      if (!touchDevice || !('DeviceOrientationEvent' in window)) return;
 
       const handleOrientation = (event) => {
         if (event.gamma === null || event.beta === null) return;
@@ -456,19 +507,19 @@
         motionButton.hidden = true;
       };
 
-      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        motionButton.hidden = false;
-        motionButton.classList.add('is-visible');
-        motionButton.addEventListener('click', async () => {
+      motionButton.hidden = false;
+      motionButton.classList.add('is-visible');
+      motionButton.addEventListener('click', async () => {
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
           try {
             if (await DeviceOrientationEvent.requestPermission() === 'granted') startOrientation();
           } catch (_) {
             // The page remains fully usable if access is declined.
           }
-        });
-      } else {
-        startOrientation();
-      }
+        } else {
+          startOrientation();
+        }
+      });
     })();
   </script>
 </body>
