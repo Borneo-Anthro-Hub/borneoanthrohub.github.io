@@ -167,6 +167,72 @@
   mask-image: linear-gradient(to bottom, transparent, black 18%);
 }
 
+.dormant-hero-parallax {
+  view-timeline-name: --dormant-hero;
+  view-timeline-axis: block;
+}
+
+@keyframes dormant-parallax-sky {
+  to {
+    scale: var(--dormant-parallax-scale);
+  }
+}
+
+@keyframes dormant-parallax-house {
+  to {
+    scale: var(--dormant-parallax-scale);
+  }
+}
+
+@keyframes dormant-parallax-plants {
+  to {
+    scale: var(--dormant-parallax-scale);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .dormant-hero-parallax-sky {
+    --dormant-parallax-scale: 1.015;
+
+    transform-origin: bottom center;
+    animation: dormant-parallax-sky auto linear both;
+    animation-timeline: --dormant-hero;
+    animation-range: entry 0% exit 100%;
+  }
+
+  .dormant-hero-parallax-house {
+    --dormant-parallax-scale: 1.025;
+
+    transform-origin: bottom center;
+    animation: dormant-parallax-house auto linear both;
+    animation-timeline: --dormant-hero;
+    animation-range: entry 0% exit 100%;
+  }
+
+  .dormant-hero-parallax-plants {
+    --dormant-parallax-scale: 1.035;
+
+    transform-origin: bottom center;
+    animation: dormant-parallax-plants auto linear both;
+    animation-timeline: --dormant-hero;
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .dormant-hero-parallax-sky {
+    --dormant-parallax-scale: 1.005;
+  }
+
+  .dormant-hero-parallax-house {
+    --dormant-parallax-scale: 1.01;
+  }
+
+  .dormant-hero-parallax-plants {
+    --dormant-parallax-scale: 1.015;
+  }
+}
+
 .dormant-hero-glow {
   background: linear-gradient(
     to bottom,
@@ -222,6 +288,12 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .dormant-hero-parallax-sky,
+  .dormant-hero-parallax-house,
+  .dormant-hero-parallax-plants {
+    animation: none !important;
   }
 }
 

@@ -130,33 +130,31 @@ function CarouselDots() {
 
 function GuidelineCard({ g }: { g: (typeof guidelines)[number] }) {
   return (
-    <div className="group overflow-hidden rounded-lg border-2 border-dotted border-[#704323] bg-[#a76539] p-1.5 shadow-[0_4px_0_#704323,0_8px_14px_rgb(0_0_0_/_0.14)] transition-all duration-300">
-      {g.image ? (
-        <div className="relative aspect-square w-full border border-[#704323]/40 bg-[#f3e4c5]">
-          <Image
-            src={withBasePath(g.image)}
-            alt={g.title}
-            fill
-            sizes="(max-width: 640px) 85vw, 50vw"
-            className="object-contain"
-          />
-        </div>
-      ) : (
-        <div className="relative aspect-square w-full border border-[#704323]/40 bg-[#f3e4c5]">
-          <PlaceholderImage />
-        </div>
-      )}
-      <div className="relative mt-1.5 flex h-full items-start gap-3 overflow-hidden border border-[#704323]/40 bg-linear-to-br from-[#e3b77f] via-[#cf9258] to-[#dfad72] p-4 text-[#3f2a1a]">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-8 -right-8 size-24 rounded-full bg-[#fff0c7]/35 blur-2xl"
-        />
-        <span className="relative mt-0.5 shrink-0 border border-dotted border-[#704323] bg-[#f4dfb9] px-1.5 py-0.5 font-mono text-[10px] text-[#50331e]">
-          {String(g.rule).padStart(2, "0")}
-        </span>
-        <div className="relative">
-          <p className="type-body-l-semibold">{g.title}</p>
-          <p className="type-body-s mt-1 text-[#503b2a]">{g.text}</p>
+    <div className="group relative h-full overflow-hidden rounded-[20px] border border-[#7a4a2d]/80 bg-[#cf955a] p-2 shadow-[0_6px_0_#72462d,0_10px_18px_rgba(65,38,20,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_0_#72462d,0_12px_20px_rgba(65,38,20,0.14)]">
+      <div className="flex h-full flex-col overflow-hidden rounded-[16px] border border-[#72462d]/80 bg-[#f2dfb9]">
+        {g.image ? (
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f7eedf]">
+            <Image
+              src={withBasePath(g.image)}
+              alt={g.title}
+              fill
+              sizes="(max-width: 640px) 85vw, 50vw"
+              className="object-contain p-4"
+            />
+          </div>
+        ) : (
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f7eedf]">
+            <PlaceholderImage />
+          </div>
+        )}
+
+        <div className="flex min-h-[150px] flex-1 items-stretch gap-3 bg-[#d8a96f] p-3 text-[#3e2a18]">
+          <div className="flex min-w-0 flex-1 flex-col justify-center">
+            <p className="type-body-l-semibold text-[#2f1d12]">{g.title}</p>
+            <p className="type-body-s mt-1 leading-relaxed text-[#563d2a]">
+              {g.text}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -169,7 +167,7 @@ export function GuidelinesSection() {
   if (isMobile) {
     return (
       <Carousel className="w-full" opts={{ loop: true }}>
-        <CarouselContent className="-ml-3">
+        <CarouselContent className="-ml-3 p-3">
           {guidelines.map((g) => (
             <CarouselItem key={g.rule} className="basis-[85%] pl-3">
               <GuidelineCard g={g} />
