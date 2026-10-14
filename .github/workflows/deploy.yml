@@ -1,0 +1,69 @@
+name: Deploy Next.js site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.15.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: 2027/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: 2027
+        run: pnpm install --frozen-lockfile
+
+      - name: Build static export
+        working-directory: 2027
+        env:
+          NEXT_BASE_PATH: /2027
+        run: pnpm build
+
+      - name: Assemble Pages artifact
+        run: |
+          mkdir -p "$RUNNER_TEMP/pages-site/2027"
+          cp -a 2026 "$RUNNER_TEMP/pages-site/"
+          cp -a 404.html CNAME LICENSE favicon.ico index.html timelineSchedule.html "$RUNNER_TEMP/pages-site/"
+          cp -a email_avatar "$RUNNER_TEMP/pages-site/"
+          cp -a 2027/out/. "$RUNNER_TEMP/pages-site/2027/"
+          touch "$RUNNER_TEMP/pages-site/.nojekyll"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/pages-site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

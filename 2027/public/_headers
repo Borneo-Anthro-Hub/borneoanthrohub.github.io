@@ -1,0 +1,14 @@
+# CDN cache headers for static export
+# Works with Cloudflare Pages, Netlify, and any CDN that reads _headers
+
+# Immutable hashed assets — safe to cache forever
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages — short TTL for content updates
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Static media — moderate cache
+/images/*
+  Cache-Control: public, max-age=86400
