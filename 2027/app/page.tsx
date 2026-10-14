@@ -539,7 +539,7 @@ function DormantHome() {
           <div className="relative aspect-[1707/2011] w-full">
             <Image
               src={withBasePath(
-                "/2027_images/landscape_main_art_airashi/background_board.png",
+                "/2027_images/landscape_main_art_airashi/background_board.webp",
               )}
               alt=""
               fill
