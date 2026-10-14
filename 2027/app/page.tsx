@@ -338,7 +338,6 @@ function DormantHome() {
             )}
             alt=""
             fill
-            priority
             sizes="140vw"
             className="object-contain object-bottom max-md:object-cover max-md:object-[center_40%]"
           />
@@ -353,7 +352,6 @@ function DormantHome() {
             )}
             alt=""
             fill
-            priority
             sizes="140vw"
             className="object-contain object-bottom"
             style={{
@@ -371,7 +369,8 @@ function DormantHome() {
             )}
             alt=""
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="140vw"
             className="object-contain object-bottom"
             style={{
@@ -431,7 +430,7 @@ function DormantHome() {
                 )}
                 alt=""
                 fill
-                priority
+                loading="eager"
                 sizes="100vw"
                 className="object-contain object-bottom"
               />
@@ -449,7 +448,6 @@ function DormantHome() {
                 )}
                 alt=""
                 fill
-                priority
                 sizes="100vw"
                 className="object-contain object-bottom"
               />
@@ -491,38 +489,35 @@ function DormantHome() {
             <div className="flex w-full items-center justify-center gap-[3%] md:justify-start">
               <Image
                 src={withBasePath(
-                  "/2027_images/landscape_main_art_airashi/tinyverse.png",
+                  "/2027_images/landscape_main_art_airashi/tinyverse.webp",
                 )}
                 draggable={false}
                 alt=""
-                width={2026}
-                height={654}
-                priority
+                width={1000}
+                height={323}
                 sizes="(max-width: 767px) 45vw, 29vw"
                 className="h-auto w-[48%] select-none"
               />
               <Image
                 src={withBasePath(
-                  "/2027_images/landscape_main_art_airashi/garden.png",
+                  "/2027_images/landscape_main_art_airashi/garden.webp",
                 )}
                 draggable={false}
                 alt=""
-                width={1658}
-                height={536}
-                priority
+                width={850}
+                height={275}
                 sizes="(max-width: 767px) 39vw, 25vw"
                 className="h-auto w-[42%]"
               />
             </div>
             <Image
               src={withBasePath(
-                "/2027_images/landscape_main_art_airashi/date.png",
+                "/2027_images/landscape_main_art_airashi/date.webp",
               )}
               draggable={false}
               alt="10th–11th July 2027"
-              width={2200}
-              height={970}
-              priority
+              width={1000}
+              height={441}
               sizes="(max-width: 767px) 48vw, 26vw"
               className="h-auto w-[52%] max-w-[28rem] select-none md:ml-[18%]"
             />
@@ -548,7 +543,6 @@ function DormantHome() {
               )}
               alt=""
               fill
-              priority
               sizes="(max-width: 767px) min(84vw, 340px)"
               className="object-contain"
             />
@@ -568,35 +562,32 @@ function DormantHome() {
               >
                 <Image
                   src={withBasePath(
-                    "/2027_images/landscape_main_art_airashi/tinyverse.png",
+                    "/2027_images/landscape_main_art_airashi/tinyverse.webp",
                   )}
                   draggable={false}
                   alt=""
-                  width={2026}
-                  height={654}
-                  priority
+                  width={1000}
+                  height={323}
                   className="h-auto w-[52%] drop-shadow-[0_2px_5px_rgb(30_53_25_/_25%)] select-none"
                 />
                 <Image
                   src={withBasePath(
-                    "/2027_images/landscape_main_art_airashi/garden.png",
+                    "/2027_images/landscape_main_art_airashi/garden.webp",
                   )}
                   alt=""
-                  width={1658}
-                  height={536}
-                  priority
+                  width={850}
+                  height={275}
                   className="h-auto w-[44%] drop-shadow-[0_2px_5px_rgb(30_53_25_/_25%)]"
                 />
               </motion.div>
               <Image
                 src={withBasePath(
-                  "/2027_images/landscape_main_art_airashi/date.png",
+                  "/2027_images/landscape_main_art_airashi/date.webp",
                 )}
                 draggable={false}
                 alt="10th–11th July 2027"
-                width={2200}
-                height={970}
-                priority
+                width={1000}
+                height={441}
                 className="h-auto w-[58%] drop-shadow-[0_2px_5px_rgb(30_53_25_/_25%)] select-none"
               />
             </div>

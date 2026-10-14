@@ -27,7 +27,7 @@ export default function PageHero({
     <section className="border-border relative isolate overflow-hidden border-b px-4 py-10 md:px-8">
       <Image
         src={withBasePath(
-          "/2027_images/landscape_main_art_airashi/background_art.png",
+          "/2027_images/landscape_main_art_airashi/background_art.webp",
         )}
         alt=""
         fill

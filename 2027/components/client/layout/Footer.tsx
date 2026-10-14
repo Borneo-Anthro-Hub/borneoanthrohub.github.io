@@ -30,6 +30,8 @@ function FooterListItem({
   label: string;
   showBullet?: boolean;
 }) {
+  const isInternalLink = href.startsWith("/") && !href.startsWith("//");
+
   return (
     <li className="flex items-start gap-1.5">
       {showBullet && (
@@ -38,9 +40,15 @@ function FooterListItem({
           className="bg-brand-accent mt-1.75 h-1 w-1 shrink-0 rounded-full"
         />
       )}
-      <Link href={href} className={footerLinkClassName}>
-        {label}
-      </Link>
+      {isInternalLink ? (
+        <Link href={href} className={footerLinkClassName}>
+          {label}
+        </Link>
+      ) : (
+        <a href={href} className={footerLinkClassName}>
+          {label}
+        </a>
+      )}
     </li>
   );
 }

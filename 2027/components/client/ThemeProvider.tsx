@@ -68,9 +68,30 @@ export function ThemeProvider({
         fontLink = document.createElement("link");
         fontLink.id = FONT_LINK_ID;
         fontLink.rel = "stylesheet";
+        fontLink.media = "print";
         document.head.appendChild(fontLink);
       }
-      fontLink.href = theme.fontUrl;
+
+      const activeFontLink = fontLink;
+      const stylesheetAlreadyLoaded =
+        activeFontLink.href === theme.fontUrl && activeFontLink.sheet !== null;
+      const activateStylesheet = () => {
+        activeFontLink.media = "all";
+      };
+
+      activeFontLink.media = "print";
+      activeFontLink.addEventListener("load", activateStylesheet, {
+        once: true,
+      });
+      activeFontLink.href = theme.fontUrl;
+
+      if (stylesheetAlreadyLoaded) {
+        activeFontLink.removeEventListener("load", activateStylesheet);
+        activateStylesheet();
+      } else {
+        return () =>
+          activeFontLink.removeEventListener("load", activateStylesheet);
+      }
     } else {
       fontLink?.remove();
     }

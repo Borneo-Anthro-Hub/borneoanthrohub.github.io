@@ -7,10 +7,6 @@ import { themeToCssVars } from "@/lib/theme/themes";
 import "./globals.css";
 import Header from "@/components/client/layout/Header";
 import Footer from "@/components/client/layout/Footer";
-import { Inter } from "next/font/google";
-import { cn } from "@/lib/utils";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Borneo Anthro Hub 2027",
@@ -33,13 +29,29 @@ export default function RootLayout({
       lang="en"
       data-theme={themeKey}
       style={cssVars as React.CSSProperties}
-      className={cn("h-full", "antialiased", "font-sans", inter.variable)}
+      className="h-full font-sans antialiased"
     >
-      {theme.fontUrl && (
-        <head>
-          <link rel="stylesheet" href={theme.fontUrl} />
-        </head>
-      )}
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        {theme.fontUrl && (
+          <>
+            <link
+              id="theme-font-link"
+              rel="stylesheet"
+              href={theme.fontUrl}
+              media="print"
+            />
+            <noscript>
+              <link rel="stylesheet" href={theme.fontUrl} />
+            </noscript>
+          </>
+        )}
+      </head>
       <body className="flex min-h-full flex-col">
         {/* Skip-to-content link for keyboard accessibility */}
         <a
