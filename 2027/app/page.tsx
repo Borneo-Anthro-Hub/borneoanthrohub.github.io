@@ -3,13 +3,10 @@
 import { useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Pause, Play } from "lucide-react";
+import Particles from "@/components/Particles";
+import SplitText from "@/components/SplitText";
 import Section from "@/components/server/layout/Section";
 import PlaceholderImage from "@/components/server/home/PlaceholderImage";
 import HomeCta from "@/components/client/home/HomeCta";
@@ -292,30 +289,6 @@ function DormantHome() {
     () => false,
   );
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const skyY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    animationsEnabled && !isMobileViewport ? [0, 24] : [0, 0],
-  );
-  const houseY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    animationsEnabled ? [0, isMobileViewport ? 24 : 56] : [0, 0],
-  );
-  const plantsY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    animationsEnabled ? [0, isMobileViewport ? 40 : 88] : [0, 0],
-  );
-  const boardY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    animationsEnabled && isMobileViewport ? [0, 32] : [0, 0],
-  );
 
   return (
     <div className="flex flex-1 flex-col">
@@ -348,17 +321,16 @@ function DormantHome() {
       </button>
       <section
         ref={heroRef}
-        className={`border-brand-surface/20 relative isolate min-h-[max(85svh,40rem)] overflow-hidden border-b md:min-h-[calc(90svh-4.25rem)] lg:min-h-[calc(100svh-4.25rem)] ${animationsEnabled ? "" : "animations-paused"}`}
+        className={`dormant-hero-parallax border-brand-surface/20 relative isolate min-h-[max(85svh,40rem)] overflow-hidden border-b md:min-h-[calc(90svh-4.25rem)] lg:min-h-[calc(100svh-4.25rem)] ${animationsEnabled ? "" : "animations-paused"}`}
       >
         <h1 className="sr-only">Tinyverse Garden</h1>
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-linear-to-b from-[#78a7e8] via-[#a8e1f5] to-[#a7d98f]"
         />
-        <motion.div
+        <div
           aria-hidden="true"
-          className="dormant-sky-layer absolute bottom-0 left-1/2 aspect-3960/2160 w-[140vw] max-w-none -translate-x-1/2 max-md:top-0 max-md:right-0 max-md:bottom-0 max-md:left-0 max-md:aspect-auto max-md:w-full max-md:translate-x-0 md:w-[120vw] lg:left-0 lg:w-full lg:translate-x-0"
-          style={{ y: skyY }}
+          className="dormant-hero-parallax-sky dormant-sky-layer absolute bottom-0 left-1/2 aspect-3960/2160 w-[140vw] max-w-none -translate-x-1/2 max-md:top-0 max-md:right-0 max-md:bottom-0 max-md:left-0 max-md:aspect-auto max-md:w-full max-md:translate-x-0 md:w-[120vw] lg:left-0 lg:w-full lg:translate-x-0"
         >
           <Image
             src={withBasePath(
@@ -370,11 +342,10 @@ function DormantHome() {
             sizes="140vw"
             className="object-contain object-bottom max-md:object-cover max-md:object-[center_40%]"
           />
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           aria-hidden="true"
-          className="absolute bottom-0 left-1/2 z-10 mx-auto aspect-3960/2160 w-[140vw] max-w-none -translate-x-1/2 md:w-[120vw] lg:left-0 lg:w-full lg:translate-x-0"
-          style={{ y: houseY }}
+          className="dormant-hero-parallax-house absolute bottom-0 left-1/2 z-10 mx-auto aspect-3960/2160 w-[140vw] max-w-none -translate-x-1/2 md:w-[120vw] lg:left-0 lg:w-full lg:translate-x-0"
         >
           <Image
             src={withBasePath(
@@ -382,17 +353,17 @@ function DormantHome() {
             )}
             alt=""
             fill
+            priority
             sizes="140vw"
             className="object-contain object-bottom"
             style={{
               maskImage: "linear-gradient(to bottom, transparent, black 18%)",
             }}
           />
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           aria-hidden="true"
-          className="absolute bottom-0 left-1/2 z-20 mx-auto aspect-3960/2160 w-[140vw] max-w-none -translate-x-1/2 md:w-[120vw] lg:left-0 lg:w-full lg:translate-x-0"
-          style={{ y: plantsY }}
+          className="dormant-hero-parallax-plants absolute bottom-0 left-1/2 z-20 mx-auto aspect-3960/2160 w-[140vw] max-w-none -translate-x-1/2 md:w-[120vw] lg:left-0 lg:w-full lg:translate-x-0"
         >
           <Image
             src={withBasePath(
@@ -400,25 +371,50 @@ function DormantHome() {
             )}
             alt=""
             fill
+            priority
             sizes="140vw"
             className="object-contain object-bottom"
             style={{
               maskImage: "linear-gradient(to bottom, transparent, black 18%)",
             }}
           />
-        </motion.div>
+        </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[55]"
+        >
+          <Particles
+            particleCount={96}
+            particleSpread={10}
+            speed={0.15}
+            particleColors={["#164e63", "#0f766e", "#fff0a6"]}
+            particleBaseSize={112}
+            sizeRandomness={0.15}
+            shape="sparkle"
+            glow={0.6}
+            twinkle={0.35}
+            moveParticlesOnHover={false}
+            clickBurst={false}
+            drift="up"
+            driftSpeed={0.55}
+            disableRotation
+            intro={false}
+            opacity={0.95}
+            paused={!animationsEnabled}
+          />
+        </div>
         <motion.div
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-50 mx-auto aspect-[1.43] w-full md:aspect-3960/2160"
-          initial={animationsEnabled ? { opacity: 0, y: 18 } : false}
+          className="pointer-events-none absolute bottom-[-4px] left-1/2 z-50 aspect-[1.43] w-[94%] -translate-x-1/2 md:aspect-3960/2160 md:w-[96%]"
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
             className="absolute inset-0"
-            animate={animationsEnabled ? { y: [0, -4, 0] } : { y: 0 }}
+            animate={animationsEnabled ? { y: [0, -8, 0] } : { y: 0 }}
             transition={
               animationsEnabled
-                ? { duration: 8, repeat: Infinity, ease: "easeInOut" }
+                ? { duration: 6.5, repeat: Infinity, ease: "easeInOut" }
                 : undefined
             }
           >
@@ -435,6 +431,7 @@ function DormantHome() {
                 )}
                 alt=""
                 fill
+                priority
                 sizes="100vw"
                 className="object-contain object-bottom"
               />
@@ -452,34 +449,41 @@ function DormantHome() {
                 )}
                 alt=""
                 fill
+                priority
                 sizes="100vw"
                 className="object-contain object-bottom"
               />
             </picture>
           </motion.div>
         </motion.div>
-        <motion.div
+        <div
           aria-hidden="true"
           className="absolute inset-0 z-40 bg-linear-to-b from-[#dff5ff]/15 via-[#7ccfe9]/5 to-[#0b261d]/30"
         />
         <div
           aria-hidden="true"
-          className="absolute top-8 left-1/2 z-40 h-48 w-48 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,244,199,0.3),transparent_70%)] md:h-72 md:w-72"
+          className="animate-glow-pulse absolute top-8 left-1/2 z-40 h-48 w-48 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,244,199,0.3),transparent_70%)] md:h-72 md:w-72"
         />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute top-[30%] left-[12%] z-[45] text-2xl text-yellow-100/80 drop-shadow-[0_0_10px_rgb(255_244_199_/_70%)] md:top-[24%] md:left-[18%] md:text-3xl"
+        ></div>
 
         <motion.div
           className="absolute top-[6%] left-[4%] z-[45] hidden w-[min(60vw,920px)] md:block"
-          initial={
-            animationsEnabled ? { y: 18, scale: 0.98, opacity: 0 } : false
-          }
+          initial={false}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
             className="flex w-full flex-col items-center gap-2 md:items-start md:gap-3"
-            animate={animationsEnabled ? { y: [0, -5, 0] } : { y: 0 }}
+            animate={
+              animationsEnabled && !isMobileViewport
+                ? { y: [0, -5, 0] }
+                : { y: 0 }
+            }
             transition={
-              animationsEnabled
+              animationsEnabled && !isMobileViewport
                 ? { duration: 8, repeat: Infinity, ease: "easeInOut" }
                 : undefined
             }
@@ -489,17 +493,19 @@ function DormantHome() {
                 src={withBasePath(
                   "/2027_images/landscape_main_art_airashi/tinyverse.png",
                 )}
+                draggable={false}
                 alt=""
                 width={2026}
                 height={654}
                 priority
                 sizes="(max-width: 767px) 45vw, 29vw"
-                className="h-auto w-[48%]"
+                className="h-auto w-[48%] select-none"
               />
               <Image
                 src={withBasePath(
                   "/2027_images/landscape_main_art_airashi/garden.png",
                 )}
+                draggable={false}
                 alt=""
                 width={1658}
                 height={536}
@@ -512,18 +518,18 @@ function DormantHome() {
               src={withBasePath(
                 "/2027_images/landscape_main_art_airashi/date.png",
               )}
+              draggable={false}
               alt="10th–11th July 2027"
               width={2200}
               height={970}
               priority
               sizes="(max-width: 767px) 48vw, 26vw"
-              className="h-auto w-[52%] max-w-[28rem] md:ml-[18%]"
+              className="h-auto w-[52%] max-w-[28rem] select-none md:ml-[18%]"
             />
           </motion.div>
         </motion.div>
         <motion.div
           className="absolute top-[-13%] left-1/2 z-[45] w-[min(84vw,340px)] -translate-x-1/2 md:hidden"
-          style={{ y: boardY }}
           animate={
             animationsEnabled && isMobileViewport
               ? { rotate: [0, -1, 1, 0] }
@@ -564,11 +570,12 @@ function DormantHome() {
                   src={withBasePath(
                     "/2027_images/landscape_main_art_airashi/tinyverse.png",
                   )}
+                  draggable={false}
                   alt=""
                   width={2026}
                   height={654}
                   priority
-                  className="h-auto w-[52%] drop-shadow-[0_2px_5px_rgb(30_53_25_/_25%)]"
+                  className="h-auto w-[52%] drop-shadow-[0_2px_5px_rgb(30_53_25_/_25%)] select-none"
                 />
                 <Image
                   src={withBasePath(
@@ -585,11 +592,12 @@ function DormantHome() {
                 src={withBasePath(
                   "/2027_images/landscape_main_art_airashi/date.png",
                 )}
+                draggable={false}
                 alt="10th–11th July 2027"
                 width={2200}
                 height={970}
                 priority
-                className="h-auto w-[58%] drop-shadow-[0_2px_5px_rgb(30_53_25_/_25%)]"
+                className="h-auto w-[58%] drop-shadow-[0_2px_5px_rgb(30_53_25_/_25%)] select-none"
               />
             </div>
           </div>
