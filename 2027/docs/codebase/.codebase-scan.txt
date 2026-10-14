@@ -1,0 +1,250 @@
+
+=== DIRECTORY TREE (max depth 3, source files only) ===
+.github
+.github\skills
+.github\skills\acquire-codebase-knowledge
+.github\skills\acquire-codebase-knowledge\assets
+.github\skills\acquire-codebase-knowledge\references
+.github\skills\acquire-codebase-knowledge\scripts
+.github\skills\acquire-codebase-knowledge\SKILL.md
+.github\skills\refactor
+.github\skills\refactor\SKILL.md
+.github\skills\refactor-plan
+.github\skills\refactor-plan\SKILL.md
+.github\skills\ui-screenshots
+.github\skills\ui-screenshots\SKILL.md
+.github\skills\web-design-reviewer
+.github\skills\web-design-reviewer\references
+.github\skills\web-design-reviewer\SKILL.md
+.github\skills\webapp-testing
+.github\skills\webapp-testing\assets
+.github\skills\webapp-testing\SKILL.md
+.gitignore
+.vscode
+.vscode\launch.json
+.vscode\settings.json
+config
+config\nginx
+config\nginx\default.conf
+config\nginx\default.dev.conf
+config\pgbouncer
+config\pgbouncer\config_client
+config\pgbouncer\config_client\pgbouncer.ini
+config\pgbouncer\config_client\userlist.txt
+config\pgbouncer\config_staff
+config\pgbouncer\config_staff\pgbouncer.ini
+config\pgbouncer\config_staff\userlist.txt
+config\pgbouncer\Dockerfile
+config\pgbouncer\entrypoint.sh
+config\pgbouncer\pgbouncer.ini
+config\php
+config\php\composer.json
+config\php\composer.lock
+config\php\Dockerfile
+config\php\fpm-pool.conf
+config\php\fpm-pool.dev.conf
+config\php\php.ini
+config\php\php.prod.ini
+config\php\xdebug.ini
+config\postgres
+config\postgres\init-app-user.sh
+docker-compose.dev.yml
+docker-compose.prod.yml
+docker-compose.yml
+docs
+docs\codebase
+docs\codebase\.codebase-scan.txt
+firsttime.bash
+firsttime.ps1
+project_image
+project_image\projectPlan.png
+project_image\savefile.json
+README.md
+SQL
+SQL\BAH_STAFF
+SQL\BAH_STAFF\BAH_STAFF.sql
+telegram_otp
+telegram_otp\app.py
+telegram_otp\docker-compose.yml
+telegram_otp\Dockerfile
+telegram_otp\requirements.txt
+web_client
+web_client\bah-nextjs
+web_client\bah-nextjs\.dockerignore
+web_client\bah-nextjs\.gitignore
+web_client\bah-nextjs\.husky
+web_client\bah-nextjs\.husky\_
+web_client\bah-nextjs\.husky\pre-commit
+web_client\bah-nextjs\.prettierignore
+web_client\bah-nextjs\.prettierrc.json
+web_client\bah-nextjs\app
+web_client\bah-nextjs\app\contact
+web_client\bah-nextjs\app\favicon.ico
+web_client\bah-nextjs\app\gallery
+web_client\bah-nextjs\app\globals.css
+web_client\bah-nextjs\app\layout.tsx
+web_client\bah-nextjs\app\page.tsx
+web_client\bah-nextjs\app\schedule
+web_client\bah-nextjs\app\team
+web_client\bah-nextjs\components
+web_client\bah-nextjs\components\DevThemeSwitcher.tsx
+web_client\bah-nextjs\components\layout
+web_client\bah-nextjs\components\ThemeProvider.tsx
+web_client\bah-nextjs\Dockerfile
+web_client\bah-nextjs\docs
+web_client\bah-nextjs\docs\codebase
+web_client\bah-nextjs\eslint.config.mjs
+web_client\bah-nextjs\lib
+web_client\bah-nextjs\lib\theme
+web_client\bah-nextjs\next-env.d.ts
+web_client\bah-nextjs\next.config.ts
+web_client\bah-nextjs\package.json
+web_client\bah-nextjs\pnpm-lock.yaml
+web_client\bah-nextjs\pnpm-workspace.yaml
+web_client\bah-nextjs\postcss.config.mjs
+web_client\bah-nextjs\public
+web_client\bah-nextjs\README.md
+web_client\bah-nextjs\tsconfig.json
+web_staff
+web_staff\a.php
+web_staff\account
+web_staff\account\bindTG.php
+web_staff\account\changePassword.php
+web_staff\account\index.php
+web_staff\account\passkeys.php
+web_staff\account\regpasskey.php
+web_staff\config
+web_staff\config\db_connect.php
+web_staff\config\email_tpl
+web_staff\config\email_tpl\login_otp.html
+web_staff\config\email_tpl\reset_passwd.html
+web_staff\config\mailer.php
+web_staff\config\password.php
+web_staff\config\session.php
+web_staff\config\telegram.php
+web_staff\dashboard.php
+web_staff\firsttime.php
+web_staff\image
+web_staff\image\BAH.png
+web_staff\image\bg.png
+web_staff\index.html
+web_staff\index.php
+web_staff\login.php
+web_staff\logout.php
+web_staff\PassReset.php
+web_staff\telegram.php
+web_staff\telegram_binding_api.php
+
+=== STACK DETECTION (manifest files) ===
+No recognized manifest files found in project root.
+
+=== ENTRY POINTS ===
+No common entry points found. Check 'main' or 'scripts.start' in manifest files above.
+
+=== LINTING AND FORMATTING CONFIG ===
+No linting or formatting config files found in project root.
+
+=== ENVIRONMENT VARIABLE TEMPLATES ===
+No .env.example or .env.template found. Identify required environment variables by searching the code and config for environment variable reads.
+
+=== TODO / FIXME / HACK (production code only, test dirs excluded) ===
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:28: TODO_LIMIT = 60
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:291: """Search for TODO/FIXME/HACK comments."""
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:291: """Search for TODO/FIXME/HACK comments."""
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:291: """Search for TODO/FIXME/HACK comments."""
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:293: patterns = ["TODO", "FIXME", "HACK"]
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:293: patterns = ["TODO", "FIXME", "HACK"]
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:293: patterns = ["TODO", "FIXME", "HACK"]
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:320: return todos[:TODO_LIMIT]
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:617: # TODOs
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:620: print_section("TODO / FIXME / HACK (production code only, test dirs excluded)", todos, output_file)
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:620: print_section("TODO / FIXME / HACK (production code only, test dirs excluded)", todos, output_file)
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:620: print_section("TODO / FIXME / HACK (production code only, test dirs excluded)", todos, output_file)
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:622: print_section("TODO / FIXME / HACK (production code only, test dirs excluded)", ["None found."], output_file)
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:622: print_section("TODO / FIXME / HACK (production code only, test dirs excluded)", ["None found."], output_file)
+.github\skills\acquire-codebase-knowledge\scripts\scan.py:622: print_section("TODO / FIXME / HACK (production code only, test dirs excluded)", ["None found."], output_file)
+
+=== GIT RECENT COMMITS (last 20) ===
+c490aa1 chore: clean up
+9c4ca35 chore: clean up
+1412070 chore: add sample page
+521471f chore: add sample page
+b71cb2e chore: add prototype theme engine and animation library
+50f8826 chore: add sample page for reference
+bb5db55 chore: add zustand, rhf, zod and react query
+015c2bf chore: add base ui
+c7ac577 chore: add husky pre commit hook
+563014c chore: add eslint and prettier
+90059a8 chore: remove init files
+d314a2d Merge branch 'main' into feature/3-fe-setup-frontend-architecture-and-documentation
+65e47af chore: init next js web client and update docker file
+b8b157a bug fixed
+862809a WIP just for backup
+e055777 WIP
+77f340b WIP
+5575a69 WIP
+5deef50 WIP
+35c3381 WIP
+
+=== HIGH-CHURN FILES (last 90 days, top 20) ===
+  14 docker-compose.yml
+  10 README.md
+   8 web_client/bah-nextjs/app/page.tsx
+   8 SQL/BAH_STAFF/BAH_STAFF.sql
+   7 docker-compose.dev.yml
+   7 web_staff/login.php
+   7 config/php/Dockerfile
+   6 web_client/bah-nextjs/app/layout.tsx
+   6 .gitignore
+   6 web_client/bah-nextjs/package.json
+   6 web_client/bah-nextjs/pnpm-lock.yaml
+   5 config/nginx/default.conf
+   5 web_staff/index.php
+   5 web_staff/firsttime.php
+   4 web_staff/config/session.php
+   4 config/php/php.ini
+   4 firsttime.bash
+   4 config/pgbouncer/config_client/pgbouncer.ini
+   3 web_client/bah-nextjs/components/Header.tsx
+   3 web_client/bah-nextjs/components/ComingSoon.tsx
+
+=== MONOREPO SIGNALS ===
+No monorepo signals detected.
+
+=== CODE METRICS ===
+Total files scanned: 104
+Total lines of code: 6484
+
+Files by language:
+  Other: 64
+  PHP: 19
+  TypeScript/React: 14
+  TypeScript: 4
+  Python: 2
+  JavaScript: 1
+
+Top 10 largest files:
+project_image\projectPlan.png: 3943.2KB
+project_image\savefile.json: 379.0KB
+web_client\bah-nextjs\pnpm-lock.yaml: 152.8KB
+web_staff\login.php: 34.3KB
+web_client\bah-nextjs\app\favicon.ico: 25.3KB
+.github\skills\acquire-codebase-knowledge\scripts\scan.py: 23.2KB
+.github\skills\refactor\SKILL.md: 16.4KB
+web_staff\image\bg.png: 13.7KB
+web_staff\PassReset.php: 12.1KB
+SQL\BAH_STAFF\BAH_STAFF.sql: 10.4KB
+
+=== CI/CD PIPELINES ===
+No CI/CD pipelines detected.
+
+=== CONTAINERS & ORCHESTRATION ===
+Orchestration: Docker Compose found
+
+=== SECURITY & COMPLIANCE ===
+No security configs detected.
+
+=== PERFORMANCE & TESTING ===
+No performance testing configs detected.
+
+=== SCAN COMPLETE ===

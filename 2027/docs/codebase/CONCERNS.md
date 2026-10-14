@@ -1,0 +1,62 @@
+# Codebase Concerns — Frontend (2027)
+
+## Core Sections (Required)
+
+### 1) Top Risks (Prioritized)
+
+| Severity | Concern                                                                                                                                                                                                  | Evidence                                                                                                                               | Impact                                                                                                                                                                                                             | Suggested action                                                                                                                         |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| High     | **No backend integration exists** — `@tanstack/react-query`, `zustand`, `react-hook-form`, `zod` are all installed but unused. The homepage email form shows a local toast instead of POSTing to an API. | `web_client/2027/app/page.tsx` (local toast), `web_client/2027/package.json` (unused deps)                                             | When the team starts building real features, all data-fetching patterns, form submission, and state management need to be implemented from scratch — and the assumed library compositions may not work as expected | Build a minimal end-to-end API integration (e.g., registration form → PHP backend) to validate the stack works end-to-end before scaling |
+| High     | **Zero test coverage** — no test runner, no test files, no CI test step. Every refactor or dependency upgrade is blind.                                                                                  | `web_client/2027/package.json` (no test script), no `test/` or `__tests__/` directories                                                | Regressions can only be caught manually; no safety net for the upcoming backend integration work                                                                                                                   | Install Playwright (preferred); write E2E smoke tests for existing pages and a unit test for the theme-to-CSS-var helper                 |
+| Medium   | **CSS var fallback drift** — `globals.css` hardcodes "bah" theme fallback values, but `ACTIVE_THEME` is `"greyscale"`. These fallbacks may silently diverge from the active theme.                       | `web_client/2027/app/globals.css` (hardcoded BAH fallbacks), `web_client/2027/lib/theme/site-config.ts` (`ACTIVE_THEME = "greyscale"`) | If the inline `<html style>` fails to apply (no-JS edge cases, timing issues), the page renders in the wrong colours                                                                                               | Generate fallback vars dynamically from `getActiveTheme()` or keep them in sync manually when editing themes                             |
+
+### 2) Technical Debt
+
+| Debt item                                                                                                                                                                                      | Why it exists                                                                       | Where                                                                                                                                                       | Risk if ignored                                                                             | Suggested fix                                                                                                                                                                 |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Placeholder pages** — 22 route pages across `(public)`, `(auth)`, `(attendee)` route groups render `PageHero` + `ComingSoon` placeholder; 4 `[slug]`/`[id]` detail pages are also scaffolded | Pages were scaffolded early as part of the site-state feature-gating infrastructure | `web_client/2027/app/(public)/about/page.tsx`, `web_client/2027/app/(auth)/login/page.tsx`, `web_client/2027/app/(attendee)/profile/page.tsx` (and 19 more) | Visitors see placeholder content on all secondary pages; the event website looks incomplete | Intentionally kept as stubs — each page is gated by `requireFeature()` so it 404s in states where the feature is disabled, and shows a "Coming Soon" placeholder when enabled |
+| **Header nav items hardcoded** — nav links are a `const` array in `Header.tsx` rather than config-driven; however, they are now feature-gated via the site-state system                        | Simple approach for a small site, improved with feature gating                      | `web_client/2027/components/client/layout/Header.tsx`                                                                                                       | Each page addition requires editing the component                                           | Extract nav items to a config file in `lib/`                                                                                                                                  |
+| **No API client abstraction** — no Axios/fetch wrapper, no base URL config, no error handling layer                                                                                            | Not yet needed (no backend integration)                                             | `web_client/2027/`                                                                                                                                          | Rushed API calls will be inconsistent, error-prone, and hard to maintain                    | Create a `lib/api/` module with a typed fetch wrapper before the first real API call                                                                                          |
+
+### 3) Security Concerns
+
+| Risk                                  | OWASP category (if applicable)   | Evidence                                                                                              | Current mitigation                                    | Gap                                                                                                     |
+| ------------------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| No input validation on frontend forms | [A03: Injection]                 | `web_client/2027/app/page.tsx` — email form only checks `if (email)` truthiness; no format validation | `react-hook-form` + `zod` are installed but not wired | Validate email format on client before submission; implement server-side validation when the API exists |
+| No Content Security Policy            | [A05: Security Misconfiguration] | `config/nginx/default.conf` — no CSP headers set on the b_nextjs proxy pass                           | None                                                  | Add CSP headers in nginx config for the client frontend                                                 |
+
+### 4) Performance and Scaling Concerns
+
+| Concern                                         | Evidence                                                                             | Current symptom                                                        | Scaling risk                         | Suggested improvement                                            |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- | ------------------------------------ | ---------------------------------------------------------------- |
+| Google Fonts external request (cyberpunk theme) | `web_client/2027/lib/theme/themes.ts` — `Orbitron` font loaded from Google Fonts CDN | External CSS request delays initial paint if cyberpunk theme is active | Increases with latency to Google CDN | Self-host the font or use `next/font` for automatic optimization |
+
+Note: The current active theme (`"greyscale"`) uses `'General Sans', system-ui, sans-serif` with no external font URL, so this concern only applies if the theme is switched back to `"cyberpunk"`.
+
+### 5) Fragile/High-Churn Areas
+
+| Area                             | Why fragile                                                                                                                                       | Churn signal                                   | Safe change strategy                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `web_client/2027/app/page.tsx`   | Highest-churn frontend file — 8 commits in recent history. Contains hero content, highlights, FAQ accordion, and email form all in one component. | 8 commits (tied for most active frontend file) | Split into smaller page-section components; extract FAQ data and highlights into a data file |
+| `web_client/2027/app/layout.tsx` | 6 commits — central layout that touches theme, metadata, a11y, and composition. Any layout changes risk affecting all pages.                      | 6 commits                                      | Add integration tests for layout rendering                                                   |
+
+### 6) Resolved Decisions (previously `[ASK USER]`)
+
+The following questions have been answered by the team:
+
+1. ✅ **Theme:** Set to `"greyscale"` — updated in `site-config.ts`.
+2. ✅ **Backend integration:** Not yet wired — no immediate API integration planned. The libraries (`react-query`, `zustand`, `react-hook-form`, `zod`) remain installed for future use.
+3. ✅ **Stub pages:** All placeholder pages are feature-gated via `requireFeature()` and organised into route groups (`(public)`, `(auth)`, `(attendee)`). Each page 404s when its feature is disabled per the site lifecycle state.
+4. ✅ **Test framework:** Playwright is the preferred choice — not yet installed.
+5. ✅ **Error monitoring:** Sentry is not planned — no error monitoring will be configured at this time.
+6. ✅ **Motion animations:** Yes, `motion` is planned for future component animations.
+
+### 7) Evidence
+
+- `web_client/2027/package.json` (unused deps, no test script)
+- `web_client/2027/app/page.tsx` (monolithic homepage, local toast API)
+- `web_client/2027/app/layout.tsx` (6-commit churn)
+- `web_client/2027/app/globals.css` (fallback theme values)
+- `web_client/2027/components/layout/Header.tsx` (hardcoded nav, commented links)
+- `web_client/2027/lib/theme/themes.ts` (Google Fonts URL)
+- Git log (scan output — churn data)

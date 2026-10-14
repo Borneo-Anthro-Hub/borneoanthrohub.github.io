@@ -1,0 +1,448 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+/*
+ ---break---
+ */
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Fallback values only - the real values are set per-theme on <html style>
+ * in app/layout.tsx from `getActiveTheme()` / `themeToCssVars()`
+ * (see lib/theme/themes.ts). These mirror the active "2027" theme so
+ * anything rendered before that inline style applies (e.g. static analysis,
+ * no-JS edge cases) still looks correct.
+ */
+:root {
+  --brand-bg: #71a33d;
+  --brand-accent: #f5b425;
+  --brand-text: #ffffff;
+  --brand-hover: #f7c44b;
+  --brand-surface: #3a5f1e;
+  --brand-subtle: #f3f6e6;
+  --brand-secondary: #ff836d;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  --font-theme: "General Sans", system-ui, sans-serif;
+  --font-display: "General Sans", system-ui, sans-serif;
+  --font-heading: "General Sans", system-ui, sans-serif;
+  --font-body: "General Sans", system-ui, sans-serif;
+  --font-caption: "General Sans", system-ui, sans-serif;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-text: var(--brand-text);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-secondary: var(--brand-secondary);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-theme);
+  --font-mono: var(--font-geist-mono, ui-monospace, monospace);
+  --font-display: var(--font-display);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-caption: var(--font-caption);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* =============================================================================
+   MOTION SYSTEM — bespoke keyframes used by the immersive Dormant hero.
+   ============================================================================= */
+@theme {
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-glow-pulse: glow-pulse 7s ease-in-out infinite;
+}
+
+/* Gentle vertical drift for decorative hero elements (paw prints). */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+/* Staggered entrance used across the dormant hero. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slow breathing for the hero's sun glow disc. */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.06);
+  }
+}
+
+.dormant-sky-layer {
+  mask-image: linear-gradient(to bottom, transparent, black 18%);
+}
+
+.dormant-hero-glow {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(169 216 143 / 18%) 48%,
+    rgb(169 216 143 / 54%) 100%
+  );
+}
+
+.dormant-hero-glow::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgb(169 216 143 / 55%),
+    rgb(255 237 143 / 95%) 50%,
+    rgb(169 216 143 / 55%)
+  );
+  box-shadow:
+    0 0 8px 2px rgb(217 239 145 / 70%),
+    0 0 24px 8px rgb(130 190 91 / 35%);
+  content: "";
+}
+
+.animations-paused,
+.animations-paused *,
+.animations-paused *::before,
+.animations-paused *::after {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 767px) {
+  .dormant-sky-layer {
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 58%,
+      transparent 100%
+    );
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   REDUCED MOTION — respect users who prefer static, non-animated interfaces.
+   ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.root {
+  isolation: isolate;
+}
+
+.site-background {
+  background-image: var(--page-background-image, none);
+  background-repeat: repeat;
+  background-size: var(--page-background-size, auto);
+}
+
+@layer base {
+  body,
+  p,
+  li,
+  button,
+  input,
+  textarea,
+  select {
+    font-family: var(--font-body);
+    line-height: 1.2;
+  }
+
+  h1,
+  .h1 {
+    font-family: var(--font-display);
+    font-size: var(--type-hero-h1-font-size, 3.5rem);
+    line-height: var(--type-hero-h1-line-height, 1.2);
+    font-weight: var(--type-hero-h1-font-weight, 700);
+    color: var(--foreground);
+  }
+
+  h2,
+  .h2,
+  h3,
+  .h3 {
+    font-family: var(--font-heading);
+    font-size: var(--type-heading-h3-font-size, 2.5rem);
+    line-height: var(--type-heading-h3-line-height, 1.2);
+    font-weight: var(--type-heading-h3-font-weight, 400);
+    color: var(--foreground);
+  }
+
+  h4,
+  .h4 {
+    font-family: var(--font-heading);
+    font-size: var(--type-heading-h4-font-size, 2rem);
+    line-height: var(--type-heading-h4-line-height, 1.2);
+    font-weight: var(--type-heading-h4-font-weight, 400);
+    color: var(--foreground);
+  }
+}
+
+@layer components {
+  .type-hero-h1 {
+    font-family: var(--type-hero-h1-font-family, var(--font-display));
+    font-size: var(--type-hero-h1-font-size, 56px);
+    font-weight: var(--type-hero-h1-font-weight, 700);
+    line-height: var(--type-hero-h1-line-height, 1.2);
+  }
+
+  .type-hero-h3 {
+    font-family: var(--type-hero-h3-font-family, var(--font-display));
+    font-size: var(--type-hero-h3-font-size, 40px);
+    font-weight: var(--type-hero-h3-font-weight, 700);
+    line-height: var(--type-hero-h3-line-height, 1.2);
+  }
+
+  .type-hero-h4 {
+    font-family: var(--type-hero-h4-font-family, var(--font-display));
+    font-size: var(--type-hero-h4-font-size, 32px);
+    font-weight: var(--type-hero-h4-font-weight, 400);
+    line-height: var(--type-hero-h4-line-height, 1.2);
+  }
+
+  .type-heading-h3 {
+    font-family: var(--type-heading-h3-font-family, var(--font-heading));
+    font-size: var(--type-heading-h3-font-size, 40px);
+    font-weight: var(--type-heading-h3-font-weight, 400);
+    line-height: var(--type-heading-h3-line-height, 1.2);
+  }
+
+  .type-heading-h4 {
+    font-family: var(--type-heading-h4-font-family, var(--font-heading));
+    font-size: var(--type-heading-h4-font-size, 32px);
+    font-weight: var(--type-heading-h4-font-weight, 400);
+    line-height: var(--type-heading-h4-line-height, 1.2);
+  }
+
+  .type-body-l-semibold {
+    font-family: var(--type-body-l-semibold-font-family, var(--font-body));
+    font-size: var(--type-body-l-semibold-font-size, 18px);
+    font-weight: var(--type-body-l-semibold-font-weight, 600);
+    line-height: var(--type-body-l-semibold-line-height, 1.2);
+  }
+
+  .type-body-l {
+    font-family: var(--type-body-l-font-family, var(--font-body));
+    font-size: var(--type-body-l-font-size, 18px);
+    font-weight: var(--type-body-l-font-weight, 400);
+    line-height: var(--type-body-l-line-height, 1.2);
+  }
+
+  .type-body-s-semibold {
+    font-family: var(--type-body-s-semibold-font-family, var(--font-body));
+    font-size: var(--type-body-s-semibold-font-size, 14px);
+    font-weight: var(--type-body-s-semibold-font-weight, 600);
+    line-height: var(--type-body-s-semibold-line-height, 1.2);
+  }
+
+  .type-body-s {
+    font-family: var(--type-body-s-font-family, var(--font-body));
+    font-size: var(--type-body-s-font-size, 14px);
+    font-weight: var(--type-body-s-font-weight, 400);
+    line-height: var(--type-body-s-line-height, 1.2);
+  }
+
+  .type-caption-s-medium {
+    font-family: var(--type-caption-s-medium-font-family, var(--font-caption));
+    font-size: var(--type-caption-s-medium-font-size, 12px);
+    font-weight: var(--type-caption-s-medium-font-weight, 500);
+    line-height: var(--type-caption-s-medium-line-height, 1.2);
+  }
+
+  .type-caption-s-bold {
+    font-family: var(--type-caption-s-bold-font-family, var(--font-caption));
+    font-size: var(--type-caption-s-bold-font-size, 12px);
+    font-weight: var(--type-caption-s-bold-font-weight, 700);
+    line-height: var(--type-caption-s-bold-line-height, 1.2);
+  }
+}
+
+/* Cursor styles for interactive elements */
+button:not(:disabled),
+a {
+  cursor: pointer;
+}
+
+/* =============================================================================
+   THEMED SCROLLBAR
+   Follows the active theme via CSS custom properties set on <html>.
+   ============================================================================= */
+
+/* ---- Firefox ---- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--background);
+}
+
+/* ---- WebKit (Chrome, Safari, Edge) ---- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 9999px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ring);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--background);
+}
+/*
+ ---break---
+ */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+/*
+ ---break---
+ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

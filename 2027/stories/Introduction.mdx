@@ -1,0 +1,24 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Design System/Introduction" />
+
+# Design System
+
+These stories document the visual styles of this project's `@base-ui/react`
+primitives (Button, Input, Field, Toast), including the UI states each one
+can be in (default, disabled, invalid, filled).
+
+## Theming
+
+Use the **Theme** toolbar item (top toolbar) to preview every story across
+all site themes - `bah`, `cyberpunk`, `greyscale`. Switching it re-applies
+the same `ThemeProvider` (`components/client/ThemeProvider.tsx`) and CSS
+custom properties (`lib/theme/themes.ts`) used in production, so what you
+see here matches what ships on the site.
+
+## States
+
+Some components expose their state via Storybook Controls (e.g. the
+`disabled` boolean on Button/Input/Field) - toggle them in the Controls
+panel on each story's Docs page. Named stories (e.g. `Disabled`, `Invalid`)
+capture the states worth calling out explicitly.

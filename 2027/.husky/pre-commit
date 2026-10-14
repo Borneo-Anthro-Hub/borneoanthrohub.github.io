@@ -1,0 +1,2 @@
+cd 2027
+pnpm exec lint-staged
