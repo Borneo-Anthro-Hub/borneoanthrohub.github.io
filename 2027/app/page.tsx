@@ -403,7 +403,7 @@ function DormantHome() {
           />
         </div>
         <motion.div
-          className="pointer-events-none absolute bottom-[-4px] left-1/2 z-50 aspect-[1.43] w-[94%] -translate-x-1/2 md:aspect-3960/2160 md:w-[96%]"
+          className="pointer-events-none absolute right-0 bottom-[-4px] z-50 aspect-[1.43] w-[92%] md:aspect-3960/2160"
           initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
