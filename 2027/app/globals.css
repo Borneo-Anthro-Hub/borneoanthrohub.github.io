@@ -307,6 +307,17 @@
   background-size: var(--page-background-size, auto);
 }
 
+/* Bridges the positioner's 10px gap so moving from a nav trigger into its
+   dropdown does not count as leaving the menu. */
+.nav-popup::before {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  content: "";
+}
+
 /* =============================================================================
    2027 THEMED LANDING — Tinyverse Garden
    ============================================================================= */
@@ -1204,72 +1215,6 @@ body:has(.themed-home) header .text-brand-text {
   --registration-faq: #f0dec1;
 }
 
-/* ---- Hero ---------------------------------------------------------------- */
-
-.registration-hero {
-  position: relative;
-  z-index: 1;
-  isolation: isolate;
-  display: grid;
-  min-height: clamp(150px, 17vw, 260px);
-  place-items: center;
-  overflow: hidden;
-  padding: clamp(30px, 4.2vw, 60px) 16px;
-  text-align: center;
-}
-
-.registration-hero-image {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-}
-
-.registration-hero::after {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    180deg,
-    rgb(253 246 227 / 15%) 0%,
-    rgb(253 246 227 / 55%) 62%,
-    rgb(253 246 227 / 100%) 100%
-  );
-  content: "";
-}
-
-.registration-hero-inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.registration-hero h1 {
-  margin: 0;
-  color: #1d3a22;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 4.4vw, 3.8rem);
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1.05;
-  text-shadow:
-    0 1px 0 rgb(253 246 227 / 95%),
-    0 5px 18px rgb(253 246 227 / 95%);
-}
-
-.registration-hero p {
-  margin: 0;
-  color: #3c2a1e;
-  font-family: var(--font-body);
-  font-size: clamp(0.78rem, 1vw, 1rem);
-  text-shadow: 0 1px 6px rgb(253 246 227 / 95%);
-}
-
 /* ---- Invitation board ---------------------------------------------------- */
 
 .registration-invitation {
@@ -1278,18 +1223,16 @@ body:has(.themed-home) header .text-brand-text {
   padding: clamp(14px, 2vw, 28px) 0 clamp(36px, 4.5vw, 72px);
 }
 
-/* Tree canopy framing the board, reused from the themed landing page. */
+/* Tree canopy framing the board, reused from the themed landing page.
+   Full-bleed: the artwork keeps its 1920:1621 ratio and is anchored to the
+   top, so it spans the whole viewport without distorting or overflowing. */
 .registration-invitation::before {
   position: absolute;
-  top: clamp(-6px, 0.4vw, 6px);
-  left: 50%;
+  inset: 0;
   z-index: -1;
-  width: min(1500px, 126%);
-  aspect-ratio: 1920 / 1621;
   background: url("/2027_images/new_themed_homepage_assets/3-divider.svg")
-    center top / 100% 100% no-repeat;
+    center top / 100% auto no-repeat;
   content: "";
-  transform: translateX(-50%);
   pointer-events: none;
 }
 
@@ -1317,9 +1260,8 @@ body:has(.themed-home) header .text-brand-text {
   z-index: 1;
   width: min(100% - 32px, 1040px);
   margin: clamp(18px, 2.4vw, 32px) auto 0;
-  padding: clamp(14px, 2vw, 24px);
+  padding: clamp(16px, 2.2vw, 30px);
   overflow: hidden;
-  border: 3px solid #c9a075;
   border-radius: clamp(14px, 1.8vw, 24px);
   background: var(--registration-board);
   box-shadow: 0 12px 22px rgb(45 35 24 / 28%);
@@ -1349,11 +1291,11 @@ body:has(.themed-home) header .text-brand-text {
 .registration-board-content {
   position: relative;
   z-index: 1;
-  padding: clamp(20px, 2.8vw, 40px) clamp(8px, 1.4vw, 22px)
-    clamp(4px, 0.8vw, 10px);
+  padding: clamp(24px, 3.2vw, 44px) clamp(12px, 1.7vw, 26px)
+    clamp(8px, 1.2vw, 16px);
 }
 
-.registration-board-content p {
+.registration-board-content > p {
   max-width: 680px;
   margin: 0 auto clamp(8px, 1vw, 12px);
   color: var(--registration-board-ink);
@@ -1365,18 +1307,22 @@ body:has(.themed-home) header .text-brand-text {
 
 .registration-board-content .registration-board-invited {
   color: #3d2a1a;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: clamp(0.95rem, 1.25vw, 1.25rem);
-  font-style: italic;
-  font-weight: 700;
+  font-style: normal;
+  font-weight: 400;
   line-height: 1.2;
 }
 
-.registration-board-divider {
+/* `card-underline.svg` mapped out by RegistrationUnderline — the row scales
+   with the width while the leaf count stays fixed. */
+.registration-board-underline {
   display: block;
-  width: min(320px, 56%);
-  margin: clamp(4px, 0.6vw, 8px) auto clamp(10px, 1.4vw, 16px);
-  border-top: 3px dotted #a76f45;
+  width: clamp(140px, 18vw, 320px);
+  height: auto;
+  margin: clamp(6px, 0.9vw, 11px) auto clamp(12px, 1.6vw, 18px);
+  overflow: visible;
+  color: #93623c;
 }
 
 .registration-board-content .registration-board-entry {
@@ -1402,9 +1348,9 @@ body:has(.themed-home) header .text-brand-text {
   margin: clamp(8px, 1.2vw, 16px) 0 clamp(16px, 2vw, 26px);
   color: #3d2a1a;
   text-align: center;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   font-size: clamp(1rem, 1.35vw, 1.3rem);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -1415,30 +1361,77 @@ body:has(.themed-home) header .text-brand-text {
   gap: clamp(12px, 1.7vw, 24px);
 }
 
+/* Mobile: the same swipeable carousel pattern as the Code of Conduct page. */
+.registration-tiers-carousel {
+  width: 100%;
+}
+
+.registration-tiers-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2.5vw, 14px);
+  margin-top: clamp(10px, 3vw, 16px);
+}
+
+.registration-tiers-controls [data-slot="carousel-previous"],
+.registration-tiers-controls [data-slot="carousel-next"] {
+  border-color: #c9a075;
+  background: #f7e8ce;
+  color: #4b3220;
+}
+
+.registration-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.registration-carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(75 50 32 / 30%);
+  cursor: pointer;
+  transition:
+    width 160ms ease,
+    height 160ms ease,
+    background-color 160ms ease;
+}
+
+.registration-carousel-dot[data-active="true"] {
+  width: 8px;
+  height: 8px;
+  background: #4b3220;
+}
+
+/* The card artwork already draws its own rounded outline and 1px border, so
+   the element must not clip or re-round it — the shadow follows the artwork's
+   transparent corners instead of a CSS box.
+   The 350:950 ratio keeps the SVG undistorted at every width; the card grows
+   past it if content ever needs more room, and the contents scale with the
+   card (cqw) so the card reads the same at 1024 and 1920. */
 .registration-tier {
   position: relative;
   display: flex;
-  overflow: hidden;
-  border-radius: clamp(10px, 1.2vw, 16px);
+  aspect-ratio: 350 / 950;
+  container-type: inline-size;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  box-shadow: 0 8px 12px rgb(45 35 24 / 28%);
+  filter: drop-shadow(0 8px 10px rgb(45 35 24 / 28%));
 }
 
 .registration-tier[data-tier="wanderer"] {
   --registration-tier-ink: #5b3b22;
-  background-color: #f3e2cf;
 }
 
 .registration-tier[data-tier="gardener"] {
   --registration-tier-ink: #1e4a1c;
-  background-color: #a2c677;
 }
 
 .registration-tier[data-tier="caretaker"] {
   --registration-tier-ink: #5b3d05;
-  background-color: #ffc733;
 }
 
 .registration-tier-content {
@@ -1446,8 +1439,8 @@ body:has(.themed-home) header .text-brand-text {
   width: 100%;
   flex-direction: column;
   align-items: center;
-  padding: clamp(20px, 2.3vw, 32px) clamp(12px, 1.5vw, 22px)
-    clamp(14px, 1.6vw, 20px);
+  padding: clamp(16px, 13cqw, 48px) clamp(12px, 9.5cqw, 34px)
+    clamp(14px, 8.5cqw, 30px);
   color: var(--registration-tier-ink);
   text-align: center;
 }
@@ -1455,32 +1448,32 @@ body:has(.themed-home) header .text-brand-text {
 .registration-tier-name {
   margin: 0;
   color: var(--registration-tier-ink);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.35rem, 2vw, 2rem);
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 10.9cqw, 2.6rem);
+  font-weight: 400;
   line-height: 1;
 }
 
 .registration-tier-price {
-  margin: clamp(7px, 0.9vw, 11px) 0 0;
+  margin: clamp(6px, 3.1cqw, 12px) 0 0;
   color: var(--registration-tier-ink);
   font-family: var(--font-caption);
-  font-size: clamp(0.66rem, 0.8vw, 0.82rem);
+  font-size: clamp(0.7rem, 4.1cqw, 1.05rem);
   font-weight: 700;
   letter-spacing: 0.06em;
 }
 
 .registration-tier-icon {
   display: block;
-  width: clamp(108px, 11.5vw, 170px);
+  width: clamp(96px, 58cqw, 210px);
   height: auto;
-  margin: clamp(14px, 1.8vw, 24px) auto clamp(12px, 1.7vw, 22px);
+  margin: clamp(12px, 8.2cqw, 28px) auto clamp(10px, 7.5cqw, 26px);
 }
 
 .registration-tier-description {
-  margin: 0 0 clamp(12px, 1.4vw, 18px);
+  margin: 0 0 clamp(10px, 6.1cqw, 22px);
   font-family: var(--font-body);
-  font-size: clamp(0.66rem, 0.77vw, 0.8rem);
+  font-size: clamp(0.68rem, 4.4cqw, 1rem);
   line-height: 1.45;
 }
 
@@ -1489,16 +1482,16 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 .registration-tier-section + .registration-tier-section {
-  margin-top: clamp(10px, 1.2vw, 16px);
+  margin-top: clamp(8px, 5.5cqw, 18px);
 }
 
 .registration-tier-section-title {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin: 0 0 clamp(7px, 0.9vw, 11px);
+  gap: clamp(4px, 2cqw, 8px);
+  margin: 0 0 clamp(6px, 3.8cqw, 14px);
   font-family: var(--font-caption);
-  font-size: clamp(0.54rem, 0.65vw, 0.68rem);
+  font-size: clamp(0.58rem, 3.7cqw, 0.8rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.2;
@@ -1517,8 +1510,8 @@ body:has(.themed-home) header .text-brand-text {
 .registration-tier-list {
   display: flex;
   flex-direction: column;
-  gap: clamp(5px, 0.6vw, 8px);
-  margin: 0 0 clamp(12px, 1.6vw, 18px);
+  gap: clamp(4px, 2.7cqw, 10px);
+  margin: 0 0 clamp(10px, 6.1cqw, 22px);
   padding: 0;
   list-style: none;
   text-align: left;
@@ -1526,11 +1519,11 @@ body:has(.themed-home) header .text-brand-text {
 
 .registration-tier-item {
   display: grid;
-  grid-template-columns: 17px minmax(0, 1fr);
+  grid-template-columns: clamp(12px, 5.8cqw, 20px) minmax(0, 1fr);
   align-items: start;
-  gap: 6px;
+  gap: clamp(4px, 2cqw, 8px);
   font-family: var(--font-body);
-  font-size: clamp(0.6rem, 0.7vw, 0.73rem);
+  font-size: clamp(0.62rem, 4cqw, 0.95rem);
   line-height: 1.32;
 }
 
@@ -1554,12 +1547,12 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 .registration-tier-cta .themed-pill-paw img {
-  height: clamp(38px, 2.8vw, 52px);
-  margin-block: clamp(-6px, -0.4vw, -4px);
+  height: clamp(34px, 17.7cqw, 60px);
+  margin-block: clamp(-6px, -2cqw, -4px);
 }
 
 .registration-tier-cta .themed-pill-label {
-  font-size: clamp(0.72rem, 1vw, 1.1rem);
+  font-size: clamp(0.7rem, 6cqw, 1.25rem);
 }
 
 /* ---- FAQ ----------------------------------------------------------------- */
@@ -1752,30 +1745,14 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 @media (max-width: 767px) {
-  .registration-hero {
-    min-height: 132px;
-    padding: 22px 14px;
-  }
-
-  .registration-hero-image {
-    object-position: center 18%;
-  }
-
-  .registration-hero h1 {
-    font-size: 2rem;
-  }
-
-  .registration-hero p {
-    font-size: 0.74rem;
-  }
-
   .registration-invitation {
     padding: 10px 0 40px;
   }
 
+  /* The canopy is scaled up on narrow screens so it still frames the board. */
   .registration-invitation::before {
-    top: 34px;
-    width: 210%;
+    background-position: center 34px;
+    background-size: 210% auto;
   }
 
   .registration-banner {
@@ -1794,8 +1771,7 @@ body:has(.themed-home) header .text-brand-text {
 
   .registration-board {
     width: calc(100% - 16px);
-    padding: 10px;
-    border-width: 2px;
+    padding: 12px;
   }
 
   .registration-board::before {
@@ -1804,7 +1780,7 @@ body:has(.themed-home) header .text-brand-text {
   }
 
   .registration-board-content {
-    padding: 22px 4px 4px;
+    padding: 26px 8px 6px;
   }
 
   .registration-board-watermark {
@@ -1813,7 +1789,7 @@ body:has(.themed-home) header .text-brand-text {
     width: 68%;
   }
 
-  .registration-board-content p {
+  .registration-board-content > p {
     font-size: 0.72rem;
   }
 
@@ -1836,28 +1812,10 @@ body:has(.themed-home) header .text-brand-text {
     gap: 18px;
   }
 
-  .registration-tier-content {
-    padding: 24px 18px 18px;
-  }
-
-  .registration-tier-name {
-    font-size: 1.75rem;
-  }
-
-  .registration-tier-icon {
-    width: 132px;
-  }
-
-  .registration-tier-description {
-    font-size: 0.72rem;
-  }
-
-  .registration-tier-item {
-    font-size: 0.64rem;
-  }
-
-  .registration-tier-cta .themed-pill-label {
-    font-size: 1rem;
+  /* The price is the key decision point on a phone — give it more weight. */
+  .registration-tier-price {
+    font-size: clamp(0.95rem, 5.4cqw, 1.15rem);
+    letter-spacing: 0.05em;
   }
 
   .registration-flower {

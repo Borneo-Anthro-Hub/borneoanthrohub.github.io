@@ -117,7 +117,10 @@ export default function Header() {
         </Link>
 
         {/* ---- Desktop navigation: Base UI NavigationMenu with dropdowns ---- */}
-        <NavigationMenu.Root className="ml-6 hidden md:block lg:ml-10">
+        <NavigationMenu.Root
+          className="ml-6 hidden md:block lg:ml-10"
+          closeDelay={200}
+        >
           <NavigationMenu.List className="flex items-center gap-1">
             {visibleItems.map((item) => {
               const topActive =
@@ -196,13 +199,13 @@ export default function Header() {
             <NavigationMenu.Positioner
               sideOffset={10}
               collisionPadding={{ top: 5, bottom: 5, left: 12, right: 12 }}
-              className="h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-(--duration) ease-(--easing) data-instant:transition-none"
+              className="z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-(--duration) ease-(--easing) data-instant:transition-none"
               style={{
                 ["--duration" as string]: "0.2s",
                 ["--easing" as string]: "cubic-bezier(0.22, 1, 0.36, 1)",
               }}
             >
-              <NavigationMenu.Popup className="border-border bg-popover text-popover-foreground relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-lg border shadow-lg transition-[opacity,transform,width,height] duration-(--duration) ease-(--easing) outline-none data-ending-style:scale-90 data-ending-style:opacity-0 data-starting-style:scale-90 data-starting-style:opacity-0">
+              <NavigationMenu.Popup className="border-border bg-popover text-popover-foreground nav-popup relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-lg border shadow-lg transition-[opacity,transform,width,height] duration-(--duration) ease-(--easing) outline-none data-ending-style:scale-90 data-ending-style:opacity-0 data-starting-style:scale-90 data-starting-style:opacity-0">
                 <NavigationMenu.Viewport className="relative h-full w-full overflow-hidden" />
               </NavigationMenu.Popup>
             </NavigationMenu.Positioner>

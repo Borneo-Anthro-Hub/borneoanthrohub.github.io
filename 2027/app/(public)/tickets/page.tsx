@@ -2,10 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import RegistrationBoard from "@/components/server/registration/RegistrationBoard";
 import RegistrationFaq from "@/components/server/registration/RegistrationFaq";
+import RegistrationUnderline from "@/components/server/registration/RegistrationUnderline";
 import RegistrationTierCard, {
   type RegistrationTier,
 } from "@/components/server/registration/RegistrationTierCard";
 import ScrollToTopButton from "@/components/client/layout/ScrollToTopButton";
+import RegistrationTierCarousel from "@/components/client/registration/RegistrationTierCarousel";
+import PageHero from "@/components/server/layout/PageHero";
 import ThemedBanner from "@/components/server/themed/ThemedBanner";
 import { requireFeature } from "@/lib/site-state/require-feature";
 import { withBasePath } from "@/lib/utils";
@@ -97,25 +100,13 @@ export default function TicketsPage() {
 
   return (
     <div className="themed-home registration-page flex flex-1 flex-col">
-      <section
-        className="registration-hero"
-        aria-labelledby="registration-title"
-      >
-        <Image
-          src={withBasePath(
-            "/2027_images/landscape_main_art_airashi/background_art.webp",
-          )}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="registration-hero-image"
-        />
-        <div className="registration-hero-inner">
-          <h1 id="registration-title">Registration</h1>
-          <p>Choose your role in the Tinyverse Garden.</p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Registration"
+        title="Registration"
+        description="Choose your role in the Tinyverse Garden."
+        showDescription
+        titleClassName="text-4xl font-bold md:text-5xl"
+      />
 
       <section
         className="registration-invitation"
@@ -130,7 +121,7 @@ export default function TicketsPage() {
 
         <RegistrationBoard>
           <p className="registration-board-invited">You have been invited!</p>
-          <span className="registration-board-divider" aria-hidden="true" />
+          <RegistrationUnderline />
           <p>
             Join Sean &amp; Aminah in their Tinyverse Garden Adventure! Whether
             you are a wanderer, a gardener, or a garden caretaker &mdash; your
@@ -148,11 +139,11 @@ export default function TicketsPage() {
           </p>
 
           <h2 className="registration-tiers-title">Hops to see you there!</h2>
-          <div className="registration-tiers">
-            {tiers.map((tier) => (
+          <RegistrationTierCarousel
+            items={tiers.map((tier) => (
               <RegistrationTierCard key={tier.id} tier={tier} />
             ))}
-          </div>
+          />
         </RegistrationBoard>
 
         <Image
