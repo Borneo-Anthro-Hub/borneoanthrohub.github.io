@@ -18,7 +18,7 @@ export default function TermsPage() {
         <div className="mx-auto max-w-3xl">
           <iframe
             src="https://docs.google.com/document/d/e/2PACX-1vT7hRxbs1ZGeMqcKcfcMeHhcTRTXScU60KvV0NrnoE-8J3gSPxiVrBiY4FP2HJDzA/pub?embedded=true"
-            className="border-border h-150 w-full border bg-white"
+            className="border-border bg-card h-150 w-full border"
             title="Terms &amp; Conditions"
           />
         </div>

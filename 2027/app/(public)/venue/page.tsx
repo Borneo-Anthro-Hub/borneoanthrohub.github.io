@@ -26,7 +26,7 @@ export default function VenuePage() {
       >
         <div className="grid gap-8 md:grid-cols-5 md:items-start">
           <figure className="md:col-span-2">
-            <div className="bg-card border-card-foreground/15 rounded-2xl border p-3 shadow-sm">
+            <ThemedCard className="p-3">
               <Image
                 src={withBasePath(venue.image.src)}
                 alt={venue.image.alt}
@@ -35,7 +35,7 @@ export default function VenuePage() {
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="h-auto w-full rounded-xl"
               />
-            </div>
+            </ThemedCard>
             <figcaption className="text-foreground/70 font-body mt-3 text-[11px] leading-relaxed">
               {venue.imageCaption}
             </figcaption>
@@ -109,7 +109,7 @@ export default function VenuePage() {
 
       {/* WHERE TO NEXT â€” link into the BAHjet + travel guides */}
       <div className="bg-background px-4 pb-14 md:px-8 md:pb-20">
-        <div className="bg-brand-surface text-brand-text mx-auto w-full max-w-6xl rounded-3xl px-6 py-8 md:px-10 md:py-10">
+        <ThemedCard className="bg-brand-surface text-brand-text mx-auto w-full max-w-6xl rounded-3xl border-none px-6 py-8 shadow-none md:px-10 md:py-10">
           <h2 className="font-heading text-brand-text text-xl leading-tight md:text-2xl">
             {venuePage.nearbyGuidePrompt.title}
           </h2>
@@ -123,7 +123,7 @@ export default function VenuePage() {
               </ThemedActionLink>
             ))}
           </div>
-        </div>
+        </ThemedCard>
       </div>
     </div>
   );

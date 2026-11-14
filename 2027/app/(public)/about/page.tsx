@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
 import PageHero from "@/components/server/layout/PageHero";
 import SocialLinks from "@/components/server/layout/SocialLinks";
+import ThemedCard from "@/components/server/themed/ThemedCard";
 import { withBasePath } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
@@ -91,7 +92,7 @@ const mascots: Mascot[] = [
 /* ------------------------------------------------------------------ */
 function MascotCard({ mascot }: { mascot: Mascot }) {
   return (
-    <article className="bg-card border-border overflow-hidden rounded-2xl border shadow-sm">
+    <ThemedCard className="overflow-hidden">
       {/* Artwork — tinted backdrop with soft decorative discs */}
       <div className="bg-brand-bg/10 relative aspect-square overflow-hidden">
         <div
@@ -132,7 +133,7 @@ function MascotCard({ mascot }: { mascot: Mascot }) {
           </button>
         )}
       </div>
-    </article>
+    </ThemedCard>
   );
 }
 
@@ -158,7 +159,7 @@ export default function AboutPage() {
       {/* ============================================================ */}
       <section className="bg-background scroll-mt-16 px-4 py-12 md:px-8 md:py-20">
         <div className="mx-auto w-full max-w-5xl">
-          <div className="bg-brand-subtle rounded-3xl p-6 sm:p-8 md:p-12">
+          <ThemedCard className="bg-brand-subtle rounded-3xl border-none p-6 shadow-none sm:p-8 md:p-12">
             {/* Section heading */}
             <div className="mb-6 flex flex-col items-start gap-3">
               <PillBadge>Our Community</PillBadge>
@@ -219,7 +220,7 @@ export default function AboutPage() {
                 />
               </div>
             </div>
-          </div>
+          </ThemedCard>
         </div>
       </section>
 
@@ -231,7 +232,7 @@ export default function AboutPage() {
         className="bg-background scroll-mt-16 px-4 pb-12 md:px-8 md:pb-20"
       >
         <div className="mx-auto w-full max-w-5xl">
-          <div className="bg-brand-accent text-primary-foreground max-w-md rounded-2xl p-6 shadow-md md:p-8">
+          <ThemedCard className="bg-brand-accent text-primary-foreground max-w-md rounded-2xl border-none p-6 md:p-8">
             <span className="font-caption text-primary-foreground/70 text-xs font-bold tracking-wide uppercase">
               Contact Us
             </span>
@@ -263,7 +264,7 @@ export default function AboutPage() {
                 <SocialLinks linkClassName="text-primary-foreground/80 hover:text-primary-foreground" />
               </div>
             </div>
-          </div>
+          </ThemedCard>
         </div>
       </section>
 

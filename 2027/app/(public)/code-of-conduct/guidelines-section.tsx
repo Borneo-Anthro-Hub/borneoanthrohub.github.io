@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
   useCarousel,
 } from "@/components/ui/carousel";
+import ThemedCard from "@/components/server/themed/ThemedCard";
 
 const guidelines = [
   {
@@ -130,10 +131,10 @@ function CarouselDots() {
 
 function GuidelineCard({ g }: { g: (typeof guidelines)[number] }) {
   return (
-    <div className="group relative h-full overflow-hidden rounded-[20px] border border-[#7a4a2d]/80 bg-[#cf955a] p-2 shadow-[0_6px_0_#72462d,0_10px_18px_rgba(65,38,20,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_0_#72462d,0_12px_20px_rgba(65,38,20,0.14)]">
-      <div className="flex h-full flex-col overflow-hidden rounded-[16px] border border-[#72462d]/80 bg-[#f2dfb9]">
+    <ThemedCard className="group relative h-full overflow-hidden rounded-[20px] p-2 transition-transform duration-300 hover:-translate-y-0.5">
+      <div className="bg-brand-subtle border-border flex h-full flex-col overflow-hidden rounded-[16px] border">
         {g.image ? (
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f7eedf]">
+          <div className="bg-background/40 relative aspect-[4/3] w-full overflow-hidden">
             <Image
               src={withBasePath(g.image)}
               alt={g.title}
@@ -143,21 +144,21 @@ function GuidelineCard({ g }: { g: (typeof guidelines)[number] }) {
             />
           </div>
         ) : (
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f7eedf]">
+          <div className="bg-background/40 relative aspect-[4/3] w-full overflow-hidden">
             <PlaceholderImage />
           </div>
         )}
 
-        <div className="flex min-h-[150px] flex-1 items-stretch gap-3 bg-[#d8a96f] p-3 text-[#3e2a18]">
+        <div className="bg-brand-accent/30 text-foreground flex min-h-[150px] flex-1 items-stretch gap-3 p-3">
           <div className="flex min-w-0 flex-1 flex-col justify-center">
-            <p className="type-body-l-semibold text-[#2f1d12]">{g.title}</p>
-            <p className="type-body-s mt-1 leading-relaxed text-[#563d2a]">
+            <p className="type-body-l-semibold text-foreground">{g.title}</p>
+            <p className="type-body-s text-foreground/80 mt-1 leading-relaxed">
               {g.text}
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </ThemedCard>
   );
 }
 

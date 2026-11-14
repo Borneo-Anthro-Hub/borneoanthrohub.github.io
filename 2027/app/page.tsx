@@ -825,7 +825,7 @@ function ThemedHome() {
               <Link href="/venue" className="themed-venue-photo">
                 <Image
                   src={withBasePath(
-                    "/2027_images/new_themed_homepage_assets/4-horizon-hotel-iage.png",
+                    "/2027_images/new_themed_homepage_assets/4-horizon-hotel-image.png",
                   )}
                   alt="Horizon Hotel in Kota Kinabalu"
                   width={1022}

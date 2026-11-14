@@ -35,15 +35,15 @@
 
 ### 4) Error and Logging Conventions
 
-- **Error strategy by layer:** Client components use `throw new Error("message")` for invariant violations (e.g., `useTheme` throws if used outside `ThemeProvider`). Form validation is delegated to `react-hook-form` + `zod` (schema declared but not yet wired). Error boundaries are in place: `app/error.tsx` (segment-level), `app/global-error.tsx` (root layout), `app/not-found.tsx` (custom 404), plus route-group-level `error.tsx` files in `(public)/`, `(auth)/`, and `(attendee)/`.
+- **Error strategy by layer:** Client components use `throw new Error("message")` for invariant violations (e.g., `useTheme` throws if used outside `ThemeProvider`). The email capture currently has only lightweight local validation and no backend submission yet. Error boundaries are in place: `app/error.tsx` (segment-level), `app/global-error.tsx` (root layout), `app/not-found.tsx` (custom 404), plus route-group-level `error.tsx` files in `(public)/`, `(auth)/`, and `(attendee)/`.
 - **Logging style and required context fields:** No logging library is configured. `console` is not used in production code. Dev-only component (`DevThemeSwitcher`) is gated by `process.env.NODE_ENV === "development"`.
 - **Sensitive-data redaction rules:** No sensitive data handling exists yet — no API calls, no auth tokens, no forms submitting to a backend.
 
 ### 5) Testing Conventions
 
-- **Test file naming/location rule:** E2E tests in `e2e/*.spec.ts` (Playwright), Storybook stories in `components/**/*.stories.tsx`, Storybook interaction tests via Vitest (`pnpm test:storybook`).
-- **Mocking strategy norm:** E2E tests run against the real dev server with no mocking. Unit/integration coverage for utilities and hooks is provided via Storybook + Vitest.
-- **Coverage expectation:** No coverage threshold configured yet — Vitest coverage is available via `@vitest/coverage-v8`.
+- **Test file naming/location rule:** No automated test suite is maintained right now.
+- **Mocking strategy norm:** Not applicable until automated tests are reintroduced.
+- **Coverage expectation:** No coverage collection is configured.
 
 ### 6) Memoization and Performance
 

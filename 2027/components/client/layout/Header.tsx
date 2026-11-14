@@ -15,7 +15,7 @@ import { withBasePath } from "@/lib/utils";
 
 // ---- Desktop dropdown styling (Base UI NavigationMenu) ----
 const triggerClassName =
-  "type-body font-bold flex h-9 items-center gap-1 rounded-full px-3 text-brand-text/80 transition-colors select-none hover:bg-white/10 hover:text-brand-text data-popup-open:bg-white/10 data-popup-open:text-brand-accent focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-accent";
+  "type-body font-bold flex h-9 items-center gap-1 rounded-full px-3 text-brand-text/80 transition-colors select-none hover:bg-brand-text/10 hover:text-brand-text data-popup-open:bg-brand-text/10 data-popup-open:text-brand-accent focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-accent";
 
 const contentClassName =
   "h-full w-[calc(100vw-40px)] p-2 min-[500px]:w-max min-[500px]:min-w-[230px] " +
@@ -218,11 +218,11 @@ export default function Header() {
           {isEnabled("ticketRegistration") && (
             <Link
               href="/tickets"
-              className="font-caption hidden items-center gap-2 rounded-full bg-white py-1.5 pr-3 pl-4 text-sm font-semibold text-[#235227] shadow-sm transition-colors hover:bg-[#f7f3e6] lg:inline-flex"
+              className="font-caption text-brand-surface bg-brand-text hover:bg-brand-subtle hidden items-center gap-2 rounded-full py-1.5 pr-3 pl-4 text-sm font-semibold shadow-sm transition-colors lg:inline-flex"
             >
               <PawPrint aria-hidden="true" className="size-4" />
               Register
-              <span className="grid size-5 place-items-center rounded-full bg-[#235227] text-white">
+              <span className="bg-brand-surface text-brand-text grid size-5 place-items-center rounded-full">
                 <ArrowRight aria-hidden="true" className="size-3" />
               </span>
             </Link>
@@ -268,7 +268,7 @@ export default function Header() {
                       </Drawer.Title> */}
                       <Drawer.Close
                         aria-label="Close navigation menu"
-                        className="text-brand-text/70 hover:text-brand-accent flex size-8 items-center justify-center rounded-full transition-colors hover:bg-white/10"
+                        className="text-brand-text/70 hover:text-brand-accent hover:bg-brand-text/10 flex size-8 items-center justify-center rounded-full transition-colors"
                       >
                         <X className="h-5 w-5" />
                       </Drawer.Close>
@@ -302,8 +302,8 @@ export default function Header() {
                                   }}
                                   className={`type-body-s rounded-lg px-3 py-2 text-left transition-colors ${
                                     isActive(child.href)
-                                      ? "text-brand-accent bg-white/10 font-medium"
-                                      : "text-brand-text/80 hover:text-brand-text hover:bg-white/10"
+                                      ? "bg-brand-text/10 text-brand-accent font-medium"
+                                      : "text-brand-text/80 hover:text-brand-text hover:bg-brand-text/10"
                                   }`}
                                 >
                                   {child.label}

@@ -14,7 +14,7 @@ export default function ThemedCard({ className, children }: ThemedCardProps) {
   return (
     <div
       className={cn(
-        "bg-card text-card-foreground border-card-foreground/15 rounded-2xl border shadow-sm",
+        "themed-card bg-card text-card-foreground border-card-foreground/15 rounded-2xl border shadow-sm",
         className,
       )}
     >

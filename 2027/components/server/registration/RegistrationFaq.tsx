@@ -1,5 +1,4 @@
-import { Accordion } from "@base-ui/react/accordion";
-import { ChevronDown } from "lucide-react";
+import ThemedAccordion from "@/components/server/themed/ThemedAccordion";
 
 const faqs = [
   {
@@ -36,23 +35,5 @@ const faqs = [
 ];
 
 export default function RegistrationFaq() {
-  return (
-    <Accordion.Root className="registration-faq">
-      {faqs.map((faq) => (
-        <Accordion.Item className="registration-faq-item" key={faq.question}>
-          <Accordion.Header>
-            <Accordion.Trigger className="registration-faq-trigger">
-              <span>{faq.question}</span>
-              <span className="registration-faq-icon" aria-hidden="true">
-                <ChevronDown className="registration-faq-chevron" />
-              </span>
-            </Accordion.Trigger>
-          </Accordion.Header>
-          <Accordion.Panel className="registration-faq-panel">
-            {faq.answer}
-          </Accordion.Panel>
-        </Accordion.Item>
-      ))}
-    </Accordion.Root>
-  );
+  return <ThemedAccordion items={faqs} className="registration-faq" />;
 }

@@ -43,8 +43,8 @@ const tiers: RegistrationTier[] = [
     price: "RM 220.00",
     description:
       "For those who wish to help the garden flourish. Filled with extras to make your experience even more magical.",
-    card: "/2027_images/registration_page/tiers/2_garderner/card.svg",
-    icon: "/2027_images/registration_page/tiers/2_garderner/icon.svg",
+    card: "/2027_images/registration_page/tiers/2_gardener/card.svg",
+    icon: "/2027_images/registration_page/tiers/2_gardener/icon.svg",
     formUrl: REGISTRATION_FORM_URL,
     sections: [
       {

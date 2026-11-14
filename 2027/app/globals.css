@@ -167,6 +167,37 @@
   mask-image: linear-gradient(to bottom, transparent, black 18%);
 }
 
+/* Shared themed card surface — aligned with themed-home paper/board cards. */
+.themed-card,
+.themed-card.bg-brand-surface,
+.themed-card.bg-brand-accent,
+.themed-card.bg-brand-subtle {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 3px dashed var(--themed-paper-dark, #a76f45);
+  background: var(--themed-paper, #ddb487);
+  color: var(--themed-ink, #3c2a1e);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 16%),
+    0 6px 8px rgb(45 35 24 / 30%);
+}
+
+.themed-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.themed-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .dormant-hero-parallax {
   view-timeline-name: --dormant-hero;
   view-timeline-axis: block;
@@ -1573,15 +1604,20 @@ body:has(.themed-home) header .text-brand-text {
   padding: clamp(16px, 2.2vw, 30px) 0 clamp(40px, 5vw, 72px);
 }
 
-.registration-faq {
+.registration-faq,
+.themed-accordion {
   display: flex;
-  width: min(100% - 48px, 760px);
-  margin: clamp(18px, 2.4vw, 30px) auto 0;
   flex-direction: column;
   gap: clamp(10px, 1.3vw, 15px);
 }
 
-.registration-faq-trigger {
+.registration-faq {
+  width: min(100% - 48px, 760px);
+  margin: clamp(18px, 2.4vw, 30px) auto 0;
+}
+
+.registration-faq-trigger,
+.themed-accordion-trigger {
   display: flex;
   width: 100%;
   align-items: center;
@@ -1604,12 +1640,14 @@ body:has(.themed-home) header .text-brand-text {
     transform 160ms ease;
 }
 
-.registration-faq-trigger:hover {
+.registration-faq-trigger:hover,
+.themed-accordion-trigger:hover {
   background: #f7e8ce;
   transform: translateY(-1px);
 }
 
-.registration-faq-icon {
+.registration-faq-icon,
+.themed-accordion-icon {
   display: grid;
   width: clamp(24px, 2.2vw, 30px);
   height: clamp(24px, 2.2vw, 30px);
@@ -1621,17 +1659,20 @@ body:has(.themed-home) header .text-brand-text {
   box-shadow: 0 2px 4px rgb(45 35 24 / 18%);
 }
 
-.registration-faq-icon svg {
+.registration-faq-icon svg,
+.themed-accordion-icon svg {
   width: 16px;
   height: 16px;
   transition: transform 160ms ease;
 }
 
-.registration-faq-trigger[data-panel-open] .registration-faq-icon svg {
+.registration-faq-trigger[data-panel-open] .registration-faq-icon svg,
+.themed-accordion-trigger[data-panel-open] .themed-accordion-icon svg {
   transform: rotate(180deg);
 }
 
-.registration-faq-panel {
+.registration-faq-panel,
+.themed-accordion-panel {
   padding: 6px clamp(16px, 1.8vw, 24px) 2px;
   color: #5a4029;
   font-family: var(--font-body);

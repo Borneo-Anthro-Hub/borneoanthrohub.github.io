@@ -2,6 +2,7 @@ import Image from "next/image";
 import PageHero from "@/components/server/layout/PageHero";
 import ThemedActionLink from "@/components/server/themed/ThemedActionLink";
 import ThemedCallout from "@/components/server/themed/ThemedCallout";
+import ThemedCard from "@/components/server/themed/ThemedCard";
 import ThemedIconCard from "@/components/server/themed/ThemedIconCard";
 import ThemedPageSection from "@/components/server/themed/ThemedPageSection";
 import { bahjetGuidePage } from "@/lib/content/bahjet-guide";
@@ -92,7 +93,7 @@ export default function BahjetGuidePage() {
 
       {/* STILL PLANNING â€” link into the venue + travel guides */}
       <div className="bg-background px-4 pb-14 md:px-8 md:pb-20">
-        <div className="bg-brand-surface text-brand-text mx-auto w-full max-w-6xl rounded-3xl px-6 py-8 md:px-10 md:py-10">
+        <ThemedCard className="bg-brand-surface text-brand-text mx-auto w-full max-w-6xl rounded-3xl border-none px-6 py-8 shadow-none md:px-10 md:py-10">
           <h2 className="font-heading text-brand-text text-xl leading-tight md:text-2xl">
             {relatedGuides.title}
           </h2>
@@ -106,7 +107,7 @@ export default function BahjetGuidePage() {
               </ThemedActionLink>
             ))}
           </div>
-        </div>
+        </ThemedCard>
       </div>
     </div>
   );
