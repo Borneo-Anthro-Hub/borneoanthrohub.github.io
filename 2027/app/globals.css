@@ -307,6 +307,16 @@
   background-size: var(--page-background-size, auto);
 }
 
+/* Backdrop art behind the shared PageHero. Resolved from the active theme's
+   `pageHeroArt` token (`--page-hero-image`), so swapping the yearly theme
+   swaps the illustration with no component changes. */
+.page-hero-art {
+  background-image: var(--page-hero-image, none);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* Bridges the positioner's 10px gap so moving from a nav trigger into its
    dropdown does not count as leaving the menu. */
 .nav-popup::before {

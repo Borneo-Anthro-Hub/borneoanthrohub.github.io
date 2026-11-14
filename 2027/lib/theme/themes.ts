@@ -118,6 +118,13 @@ export interface Theme {
     image: string;
     size: string;
   };
+  /**
+   * Optional artwork behind the shared `PageHero`. Year-specific: the 2027
+   * garden illustration lives under `/2027_images`, while the reusable
+   * content pages pull year-neutral art from `/shared_images` via their own
+   * layout instead. Omit to get the plain themed hero.
+   */
+  pageHeroArt?: string;
   brand: BrandTokens;
   semantic: SemanticTokens;
 }
@@ -178,6 +185,7 @@ export const themes = {
     headingFont: "'Margarine', system-ui, sans-serif",
     bodyFont: "'Cause', system-ui, sans-serif",
     captionFont: "'Poppins', system-ui, sans-serif",
+    pageHeroArt: "/2027_images/landscape_main_art_airashi/background_art.webp",
     pageBackground: {
       image: "/2027_images/repeat_background.png",
       size: "3000px auto",
@@ -329,6 +337,9 @@ export function themeToCssVars(theme: Theme): Record<string, string> {
       ? `url("${withBasePath(theme.pageBackground.image)}")`
       : "none",
     "--page-background-size": theme.pageBackground?.size ?? "auto",
+    "--page-hero-image": theme.pageHeroArt
+      ? `url("${withBasePath(theme.pageHeroArt)}")`
+      : "none",
     "--brand-bg": theme.brand.bg,
     "--brand-accent": theme.brand.accent,
     "--brand-text": theme.brand.text,

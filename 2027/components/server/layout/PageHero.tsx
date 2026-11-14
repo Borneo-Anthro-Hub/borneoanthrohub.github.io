@@ -1,6 +1,4 @@
-import Image from "next/image";
 import WireframeFrame from "@/components/server/layout/WireframeFrame";
-import { withBasePath } from "@/lib/utils";
 
 interface PageHeroProps {
   eyebrow: string;
@@ -13,6 +11,11 @@ interface PageHeroProps {
   titleClassName?: string;
 }
 
+/**
+ * Shared page hero. The backdrop art comes from the active theme
+ * (`pageHeroArt` → `--page-hero-image`), so yearly themes can change the
+ * illustration without touching this component or any page content.
+ */
 export default function PageHero({
   eyebrow,
   title,
@@ -25,16 +28,8 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section className="border-border relative isolate overflow-hidden border-b px-4 py-10 md:px-8">
-      <Image
-        src={withBasePath(
-          "/2027_images/landscape_main_art_airashi/background_art.webp",
-        )}
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div aria-hidden="true" className="bg-background/60 absolute inset-0" />
+      <div aria-hidden="true" className="page-hero-art absolute inset-0" />
+      <div aria-hidden="true" className="bg-background/70 absolute inset-0" />
       <WireframeFrame className="relative z-10 mx-auto flex max-w-md flex-col items-center gap-4 p-6 text-center lg:whitespace-nowrap">
         <div className="flex items-center gap-2">
           {showIndex && (
