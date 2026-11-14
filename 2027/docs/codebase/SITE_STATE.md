@@ -61,7 +61,7 @@ The complete availability table is in `lib/site-state/feature-matrix.ts`. Each f
 | `artSubmission`                                                                                              | T A                               |
 | `dealerSubmission`, `panelSubmission`                                                                        | RC only                           |
 | `dealerLayout`, `boothListing`, `eventSchedule`                                                              | FIR only                          |
-| `ticketRegistration`                                                                                         | TO only                           |
+| `ticketRegistration`                                                                                         | A TO                              |
 | `login`, `accountCreation`, `profileEditing`, `badgePickupSelection` † (2028)                                | [] (never)                        |
 
 ### 5) Usage Patterns

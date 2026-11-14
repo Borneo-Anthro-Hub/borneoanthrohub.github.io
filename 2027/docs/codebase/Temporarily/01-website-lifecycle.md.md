@@ -86,6 +86,7 @@ Convention website officially launches.
 
 - Full yearly theme website
 - Activities
+- Ticket tier information (registration opens in Ticket Registration)
 
 ---
 

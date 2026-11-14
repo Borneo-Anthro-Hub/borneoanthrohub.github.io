@@ -1,68 +1,94 @@
-import { Accordion } from "@base-ui/react/accordion";
-import PageHero from "@/components/server/layout/PageHero";
-import Section from "@/components/server/layout/Section";
+import Image from "next/image";
+import Link from "next/link";
+import RegistrationBoard from "@/components/server/registration/RegistrationBoard";
+import RegistrationFaq from "@/components/server/registration/RegistrationFaq";
+import RegistrationTierCard, {
+  type RegistrationTier,
+} from "@/components/server/registration/RegistrationTierCard";
+import ScrollToTopButton from "@/components/client/layout/ScrollToTopButton";
+import ThemedBanner from "@/components/server/themed/ThemedBanner";
 import { requireFeature } from "@/lib/site-state/require-feature";
+import { withBasePath } from "@/lib/utils";
 
-const tiers = [
+// Placeholder shared by every tier until the live per-tier forms are ready.
+const REGISTRATION_FORM_URL = "https://forms.gle/ticket-registration";
+
+const tiers: RegistrationTier[] = [
   {
-    name: "Attendee (BAHpals A)",
-    color: "bg-[#54CCC9]",
-    desc: "Join the festival and experience the spirit of community.",
-    boons: ["Poster & Conbook", "Button Badge", "Lanyard"],
-  },
-  {
-    name: "Sponsor (BAHpals S)",
-    color: "bg-[#FFCB65]",
-    desc: "Stand as a guardian who supports the harvest and traditions.",
-    boons: [
-      "Poster & Conbook",
-      "Button Badge",
-      "Lanyard",
-      "BAH T-shirt",
-      "Sticker Pack",
+    id: "wanderer",
+    name: "Wanderer",
+    price: "RM 80.00",
+    description:
+      "For those who want to experience the magic of the garden without the extra frills. Comes with all the essentials to make your visit memorable.",
+    card: "/2027_images/registration_page/tiers/1_wanderer/card.svg",
+    icon: "/2027_images/registration_page/tiers/1_wanderer/icon.svg",
+    formUrl: REGISTRATION_FORM_URL,
+    sections: [
+      {
+        title: "What's included",
+        items: [
+          { label: "Poster & Conbook", level: 1 },
+          { label: "Button Badge", level: 1 },
+          { label: "Lanyard (BAHpals A)", level: 1 },
+        ],
+      },
     ],
   },
   {
-    name: "SuperSponsor (BAHpals SS)",
-    color: "bg-[#773910]",
-    desc: "Honour the Spirit of Sacrifice and bring forth a legacy of abundance.",
-    boons: [
-      "Poster & Conbook",
-      "Button Badge",
-      "BAH T-shirt",
-      "Sticker Pack",
-      "Special Lanyard",
-      "Tote Bag",
-      "Limited Edition Acrylic Standee",
+    id: "gardener",
+    name: "Gardener",
+    price: "RM 220.00",
+    description:
+      "For those who wish to help the garden flourish. Filled with extras to make your experience even more magical.",
+    card: "/2027_images/registration_page/tiers/2_garderner/card.svg",
+    icon: "/2027_images/registration_page/tiers/2_garderner/icon.svg",
+    formUrl: REGISTRATION_FORM_URL,
+    sections: [
+      {
+        title: "Goodies for Supporters",
+        items: [
+          { label: "Poster & Conbook", level: 1 },
+          { label: "Button Badge", level: 1 },
+        ],
+      },
+      {
+        title: "What's more?",
+        items: [
+          { label: "Lanyard (BAHpals S)", level: 2 },
+          { label: "BAH 2027 T-shirt", level: 2 },
+          { label: "BAH 2027 Sticker Pack", level: 2 },
+        ],
+      },
     ],
   },
-];
-
-const faqs = [
   {
-    question: "How do I purchase a BAH Entry Ticket?",
-    answer:
-      "Select your preferred tier above and you will be redirected to fill in the Ticketing Form. All the information you need will be available in the form itself.",
-  },
-  {
-    question: "Do I get a confirmation when my registration goes through?",
-    answer:
-      "Yes! Once your submission has been verified, you will receive a Confirmation Email within 72 hours, along with the link to your Convention Profile Form.",
-  },
-  {
-    question: "Can I customize my Con-Badge?",
-    answer:
-      "Yes! You can update your information in the Convention Profile Form linked in your confirmation email. Certain options are available exclusively for Sponsors and SuperSponsors.",
-  },
-  {
-    question: "What is the age eligibility?",
-    answer:
-      "Participation is open to individuals aged 16 and above. Attendees aged 16 or 17 must present a signed Parental Consent Form at check-in.",
-  },
-  {
-    question: "Are tickets refundable or transferable?",
-    answer:
-      "Tickets are non-refundable. Transfers are available if you inform us before the cut-off date (3 months before the convention).",
+    id: "caretaker",
+    name: "Caretaker",
+    price: "RM 350.00",
+    description:
+      "Everything a wanderer needs, plus access to all the hidden wonders of the garden. Our most magical tier for the ultimate fans.",
+    card: "/2027_images/registration_page/tiers/3_caretaker/card.svg",
+    icon: "/2027_images/registration_page/tiers/3_caretaker/icon.svg",
+    formUrl: REGISTRATION_FORM_URL,
+    sections: [
+      {
+        title: "Goodies for Supporters",
+        items: [
+          { label: "Poster & Conbook", level: 1 },
+          { label: "Button Badge", level: 1 },
+          { label: "Lanyard (BAHpals SS)", level: 2 },
+          { label: "BAH 2027 T-shirt", level: 2 },
+          { label: "BAH 2027 Sticker Pack", level: 2 },
+        ],
+      },
+      {
+        title: "What's more?",
+        items: [
+          { label: "BAH 2027 Exclusive Apron", level: 3 },
+          { label: "BAH 2027 Limited Edition Acrylic Standee Box", level: 3 },
+        ],
+      },
+    ],
   },
 ];
 
@@ -70,73 +96,120 @@ export default function TicketsPage() {
   requireFeature("ticketRegistration");
 
   return (
-    <div className="flex flex-1 flex-col">
-      <PageHero
-        eyebrow="Registration"
-        title="Ticket Registration"
-        description="Select your ticket tier and register for Borneo Anthro Hub."
-      />
+    <div className="themed-home registration-page flex flex-1 flex-col">
+      <section
+        className="registration-hero"
+        aria-labelledby="registration-title"
+      >
+        <Image
+          src={withBasePath(
+            "/2027_images/landscape_main_art_airashi/background_art.webp",
+          )}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="registration-hero-image"
+        />
+        <div className="registration-hero-inner">
+          <h1 id="registration-title">Registration</h1>
+          <p>Choose your role in the Tinyverse Garden.</p>
+        </div>
+      </section>
 
-      <Section index="01" eyebrow="How to Register">
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          Select one of the tiers below and click the button to complete your
-          registration through our external form on Google Forms. All passes
-          grant a 2-day entry to the event.
+      <section
+        className="registration-invitation"
+        aria-labelledby="invitation-title"
+      >
+        <ThemedBanner
+          id="invitation-title"
+          title="Join the Tea Party!"
+          subtitle="Our Story"
+          className="registration-banner"
+        />
+
+        <RegistrationBoard>
+          <p className="registration-board-invited">You have been invited!</p>
+          <span className="registration-board-divider" aria-hidden="true" />
+          <p>
+            Join Sean &amp; Aminah in their Tinyverse Garden Adventure! Whether
+            you are a wanderer, a gardener, or a garden caretaker &mdash; your
+            story starts here.
+          </p>
+          <p className="registration-board-entry">
+            All passes grant a 2-day entry (10&ndash;11 July 2027) to the event.
+          </p>
+          <p className="registration-board-note">
+            Note: Upon clicking the buttons of any tier, you will be redirected
+            to a dedicated Google Forms page to complete the registration &amp;
+            payment. Upon registration, you are deemed to have read and agreed
+            to be bound to our{" "}
+            <Link href="/terms-and-conditions">Event Rules and T&amp;C</Link>.
+          </p>
+
+          <h2 className="registration-tiers-title">Hops to see you there!</h2>
+          <div className="registration-tiers">
+            {tiers.map((tier) => (
+              <RegistrationTierCard key={tier.id} tier={tier} />
+            ))}
+          </div>
+        </RegistrationBoard>
+
+        <Image
+          src={withBasePath(
+            "/2027_images/new_themed_homepage_assets/2.5-flower-1.svg",
+          )}
+          alt=""
+          width={368}
+          height={349}
+          className="registration-flower registration-flower-1"
+        />
+        <Image
+          src={withBasePath(
+            "/2027_images/new_themed_homepage_assets/2.5-flower-2.svg",
+          )}
+          alt=""
+          width={309}
+          height={272}
+          className="registration-flower registration-flower-2"
+        />
+        <Image
+          src={withBasePath(
+            "/2027_images/new_themed_homepage_assets/2.5-flower-2.svg",
+          )}
+          alt=""
+          width={309}
+          height={272}
+          className="registration-flower registration-flower-3"
+        />
+        <Image
+          src={withBasePath(
+            "/2027_images/new_themed_homepage_assets/2.5-flower-1.svg",
+          )}
+          alt=""
+          width={368}
+          height={349}
+          className="registration-flower registration-flower-4"
+        />
+      </section>
+
+      <section
+        className="registration-faq-section"
+        aria-labelledby="registration-faq-title"
+      >
+        <ThemedBanner
+          id="registration-faq-title"
+          title="Registration FAQ"
+          className="registration-banner"
+        />
+        <RegistrationFaq />
+        <p className="registration-faq-note">
+          *For more information, please{" "}
+          <Link href="/about#contact">contact us here</Link>.
         </p>
-        <div className="mt-6">
-          <a
-            href="https://forms.gle/ticket-registration"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-colors"
-          >
-            Register Now
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </Section>
+      </section>
 
-      <Section index="02" eyebrow="Ticket Tiers">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {tiers.map((tier) => (
-            <div
-              key={tier.name}
-              className={`${tier.color} border-border flex flex-col gap-3 rounded border p-4`}
-            >
-              <h3 className="text-sm font-bold">{tier.name}</h3>
-              <p className="text-xs leading-relaxed opacity-80">{tier.desc}</p>
-              <ul className="mt-auto space-y-1">
-                {tier.boons.map((boon) => (
-                  <li key={boon} className="flex items-center gap-1.5 text-xs">
-                    <span className="text-[10px]">+</span>
-                    {boon}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section index="03" eyebrow="Frequently Asked Questions" noBorder>
-        <Accordion.Root className="mx-auto max-w-2xl">
-          {faqs.map((faq, i) => (
-            <Accordion.Item key={i} className="border-border border-b py-2">
-              <Accordion.Header>
-                <Accordion.Trigger className="flex w-full items-center justify-between py-2 text-left text-sm font-medium">
-                  {faq.question}
-                  <span className="text-muted-foreground ml-2 text-xs">
-                    +/&minus;
-                  </span>
-                </Accordion.Trigger>
-              </Accordion.Header>
-              <Accordion.Panel className="text-muted-foreground pb-3 text-xs leading-relaxed">
-                {faq.answer}
-              </Accordion.Panel>
-            </Accordion.Item>
-          ))}
-        </Accordion.Root>
-      </Section>
+      <ScrollToTopButton />
     </div>
   );
 }

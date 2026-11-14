@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import Particles from "@/components/Particles";
 import Section from "@/components/server/layout/Section";
+import ThemedBanner from "@/components/server/themed/ThemedBanner";
+import ThemedPillLink from "@/components/server/themed/ThemedPillLink";
 import { useSiteState } from "@/components/client/SiteStateProvider";
 import { withBasePath } from "@/lib/utils";
 
@@ -681,6 +683,7 @@ function ComingSoonHome() {
 // ---------------------------------------------------------------------------
 
 function ThemedHome() {
+  const { isEnabled } = useSiteState();
   const quickCards = [
     {
       title: "What",
@@ -713,10 +716,12 @@ function ThemedHome() {
 
   return (
     <div className="themed-home flex flex-1 flex-col">
+      {/* Section 1: Hero block (theme title + layered artwork) */}
       <section className="themed-hero" aria-labelledby="themed-hero-title">
         <h1 id="themed-hero-title" className="sr-only">
           Tinyverse Garden
         </h1>
+        {/* 1A: Mobile hero artwork */}
         <Image
           src={withBasePath(
             "/2027_images/new_themed_homepage_assets/mobile-hero-art.svg",
@@ -727,6 +732,7 @@ function ThemedHome() {
           priority
           className="themed-hero-mobile"
         />
+        {/* 1B: Desktop layered hero scene */}
         <div className="themed-hero-art">
           <Image
             src={withBasePath(
@@ -779,6 +785,7 @@ function ThemedHome() {
             className="themed-hero-layer"
           />
         </div>
+        {/* 1C: Hero title artwork overlay */}
         <Image
           src={withBasePath(
             "/2027_images/new_themed_homepage_assets/0-hero-title.svg",
@@ -791,7 +798,9 @@ function ThemedHome() {
         />
       </section>
 
+      {/* Section 2: Main landscape content wrapper */}
       <div className="themed-landscape">
+        {/* 2A: Festival + venue feature section */}
         <section id="festival" className="themed-festival">
           <Image
             src={withBasePath(
@@ -848,50 +857,31 @@ function ThemedHome() {
                   Here, the next chapter for East Malaysia quietly unfolds...
                 </p>
                 <div className="themed-action-row">
-                  <Link href="/tickets" className="themed-pill-action">
-                    <PillContents
+                  {isEnabled("ticketRegistration") && (
+                    <ThemedPillLink
+                      href="/tickets"
                       label="Register"
                       tail={<Ticket aria-hidden="true" />}
                     />
-                  </Link>
-                  <Link href="/venue" className="themed-pill-action">
-                    <PillContents
-                      label="Venue"
-                      tail={<MapPin aria-hidden="true" />}
-                    />
-                  </Link>
+                  )}
+                  <ThemedPillLink
+                    href="/venue"
+                    label="Venue"
+                    tail={<MapPin aria-hidden="true" />}
+                  />
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+        {/* 2B: Explore quick-links section */}
         <section
           id="explore"
           className="themed-quick-links"
           aria-labelledby="quick-links-title"
         >
-          <div className="themed-banner">
-            <h2 id="quick-links-title">Quick Links</h2>
-            <Image
-              src={withBasePath(
-                "/2027_images/new_themed_homepage_assets/1.5-missing-flower-divider.svg",
-              )}
-              alt=""
-              width={327}
-              height={277}
-              className="themed-sprig themed-sprig-left"
-            />
-            <Image
-              src={withBasePath(
-                "/2027_images/new_themed_homepage_assets/1.5-missing-flower-divider.svg",
-              )}
-              alt=""
-              width={327}
-              height={277}
-              className="themed-sprig themed-sprig-right"
-            />
-          </div>
+          <ThemedBanner id="quick-links-title" title="Quick Links" />
 
           <div className="themed-quick-panel">
             <div className="themed-quick-column">
@@ -904,6 +894,7 @@ function ThemedHome() {
         </section>
       </div>
 
+      {/* Section 3: Guests of Honor spotlight section */}
       <section
         id="goh"
         className="themed-guests"
@@ -918,64 +909,19 @@ function ThemedHome() {
           height={856}
           className="themed-guests-image"
         />
-        <div className="themed-banner themed-banner-guests">
-          <h2 id="guests-title">Guests of Honor</h2>
-          <Link href="/guest-of-honor" className="themed-pill-action">
-            <PillContents
-              label="Guests of Honour"
-              tail={<ChevronRight aria-hidden="true" />}
-            />
-          </Link>
-          <Image
-            src={withBasePath(
-              "/2027_images/new_themed_homepage_assets/1.5-missing-flower-divider.svg",
-            )}
-            alt=""
-            width={327}
-            height={277}
-            className="themed-sprig themed-sprig-left"
+        <ThemedBanner
+          id="guests-title"
+          title="Guests of Honor"
+          className="themed-banner-guests"
+        >
+          <ThemedPillLink
+            href="/guest-of-honor"
+            label="Guests of Honour"
+            tail={<ChevronRight aria-hidden="true" />}
           />
-          <Image
-            src={withBasePath(
-              "/2027_images/new_themed_homepage_assets/1.5-missing-flower-divider.svg",
-            )}
-            alt=""
-            width={327}
-            height={277}
-            className="themed-sprig themed-sprig-right"
-          />
-        </div>
+        </ThemedBanner>
       </section>
     </div>
-  );
-}
-
-/**
- * Pill button contents: the supplied paw artwork, the stitched separator and
- * the label, matching the reference button design.
- */
-function PillContents({
-  label,
-  tail,
-}: {
-  label: string;
-  tail: React.ReactNode;
-}) {
-  return (
-    <>
-      <span className="themed-pill-paw" aria-hidden="true">
-        <Image
-          src={withBasePath(
-            "/2027_images/new_themed_homepage_assets/styled-button-image.svg",
-          )}
-          alt=""
-          width={44}
-          height={49}
-        />
-      </span>
-      <span className="themed-pill-label">{label}</span>
-      {tail}
-    </>
   );
 }
 

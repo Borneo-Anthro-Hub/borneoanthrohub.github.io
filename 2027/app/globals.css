@@ -886,15 +886,22 @@ body:has(.themed-home) header .text-brand-text {
       var(--page-background-size, 3000px auto);
   }
 
+  /* Shifted down from -50.6vw so the grass band stops covering the rat
+     peeking out of the bottom-left of the hero artwork. Kept just inside the
+     hero's bottom edge so no gap opens between the artwork and the grass. */
   .themed-landscape::before {
     top: -50.6vw;
+    /* top: -45vw; */
     left: 50%;
     width: 194vw;
     transform: translateX(calc(-50% + 2vw));
   }
 
   .themed-festival {
+    /* Extra top padding matches the divider's shift so the date keeps its
+       original distance from the festival copy below it. */
     padding: 47.5vw 0 55vw;
+    /* padding: 53.1vw 0 55vw; */
   }
 
   .themed-festival-inner {
@@ -1187,6 +1194,694 @@ body:has(.themed-home) header .text-brand-text {
   }
 }
 
+/* =============================================================================
+   2027 REGISTRATION PAGE — /tickets
+   ============================================================================= */
+
+.registration-page {
+  --registration-board: #e8c9a6;
+  --registration-board-ink: #4b3220;
+  --registration-faq: #f0dec1;
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+
+.registration-hero {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  display: grid;
+  min-height: clamp(150px, 17vw, 260px);
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(30px, 4.2vw, 60px) 16px;
+  text-align: center;
+}
+
+.registration-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.registration-hero::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgb(253 246 227 / 15%) 0%,
+    rgb(253 246 227 / 55%) 62%,
+    rgb(253 246 227 / 100%) 100%
+  );
+  content: "";
+}
+
+.registration-hero-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.registration-hero h1 {
+  margin: 0;
+  color: #1d3a22;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4.4vw, 3.8rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.05;
+  text-shadow:
+    0 1px 0 rgb(253 246 227 / 95%),
+    0 5px 18px rgb(253 246 227 / 95%);
+}
+
+.registration-hero p {
+  margin: 0;
+  color: #3c2a1e;
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1vw, 1rem);
+  text-shadow: 0 1px 6px rgb(253 246 227 / 95%);
+}
+
+/* ---- Invitation board ---------------------------------------------------- */
+
+.registration-invitation {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(14px, 2vw, 28px) 0 clamp(36px, 4.5vw, 72px);
+}
+
+/* Tree canopy framing the board, reused from the themed landing page. */
+.registration-invitation::before {
+  position: absolute;
+  top: clamp(-6px, 0.4vw, 6px);
+  left: 50%;
+  z-index: -1;
+  width: min(1500px, 126%);
+  aspect-ratio: 1920 / 1621;
+  background: url("/2027_images/new_themed_homepage_assets/3-divider.svg")
+    center top / 100% 100% no-repeat;
+  content: "";
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.registration-banner {
+  width: min(100% - 32px, 1040px);
+}
+
+.registration-banner .themed-banner-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.registration-banner .themed-banner-text p {
+  margin: 0;
+  color: #2f5426;
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 0.8vw, 0.9rem);
+  line-height: 1.2;
+}
+
+.registration-board {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 32px, 1040px);
+  margin: clamp(18px, 2.4vw, 32px) auto 0;
+  padding: clamp(14px, 2vw, 24px);
+  overflow: hidden;
+  border: 3px solid #c9a075;
+  border-radius: clamp(14px, 1.8vw, 24px);
+  background: var(--registration-board);
+  box-shadow: 0 12px 22px rgb(45 35 24 / 28%);
+}
+
+.registration-board::before {
+  position: absolute;
+  inset: clamp(8px, 1vw, 14px);
+  z-index: 0;
+  border: 3px dashed var(--themed-paper-dark);
+  border-radius: clamp(9px, 1.2vw, 17px);
+  content: "";
+  pointer-events: none;
+}
+
+.registration-board-watermark {
+  position: absolute;
+  right: -3%;
+  bottom: -2%;
+  z-index: 0;
+  width: clamp(240px, 42%, 500px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.registration-board-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(20px, 2.8vw, 40px) clamp(8px, 1.4vw, 22px)
+    clamp(4px, 0.8vw, 10px);
+}
+
+.registration-board-content p {
+  max-width: 680px;
+  margin: 0 auto clamp(8px, 1vw, 12px);
+  color: var(--registration-board-ink);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 0.86vw, 0.9rem);
+  line-height: 1.5;
+}
+
+.registration-board-content .registration-board-invited {
+  color: #3d2a1a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.95rem, 1.25vw, 1.25rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.registration-board-divider {
+  display: block;
+  width: min(320px, 56%);
+  margin: clamp(4px, 0.6vw, 8px) auto clamp(10px, 1.4vw, 16px);
+  border-top: 3px dotted #a76f45;
+}
+
+.registration-board-content .registration-board-entry {
+  font-weight: 600;
+}
+
+.registration-board-content .registration-board-note {
+  max-width: 720px;
+  margin-bottom: clamp(12px, 1.6vw, 20px);
+  color: #6c4b2d;
+  font-size: clamp(0.6rem, 0.7vw, 0.74rem);
+  line-height: 1.45;
+}
+
+.registration-board-note a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Tier cards ---------------------------------------------------------- */
+
+.registration-tiers-title {
+  margin: clamp(8px, 1.2vw, 16px) 0 clamp(16px, 2vw, 26px);
+  color: #3d2a1a;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.35vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.registration-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(12px, 1.7vw, 24px);
+}
+
+.registration-tier {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: clamp(10px, 1.2vw, 16px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-shadow: 0 8px 12px rgb(45 35 24 / 28%);
+}
+
+.registration-tier[data-tier="wanderer"] {
+  --registration-tier-ink: #5b3b22;
+  background-color: #f3e2cf;
+}
+
+.registration-tier[data-tier="gardener"] {
+  --registration-tier-ink: #1e4a1c;
+  background-color: #a2c677;
+}
+
+.registration-tier[data-tier="caretaker"] {
+  --registration-tier-ink: #5b3d05;
+  background-color: #ffc733;
+}
+
+.registration-tier-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(20px, 2.3vw, 32px) clamp(12px, 1.5vw, 22px)
+    clamp(14px, 1.6vw, 20px);
+  color: var(--registration-tier-ink);
+  text-align: center;
+}
+
+.registration-tier-name {
+  margin: 0;
+  color: var(--registration-tier-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.registration-tier-price {
+  margin: clamp(7px, 0.9vw, 11px) 0 0;
+  color: var(--registration-tier-ink);
+  font-family: var(--font-caption);
+  font-size: clamp(0.66rem, 0.8vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.registration-tier-icon {
+  display: block;
+  width: clamp(108px, 11.5vw, 170px);
+  height: auto;
+  margin: clamp(14px, 1.8vw, 24px) auto clamp(12px, 1.7vw, 22px);
+}
+
+.registration-tier-description {
+  margin: 0 0 clamp(12px, 1.4vw, 18px);
+  font-family: var(--font-body);
+  font-size: clamp(0.66rem, 0.77vw, 0.8rem);
+  line-height: 1.45;
+}
+
+.registration-tier-section {
+  width: 100%;
+}
+
+.registration-tier-section + .registration-tier-section {
+  margin-top: clamp(10px, 1.2vw, 16px);
+}
+
+.registration-tier-section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 clamp(7px, 0.9vw, 11px);
+  font-family: var(--font-caption);
+  font-size: clamp(0.54rem, 0.65vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.registration-tier-section-title::before,
+.registration-tier-section-title::after {
+  flex: 1 1 auto;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+  content: "";
+}
+
+.registration-tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5px, 0.6vw, 8px);
+  margin: 0 0 clamp(12px, 1.6vw, 18px);
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.registration-tier-item {
+  display: grid;
+  grid-template-columns: 17px minmax(0, 1fr);
+  align-items: start;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 0.7vw, 0.73rem);
+  line-height: 1.32;
+}
+
+.registration-tier-dots {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding-top: 0.38em;
+}
+
+.registration-tier-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.registration-tier-cta {
+  width: 100%;
+  margin-top: auto;
+}
+
+.registration-tier-cta .themed-pill-paw img {
+  height: clamp(38px, 2.8vw, 52px);
+  margin-block: clamp(-6px, -0.4vw, -4px);
+}
+
+.registration-tier-cta .themed-pill-label {
+  font-size: clamp(0.72rem, 1vw, 1.1rem);
+}
+
+/* ---- FAQ ----------------------------------------------------------------- */
+
+.registration-faq-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(16px, 2.2vw, 30px) 0 clamp(40px, 5vw, 72px);
+}
+
+.registration-faq {
+  display: flex;
+  width: min(100% - 48px, 760px);
+  margin: clamp(18px, 2.4vw, 30px) auto 0;
+  flex-direction: column;
+  gap: clamp(10px, 1.3vw, 15px);
+}
+
+.registration-faq-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: clamp(7px, 0.8vw, 10px) clamp(8px, 0.8vw, 11px)
+    clamp(7px, 0.8vw, 10px) clamp(14px, 1.4vw, 20px);
+  border: 2px solid #d8b58c;
+  border-radius: 999px;
+  background: var(--registration-faq);
+  color: #4b3220;
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.8vw, 0.82rem);
+  line-height: 1.2;
+  text-align: left;
+  box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.registration-faq-trigger:hover {
+  background: #f7e8ce;
+  transform: translateY(-1px);
+}
+
+.registration-faq-icon {
+  display: grid;
+  width: clamp(24px, 2.2vw, 30px);
+  height: clamp(24px, 2.2vw, 30px);
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #fbf3e2;
+  color: #7a5432;
+  box-shadow: 0 2px 4px rgb(45 35 24 / 18%);
+}
+
+.registration-faq-icon svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 160ms ease;
+}
+
+.registration-faq-trigger[data-panel-open] .registration-faq-icon svg {
+  transform: rotate(180deg);
+}
+
+.registration-faq-panel {
+  padding: 6px clamp(16px, 1.8vw, 24px) 2px;
+  color: #5a4029;
+  font-family: var(--font-body);
+  font-size: clamp(0.66rem, 0.76vw, 0.8rem);
+  line-height: 1.5;
+}
+
+.registration-faq-note {
+  width: min(100% - 48px, 760px);
+  margin: clamp(14px, 1.8vw, 22px) auto 0;
+  color: #4b3220;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 0.72vw, 0.76rem);
+}
+
+.registration-faq-note a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Decorative flowers -------------------------------------------------- */
+
+.registration-flower {
+  position: absolute;
+  z-index: 2;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.registration-flower-1 {
+  top: 2%;
+  left: max(8px, calc(50% - 590px));
+  width: clamp(60px, 7vw, 108px);
+  transform: rotate(-14deg);
+}
+
+.registration-flower-2 {
+  top: 22%;
+  right: max(8px, calc(50% - 590px));
+  width: clamp(58px, 6.6vw, 102px);
+  transform: rotate(12deg);
+}
+
+.registration-flower-3 {
+  top: 48%;
+  left: max(8px, calc(50% - 620px));
+  width: clamp(54px, 6vw, 92px);
+  transform: rotate(10deg) scale(0.9);
+}
+
+.registration-flower-4 {
+  top: 66%;
+  right: max(8px, calc(50% - 590px));
+  width: clamp(60px, 6.8vw, 104px);
+  transform: rotate(-18deg);
+}
+
+/* ---- Scroll-to-top ------------------------------------------------------- */
+
+.scroll-to-top {
+  position: fixed;
+  right: clamp(14px, 2.4vw, 28px);
+  bottom: clamp(14px, 2.4vw, 28px);
+  z-index: 30;
+  display: grid;
+  width: clamp(38px, 3.6vw, 46px);
+  height: clamp(38px, 3.6vw, 46px);
+  place-items: center;
+  border: 2px solid #fdf6e3;
+  border-radius: 50%;
+  background: #2f6a35;
+  color: #fdf6e3;
+  box-shadow: 0 6px 12px rgb(45 35 24 / 32%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    background-color 160ms ease;
+}
+
+.scroll-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  background: #3d8343;
+}
+
+.scroll-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Keep the three cards side by side on tablets without wrapping the CTA. */
+@media (min-width: 768px) and (max-width: 900px) {
+  .registration-tier-cta {
+    gap: 3px;
+    padding: 4px 8px;
+  }
+
+  .registration-tier-cta .themed-pill-paw img {
+    height: 32px;
+    margin-block: -3px;
+  }
+
+  .registration-tier-cta .themed-pill-label {
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+
+  .registration-tier-cta svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .registration-hero {
+    min-height: 132px;
+    padding: 22px 14px;
+  }
+
+  .registration-hero-image {
+    object-position: center 18%;
+  }
+
+  .registration-hero h1 {
+    font-size: 2rem;
+  }
+
+  .registration-hero p {
+    font-size: 0.74rem;
+  }
+
+  .registration-invitation {
+    padding: 10px 0 40px;
+  }
+
+  .registration-invitation::before {
+    top: 34px;
+    width: 210%;
+  }
+
+  .registration-banner {
+    width: calc(100% - 20px);
+    height: 104px;
+  }
+
+  .registration-banner .themed-banner-text h2 {
+    padding: 0 56px;
+    font-size: 1.35rem;
+  }
+
+  .registration-banner .themed-banner-text p {
+    font-size: 0.62rem;
+  }
+
+  .registration-board {
+    width: calc(100% - 16px);
+    padding: 10px;
+    border-width: 2px;
+  }
+
+  .registration-board::before {
+    inset: 6px;
+    border-width: 2px;
+  }
+
+  .registration-board-content {
+    padding: 22px 4px 4px;
+  }
+
+  .registration-board-watermark {
+    right: -10%;
+    bottom: 0;
+    width: 68%;
+  }
+
+  .registration-board-content p {
+    font-size: 0.72rem;
+  }
+
+  .registration-board-content .registration-board-invited {
+    font-size: 0.95rem;
+  }
+
+  .registration-board-content .registration-board-note {
+    font-size: 0.6rem;
+  }
+
+  .registration-tiers-title {
+    font-size: 1rem;
+  }
+
+  .registration-tiers {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100%, 380px);
+    margin: 0 auto;
+    gap: 18px;
+  }
+
+  .registration-tier-content {
+    padding: 24px 18px 18px;
+  }
+
+  .registration-tier-name {
+    font-size: 1.75rem;
+  }
+
+  .registration-tier-icon {
+    width: 132px;
+  }
+
+  .registration-tier-description {
+    font-size: 0.72rem;
+  }
+
+  .registration-tier-item {
+    font-size: 0.64rem;
+  }
+
+  .registration-tier-cta .themed-pill-label {
+    font-size: 1rem;
+  }
+
+  .registration-flower {
+    display: none;
+  }
+
+  .registration-faq-section {
+    padding: 10px 0 40px;
+  }
+
+  .registration-faq {
+    width: calc(100% - 24px);
+  }
+
+  .registration-faq-trigger {
+    font-size: 0.7rem;
+  }
+
+  .registration-faq-note {
+    width: calc(100% - 32px);
+    font-size: 0.64rem;
+  }
+}
+
 @layer base {
   body,
   p,
@@ -1198,7 +1893,6 @@ body:has(.themed-home) header .text-brand-text {
     font-family: var(--font-body);
     line-height: 1.2;
   }
-
   h1,
   .h1 {
     font-family: var(--font-display);
