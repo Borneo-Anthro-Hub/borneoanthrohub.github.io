@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
 import { Drawer } from "@base-ui/react/drawer";
 import { useRef, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, PawPrint, X } from "lucide-react";
 import DevThemeSwitcher from "@/components/client/DevThemeSwitcher";
 import DevSiteStateSwitcher from "@/components/client/DevSiteStateSwitcher";
 import { useSiteState } from "@/components/client/SiteStateProvider";
@@ -209,8 +209,22 @@ export default function Header() {
           </NavigationMenu.Portal>
         </NavigationMenu.Root>
 
-        {/* Right side: dev tools + hamburger */}
+        {/* Right side: register CTA + dev tools + hamburger */}
         <div className="ml-auto flex items-center gap-3">
+          {/* Primary CTA — only while ticket registration is open */}
+          {isEnabled("ticketRegistration") && (
+            <Link
+              href="/tickets"
+              className="font-caption hidden items-center gap-2 rounded-full bg-white py-1.5 pr-3 pl-4 text-sm font-semibold text-[#235227] shadow-sm transition-colors hover:bg-[#f7f3e6] lg:inline-flex"
+            >
+              <PawPrint aria-hidden="true" className="size-4" />
+              Register
+              <span className="grid size-5 place-items-center rounded-full bg-[#235227] text-white">
+                <ArrowRight aria-hidden="true" className="size-3" />
+              </span>
+            </Link>
+          )}
+
           {/* Dev-only switchers */}
           {process.env.NODE_ENV === "development" && (
             <>

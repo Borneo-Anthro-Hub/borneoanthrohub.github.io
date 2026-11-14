@@ -1,4 +1,28 @@
+import fs from "node:fs";
 import { expect, test } from "./fixtures";
+import type { SiteState } from "@/lib/site-state/types";
+
+/**
+ * The state this deployment starts in. `next dev` resolves `WEBSITE_STATE`
+ * from the environment or `.env.local`; the Playwright process does not, so
+ * mirror that resolution here.
+ */
+function resolveActiveState(): SiteState {
+  const fromEnv = process.env.WEBSITE_STATE?.trim().toUpperCase();
+  if (fromEnv) return fromEnv as SiteState;
+
+  try {
+    const envFile = fs.readFileSync(".env.local", "utf8");
+    const value = envFile.match(/^WEBSITE_STATE=(\w+)/m)?.[1]?.toUpperCase();
+    if (value) return value as SiteState;
+  } catch {
+    // No .env.local — fall back to the app default.
+  }
+
+  return "D";
+}
+
+const ACTIVE_STATE = resolveActiveState();
 
 /**
  * Covers components/client/DevSiteStateSwitcher.tsx +
@@ -18,17 +42,20 @@ test.describe("Dev site state switcher", () => {
     const { siteStateSwitcher } = homePage;
 
     await expect(siteStateSwitcher.button).toBeVisible();
-    // WEBSITE_STATE in .env.local
-    expect(await siteStateSwitcher.currentState()).toBe("D");
+    // WEBSITE_STATE from the environment or .env.local
+    expect(await siteStateSwitcher.currentState()).toBe(ACTIVE_STATE);
   });
 
   test("switching state updates the badge and feature-gated navigation", async ({
     homePage,
   }) => {
     const { siteStateSwitcher, page } = homePage;
-    // "activities" feature (Event Info) is enabled from "A" onward, so it
-    // is hidden in the default "D" (Dormant) state.
     const eventInfoTrigger = page.getByRole("button", { name: "Event Info" });
+
+    // "activities" feature (Event Info) is enabled from "A" onward, so it
+    // is hidden while the site is "D" (Dormant).
+    await siteStateSwitcher.selectState("D");
+    expect(await siteStateSwitcher.currentState()).toBe("D");
     await expect(eventInfoTrigger).toHaveCount(0);
 
     await siteStateSwitcher.selectState("A");

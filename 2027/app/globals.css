@@ -307,6 +307,886 @@
   background-size: var(--page-background-size, auto);
 }
 
+/* =============================================================================
+   2027 THEMED LANDING — Tinyverse Garden
+   ============================================================================= */
+
+.themed-home {
+  --themed-cream: #fdf6e3;
+  --themed-paper: #ddb487;
+  --themed-paper-dark: #a76f45;
+  --themed-forest: #235227;
+  --themed-forest-light: #4f873c;
+  --themed-brown: #704925;
+  --themed-ink: #3c2a1e;
+  color: var(--themed-ink);
+  overflow-x: clip;
+}
+
+body:has(.themed-home),
+body:has(.themed-home) > .site-background {
+  width: 100%;
+  min-width: 0;
+}
+
+body:has(.themed-home) header {
+  background: #235227;
+  border-bottom-color: rgb(255 243 240 / 18%);
+}
+
+body:has(.themed-home) header .text-brand-text {
+  color: #fdf6e3;
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+
+.themed-hero {
+  position: relative;
+  z-index: 1;
+}
+
+.themed-hero-art {
+  position: relative;
+  aspect-ratio: 3960 / 2160;
+  overflow: hidden;
+  background: #78a7e8;
+}
+
+.themed-hero-mobile {
+  display: none;
+}
+
+.themed-hero-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+}
+
+.themed-hero-title {
+  position: absolute;
+  top: -1.4vw;
+  left: 0;
+  z-index: 3;
+  width: 68.75vw;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 5px rgb(27 50 27 / 22%));
+}
+
+/* ---- Woodland scene ------------------------------------------------------ */
+
+.themed-landscape {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  background-color: var(--themed-cream);
+  background-image:
+    url("/2027_images/new_themed_homepage_assets/2-between-divider.svg"),
+    url("/2027_images/repeat_background.png");
+  background-repeat: no-repeat, repeat;
+  background-position:
+    center 14vw,
+    center top;
+  background-size:
+    100% auto,
+    var(--page-background-size, 3000px auto);
+}
+
+/* Grass + date divider that wraps the festival clearing. */
+.themed-landscape::before {
+  position: absolute;
+  top: -23.39vw;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  aspect-ratio: 1920 / 2095;
+  background: url("/2027_images/new_themed_homepage_assets/1-divider.svg")
+    center / 100% 100% no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.themed-festival {
+  position: relative;
+  z-index: 1;
+  padding: 28.4vw 0 6.75vw;
+}
+
+.themed-festival-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 480px) minmax(0, 455px);
+  align-items: start;
+  justify-content: center;
+  gap: 20px;
+  width: min(100% - 48px, 955px);
+  margin: 0 auto;
+  transform: translateX(clamp(0px, 2.6vw, 50px));
+}
+
+.themed-venue {
+  position: relative;
+}
+
+.themed-venue-photo {
+  position: relative;
+  display: block;
+  padding: 11px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 16px rgb(45 35 24 / 32%);
+  transform: rotate(-0.6deg);
+}
+
+.themed-venue-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 460 / 525;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.themed-venue-label {
+  position: absolute;
+  top: 64%;
+  left: -23%;
+  display: flex;
+  width: 70%;
+  max-width: 333px;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 22px 10px;
+  border: 5px solid #fff;
+  border-radius: 999px;
+  outline: 2px solid var(--themed-paper-dark);
+  background: var(--themed-paper);
+  box-shadow: 0 6px 10px rgb(45 35 24 / 28%);
+  color: var(--themed-forest);
+  font-family: var(--font-heading);
+  transform: rotate(-2deg);
+}
+
+.themed-venue-label strong {
+  font-size: clamp(1.1rem, 2.1vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.themed-venue-label small {
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 0.85vw, 0.95rem);
+  line-height: 1.2;
+}
+
+.themed-festival-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.themed-festival-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 5px 6px rgb(45 35 24 / 22%));
+}
+
+.themed-paper-card {
+  padding: 42px 30px 44px;
+  border: 3px dashed var(--themed-paper-dark);
+  border-radius: 8px;
+  background: var(--themed-paper);
+  box-shadow: 6px 8px 10px rgb(45 35 24 / 26%);
+}
+
+.themed-paper-card p {
+  margin: 0 0 22px;
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 0.87vw, 1.05rem);
+  line-height: 1.62;
+}
+
+.themed-action-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.themed-pill-action,
+.themed-mini-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--themed-forest);
+  color: var(--themed-cream);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 3px 5px rgb(45 35 24 / 32%);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.themed-pill-action {
+  min-height: clamp(40px, 2.6vw, 50px);
+  background: #3a6f2d;
+  padding: 4px clamp(12px, 0.95vw, 18px) 4px clamp(9px, 0.6vw, 12px);
+  gap: clamp(4px, 0.45vw, 8px);
+}
+
+.themed-pill-label {
+  flex: 1 1 auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.95rem, 1.3vw, 1.55rem);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.themed-pill-action svg,
+.themed-mini-link svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.themed-pill-paw {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+}
+
+/* The artwork is a little taller than the pill, so the stitched hoop pokes
+   past the button's top and bottom edges, as in the reference. */
+.themed-pill-paw img {
+  width: auto;
+  height: clamp(46px, 3.2vw, 62px);
+  margin-block: clamp(-9px, -0.48vw, -6px);
+  max-width: none;
+}
+
+.themed-pill-action:hover {
+  background: #458434;
+  transform: translateY(-1px);
+}
+
+.themed-mini-link:hover {
+  background: var(--themed-forest-light);
+  transform: translateY(-1px);
+}
+
+.themed-flower {
+  position: absolute;
+  z-index: 2;
+  height: auto;
+  pointer-events: none;
+}
+
+.themed-flower-left {
+  bottom: 0;
+  left: -1vw;
+  width: clamp(90px, 13vw, 250px);
+}
+
+.themed-flower-right {
+  right: 8.5vw;
+  bottom: 10vw;
+  width: clamp(80px, 13vw, 250px);
+}
+
+/* ---- Parchment section banners ------------------------------------------ */
+
+.themed-banner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(100% - 48px, 1541px);
+  aspect-ratio: 1541 / 285;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #1c3d1c;
+  text-align: center;
+  background: url("/2027_images/new_themed_homepage_assets/sub-section-banner-background.svg")
+    center / 100% 100% no-repeat;
+}
+
+.themed-banner h2 {
+  margin: 0;
+  padding: 0 96px;
+  /* Same bold italic serif as the pill labels in the reference artwork. */
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.3rem, 2.3vw, 2.8rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #123a12;
+}
+
+.themed-sprig {
+  position: absolute;
+  width: clamp(56px, 6vw, 112px);
+  height: auto;
+  pointer-events: none;
+}
+
+.themed-sprig-left {
+  top: -18%;
+  left: 0.5%;
+  transform: rotate(-10deg);
+}
+
+.themed-sprig-right {
+  right: 0.5%;
+  bottom: -22%;
+  transform: rotate(-10deg) scaleX(-1);
+}
+
+/* ---- Quick links --------------------------------------------------------- */
+
+.themed-quick-links {
+  position: relative;
+  z-index: 0;
+  padding-bottom: clamp(20px, 1.4vw, 27px);
+}
+
+/* Tree canopy framing the quick-link panel. */
+.themed-quick-links::before {
+  position: absolute;
+  top: -21vw;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  aspect-ratio: 1920 / 1621;
+  background: url("/2027_images/new_themed_homepage_assets/3-divider.svg")
+    center top / 100% 100% no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.themed-quick-panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(18px, 2.3vw, 45px);
+  width: min(100% - 48px, 1410px);
+  margin: -24px auto 0;
+  padding: clamp(24px, 3.6vw, 70px) clamp(20px, 9.4vw, 180px)
+    clamp(26px, 2.5vw, 47px);
+  border: 4px solid var(--themed-ink);
+  border-radius: clamp(18px, 2.1vw, 40px);
+  background: var(--themed-brown);
+  box-shadow: 0 12px 18px rgb(45 35 24 / 28%);
+}
+
+.themed-quick-panel::after {
+  position: absolute;
+  inset: clamp(6px, 0.8vw, 14px);
+  border: 1px solid rgb(255 236 208 / 30%);
+  border-radius: clamp(12px, 1.6vw, 32px);
+  content: "";
+  pointer-events: none;
+}
+
+.themed-quick-column {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.1vw, 20px);
+}
+
+.themed-quick-card {
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(180px, 13vw, 250px);
+  padding: clamp(18px, 1.35vw, 26px);
+  border: 3px dashed var(--themed-paper-dark);
+  border-radius: clamp(6px, 0.45vw, 9px);
+  background: var(--themed-paper);
+  box-shadow: 0 6px 8px rgb(45 35 24 / 33%);
+}
+
+.themed-quick-column > .themed-quick-card:last-child {
+  min-height: clamp(200px, 15vw, 290px);
+}
+
+.themed-quick-card-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: clamp(14px, 1.3vw, 24px);
+}
+
+.themed-quick-icon {
+  display: grid;
+  width: clamp(46px, 3.7vw, 70px);
+  height: clamp(46px, 3.7vw, 70px);
+  flex: 0 0 auto;
+  place-items: center;
+  border: 4px solid var(--themed-paper-dark);
+  border-radius: 50%;
+  background: #f7ddb9;
+  color: var(--themed-brown);
+}
+
+.themed-quick-icon svg {
+  width: 55%;
+  height: 55%;
+}
+
+.themed-quick-card h3 {
+  margin: 0;
+  color: var(--themed-paper-dark);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 3rem);
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+.themed-quick-card-title p {
+  margin: 6px 0 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.75vw, 0.9rem);
+  line-height: 1.2;
+}
+
+.themed-quick-card-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(10px, 1.1vw, 20px);
+}
+
+.themed-mini-link {
+  width: 100%;
+  max-width: clamp(130px, 10.2vw, 196px);
+  min-height: clamp(34px, 2.4vw, 46px);
+  justify-content: space-between;
+  padding: 7px 10px 7px 16px;
+  font-size: clamp(0.7rem, 0.8vw, 0.95rem);
+  white-space: nowrap;
+}
+
+.themed-mini-link .themed-mini-arrow {
+  display: grid;
+  width: clamp(18px, 1.35vw, 26px);
+  height: clamp(18px, 1.35vw, 26px);
+  margin-left: 4px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f3efe2;
+  color: var(--themed-forest);
+}
+
+.themed-mini-arrow svg {
+  width: 60%;
+  height: 60%;
+}
+
+/* ---- Guests of honor ---------------------------------------------------- */
+
+.themed-guests {
+  position: relative;
+  z-index: 2;
+  padding: 129px 0 144px;
+  background: var(--themed-cream) url("/2027_images/repeat_background.png")
+    repeat;
+}
+
+.themed-guests-image {
+  display: block;
+  width: min(1520px, 79%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.themed-banner-guests {
+  position: absolute;
+  /* 19px above the guests artwork, which starts at the section's 129px padding. */
+  top: 110px;
+  left: 50%;
+  z-index: 3;
+  padding: 0;
+  flex-direction: column;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+
+.themed-banner-guests .themed-pill-action {
+  min-height: 42px;
+  font-size: clamp(0.85rem, 1vw, 1.15rem);
+}
+
+@media (max-width: 767px) {
+  body:has(.themed-home) header {
+    padding: 14px 14px;
+  }
+
+  body:has(.themed-home) header > div > a {
+    width: 88px;
+    height: 30px;
+  }
+
+  body:has(.themed-home) header [aria-label="Switch theme"],
+  body:has(.themed-home) header [aria-label="Switch site state"] {
+    display: none;
+  }
+
+  body:has(.themed-home) header [aria-label="Open navigation menu"],
+  body:has(.themed-home) header [aria-label="Close navigation menu"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ---- Hero ---- */
+
+  /* The artwork tucks under the sticky header, as in the reference. */
+  .themed-hero {
+    margin-top: -59px;
+  }
+
+  /* Mobile uses its own illustrated composition, which already frames the
+     scene with the canopy, so the stacked desktop layers are not rendered. */
+  .themed-hero-art {
+    display: none;
+  }
+
+  .themed-hero-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .themed-hero-title {
+    display: none;
+  }
+
+  /* ---- Woodland scene ---- */
+
+  .themed-landscape {
+    background-position:
+      center top,
+      center top;
+    background-size:
+      100% auto,
+      var(--page-background-size, 3000px auto);
+  }
+
+  .themed-landscape::before {
+    top: -50.6vw;
+    left: 50%;
+    width: 194vw;
+    transform: translateX(calc(-50% + 2vw));
+  }
+
+  .themed-festival {
+    padding: 47.5vw 0 55vw;
+  }
+
+  .themed-festival-inner {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .themed-festival-copy {
+    display: contents;
+  }
+
+  .themed-festival-banner {
+    order: -1;
+    width: 94%;
+  }
+
+  .themed-venue {
+    order: 0;
+    width: 89%;
+    margin-top: 2vw;
+  }
+
+  .themed-venue-photo {
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .themed-venue-image {
+    aspect-ratio: 320 / 375;
+  }
+
+  .themed-venue-label {
+    top: 62%;
+    left: -12%;
+    width: 62%;
+    padding: 8px 14px 7px;
+    border-width: 4px;
+  }
+
+  .themed-venue-label strong {
+    font-size: 1.15rem;
+  }
+
+  .themed-venue-label small {
+    font-size: 0.6rem;
+  }
+
+  .themed-paper-card {
+    order: 1;
+    width: 89%;
+    margin-top: 25vw;
+    padding: 32px 24px 90px;
+  }
+
+  .themed-paper-card p {
+    font-size: 0.95rem;
+    line-height: 1.72;
+  }
+
+  .themed-action-row {
+    align-items: center;
+  }
+
+  .themed-pill-action {
+    min-height: 38px;
+    font-size: 0.95rem;
+  }
+
+  .themed-flower {
+    display: none;
+  }
+
+  /* ---- Banners ---- */
+
+  .themed-banner {
+    width: calc(100% - 20px);
+    height: 100px;
+    aspect-ratio: auto;
+  }
+
+  .themed-banner h2 {
+    padding: 0 56px;
+    font-size: 1.75rem;
+  }
+
+  .themed-sprig {
+    width: 58px;
+  }
+
+  .themed-sprig-left {
+    top: -20%;
+    left: -1%;
+  }
+
+  .themed-sprig-right {
+    right: -1%;
+    bottom: -24%;
+  }
+
+  /* ---- Quick links ---- */
+
+  .themed-quick-links {
+    padding-bottom: 10vw;
+  }
+
+  .themed-quick-links::before {
+    top: -28vw;
+    left: 0;
+    width: 100%;
+  }
+
+  .themed-quick-panel {
+    display: flex;
+    width: calc(100% - 20px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 24px 14px 26px;
+    border-width: 3px;
+    border-radius: 24px;
+    background-position: right 8px top 8px;
+  }
+
+  .themed-quick-panel::after {
+    inset: 8px;
+    border-radius: 18px;
+  }
+
+  .themed-quick-column {
+    gap: 16px;
+  }
+
+  .themed-quick-card,
+  .themed-quick-column > .themed-quick-card:last-child {
+    min-height: 210px;
+    padding: 20px;
+  }
+
+  .themed-quick-card-title {
+    margin-bottom: 16px;
+  }
+
+  .themed-quick-icon {
+    width: 58px;
+    height: 58px;
+    border-width: 3px;
+  }
+
+  .themed-quick-card h3 {
+    font-size: 2.15rem;
+  }
+
+  .themed-quick-card-title p {
+    font-size: 0.76rem;
+  }
+
+  .themed-mini-link {
+    width: auto;
+    max-width: 100%;
+    min-height: 38px;
+    padding: 8px 12px 8px 18px;
+    font-size: 0.82rem;
+  }
+
+  /* ---- Guests ---- */
+
+  .themed-guests {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 40px;
+  }
+
+  .themed-banner-guests {
+    position: relative;
+    top: auto;
+    left: auto;
+    order: -1;
+    width: calc(100% - 20px);
+    min-height: 116px;
+    padding: 18px 0 14px;
+    gap: 8px;
+    transform: none;
+  }
+
+  .themed-banner-guests .themed-pill-action {
+    min-height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .themed-guests-image {
+    width: calc(100% - 38px);
+    aspect-ratio: 320 / 230;
+    margin-top: 8vw;
+    object-fit: cover;
+  }
+}
+
+.themed-footer {
+  background: var(--themed-forest, #235227);
+  border-top-color: rgb(255 243 240 / 18%);
+}
+
+.themed-footer-inner {
+  width: min(100%, 1180px);
+}
+
+@media (min-width: 1024px) {
+  .themed-footer .themed-footer-inner {
+    padding-top: 170px;
+    padding-bottom: 96px;
+  }
+
+  .themed-footer .type-body-s {
+    font-size: 1.02rem;
+  }
+
+  .themed-footer .type-caption-s-bold {
+    font-size: 0.82rem;
+  }
+
+  .themed-footer-brand > div:first-child {
+    width: 132px;
+    height: 82px;
+  }
+}
+
+@media (max-width: 767px) {
+  .themed-footer {
+    padding-bottom: 32px;
+  }
+
+  .themed-footer-inner {
+    gap: 40px;
+    align-items: center;
+    padding: 84px 18px 32px;
+    text-align: center;
+  }
+
+  .themed-footer-top {
+    width: 100%;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .themed-footer-brand {
+    order: 2;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .themed-footer-sitemap {
+    order: 1;
+    align-items: center;
+    gap: 0;
+  }
+
+  .themed-footer-sitemap > div:last-child {
+    display: none;
+  }
+
+  .themed-footer-sitemap > div:first-child {
+    text-align: center;
+  }
+
+  .themed-footer-sitemap > div:first-child ul {
+    justify-content: center;
+  }
+
+  .themed-footer .border-brand-text\/15 {
+    width: 100%;
+    padding-top: 12px;
+  }
+
+  .themed-footer .themed-footer-brand > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .themed-footer .themed-footer-brand .mb-3 {
+    justify-content: center;
+  }
+
+  .themed-footer .themed-footer-brand a {
+    justify-content: center;
+  }
+}
+
 @layer base {
   body,
   p,
@@ -516,5 +1396,23 @@ a {
   }
   html {
     @apply font-sans;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .themed-quick-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 36px clamp(24px, 5vw, 64px) 40px;
+  }
+
+  .themed-quick-column {
+    display: contents;
+  }
+
+  .themed-quick-card {
+    min-height: 0;
   }
 }

@@ -54,20 +54,25 @@ function FooterListItem({
 }
 
 export default function Footer() {
-  const { isEnabled } = useSiteState();
+  const { state, isEnabled } = useSiteState();
+  const isThemed = state !== "D" && state !== "T";
   const currentYear = new Date().getFullYear();
   const visibleNavItems = navItems.filter(
     (item) => !item.feature || isEnabled(item.feature),
   );
 
   return (
-    <footer className="bg-brand-surface text-brand-text border-brand-secondary/30 border-t pb-10">
+    <footer
+      className={`bg-brand-surface text-brand-text border-brand-secondary/30 border-t pb-10 ${
+        isThemed ? "themed-footer" : ""
+      }`}
+    >
       <div className="flex w-full justify-center">
-        <div className="mx-auto flex flex-col gap-10 px-4 py-10 md:px-8">
+        <div className="themed-footer-inner mx-auto flex flex-col gap-10 px-4 py-10 md:px-8">
           {/* ---- Top row: Brand/contact + nav sitemap ---- */}
-          <div className="flex flex-col items-start gap-10 text-start lg:flex-row lg:justify-between">
+          <div className="themed-footer-top flex flex-col items-start gap-10 text-start lg:flex-row lg:justify-between">
             {/* Brand — placeholder asset from public/2027_images, swap when final branding lands */}
-            <div className="flex flex-col items-start gap-4 lg:w-64 lg:shrink-0">
+            <div className="themed-footer-brand flex flex-col items-start gap-4 lg:w-64 lg:shrink-0">
               <div className="relative h-15 w-30">
                 <Image
                   src={withBasePath("/2027_images/BAH_logo_footer.svg")}
@@ -98,7 +103,7 @@ export default function Footer() {
             </div>
 
             {/* Sitemap */}
-            <div className="flex w-full flex-col items-start gap-8">
+            <div className="themed-footer-sitemap flex w-full flex-col items-start gap-8">
               {/* Archive — spans the full row */}
               <div className="w-full">
                 <h6 className={columnHeadingClassName}>Archive</h6>

@@ -115,11 +115,11 @@ export function SomeWidget() {
 
 ### 7) Changing State
 
-| Environment     | How                                                                                                                                                                                                                       |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Production**  | Set `WEBSITE_STATE=<code>` in `docker-compose.yml` (or `docker-compose.prod.yml` override), restart the `b_nextjs` container. No rebuild.                                                                                 |
-| **Development** | Use the `DevSiteStateSwitcher` dropdown in the navbar (rendered next to the theme colour dot). Sets a cookie so `getSiteState()` reads the override server-side. Falls back to env var on cookie expiry (1 day) or clear. |
-| **CI / build**  | `WEBSITE_STATE` is not set, so `ACTIVE_SITE_STATE` defaults to `"D"` (Dormant). All evergreen features are enabled; everything else 404s.                                                                                 |
+| Environment                   | How                                                                                                                                                                                             |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **GitHub Pages (deployment)** | Set `WEBSITE_STATE` in the `Build static export` step of `.github/workflows/deploy.yml`. The static export bakes the state in, so changing it requires a new deployment (no runtime override).  |
+| **Local development**         | Set `WEBSITE_STATE` in `2027/.env.local` (copy `.env.example`), then restart `pnpm dev`. The `DevSiteStateSwitcher` dropdown in the navbar previews other states client-side without a restart. |
+| **Unset**                     | `WEBSITE_STATE` falls back to `"D"` (Dormant) with a console warning: evergreen features stay enabled and everything else 404s.                                                                 |
 
 ### 8) Design Decisions
 
