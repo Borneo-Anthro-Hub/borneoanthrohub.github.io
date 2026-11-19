@@ -24,13 +24,13 @@ export default function PageHero({
   showIndex = false,
   showEyebrow = false,
   index = "00",
-  titleClassName = "text-3xl font-bold",
+  titleClassName = "text-4xl font-bold md:text-5xl",
 }: PageHeroProps) {
   return (
     <section className="border-border relative isolate overflow-hidden border-b px-4 py-10 md:px-8">
       <div aria-hidden="true" className="page-hero-art absolute inset-0" />
       <div aria-hidden="true" className="bg-background/70 absolute inset-0" />
-      <WireframeFrame className="relative z-10 mx-auto flex max-w-md flex-col items-center gap-4 p-6 text-center lg:whitespace-nowrap">
+      <WireframeFrame className="relative z-10 mx-auto flex max-w-md flex-col items-center gap-4 p-6 text-center">
         <div className="flex items-center gap-2">
           {showIndex && (
             <span className="border-border text-muted-foreground border px-1.5 py-0.5 font-mono text-[10px]">

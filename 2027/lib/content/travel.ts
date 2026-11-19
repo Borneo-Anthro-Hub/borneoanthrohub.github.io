@@ -156,10 +156,10 @@ export const travelPage = {
 
   relatedGuides: {
     title: "Ready for the city itself?",
-    lead: "Once you have landed, the venue guide covers transfers from KKIA and where to park, while the BAHjet Guide covers eating, staying, and exploring around Kota Kinabalu.",
+    lead: "Once you have landed, the venue guide covers transfers from KKIA and where to park.",
     links: [
-      { label: "Venue Guide", href: "/venue" },
-      { label: "BAHjet Guide", href: "/bahjet-guide" },
+      { label: "Venue Guide", href: "/venue", feature: "venue" },
+      { label: "BAHjet Guide", href: "/bahjet-guide", feature: "bahjetGuide" },
     ],
   },
 } as const;

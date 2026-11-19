@@ -6,6 +6,7 @@ import ThemedCard from "@/components/server/themed/ThemedCard";
 import ThemedIconCard from "@/components/server/themed/ThemedIconCard";
 import ThemedPageSection from "@/components/server/themed/ThemedPageSection";
 import { travelPage } from "@/lib/content/travel";
+import { isFeatureRoutable } from "@/lib/site-state/get-site-state";
 import { requireFeature } from "@/lib/site-state/require-feature";
 import { withBasePath } from "@/lib/utils";
 
@@ -136,11 +137,17 @@ export default function TravelPage() {
             {relatedGuides.lead}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            {relatedGuides.links.map((link) => (
-              <ThemedActionLink key={link.href} href={link.href} tone="inverse">
-                {link.label}
-              </ThemedActionLink>
-            ))}
+            {relatedGuides.links
+              .filter((link) => isFeatureRoutable(link.feature))
+              .map((link) => (
+                <ThemedActionLink
+                  key={link.href}
+                  href={link.href}
+                  tone="inverse"
+                >
+                  {link.label}
+                </ThemedActionLink>
+              ))}
           </div>
         </ThemedCard>
       </div>

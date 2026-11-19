@@ -5,19 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import {
+  ArrowUpRight,
   ChevronRight,
-  CircleHelp,
   MapPin,
   Pause,
   Play,
   Ticket,
-  User,
 } from "lucide-react";
 import Particles from "@/components/Particles";
 import Section from "@/components/server/layout/Section";
 import ThemedBanner from "@/components/server/themed/ThemedBanner";
 import ThemedPillLink from "@/components/server/themed/ThemedPillLink";
 import { useSiteState } from "@/components/client/SiteStateProvider";
+import type { Feature } from "@/lib/site-state/types";
 import { withBasePath } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
@@ -94,20 +94,33 @@ const evergreenLinks = [
   { label: "Terms & Conditions", href: "/terms-and-conditions" },
 ];
 
+/** A quick-link that is only offered while its feature resolves. */
+type QuickLink = { label: string; href: string; feature: Feature };
+
+/** Badge artwork for a quick-link card: a "?" or a location pin. */
+type QuickCardIcon = "question" | "pin";
+
 /** "What to do when I'm in Sabah?" — sub-question under the What column. */
-const whatToDoButtons = [
-  { label: "Food", href: "/food-guide" },
-  { label: "Destinations", href: "/destinations" },
-  { label: "Experiences", href: "/activities" },
-  { label: "BAHjet Guide", href: "/bahjet-guide" },
+const whatToDoButtons: QuickLink[] = [
+  { label: "Food", href: "/food-guide", feature: "foodGuide" },
+  { label: "Destinations", href: "/destinations", feature: "destinations" },
+  { label: "BAHjet Guide", href: "/bahjet-guide", feature: "bahjetGuide" },
 ];
 
 /** "How to be a part of BAH!" — sub-question under the Where column. */
-const contributeButtons = [
-  { label: "Art Submission", href: "/art-submission", key: "art-submission" },
-  { label: "Panelist", href: "/panel-submission", key: "panelist" },
-  { label: "Volunteer", href: "/contribution", key: "volunteer" },
-  { label: "Dealer's Den", href: "/booth-listing", key: "dealer" },
+const contributeButtons: QuickLink[] = [
+  {
+    label: "Art Submission",
+    href: "/art-submission",
+    feature: "artSubmission",
+  },
+  { label: "Panelist", href: "/panel-submission", feature: "panelSubmission" },
+  {
+    label: "Volunteer",
+    href: "/contribution",
+    feature: "volunteerApplication",
+  },
+  { label: "Dealer's Den", href: "/booth-listing", feature: "boothListing" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -683,33 +696,40 @@ function ComingSoonHome() {
 // ---------------------------------------------------------------------------
 
 function ThemedHome() {
-  const { isEnabled } = useSiteState();
+  const { isLive } = useSiteState();
+  // Every listed link is rendered: finished pages link through, coming-soon
+  // pages open the construction overlay, hidden ones render as disabled.
   const quickCards = [
     {
       title: "What",
       subtitle: "is BAH?",
-      icon: CircleHelp,
-      links: [{ label: "About Us", href: "/about" }],
+      icon: "question" as const,
+      links: [
+        { label: "About Us", href: "/about", feature: "aboutUs" as const },
+      ],
     },
     {
       title: "Where",
       subtitle: "is BAH held at?",
-      icon: User,
+      icon: "pin" as const,
       links: [
-        { label: "Activities", href: "/activities" },
-        { label: "How to Get There?", href: "/travel" },
+        {
+          label: "How to Get There?",
+          href: "/travel",
+          feature: "travelInformation" as const,
+        },
       ],
     },
     {
       title: "What",
       subtitle: "to do in Sabah?",
-      icon: CircleHelp,
+      icon: "question" as const,
       links: whatToDoButtons,
     },
     {
       title: "How",
       subtitle: "to be part of BAH!",
-      icon: CircleHelp,
+      icon: "question" as const,
       links: contributeButtons,
     },
   ];
@@ -857,7 +877,7 @@ function ThemedHome() {
                   Here, the next chapter for East Malaysia quietly unfolds...
                 </p>
                 <div className="themed-action-row">
-                  {isEnabled("ticketRegistration") && (
+                  {isLive("ticketRegistration") && (
                     <ThemedPillLink
                       href="/tickets"
                       label="Register"
@@ -931,16 +951,24 @@ function QuickLinkCard({
   card: {
     title: string;
     subtitle: string;
-    icon: typeof CircleHelp;
-    links: { label: string; href: string }[];
+    icon: QuickCardIcon;
+    links: QuickLink[];
   };
 }) {
-  const Icon = card.icon;
+  const { isLive } = useSiteState();
   return (
     <article className="themed-quick-card">
       <div className="themed-quick-card-title">
         <span className="themed-quick-icon">
-          <Icon aria-hidden="true" />
+          <span className="themed-quick-icon-face">
+            {card.icon === "pin" ? (
+              <MapPin aria-hidden="true" />
+            ) : (
+              <span className="themed-quick-icon-mark" aria-hidden="true">
+                ?
+              </span>
+            )}
+          </span>
         </span>
         <div>
           <h3>{card.title}</h3>
@@ -948,14 +976,33 @@ function QuickLinkCard({
         </div>
       </div>
       <div className="themed-quick-card-links">
-        {card.links.map((link) => (
-          <Link href={link.href} key={link.href} className="themed-mini-link">
-            {link.label}
-            <span className="themed-mini-arrow">
-              <ChevronRight aria-hidden="true" />
-            </span>
-          </Link>
-        ))}
+        {card.links.map((link) => {
+          // Only finished pages are clickable — everything work-in-progress
+          // renders as a disabled pill.
+          if (!isLive(link.feature)) {
+            return (
+              <span
+                key={link.href}
+                className="themed-mini-link"
+                data-coming-soon="true"
+                aria-disabled="true"
+                title={`${link.label} — coming soon`}
+              >
+                <span className="themed-mini-label">{link.label}</span>
+                <span className="themed-mini-soon">Soon</span>
+              </span>
+            );
+          }
+
+          return (
+            <Link key={link.href} href={link.href} className="themed-mini-link">
+              <span className="themed-mini-label">{link.label}</span>
+              <span className="themed-mini-arrow">
+                <ArrowUpRight aria-hidden="true" />
+              </span>
+            </Link>
+          );
+        })}
       </div>
     </article>
   );

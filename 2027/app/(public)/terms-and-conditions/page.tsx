@@ -11,7 +11,6 @@ export default function TermsPage() {
         eyebrow="Policies"
         title="Terms & Conditions"
         description="Rules, policies, and terms for attending Borneo Anthro Hub."
-        titleClassName="type-hero-h1"
       />
 
       <Section index="01" eyebrow="Terms &amp; Conditions">

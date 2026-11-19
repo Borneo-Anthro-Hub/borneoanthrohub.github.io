@@ -54,11 +54,12 @@ function FooterListItem({
 }
 
 export default function Footer() {
-  const { state, isEnabled } = useSiteState();
+  const { state, isLive } = useSiteState();
   const isThemed = state !== "D" && state !== "T";
   const currentYear = new Date().getFullYear();
+  // Sitemap mirrors the header: only finished pages are listed.
   const visibleNavItems = navItems.filter(
-    (item) => !item.feature || isEnabled(item.feature),
+    (item) => !item.feature || isLive(item.feature),
   );
 
   return (
@@ -124,9 +125,7 @@ export default function Footer() {
                 {visibleNavItems.map((item) => {
                   const links = (
                     item.children?.length ? item.children : [item]
-                  ).filter(
-                    (child) => !child.feature || isEnabled(child.feature),
-                  );
+                  ).filter((child) => !child.feature || isLive(child.feature));
                   if (links.length === 0) return null;
                   return (
                     <div key={item.href}>

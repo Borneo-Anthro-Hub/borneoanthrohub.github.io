@@ -103,7 +103,6 @@ export default function TicketsPage() {
         title="Registration"
         description="Choose your role in the Tinyverse Garden."
         showDescription
-        titleClassName="text-4xl font-bold md:text-5xl"
       />
 
       <section

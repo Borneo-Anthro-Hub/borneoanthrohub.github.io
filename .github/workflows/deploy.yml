@@ -41,6 +41,9 @@ jobs:
         working-directory: 2027
         env:
           NEXT_BASE_PATH: /2027
+          # Website lifecycle state baked into the static export:
+          # D | T | A | TO | RC | FIR  (see `2027/lib/site-state/types.ts`)
+          WEBSITE_STATE: A
         run: pnpm build
 
       - name: Assemble Pages artifact

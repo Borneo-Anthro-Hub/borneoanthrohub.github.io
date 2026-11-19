@@ -11,9 +11,9 @@ import { themedButtonClasses } from "@/lib/theme/themed-button";
  * (avoids Base UI Button's nativeButton restrictions with Next.js Link).
  */
 export default function HomeCta() {
-  const { isEnabled } = useSiteState();
-  // /tickets 404s outside the "TO" state — only offer Register when it resolves.
-  const canRegister = isEnabled("ticketRegistration");
+  const { isLive } = useSiteState();
+  // /tickets 404s outside the ticketing states — only offer Register when it resolves.
+  const canRegister = isLive("ticketRegistration");
 
   return (
     <div className="flex flex-wrap gap-3">

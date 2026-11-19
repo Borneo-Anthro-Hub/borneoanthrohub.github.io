@@ -8,6 +8,8 @@ interface ThemedBannerProps {
   id?: string;
   title: string;
   subtitle?: string;
+  /** Quiet third line, e.g. a mascot's species under its name. */
+  caption?: string;
   className?: string;
   children?: React.ReactNode;
 }
@@ -21,15 +23,17 @@ export default function ThemedBanner({
   id,
   title,
   subtitle,
+  caption,
   className = "",
   children,
 }: ThemedBannerProps) {
   return (
     <div className={`themed-banner ${className}`.trim()}>
-      {subtitle ? (
+      {subtitle || caption ? (
         <div className="themed-banner-text">
           <h2 id={id}>{title}</h2>
-          <p>{subtitle}</p>
+          {subtitle && <p>{subtitle}</p>}
+          {caption && <p className="themed-banner-caption">{caption}</p>}
         </div>
       ) : (
         <h2 id={id}>{title}</h2>

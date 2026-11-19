@@ -806,14 +806,24 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 .themed-quick-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: clamp(180px, 13vw, 250px);
-  padding: clamp(18px, 1.35vw, 26px);
-  border: 3px dashed var(--themed-paper-dark);
-  border-radius: clamp(6px, 0.45vw, 9px);
+  padding: clamp(24px, 2.1vw, 34px);
+  border-radius: clamp(10px, 1vw, 18px);
   background: var(--themed-paper);
-  box-shadow: 0 6px 8px rgb(45 35 24 / 33%);
+  box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
+}
+
+/* Flat card with the dashed line as an inner border. */
+.themed-quick-card::before {
+  position: absolute;
+  inset: clamp(7px, 0.7vw, 11px);
+  border: clamp(4px, 0.45vw, 6px) dashed var(--themed-paper-dark);
+  border-radius: clamp(7px, 0.8vw, 13px);
+  content: "";
+  pointer-events: none;
 }
 
 .themed-quick-column > .themed-quick-card:last-child {
@@ -823,8 +833,8 @@ body:has(.themed-home) header .text-brand-text {
 .themed-quick-card-title {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: clamp(14px, 1.3vw, 24px);
+  gap: clamp(10px, 1vw, 16px);
+  margin-bottom: clamp(14px, 1.4vw, 22px);
 }
 
 .themed-quick-icon {
@@ -833,20 +843,36 @@ body:has(.themed-home) header .text-brand-text {
   height: clamp(46px, 3.7vw, 70px);
   flex: 0 0 auto;
   place-items: center;
-  border: 4px solid var(--themed-paper-dark);
   border-radius: 50%;
-  background: #f7ddb9;
+  background: var(--themed-brown);
   color: var(--themed-brown);
 }
 
-.themed-quick-icon svg {
-  width: 55%;
-  height: 55%;
+/* White face inside the brown ring — the "?" and pin sit on it. */
+.themed-quick-icon-face {
+  display: grid;
+  width: 68%;
+  height: 68%;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--themed-cream);
+}
+
+.themed-quick-icon-face svg {
+  width: 58%;
+  height: 58%;
+}
+
+.themed-quick-icon-mark {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.6vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1;
 }
 
 .themed-quick-card h3 {
   margin: 0;
-  color: var(--themed-paper-dark);
+  color: var(--themed-brown);
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.5vw, 3rem);
   font-weight: 700;
@@ -855,6 +881,7 @@ body:has(.themed-home) header .text-brand-text {
 
 .themed-quick-card-title p {
   margin: 6px 0 0;
+  color: var(--themed-ink);
   font-family: var(--font-body);
   font-size: clamp(0.68rem, 0.75vw, 0.9rem);
   line-height: 1.2;
@@ -862,35 +889,109 @@ body:has(.themed-home) header .text-brand-text {
 
 .themed-quick-card-links {
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(10px, 1.1vw, 20px);
+  gap: clamp(10px, 1.1vw, 18px);
 }
 
 .themed-mini-link {
-  width: 100%;
-  max-width: clamp(130px, 10.2vw, 196px);
-  min-height: clamp(34px, 2.4vw, 46px);
+  width: auto;
+  max-width: 100%;
+  min-height: clamp(38px, 3vw, 52px);
   justify-content: space-between;
-  padding: 7px 10px 7px 16px;
-  font-size: clamp(0.7rem, 0.8vw, 0.95rem);
+  padding: 8px clamp(8px, 0.7vw, 12px) 8px clamp(18px, 1.6vw, 28px);
+  gap: clamp(10px, 1vw, 16px);
+  font-size: clamp(0.8rem, 1.02vw, 1.1rem);
   white-space: nowrap;
+}
+
+.themed-mini-label {
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
 }
 
 .themed-mini-link .themed-mini-arrow {
   display: grid;
-  width: clamp(18px, 1.35vw, 26px);
-  height: clamp(18px, 1.35vw, 26px);
-  margin-left: 4px;
+  width: clamp(22px, 1.9vw, 32px);
+  height: clamp(22px, 1.9vw, 32px);
+  margin-left: 2px;
   place-items: center;
   border-radius: 50%;
-  background: #f3efe2;
+  background: var(--themed-cream);
   color: var(--themed-forest);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.themed-mini-link:hover .themed-mini-arrow {
+  background: #f7ddb9;
+  transform: translateX(2px);
 }
 
 .themed-mini-arrow svg {
   width: 60%;
   height: 60%;
+}
+
+/* ---- Quick-link: work in progress --------------------------------------- */
+/* Coming-soon pages stay clickable (the page shows the construction overlay)
+   but read as disabled: muted pill, dashed edge, hazard-tape wash and a
+   "Soon" chip in place of the arrow. */
+
+.themed-mini-link[data-coming-soon] {
+  overflow: hidden;
+  border: 2px dashed rgb(255 246 224 / 60%);
+  background: #8b9a7f;
+  color: rgb(253 246 227 / 92%);
+  box-shadow: none;
+}
+
+/* Flat dimming wash over the disabled pill. */
+.themed-mini-link[data-coming-soon]::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(255 255 255 / 7%) 0 8px,
+    transparent 8px 16px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.themed-mini-link[data-coming-soon] .themed-mini-label {
+  z-index: 1;
+}
+
+.themed-mini-link[data-coming-soon]:hover {
+  background: #8b9a7f;
+  transform: none;
+}
+
+.themed-mini-link[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+.themed-mini-soon {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  margin-left: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--themed-cream);
+  color: var(--themed-brown);
+  font-family: var(--font-caption);
+  font-size: clamp(0.52rem, 0.55vw, 0.66rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
 /* ---- Guests of honor ---------------------------------------------------- */
@@ -1146,7 +1247,6 @@ body:has(.themed-home) header .text-brand-text {
   .themed-quick-icon {
     width: 58px;
     height: 58px;
-    border-width: 3px;
   }
 
   .themed-quick-card h3 {
@@ -1161,7 +1261,7 @@ body:has(.themed-home) header .text-brand-text {
     width: auto;
     max-width: 100%;
     min-height: 38px;
-    padding: 8px 12px 8px 18px;
+    padding: 8px 10px 8px 18px;
     font-size: 0.82rem;
   }
 
@@ -2006,6 +2106,556 @@ body:has(.themed-home) header .text-brand-text {
   }
 }
 
+/* =============================================================================
+   2027 ABOUT PAGE — /about
+   A scrapbook: a parchment community board (story + contact plaque) followed
+   by a mascot gallery and a swap-the-mascot plaque.
+   ============================================================================= */
+
+.about-page {
+  --about-paper: #ddb487;
+  --about-paper-ink: #4b3220;
+  --about-brown: #93623c;
+  --about-cream: #fdf6e3;
+  --about-copy-fade: var(--themed-cream);
+}
+
+/* ---- Community board ---------------------------------------------------- */
+
+.about-community {
+  padding: clamp(16px, 2.6vw, 40px) 0 clamp(8px, 1.4vw, 18px);
+}
+
+.about-board {
+  position: relative;
+  isolation: isolate;
+  width: min(100% - 32px, 1180px);
+  margin: 0 auto;
+  padding: clamp(12px, 1.6vw, 22px);
+  overflow: hidden;
+  border-radius: clamp(18px, 2.2vw, 30px);
+  background: transparent;
+}
+
+/* Parchment, thumbtack shadow and the sketchy outer rule only kick in once
+   the board has room for its two-column scrapbook layout. */
+.about-board::after {
+  position: absolute;
+  inset: clamp(6px, 0.9vw, 12px);
+  z-index: 3;
+  border: 3px solid rgb(253 246 227 / 70%);
+  border-radius: clamp(12px, 1.7vw, 22px);
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 0 0 6px rgb(253 246 227 / 26%);
+}
+
+.about-board-texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: none;
+  background: url("/2027_images/repeat_background.png") center top / 560px auto
+    repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Tree canopy + trunk along the board's bottom edge, sized off the artwork's
+   own aspect ratio and pushed down so only the foliage stays in frame. */
+.about-board-foliage {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  display: none;
+  height: 44%;
+  pointer-events: none;
+}
+
+.about-board-foliage::before {
+  position: absolute;
+  bottom: 0;
+  left: -2%;
+  width: 130%;
+  aspect-ratio: 3348 / 2547;
+  background: url("/2027_images/flowers/branch.svg") left top / 100% 100%
+    no-repeat;
+  content: "";
+  transform: translateY(67%);
+}
+
+.about-board-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-areas:
+    "banner"
+    "quote"
+    "snapshots"
+    "copy"
+    "contact";
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(12px, 1.6vw, 22px);
+  padding: clamp(6px, 1.2vw, 20px) clamp(2px, 1vw, 14px);
+}
+
+/* ---- Section banners ---------------------------------------------------- */
+
+.about-banner {
+  grid-area: banner;
+  width: min(100% - 8px, 480px);
+  aspect-ratio: 3.7 / 1;
+  justify-self: center;
+}
+
+.about-banner h2,
+.about-mascots-banner h2 {
+  padding: 0 clamp(40px, 5vw, 64px);
+  font-size: clamp(1.2rem, 2.1vw, 1.9rem);
+}
+
+.about-banner .themed-banner-text p,
+.about-mascots-banner .themed-banner-text p {
+  font-size: clamp(0.6rem, 0.85vw, 0.82rem);
+}
+
+.about-banner .themed-sprig,
+.about-mascots-banner .themed-sprig {
+  width: clamp(44px, 4.6vw, 76px);
+}
+
+.themed-banner-caption {
+  color: #5b7a4a;
+}
+
+/* ---- Quote + story ------------------------------------------------------ */
+
+.about-quote {
+  grid-area: quote;
+  max-width: 34rem;
+  margin: 0 auto;
+  color: #4a2f1c;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.about-copy {
+  grid-area: copy;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-copy-text {
+  position: relative;
+  width: 100%;
+}
+
+.about-copy-text p {
+  margin: 0 0 clamp(8px, 1vw, 13px);
+  color: var(--about-paper-ink);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: clamp(0.74rem, 0.92vw, 0.9rem);
+  line-height: 1.55;
+}
+
+.about-copy-text[data-expanded="false"] {
+  max-height: 8.6em;
+  overflow: hidden;
+}
+
+.about-copy-text[data-expanded="false"]::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2.6em;
+  background: linear-gradient(
+    rgb(253 246 227 / 0%),
+    var(--about-copy-fade, #fdf6e3)
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.about-copy-toggle {
+  margin-top: clamp(8px, 1vw, 14px);
+  padding: 4px clamp(16px, 1.4vw, 22px);
+}
+
+.about-copy-toggle .themed-pill-label {
+  font-size: clamp(0.78rem, 1vw, 1rem);
+}
+
+/* ---- Snapshot polaroids ------------------------------------------------- */
+
+.about-snapshots {
+  grid-area: snapshots;
+  position: relative;
+  display: block;
+  align-self: center;
+}
+
+.about-photo {
+  position: relative;
+  width: min(100% - 20px, 440px);
+  margin: 0 auto;
+  padding: clamp(5px, 0.6vw, 9px);
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 10px 18px rgb(45 35 24 / 34%);
+}
+
+.about-photo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+.about-snapshot-1,
+.about-snapshot-3 {
+  display: none;
+}
+
+.about-snapshot-2 {
+  transform: rotate(-2.5deg);
+}
+
+/* ---- Contact plaque ----------------------------------------------------- */
+
+.about-contact {
+  grid-area: contact;
+  position: relative;
+  justify-self: center;
+  width: min(100%, 470px);
+  margin-top: clamp(4px, 0.8vw, 12px);
+  padding: clamp(12px, 1.5vw, 20px) clamp(12px, 1.5vw, 20px)
+    clamp(14px, 1.8vw, 24px);
+  border-radius: clamp(16px, 2vw, 26px);
+  background: var(--about-brown);
+  color: var(--about-cream);
+  text-align: center;
+  box-shadow: 0 12px 20px rgb(45 35 24 / 30%);
+  scroll-margin-top: 5rem;
+}
+
+.about-contact-title {
+  margin: 0;
+  color: var(--about-cream);
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.about-contact-subtitle {
+  margin: 2px 0 clamp(10px, 1.2vw, 14px);
+  color: rgb(253 246 227 / 85%);
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 0.8vw, 0.78rem);
+  line-height: 1.3;
+}
+
+/* Double dashed rule under the plaque heading. */
+.about-contact-subtitle::after {
+  display: block;
+  width: 54px;
+  height: 4px;
+  margin: clamp(4px, 0.6vw, 7px) auto 0;
+  border-top: 2px solid rgb(253 246 227 / 55%);
+  border-bottom: 2px solid rgb(253 246 227 / 35%);
+  content: "";
+}
+
+.about-contact-inner {
+  position: relative;
+  display: grid;
+  gap: clamp(5px, 0.7vw, 9px);
+  padding: clamp(10px, 1.2vw, 15px) clamp(10px, 1.3vw, 18px);
+  border: 3px solid rgb(253 246 227 / 62%);
+  border-radius: clamp(12px, 1.6vw, 20px);
+}
+
+.about-contact-inner::before {
+  position: absolute;
+  inset: 5px;
+  border: 2px solid rgb(253 246 227 / 32%);
+  border-radius: calc(clamp(12px, 1.6vw, 20px) - 6px);
+  content: "";
+  pointer-events: none;
+}
+
+.about-contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--about-cream);
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 0.78vw, 0.78rem);
+  line-height: 1.3;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+a.about-contact-row:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.about-contact-row svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.about-contact-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.about-contact-social-link svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* ---- Mascot showcase ---------------------------------------------------- */
+
+.about-mascots-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(14px, 2vw, 30px) 0 clamp(30px, 4vw, 60px);
+}
+
+/* Tree canopy that hands the page over to the dark green footer. */
+.about-mascots-section::before {
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  z-index: 0;
+  display: none;
+  width: 118%;
+  aspect-ratio: 1920 / 1621;
+  background: url("/2027_images/new_themed_homepage_assets/3-divider.svg") left
+    top / 100% 100% no-repeat;
+  content: "";
+  pointer-events: none;
+  transform: translateY(78%);
+}
+
+.about-mascots {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(16px, 2.4vw, 34px);
+  width: min(100% - 32px, 1180px);
+  margin: 0 auto;
+  align-items: center;
+}
+
+.about-mascots-gallery {
+  position: relative;
+  display: block;
+}
+
+.about-mascots-photo-back,
+.about-mascots-photo-bottom {
+  display: none;
+}
+
+.about-mascots-photo-front {
+  width: min(100% - 20px, 620px);
+  transform: rotate(-1.5deg);
+}
+
+.about-mascots-card {
+  position: relative;
+  padding: clamp(14px, 1.8vw, 26px) clamp(14px, 1.8vw, 26px)
+    clamp(18px, 2.2vw, 30px);
+  border-radius: clamp(18px, 2.2vw, 30px);
+  background: var(--about-brown);
+  color: var(--about-cream);
+  text-align: center;
+  box-shadow: 0 16px 28px rgb(45 35 24 / 26%);
+}
+
+.about-mascots-banner {
+  width: min(100% - 6px, 480px);
+  aspect-ratio: 3.2 / 1;
+  margin: 0 auto clamp(10px, 1.2vw, 16px);
+}
+
+.about-mascots-copy {
+  max-width: 40ch;
+  margin: 0 auto clamp(12px, 1.4vw, 18px);
+  color: rgb(253 246 227 / 92%);
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.82vw, 0.82rem);
+  line-height: 1.55;
+}
+
+.about-mascots-toggle {
+  padding: 4px clamp(14px, 1.2vw, 18px);
+}
+
+.about-mascots-toggle .themed-pill-label {
+  font-size: clamp(0.78rem, 1vw, 1.02rem);
+}
+
+.about-mascots-toggle-tail {
+  width: clamp(14px, 1.2vw, 17px);
+  height: clamp(14px, 1.2vw, 17px);
+  flex: 0 0 auto;
+  opacity: 0.85;
+}
+
+/* ---- Board layout from 900px up ----------------------------------------- */
+
+@media (min-width: 900px) {
+  .about-board {
+    padding: clamp(14px, 1.8vw, 26px);
+    border-radius: clamp(20px, 2.2vw, 30px);
+    background: var(--about-paper);
+    box-shadow: 0 16px 28px rgb(45 35 24 / 24%);
+    outline: 3px solid rgb(237 243 220 / 85%);
+    outline-offset: clamp(6px, 0.8vw, 11px);
+  }
+
+  .about-board-texture,
+  .about-board-foliage {
+    display: block;
+  }
+
+  .about-board::after {
+    opacity: 1;
+  }
+
+  .about-board-inner {
+    grid-template-areas:
+      "banner    snapshots"
+      "quote     snapshots"
+      "copy      snapshots"
+      "contact   snapshots";
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    column-gap: clamp(22px, 3vw, 52px);
+    row-gap: clamp(8px, 1vw, 14px);
+    padding: clamp(12px, 1.6vw, 26px) clamp(12px, 1.6vw, 26px)
+      clamp(20px, 2.4vw, 36px);
+  }
+
+  .about-copy-text[data-expanded="false"] {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .about-copy-text[data-expanded="false"]::after {
+    display: none;
+  }
+
+  .about-copy-toggle {
+    display: none;
+  }
+
+  .about-snapshots {
+    aspect-ratio: 1 / 1;
+    align-self: center;
+  }
+
+  .about-photo {
+    position: absolute;
+    width: auto;
+    margin: 0;
+  }
+
+  .about-snapshot-1 {
+    top: 0;
+    left: 16%;
+    display: block;
+    width: 58%;
+    transform: rotate(-8deg);
+  }
+
+  .about-snapshot-2 {
+    top: 26%;
+    left: 4%;
+    z-index: 2;
+    width: 80%;
+    transform: rotate(-2deg);
+  }
+
+  .about-snapshot-3 {
+    right: 0;
+    bottom: 0;
+    display: block;
+    z-index: 1;
+    width: 58%;
+    transform: rotate(6deg);
+  }
+
+  .about-contact {
+    justify-self: start;
+    margin-top: clamp(6px, 1vw, 16px);
+    margin-left: clamp(0px, 2vw, 34px);
+  }
+
+  .about-mascots {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  }
+
+  .about-mascots-section::before {
+    display: block;
+  }
+
+  .about-mascots-gallery {
+    aspect-ratio: 1 / 0.8;
+  }
+
+  .about-mascots-photo-front {
+    position: absolute;
+    top: 26%;
+    left: 0;
+    z-index: 2;
+    width: 80%;
+    transform: rotate(-1.5deg);
+  }
+
+  .about-mascots-photo-back {
+    position: absolute;
+    top: 2%;
+    left: 22%;
+    display: block;
+    z-index: 1;
+    width: 48%;
+    transform: rotate(4deg);
+  }
+
+  .about-mascots-photo-bottom {
+    position: absolute;
+    right: -2%;
+    bottom: -6%;
+    left: auto;
+    display: block;
+    z-index: 1;
+    width: 50%;
+    transform: rotate(-4deg);
+  }
+}
+
 @layer base {
   body,
   p,
@@ -2247,4 +2897,118 @@ a {
   .themed-quick-card {
     min-height: 0;
   }
+}
+
+/* ---- Not-ready pages (rollout overlay) ---------------------------------- */
+/*
+ * Used by <NotReadyOverlay> for pages that are still being built. The
+ * hazard-tape frame doubles as the "under construction" cue — colours come
+ * from the active theme so it works with every yearly palette.
+ */
+
+.not-ready-page {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: clamp(36px, 7vw, 104px) 16px;
+}
+
+.not-ready-tape {
+  width: 100%;
+  max-width: 40rem;
+  padding: clamp(10px, 1.4vw, 16px);
+  border-radius: clamp(14px, 2vw, 22px);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--brand-accent) 0 16px,
+    var(--brand-surface) 16px 32px
+  );
+  box-shadow: 0 16px 32px rgb(24 20 12 / 22%);
+}
+
+.not-ready-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(24px, 4.5vw, 44px);
+  border: 3px dashed var(--brand-surface);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--card-foreground);
+  text-align: center;
+}
+
+.not-ready-emoji {
+  font-size: clamp(2.5rem, 7vw, 3.75rem);
+  line-height: 1;
+}
+
+.not-ready-eyebrow {
+  margin: 0;
+  color: var(--brand-surface);
+  font-family: var(--font-caption);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.not-ready-title {
+  margin: 0;
+  color: var(--brand-surface);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.not-ready-message {
+  max-width: 30rem;
+  margin: 0;
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.not-ready-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.not-ready-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 22px;
+  border: 2px solid var(--brand-surface);
+  border-radius: 9999px;
+  color: var(--brand-surface);
+  font-family: var(--font-caption);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.not-ready-button:hover {
+  background: var(--brand-subtle);
+}
+
+.not-ready-button-primary {
+  background: var(--brand-surface);
+  color: var(--brand-subtle);
+}
+
+.not-ready-button-primary:hover {
+  background: var(--brand-bg);
+  color: var(--brand-subtle);
 }

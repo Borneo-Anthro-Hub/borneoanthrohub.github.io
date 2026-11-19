@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { FEATURE_MATRIX } from "@/lib/site-state/feature-matrix";
+import { isRolloutLive, isRolloutRoutable } from "@/lib/site-state/rollout";
 import { type SiteState, type Feature } from "@/lib/site-state/types";
 
 // ---------------------------------------------------------------------------
@@ -13,6 +14,16 @@ interface SiteStateContextValue {
   state: SiteState;
   /** Check whether a feature is enabled in the current state. */
   isEnabled: (feature: Feature) => boolean;
+  /**
+   * Check whether a page is finished *and* enabled in the current state —
+   * i.e. whether it may be linked in the navigation.
+   */
+  isLive: (feature: Feature) => boolean;
+  /**
+   * Check whether a route resolves (live or coming-soon). Use this before
+   * rendering a link so visitors never hit a 404.
+   */
+  isRoutable: (feature: Feature) => boolean;
   /**
    * Dev-only escape hatch — sets a cookie override so both client UI and
    * server-side route guards see the new state immediately.  No-op in
@@ -54,12 +65,19 @@ export function SiteStateProvider({
     return (FEATURE_MATRIX[feature] as readonly SiteState[]).includes(state);
   };
 
+  const isLive = (feature: Feature): boolean => isRolloutLive(feature, state);
+
+  const isRoutable = (feature: Feature): boolean =>
+    isRolloutRoutable(feature, state);
+
   const setState = (next: SiteState) => {
     setStateInternal(next);
   };
 
   return (
-    <SiteStateContext.Provider value={{ state, isEnabled, setState }}>
+    <SiteStateContext.Provider
+      value={{ state, isEnabled, isLive, isRoutable, setState }}
+    >
       {children}
     </SiteStateContext.Provider>
   );

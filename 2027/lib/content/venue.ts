@@ -154,8 +154,16 @@ export const venuePage = {
     title: "Wondering what else to do nearby?",
     lead: "Don't want to face the million-dollar question of “where to eat today ah?” from your friend, or wondering what else you can do besides staying in your hotel room? Our BAHjet Guide has you covered.",
     links: [
-      { label: "Open the BAHjet Guide", href: "/bahjet-guide" },
-      { label: "Travel Information", href: "/travel" },
+      {
+        label: "Open the BAHjet Guide",
+        href: "/bahjet-guide",
+        feature: "bahjetGuide",
+      },
+      {
+        label: "Travel Information",
+        href: "/travel",
+        feature: "travelInformation",
+      },
     ],
   },
 } as const;

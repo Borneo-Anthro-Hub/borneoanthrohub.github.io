@@ -4,6 +4,27 @@
 
 ---
 
+## Phase 6 — 2027 Rollout Gating (November 2026)
+
+### What changed
+
+Added a rollout layer on top of the lifecycle matrix so the soft launch only exposes finished pages:
+
+| Area                  | Change                                                                                                                        |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Rollout config**    | New `lib/site-state/rollout.ts` with `live` / `coming-soon` / `hidden` per feature                                            |
+| **Navigation**        | Header, mobile drawer and footer sitemap now filter with `isLive()` — unfinished pages are unlisted                           |
+| **Coming-soon pages** | `<NotReadyGate>` renders a hazard-tape "under construction" overlay instead of unfinished content; the route still resolves   |
+| **Hidden pages**      | BAHjet and the whole Contribution section are `hidden` — removed from the navigation and 404'd, with their code left in place |
+| **Homepage**          | Quick links use `isRoutable()`; coming-soon links open the overlay, hidden ones are dropped                                   |
+| **Deployment**        | `.github/workflows/deploy.yml` now builds with `WEBSITE_STATE=A` (Announcement)                                               |
+
+### Live at this rollout
+
+Landing page · Tickets · Policies (Code of Conduct, T&Cs) · Event Info + GOH teaser · Venue · Travel Guide → Travel Info.
+
+---
+
 ## Phase 5 — 2027 Static Scope Refinement (July 2026)
 
 ### What changed

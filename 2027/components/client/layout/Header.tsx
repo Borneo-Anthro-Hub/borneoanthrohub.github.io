@@ -28,12 +28,14 @@ const linkCardClassName =
 export default function Header() {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { isEnabled } = useSiteState();
+  const { isLive } = useSiteState();
   // Reference to the sticky header so in-page anchor scrolls can offset below it.
   const headerRef = useRef<HTMLElement>(null);
 
+  // Only finished pages are listed — coming-soon pages stay reachable but
+  // out of the navigation (see `lib/site-state/rollout.ts`).
   const visibleItems = navItems.filter(
-    (item) => !item.feature || isEnabled(item.feature),
+    (item) => !item.feature || isLive(item.feature),
   );
 
   // Scroll helper that respects the user's reduced-motion preference.
@@ -143,7 +145,7 @@ export default function Header() {
                       <NavigationMenu.Content className={contentClassName}>
                         <ul className="m-0 flex list-none flex-col p-0">
                           {item.children
-                            .filter((c) => !c.feature || isEnabled(c.feature))
+                            .filter((c) => !c.feature || isLive(c.feature))
                             .map((child) => (
                               <li key={child.label}>
                                 <NavigationMenu.Link
@@ -215,7 +217,7 @@ export default function Header() {
         {/* Right side: register CTA + dev tools + hamburger */}
         <div className="ml-auto flex items-center gap-3">
           {/* Primary CTA — only while ticket registration is open */}
-          {isEnabled("ticketRegistration") && (
+          {isLive("ticketRegistration") && (
             <Link
               href="/tickets"
               className="font-caption text-brand-surface bg-brand-text hover:bg-brand-subtle hidden items-center gap-2 rounded-full py-1.5 pr-3 pl-4 text-sm font-semibold shadow-sm transition-colors lg:inline-flex"
@@ -278,7 +280,7 @@ export default function Header() {
                     <nav className="flex flex-1 flex-col gap-1 px-4 py-4">
                       {visibleItems.map((item) => {
                         const visibleChildren = item.children?.filter(
-                          (c) => !c.feature || isEnabled(c.feature),
+                          (c) => !c.feature || isLive(c.feature),
                         );
                         // Hide the section entirely if no children are visible
                         if (item.children && !visibleChildren?.length)

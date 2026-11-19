@@ -9,6 +9,7 @@
 
 import { ACTIVE_SITE_STATE } from "@/lib/site-config";
 import { FEATURE_MATRIX } from "./feature-matrix";
+import { isRolloutLive, isRolloutRoutable } from "./rollout";
 import type { Feature, SiteState } from "./types";
 
 /**
@@ -30,4 +31,23 @@ export function getSiteState(): SiteState {
 export function isFeatureEnabled(feature: Feature, state?: SiteState): boolean {
   const s = state ?? getSiteState();
   return (FEATURE_MATRIX[feature] as readonly SiteState[]).includes(s);
+}
+
+/**
+ * Returns `true` when the page is finished and enabled for the given state.
+ * Only live features are linked in the navigation and rendered in full.
+ */
+export function isFeatureLive(feature: Feature, state?: SiteState): boolean {
+  return isRolloutLive(feature, state ?? getSiteState());
+}
+
+/**
+ * Returns `true` when the route resolves. Coming-soon pages still resolve so
+ * they can render the "under construction" overlay instead of a 404.
+ */
+export function isFeatureRoutable(
+  feature: Feature,
+  state?: SiteState,
+): boolean {
+  return isRolloutRoutable(feature, state ?? getSiteState());
 }
