@@ -46,11 +46,55 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  --font-theme: "General Sans", system-ui, sans-serif;
-  --font-display: "General Sans", system-ui, sans-serif;
-  --font-heading: "General Sans", system-ui, sans-serif;
-  --font-body: "General Sans", system-ui, sans-serif;
-  --font-caption: "General Sans", system-ui, sans-serif;
+  --font-theme: "Cause", system-ui, sans-serif;
+  --font-display: "Oleo Script", cursive;
+  --font-heading: "Margarine", system-ui, sans-serif;
+  --font-body: "Cause", system-ui, sans-serif;
+  --font-caption: "Poppins", system-ui, sans-serif;
+  --type-hero-h1-font-family: var(--font-display);
+  --type-hero-h1-font-size: 56px;
+  --type-hero-h1-font-weight: 700;
+  --type-hero-h1-line-height: 1.2;
+  --type-hero-h3-font-family: var(--font-display);
+  --type-hero-h3-font-size: 40px;
+  --type-hero-h3-font-weight: 700;
+  --type-hero-h3-line-height: 1.2;
+  --type-hero-h4-font-family: var(--font-display);
+  --type-hero-h4-font-size: 32px;
+  --type-hero-h4-font-weight: 400;
+  --type-hero-h4-line-height: 1.2;
+  --type-heading-h3-font-family: var(--font-heading);
+  --type-heading-h3-font-size: 40px;
+  --type-heading-h3-font-weight: 400;
+  --type-heading-h3-line-height: 1.2;
+  --type-heading-h4-font-family: var(--font-heading);
+  --type-heading-h4-font-size: 32px;
+  --type-heading-h4-font-weight: 400;
+  --type-heading-h4-line-height: 1.2;
+  --type-body-l-semibold-font-family: var(--font-body);
+  --type-body-l-semibold-font-size: 18px;
+  --type-body-l-semibold-font-weight: 600;
+  --type-body-l-semibold-line-height: 1.2;
+  --type-body-l-font-family: var(--font-body);
+  --type-body-l-font-size: 18px;
+  --type-body-l-font-weight: 400;
+  --type-body-l-line-height: 1.2;
+  --type-body-s-semibold-font-family: var(--font-body);
+  --type-body-s-semibold-font-size: 14px;
+  --type-body-s-semibold-font-weight: 600;
+  --type-body-s-semibold-line-height: 1.2;
+  --type-body-s-font-family: var(--font-body);
+  --type-body-s-font-size: 14px;
+  --type-body-s-font-weight: 400;
+  --type-body-s-line-height: 1.2;
+  --type-caption-s-medium-font-family: var(--font-caption);
+  --type-caption-s-medium-font-size: 12px;
+  --type-caption-s-medium-font-weight: 500;
+  --type-caption-s-medium-line-height: 1.2;
+  --type-caption-s-bold-font-family: var(--font-caption);
+  --type-caption-s-bold-font-size: 12px;
+  --type-caption-s-bold-font-weight: 700;
+  --type-caption-s-bold-line-height: 1.2;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --chart-1: oklch(0.87 0 0);
@@ -1281,6 +1325,14 @@ body:has(.themed-home) header .text-brand-text {
   width: min(100% - 32px, 1040px);
 }
 
+/* Section titles on this page are hero type (Oleo Script), while the home
+   landing keeps the artwork-matching serif banner. */
+.registration-banner h2 {
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
+  font-style: normal;
+  font-weight: var(--type-hero-h3-font-weight, 700);
+}
+
 .registration-banner .themed-banner-text {
   display: flex;
   flex-direction: column;
@@ -1407,6 +1459,12 @@ body:has(.themed-home) header .text-brand-text {
   width: 100%;
 }
 
+/* Fill the slide so every card matches the tallest one — keeps the CTAs on a
+   single baseline while swiping. */
+.registration-tiers-carousel .registration-tier {
+  height: 100%;
+}
+
 .registration-tiers-controls {
   display: flex;
   align-items: center;
@@ -1454,13 +1512,22 @@ body:has(.themed-home) header .text-brand-text {
    card (cqw) so the card reads the same at 1024 and 1920. */
 .registration-tier {
   position: relative;
-  display: flex;
-  aspect-ratio: 350 / 950;
+  display: grid;
+  grid-template-areas: "card";
   container-type: inline-size;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   filter: drop-shadow(0 8px 10px rgb(45 35 24 / 28%));
+}
+
+/* The artwork ratio is a minimum, not a cap: longer copy grows the card
+   evenly across the row instead of pushing the CTA past the bottom edge. */
+.registration-tier::before {
+  grid-area: card;
+  padding-top: calc(950 / 350 * 100%);
+  content: "";
+  pointer-events: none;
 }
 
 .registration-tier[data-tier="wanderer"] {
@@ -1479,6 +1546,7 @@ body:has(.themed-home) header .text-brand-text {
   display: flex;
   width: 100%;
   flex-direction: column;
+  grid-area: card;
   align-items: center;
   padding: clamp(16px, 13cqw, 48px) clamp(12px, 9.5cqw, 34px)
     clamp(14px, 8.5cqw, 30px);
@@ -1489,18 +1557,18 @@ body:has(.themed-home) header .text-brand-text {
 .registration-tier-name {
   margin: 0;
   color: var(--registration-tier-ink);
-  font-family: var(--font-heading);
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
   font-size: clamp(1.15rem, 10.9cqw, 2.6rem);
-  font-weight: 400;
+  font-weight: var(--type-hero-h3-font-weight, 700);
   line-height: 1;
 }
 
 .registration-tier-price {
   margin: clamp(6px, 3.1cqw, 12px) 0 0;
   color: var(--registration-tier-ink);
-  font-family: var(--font-caption);
-  font-size: clamp(0.7rem, 4.1cqw, 1.05rem);
-  font-weight: 700;
+  font-family: var(--type-heading-h4-font-family, var(--font-heading));
+  font-size: 24px;
+  font-weight: var(--type-heading-h4-font-weight, 400);
   letter-spacing: 0.06em;
 }
 
@@ -1511,11 +1579,20 @@ body:has(.themed-home) header .text-brand-text {
   margin: clamp(12px, 8.2cqw, 28px) auto clamp(10px, 7.5cqw, 26px);
 }
 
+/* Card copy sits on tinted artwork, so keep the body size at a readable
+   floor (>= 12.8px) with generous leading instead of scaling down to fit. */
 .registration-tier-description {
+  /* Five lines reserved at every width so the section title below starts on
+     the same row across all three cards. */
+  min-height: 7.5em;
+  flex: 0 0 auto;
   margin: 0 0 clamp(10px, 6.1cqw, 22px);
-  font-family: var(--font-body);
-  font-size: clamp(0.68rem, 4.4cqw, 1rem);
-  line-height: 1.45;
+  color: var(--registration-tier-ink);
+  font-family: var(--type-body-s-font-family, var(--font-body));
+  font-size: clamp(0.8rem, 4.9cqw, 1.05rem);
+  font-weight: var(--type-body-s-font-weight, 400);
+  line-height: 1.5;
+  text-wrap: pretty;
 }
 
 .registration-tier-section {
@@ -1530,22 +1607,50 @@ body:has(.themed-home) header .text-brand-text {
   display: flex;
   align-items: center;
   gap: clamp(4px, 2cqw, 8px);
-  margin: 0 0 clamp(6px, 3.8cqw, 14px);
+  margin: 0 0 clamp(8px, 4cqw, 14px);
   font-family: var(--font-caption);
-  font-size: clamp(0.58rem, 3.7cqw, 0.8rem);
+  font-size: clamp(0.7rem, 3.9cqw, 0.85rem);
   font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.2;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  text-align: center;
   text-transform: uppercase;
 }
 
 .registration-tier-section-title::before,
-.registration-tier-section-title::after {
+.registration-tier-section-title::after,
+.registration-tier-section-rule::before,
+.registration-tier-section-rule::after {
   flex: 1 1 auto;
   height: 1px;
   background: currentColor;
   opacity: 0.45;
   content: "";
+}
+
+/* Rule beneath the title: a hairline either side of the chevron-and-diamond
+   ornament from `goodies_info_divider.svg` (masked to the card's ink). */
+.registration-tier-section-rule {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.6cqw, 8px);
+  margin: 0 0 clamp(8px, 4cqw, 14px);
+}
+
+/* Titles are optional: a continued group is introduced by the divider alone. */
+.registration-tier-section-rule:first-child {
+  margin-top: clamp(2px, 1.4cqw, 6px);
+}
+
+.registration-tier-section-divider {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(52px, 22cqw, 72px);
+  aspect-ratio: 90 / 21;
+  background-color: currentColor;
+  opacity: 0.75;
+  -webkit-mask: var(--registration-tier-divider) center / contain no-repeat;
+  mask: var(--registration-tier-divider) center / contain no-repeat;
 }
 
 .registration-tier-list {
@@ -1560,26 +1665,35 @@ body:has(.themed-home) header .text-brand-text {
 
 .registration-tier-item {
   display: grid;
-  grid-template-columns: clamp(12px, 5.8cqw, 20px) minmax(0, 1fr);
+  grid-template-columns: clamp(18px, 9.4cqw, 32px) minmax(0, 1fr);
   align-items: start;
   gap: clamp(4px, 2cqw, 8px);
-  font-family: var(--font-body);
-  font-size: clamp(0.62rem, 4cqw, 0.95rem);
-  line-height: 1.32;
+  font-family: var(--type-body-s-font-family, var(--font-body));
+  font-size: clamp(0.75rem, 4.2cqw, 0.95rem);
+  font-weight: var(--type-body-s-font-weight, 400);
+  line-height: 1.45;
 }
 
+/* Right-aligned so every item keeps the same text edge: a single diamond sits
+   next to the label and higher-level items grow the group leftwards. */
 .registration-tier-dots {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 2px;
-  padding-top: 0.38em;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(1px, 0.6cqw, 3px);
+  padding-top: 0.34em;
 }
 
+/* Diamond bullets from `price_info_diamond_bullet.svg`; the count still marks
+   the tier level (1 = core, 2 = sponsor extra, 3 = caretaker exclusive). */
 .registration-tier-dot {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: currentColor;
+  width: clamp(6px, 2.6cqw, 9px);
+  aspect-ratio: 9 / 8;
+  background-color: currentColor;
+  opacity: 0.85;
+  -webkit-mask: var(--registration-tier-bullet) center / contain no-repeat;
+  mask: var(--registration-tier-bullet) center / contain no-repeat;
 }
 
 .registration-tier-cta {
@@ -1593,7 +1707,10 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 .registration-tier-cta .themed-pill-label {
+  font-family: var(--type-body-s-semibold-font-family, var(--font-body));
   font-size: clamp(0.7rem, 6cqw, 1.25rem);
+  font-style: normal;
+  font-weight: var(--type-body-s-semibold-font-weight, 600);
 }
 
 /* ---- FAQ ----------------------------------------------------------------- */
@@ -1629,9 +1746,10 @@ body:has(.themed-home) header .text-brand-text {
   border-radius: 999px;
   background: var(--registration-faq);
   color: #4b3220;
-  font-family: var(--font-body);
-  font-size: clamp(0.68rem, 0.8vw, 0.82rem);
-  line-height: 1.2;
+  font-family: var(--type-heading-h4-font-family, var(--font-heading));
+  font-size: var(--type-body-s-semibold-font-size, 14px);
+  font-weight: var(--type-heading-h4-font-weight, 400);
+  line-height: var(--type-body-s-semibold-line-height, 1.2);
   text-align: left;
   box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
   cursor: pointer;
@@ -1675,9 +1793,10 @@ body:has(.themed-home) header .text-brand-text {
 .themed-accordion-panel {
   padding: 6px clamp(16px, 1.8vw, 24px) 2px;
   color: #5a4029;
-  font-family: var(--font-body);
-  font-size: clamp(0.66rem, 0.76vw, 0.8rem);
-  line-height: 1.5;
+  font-family: var(--type-body-s-font-family, var(--font-body));
+  font-size: var(--type-body-s-font-size, 14px);
+  font-weight: var(--type-body-s-font-weight, 400);
+  line-height: var(--type-body-s-line-height, 1.2);
 }
 
 .registration-faq-note {
@@ -1685,8 +1804,10 @@ body:has(.themed-home) header .text-brand-text {
   margin: clamp(14px, 1.8vw, 22px) auto 0;
   color: #4b3220;
   text-align: center;
-  font-family: var(--font-body);
-  font-size: clamp(0.62rem, 0.72vw, 0.76rem);
+  font-family: var(--type-caption-s-medium-font-family, var(--font-caption));
+  font-size: var(--type-caption-s-medium-font-size, 12px);
+  font-weight: var(--type-caption-s-medium-font-weight, 500);
+  line-height: var(--type-caption-s-medium-line-height, 1.2);
 }
 
 .registration-faq-note a {
@@ -1863,12 +1984,6 @@ body:has(.themed-home) header .text-brand-text {
     gap: 18px;
   }
 
-  /* The price is the key decision point on a phone — give it more weight. */
-  .registration-tier-price {
-    font-size: clamp(0.95rem, 5.4cqw, 1.15rem);
-    letter-spacing: 0.05em;
-  }
-
   .registration-flower {
     display: none;
   }
@@ -1912,13 +2027,20 @@ body:has(.themed-home) header .text-brand-text {
   }
 
   h2,
-  .h2,
-  h3,
-  .h3 {
+  .h2 {
     font-family: var(--font-heading);
     font-size: var(--type-heading-h3-font-size, 2.5rem);
     line-height: var(--type-heading-h3-line-height, 1.2);
     font-weight: var(--type-heading-h3-font-weight, 400);
+    color: var(--foreground);
+  }
+
+  h3,
+  .h3 {
+    font-family: var(--font-heading);
+    font-size: var(--type-heading-h4-font-size, 2rem);
+    line-height: var(--type-heading-h4-line-height, 1.2);
+    font-weight: var(--type-heading-h4-font-weight, 400);
     color: var(--foreground);
   }
 
@@ -1976,6 +2098,13 @@ body:has(.themed-home) header .text-brand-text {
   }
 
   .type-body-l {
+    font-family: var(--type-body-l-font-family, var(--font-body));
+    font-size: var(--type-body-l-font-size, 18px);
+    font-weight: var(--type-body-l-font-weight, 400);
+    line-height: var(--type-body-l-line-height, 1.2);
+  }
+
+  .type-body {
     font-family: var(--type-body-l-font-family, var(--font-body));
     font-size: var(--type-body-l-font-size, 18px);
     font-weight: var(--type-body-l-font-weight, 400);

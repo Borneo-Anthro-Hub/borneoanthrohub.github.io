@@ -22,13 +22,13 @@ const tiers: RegistrationTier[] = [
     name: "Wanderer",
     price: "RM 80.00",
     description:
-      "For those who want to experience the magic of the garden without the extra frills. Comes with all the essentials to make your visit memorable.",
+      "Every great adventure begins with a single step. Wander into the Tinyverse and discover the wonders hidden among the leaves.",
     card: "/2027_images/registration_page/tiers/1_wanderer/card.svg",
     icon: "/2027_images/registration_page/tiers/1_wanderer/icon.svg",
     formUrl: REGISTRATION_FORM_URL,
     sections: [
       {
-        title: "What's included",
+        title: "Obtainable Boons",
         items: [
           { label: "Poster & Conbook", level: 1 },
           { label: "Button Badge", level: 1 },
@@ -42,20 +42,19 @@ const tiers: RegistrationTier[] = [
     name: "Gardener",
     price: "RM 220.00",
     description:
-      "For those who wish to help the garden flourish. Filled with extras to make your experience even more magical.",
+      "Get your hands dirty and help the little wonders of the garden flourish. There’s always something new to discover when you venture a little deeper.",
     card: "/2027_images/registration_page/tiers/2_gardener/card.svg",
     icon: "/2027_images/registration_page/tiers/2_gardener/icon.svg",
     formUrl: REGISTRATION_FORM_URL,
     sections: [
       {
-        title: "Goodies for Supporters",
+        title: "Obtainable Boons",
         items: [
           { label: "Poster & Conbook", level: 1 },
           { label: "Button Badge", level: 1 },
         ],
       },
       {
-        title: "What's more?",
         items: [
           { label: "Lanyard (BAHpals S)", level: 2 },
           { label: "BAH 2027 T-shirt", level: 2 },
@@ -69,13 +68,13 @@ const tiers: RegistrationTier[] = [
     name: "Caretaker",
     price: "RM 350.00",
     description:
-      "Everything a wanderer needs, plus access to all the hidden wonders of the garden. Our most magical tier for the ultimate fans.",
+      "Every little wonder needs someone to look after it. Embark on a deeper adventure and help keep the magic of Tinyverse Garden alive.",
     card: "/2027_images/registration_page/tiers/3_caretaker/card.svg",
     icon: "/2027_images/registration_page/tiers/3_caretaker/icon.svg",
     formUrl: REGISTRATION_FORM_URL,
     sections: [
       {
-        title: "Goodies for Supporters",
+        title: "Obtainable Boons",
         items: [
           { label: "Poster & Conbook", level: 1 },
           { label: "Button Badge", level: 1 },
@@ -85,7 +84,6 @@ const tiers: RegistrationTier[] = [
         ],
       },
       {
-        title: "What's more?",
         items: [
           { label: "BAH 2027 Exclusive Apron", level: 3 },
           { label: "BAH 2027 Limited Edition Acrylic Standee Box", level: 3 },

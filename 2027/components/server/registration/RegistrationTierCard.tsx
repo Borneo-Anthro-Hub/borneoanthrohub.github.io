@@ -10,9 +10,14 @@ export interface RegistrationTierItem {
 }
 
 export interface RegistrationTierSection {
-  title: string;
+  /** Omit for a continued group — the divider alone starts the next block. */
+  title?: string;
   items: RegistrationTierItem[];
 }
+
+const CARD_ASSETS = "/2027_images/registration_page/card";
+const SECTION_DIVIDER = `${CARD_ASSETS}/goodies_info_divider.svg`;
+const LIST_BULLET = `${CARD_ASSETS}/price_info_diamond_bullet.svg`;
 
 export interface RegistrationTier {
   id: "wanderer" | "gardener" | "caretaker";
@@ -34,9 +39,13 @@ export default function RegistrationTierCard({
     <article
       className="registration-tier"
       data-tier={tier.id}
-      style={{
-        backgroundImage: `url("${withBasePath(tier.card)}")`,
-      }}
+      style={
+        {
+          backgroundImage: `url("${withBasePath(tier.card)}")`,
+          "--registration-tier-divider": `url("${withBasePath(SECTION_DIVIDER)}")`,
+          "--registration-tier-bullet": `url("${withBasePath(LIST_BULLET)}")`,
+        } as React.CSSProperties
+      }
     >
       <div className="registration-tier-content">
         <h3 className="registration-tier-name">{tier.name}</h3>
@@ -52,9 +61,18 @@ export default function RegistrationTierCard({
 
         <p className="registration-tier-description">{tier.description}</p>
 
-        {tier.sections.map((section) => (
-          <div className="registration-tier-section" key={section.title}>
-            <p className="registration-tier-section-title">{section.title}</p>
+        {tier.sections.map((section, sectionIndex) => (
+          <div className="registration-tier-section" key={sectionIndex}>
+            {section.title ? (
+              <p className="registration-tier-section-title">{section.title}</p>
+            ) : (
+              <div
+                className="registration-tier-section-rule"
+                aria-hidden="true"
+              >
+                <span className="registration-tier-section-divider" />
+              </div>
+            )}
             <ul className="registration-tier-list">
               {section.items.map((item) => (
                 <li className="registration-tier-item" key={item.label}>
