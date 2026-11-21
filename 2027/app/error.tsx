@@ -29,7 +29,7 @@ export default function ErrorPage({ error, unstable_retry }: ErrorPageProps) {
       </p>
       <button
         onClick={() => unstable_retry()}
-        className="text-brand-accent text-sm font-medium hover:underline"
+        className="text-brand-accent font-display text-sm font-medium hover:underline"
       >
         Try again
       </button>

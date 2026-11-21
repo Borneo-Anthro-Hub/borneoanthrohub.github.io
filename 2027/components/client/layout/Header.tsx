@@ -220,7 +220,7 @@ export default function Header() {
           {isLive("ticketRegistration") && (
             <Link
               href="/tickets"
-              className="font-caption text-brand-surface bg-brand-text hover:bg-brand-subtle hidden items-center gap-2 rounded-full py-1.5 pr-3 pl-4 text-sm font-semibold shadow-sm transition-colors lg:inline-flex"
+              className="font-display text-brand-surface bg-brand-text hover:bg-brand-subtle hidden items-center gap-2 rounded-full py-1.5 pr-3 pl-4 text-sm font-bold shadow-sm transition-colors lg:inline-flex"
             >
               <PawPrint aria-hidden="true" className="size-4" />
               Register

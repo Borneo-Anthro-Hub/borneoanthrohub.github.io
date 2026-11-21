@@ -112,7 +112,7 @@ export default function TicketsPage() {
         />
 
         <RegistrationBoard>
-          <p className="registration-board-invited">You have been invited!</p>
+          <h3 className="registration-board-invited">You have been invited!</h3>
           <RegistrationUnderline />
           <p>
             Join Sean &amp; Aminah in their Tinyverse Garden Adventure! Whether

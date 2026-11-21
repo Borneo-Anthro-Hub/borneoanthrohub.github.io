@@ -51,7 +51,7 @@ export default function ThemedPageSection({
               </span>
             )}
             {title && (
-              <h2 className="font-heading text-foreground text-2xl leading-tight md:text-3xl">
+              <h2 className="font-display text-foreground text-2xl leading-tight font-bold md:text-3xl">
                 {title}
               </h2>
             )}

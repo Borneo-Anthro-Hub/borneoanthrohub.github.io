@@ -52,7 +52,7 @@ export default function ThemedStepList({
           <li key={step.title} className="flex gap-3">
             <StepBadge index={index} />
             <div className="space-y-1">
-              <h3 className="font-heading text-card-foreground text-base leading-tight">
+              <h3 className="font-display text-card-foreground text-base leading-tight">
                 {step.title}
               </h3>
               <p className="text-card-foreground/80 font-body text-sm leading-relaxed">
@@ -85,7 +85,7 @@ export default function ThemedStepList({
             <div className="flex flex-1 flex-col gap-2 p-5">
               <div className="flex items-center gap-2">
                 <StepBadge index={index} />
-                <h3 className="font-heading text-card-foreground text-base leading-tight">
+                <h3 className="font-display text-card-foreground text-base leading-tight">
                   {step.title}
                 </h3>
               </div>

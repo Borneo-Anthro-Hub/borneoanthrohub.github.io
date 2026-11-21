@@ -30,7 +30,7 @@ export default function GlobalError({
         </p>
         <button
           onClick={() => unstable_retry()}
-          className="bg-card text-card-foreground border-border hover:bg-muted rounded border px-4 py-2 text-sm font-medium shadow-sm transition"
+          className="bg-card text-card-foreground border-border hover:bg-muted font-display rounded border px-4 py-2 text-sm font-medium shadow-sm transition"
         >
           Try again
         </button>

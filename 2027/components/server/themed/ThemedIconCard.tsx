@@ -39,7 +39,7 @@ export default function ThemedIconCard({
             />
           </span>
         )}
-        <h3 className="font-heading text-card-foreground text-lg leading-tight">
+        <h3 className="font-display text-card-foreground text-lg leading-tight">
           {title}
         </h3>
       </div>

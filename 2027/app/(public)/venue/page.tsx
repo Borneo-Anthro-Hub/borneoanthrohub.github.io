@@ -117,7 +117,7 @@ export default function VenuePage() {
         {/* WHERE TO NEXT â€” link into the BAHjet + travel guides */}
         <div className="px-4 pb-14 md:px-8 md:pb-20">
           <ThemedCard className="bg-brand-surface text-brand-text mx-auto w-full max-w-6xl rounded-3xl border-none px-6 py-8 shadow-none md:px-10 md:py-10">
-            <h2 className="font-heading text-brand-text text-xl leading-tight md:text-2xl">
+            <h2 className="font-display text-brand-text text-xl leading-tight font-bold md:text-2xl">
               {venuePage.nearbyGuidePrompt.title}
             </h2>
             <p className="font-body mt-3 max-w-3xl text-sm leading-relaxed opacity-90 md:text-base">

@@ -33,25 +33,50 @@
 - **Alias vs relative import policy:** All internal imports use the `@/*` path alias (maps to project root per `tsconfig.json` `paths`). No relative imports (`../../`) are used. Examples: `import Header from "@/components/layout/Header"`, `import { getActiveTheme } from "@/lib/theme/themes"`.
 - **Public exports/barrel policy:** No barrel (`index.ts`) files found. Components and lib modules are imported directly from their defining files.
 
-### 4) Error and Logging Conventions
+### 4) Typography System
+
+- **Source of truth:** `web_client/2027/lib/theme/typography.json` — font families (+ loaded weights + Google Fonts stylesheet URL), the shared `lineHeight` (120%), the default `color` (General Black) and every semantic variant. `lib/theme/themes.ts` builds the typed `TypographyTokens` and the theme's font stacks from it, and `app/globals.css` mirrors the same values as `:root` fallbacks for pre-hydration rendering.
+- **Families:** Oleo Script 400/700 (hero), Margarine 400 (headings), Cause 400/600 (body), Poppins 500/700 (caption). Never substitute a similar-looking family — add the real face to `typography.json` instead.
+- **Variants** (`--type-<variant>-{font-family,font-size,font-weight,line-height}`):
+
+  | Variant        | Class                    | Family    | Size | Weight |
+  | -------------- | ------------------------ | --------- | ---- | ------ |
+  | Hero H1        | `.type-hero-h1`          | Oleo      | 56px | 700    |
+  | Hero H3        | `.type-hero-h3`          | Oleo      | 40px | 700    |
+  | Hero H4        | `.type-hero-h4`          | Oleo      | 32px | 400    |
+  | Heading H3     | `.type-heading-h3`       | Margarine | 40px | 400    |
+  | Heading H4     | `.type-heading-h4`       | Margarine | 32px | 400    |
+  | Body L Semi    | `.type-body-l-semibold`  | Cause     | 18px | 600    |
+  | Body L         | `.type-body-l`           | Cause     | 18px | 400    |
+  | Body S Semi    | `.type-body-s-semibold`  | Cause     | 14px | 600    |
+  | Body S         | `.type-body-s`           | Cause     | 14px | 400    |
+  | Caption S Med  | `.type-caption-s-medium` | Poppins   | 12px | 500    |
+  | Caption S Bold | `.type-caption-s-bold`   | Poppins   | 12px | 700    |
+
+- **Usage:** apply `.type-*` (or the `font-display` / `font-heading` / `font-body` / `font-caption` Tailwind utilities for family only) instead of writing `font-family`, `font-size` or `font-weight` in components. Variants are visual only — pick the semantic element (`h1`–`h6`, `p`, `figcaption`, …) independently of the variant. Bare `h1`–`h4` already map to the hero/heading tokens.
+- **Titles:** the design uses the hero face for headings — `h1` (page title) → Hero H1, `h2` (section banner/heading) → Hero H3 (Oleo 700), `h3`/`h4` (card or step title) → Hero H4 (Oleo 400). Margarine (Heading H3/H4) is used for sub-headers: the home tagline, the registration invitation board headings ("You have been invited!", "Hops to see you there!") and the Registration FAQ accordion questions (Margarine 24px) — not for section or card titles. Keep each area's responsive `clamp()`/`text-*` size so layouts do not shift; the token supplies family, weight, line height and color.
+- **Buttons:** every interactive label (pill CTAs, mini/card links, accordion triggers, action links, form and error buttons) uses the hero face as well — `font-display` on Tailwind components, or `var(--type-hero-h3-font-family)` / `var(--type-hero-h3-font-weight)` in plain CSS. Keep the control's own size, casing and padding.
+- **Color:** tokens default to `--type-color` (General Black, `#000000` for the 2027 theme). Override per element with a Tailwind `text-*` utility on inverted surfaces (footer, artwork banners) — utilities win over the `.type-*` components layer.
+
+### 5) Error and Logging Conventions
 
 - **Error strategy by layer:** Client components use `throw new Error("message")` for invariant violations (e.g., `useTheme` throws if used outside `ThemeProvider`). The email capture currently has only lightweight local validation and no backend submission yet. Error boundaries are in place: `app/error.tsx` (segment-level), `app/global-error.tsx` (root layout), `app/not-found.tsx` (custom 404), plus route-group-level `error.tsx` files in `(public)/`, `(auth)/`, and `(attendee)/`.
 - **Logging style and required context fields:** No logging library is configured. `console` is not used in production code. Dev-only component (`DevThemeSwitcher`) is gated by `process.env.NODE_ENV === "development"`.
 - **Sensitive-data redaction rules:** No sensitive data handling exists yet — no API calls, no auth tokens, no forms submitting to a backend.
 
-### 5) Testing Conventions
+### 6) Testing Conventions
 
 - **Test file naming/location rule:** No automated test suite is maintained right now.
 - **Mocking strategy norm:** Not applicable until automated tests are reintroduced.
 - **Coverage expectation:** No coverage collection is configured.
 
-### 6) Memoization and Performance
+### 7) Memoization and Performance
 
 - **Policy:** Do **not** use `useCallback`, `useMemo`, or `React.memo`. The React Compiler (`babel-plugin-react-compiler` 1.0.0, enabled via `next.config.ts` `reactCompiler: true`) automatically memoizes components and hooks at build time with greater precision than manual memoization.
 - **Escape hatch:** If you genuinely need precise control over memoization (e.g., stabilizing a dependency for `useEffect`), `useMemo`/`useCallback` may still be used — but this should be the exception, not the rule.
 - **Existing code:** Manual memoization was removed from `RegisterForm.tsx`, `Header.tsx`, and `SiteStateProvider.tsx`. If you encounter pre-compiler code in other files, remove it.
 
-### 7) Evidence
+### 8) Evidence
 
 - `web_client/2027/.prettierrc.json`
 - `web_client/2027/eslint.config.mjs`
@@ -59,4 +84,5 @@
 - `web_client/2027/components/ThemeProvider.tsx` (error pattern)
 - `web_client/2027/components/layout/Header.tsx` (naming conventions)
 - `web_client/2027/lib/theme/themes.ts` (type/function naming)
+- `web_client/2027/lib/theme/typography.json` (typography source of truth)
 - `web_client/2027/app/globals.css` (CSS custom property naming)

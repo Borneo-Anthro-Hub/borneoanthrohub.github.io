@@ -51,6 +51,8 @@
   --font-heading: "Margarine", system-ui, sans-serif;
   --font-body: "Cause", system-ui, sans-serif;
   --font-caption: "Poppins", system-ui, sans-serif;
+  /* General Black - the default color for every typography token. */
+  --type-color: #000000;
   --type-hero-h1-font-family: var(--font-display);
   --type-hero-h1-font-size: 56px;
   --type-hero-h1-font-weight: 700;
@@ -620,8 +622,8 @@ body:has(.themed-home) header .text-brand-text {
   border-radius: 999px;
   background: var(--themed-forest);
   color: var(--themed-cream);
-  font-family: var(--font-heading);
-  font-weight: 400;
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
+  font-weight: var(--type-hero-h3-font-weight, 700);
   line-height: 1;
   text-decoration: none;
   box-shadow: 0 3px 5px rgb(45 35 24 / 32%);
@@ -640,10 +642,9 @@ body:has(.themed-home) header .text-brand-text {
 
 .themed-pill-label {
   flex: 1 1 auto;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
   font-size: clamp(0.95rem, 1.3vw, 1.55rem);
-  font-style: italic;
-  font-weight: 700;
+  font-weight: var(--type-hero-h3-font-weight, 700);
   letter-spacing: 0.01em;
   text-align: center;
 }
@@ -719,12 +720,10 @@ body:has(.themed-home) header .text-brand-text {
 .themed-banner h2 {
   margin: 0;
   padding: 0 96px;
-  /* Same bold italic serif as the pill labels in the reference artwork. */
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
   font-size: clamp(1.3rem, 2.3vw, 2.8rem);
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1.1;
+  font-weight: var(--type-hero-h3-font-weight, 700);
+  line-height: var(--type-hero-h3-line-height, 1.2);
   color: #123a12;
 }
 
@@ -1417,8 +1416,8 @@ body:has(.themed-home) header .text-brand-text {
   width: min(100% - 32px, 1040px);
 }
 
-/* Section titles on this page are hero type (Oleo Script), while the home
-   landing keeps the artwork-matching serif banner. */
+/* Both banners on this page use hero type (Oleo Script); the board headings
+   and the FAQ accordion keep the heading (Margarine) face. */
 .registration-banner h2 {
   font-family: var(--type-hero-h3-font-family, var(--font-display));
   font-style: normal;
@@ -1492,10 +1491,11 @@ body:has(.themed-home) header .text-brand-text {
 
 .registration-board-content .registration-board-invited {
   color: #3d2a1a;
-  font-family: var(--font-heading);
+  text-align: center;
+  font-family: var(--type-heading-h4-font-family, var(--font-heading));
   font-size: clamp(0.95rem, 1.25vw, 1.25rem);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--type-heading-h4-font-weight, 400);
   line-height: 1.2;
 }
 
@@ -1533,9 +1533,9 @@ body:has(.themed-home) header .text-brand-text {
   margin: clamp(8px, 1.2vw, 16px) 0 clamp(16px, 2vw, 26px);
   color: #3d2a1a;
   text-align: center;
-  font-family: var(--font-heading);
+  font-family: var(--type-heading-h3-font-family, var(--font-heading));
   font-size: clamp(1rem, 1.35vw, 1.3rem);
-  font-weight: 400;
+  font-weight: var(--type-heading-h3-font-weight, 400);
   line-height: 1.2;
 }
 
@@ -1867,8 +1867,8 @@ body:has(.themed-home) header .text-brand-text {
   margin-block: clamp(-5px, -1.4cqw, -3px);
 }
 
-/* Shares the serif label of the other pills; the size tracks the card so the
-   full title still fits on one line without breaking out of the pill. */
+/* Shares the body-semibold label of the other pills; the size tracks the card
+   so the full title still fits on one line without breaking out of the pill. */
 .registration-tier-cta .themed-pill-label {
   flex: 0 0 auto;
   font-size: clamp(0.78rem, 5.6cqw, 1.1rem);
@@ -1901,6 +1901,16 @@ body:has(.themed-home) header .text-brand-text {
   margin: clamp(18px, 2.4vw, 30px) auto 0;
 }
 
+/*
+ * Base UI renders each accordion header as an <h3>. The trigger owns the
+ * typography, so the wrapper must not re-impose the global heading styles
+ * (family, size, weight) on the card header.
+ */
+.themed-accordion-item > :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  font: inherit;
+}
+
 .registration-faq-trigger,
 .themed-accordion-trigger {
   display: flex;
@@ -1908,17 +1918,18 @@ body:has(.themed-home) header .text-brand-text {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: clamp(7px, 0.8vw, 10px) clamp(8px, 0.8vw, 11px)
-    clamp(7px, 0.8vw, 10px) clamp(14px, 1.4vw, 20px);
+  padding: clamp(10px, 1vw, 14px) clamp(12px, 1vw, 16px) clamp(10px, 1vw, 14px)
+    clamp(16px, 1.4vw, 22px);
   border: 2px solid #d8b58c;
-  border-radius: 999px;
+  border-radius: clamp(14px, 1.4vw, 20px);
   background: var(--registration-faq);
   color: #4b3220;
-  font-family: var(--type-heading-h4-font-family, var(--font-heading));
-  font-size: var(--type-body-s-semibold-font-size, 14px);
-  font-weight: var(--type-heading-h4-font-weight, 400);
-  line-height: var(--type-body-s-semibold-line-height, 1.2);
+  font-family: var(--type-heading-h3-font-family, var(--font-heading));
+  font-size: clamp(1.125rem, 1.7vw, 1.5rem);
+  font-weight: var(--type-heading-h3-font-weight, 400);
+  line-height: var(--type-heading-h3-line-height, 1.2);
   text-align: left;
+  text-wrap: pretty;
   box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
   cursor: pointer;
   transition:
@@ -1964,7 +1975,7 @@ body:has(.themed-home) header .text-brand-text {
   font-family: var(--type-body-s-font-family, var(--font-body));
   font-size: var(--type-body-s-font-size, 14px);
   font-weight: var(--type-body-s-font-weight, 400);
-  line-height: var(--type-body-s-line-height, 1.2);
+  line-height: 1.5;
 }
 
 .registration-faq-note {
@@ -2253,11 +2264,10 @@ body:has(.themed-home) header .text-brand-text {
   margin: 0 auto;
   color: #4a2f1c;
   text-align: center;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--type-body-l-semibold-font-family, var(--font-body));
   font-size: clamp(0.98rem, 4vw, 1.3rem);
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1.35;
+  font-weight: var(--type-body-l-semibold-font-weight, 600);
+  line-height: var(--type-body-l-semibold-line-height, 1.2);
 }
 
 .about-copy {
@@ -2348,8 +2358,9 @@ body:has(.themed-home) header .text-brand-text {
 .about-snapshot-caption {
   padding: clamp(7px, 1vw, 11px) clamp(6px, 1vw, 10px) clamp(1px, 0.2vw, 3px);
   color: #7b5a3a;
-  font-family: var(--font-heading);
+  font-family: var(--type-caption-s-medium-font-family, var(--font-caption));
   font-size: clamp(0.74rem, 2.4vw, 0.86rem);
+  font-weight: var(--type-caption-s-medium-font-weight, 500);
   letter-spacing: 0.01em;
   line-height: 1.2;
   text-align: center;
@@ -2412,9 +2423,9 @@ body:has(.themed-home) header .text-brand-text {
 .about-contact-title {
   margin: 0;
   color: var(--about-cream);
-  font-family: var(--font-heading);
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
   font-size: clamp(1.1rem, 4.6vw, 1.35rem);
-  font-weight: 400;
+  font-weight: var(--type-hero-h3-font-weight, 700);
   line-height: 1.2;
 }
 
@@ -2779,13 +2790,18 @@ a.about-contact-row:hover {
     font-family: var(--font-body);
     line-height: 1.2;
   }
+
+  body {
+    color: var(--type-color, var(--foreground));
+  }
+
   h1,
   .h1 {
     font-family: var(--font-display);
     font-size: var(--type-hero-h1-font-size, 3.5rem);
     line-height: var(--type-hero-h1-line-height, 1.2);
     font-weight: var(--type-hero-h1-font-weight, 700);
-    color: var(--foreground);
+    color: var(--type-color, var(--foreground));
   }
 
   h2,
@@ -2794,7 +2810,7 @@ a.about-contact-row:hover {
     font-size: var(--type-heading-h3-font-size, 2.5rem);
     line-height: var(--type-heading-h3-line-height, 1.2);
     font-weight: var(--type-heading-h3-font-weight, 400);
-    color: var(--foreground);
+    color: var(--type-color, var(--foreground));
   }
 
   h3,
@@ -2803,7 +2819,7 @@ a.about-contact-row:hover {
     font-size: var(--type-heading-h4-font-size, 2rem);
     line-height: var(--type-heading-h4-line-height, 1.2);
     font-weight: var(--type-heading-h4-font-weight, 400);
-    color: var(--foreground);
+    color: var(--type-color, var(--foreground));
   }
 
   h4,
@@ -2812,7 +2828,7 @@ a.about-contact-row:hover {
     font-size: var(--type-heading-h4-font-size, 2rem);
     line-height: var(--type-heading-h4-line-height, 1.2);
     font-weight: var(--type-heading-h4-font-weight, 400);
-    color: var(--foreground);
+    color: var(--type-color, var(--foreground));
   }
 }
 
@@ -2822,6 +2838,7 @@ a.about-contact-row:hover {
     font-size: var(--type-hero-h1-font-size, 56px);
     font-weight: var(--type-hero-h1-font-weight, 700);
     line-height: var(--type-hero-h1-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-hero-h3 {
@@ -2829,6 +2846,7 @@ a.about-contact-row:hover {
     font-size: var(--type-hero-h3-font-size, 40px);
     font-weight: var(--type-hero-h3-font-weight, 700);
     line-height: var(--type-hero-h3-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-hero-h4 {
@@ -2836,6 +2854,7 @@ a.about-contact-row:hover {
     font-size: var(--type-hero-h4-font-size, 32px);
     font-weight: var(--type-hero-h4-font-weight, 400);
     line-height: var(--type-hero-h4-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-heading-h3 {
@@ -2843,6 +2862,7 @@ a.about-contact-row:hover {
     font-size: var(--type-heading-h3-font-size, 40px);
     font-weight: var(--type-heading-h3-font-weight, 400);
     line-height: var(--type-heading-h3-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-heading-h4 {
@@ -2850,6 +2870,7 @@ a.about-contact-row:hover {
     font-size: var(--type-heading-h4-font-size, 32px);
     font-weight: var(--type-heading-h4-font-weight, 400);
     line-height: var(--type-heading-h4-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body-l-semibold {
@@ -2857,6 +2878,7 @@ a.about-contact-row:hover {
     font-size: var(--type-body-l-semibold-font-size, 18px);
     font-weight: var(--type-body-l-semibold-font-weight, 600);
     line-height: var(--type-body-l-semibold-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body-l {
@@ -2864,6 +2886,7 @@ a.about-contact-row:hover {
     font-size: var(--type-body-l-font-size, 18px);
     font-weight: var(--type-body-l-font-weight, 400);
     line-height: var(--type-body-l-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body {
@@ -2871,6 +2894,7 @@ a.about-contact-row:hover {
     font-size: var(--type-body-l-font-size, 18px);
     font-weight: var(--type-body-l-font-weight, 400);
     line-height: var(--type-body-l-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body-s-semibold {
@@ -2878,6 +2902,7 @@ a.about-contact-row:hover {
     font-size: var(--type-body-s-semibold-font-size, 14px);
     font-weight: var(--type-body-s-semibold-font-weight, 600);
     line-height: var(--type-body-s-semibold-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body-s {
@@ -2885,6 +2910,7 @@ a.about-contact-row:hover {
     font-size: var(--type-body-s-font-size, 14px);
     font-weight: var(--type-body-s-font-weight, 400);
     line-height: var(--type-body-s-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-caption-s-medium {
@@ -2892,6 +2918,7 @@ a.about-contact-row:hover {
     font-size: var(--type-caption-s-medium-font-size, 12px);
     font-weight: var(--type-caption-s-medium-font-weight, 500);
     line-height: var(--type-caption-s-medium-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-caption-s-bold {
@@ -2899,6 +2926,7 @@ a.about-contact-row:hover {
     font-size: var(--type-caption-s-bold-font-size, 12px);
     font-weight: var(--type-caption-s-bold-font-weight, 700);
     line-height: var(--type-caption-s-bold-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 }
 
@@ -3102,9 +3130,9 @@ a {
   border: 2px solid var(--brand-surface);
   border-radius: 9999px;
   color: var(--brand-surface);
-  font-family: var(--font-caption);
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--type-hero-h3-font-weight, 700);
   text-decoration: none;
   transition:
     background-color 0.2s ease,

@@ -261,7 +261,7 @@ function DormantHome() {
             setAnimationOverride(nextPreference);
           }
         }}
-        className="bg-background/55 text-foreground hover:bg-background/75 fixed right-4 bottom-4 z-[60] inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-2 text-sm font-medium shadow-lg shadow-black/10 backdrop-blur-md transition-colors"
+        className="bg-background/55 text-foreground hover:bg-background/75 font-display fixed right-4 bottom-4 z-[60] inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-2 text-sm font-medium shadow-lg shadow-black/10 backdrop-blur-md transition-colors"
       >
         {animationsEnabled ? (
           <Pause aria-hidden="true" className="size-4" />
@@ -661,9 +661,9 @@ function ComingSoonHome() {
 
           {/* Teaser message */}
           <MessageCard className="max-w-lg p-6">
-            <p className="font-heading text-foreground mb-2 text-lg">
+            <h3 className="font-display text-foreground mb-2 text-lg">
               Something&rsquo;s Coming
-            </p>
+            </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               The theme has been chosen and the team is hard at work. Full
               convention details — venue, guests, activities, and travel guides

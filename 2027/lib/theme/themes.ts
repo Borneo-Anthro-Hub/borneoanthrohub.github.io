@@ -17,6 +17,7 @@
 // =============================================================================
 
 import { withBasePath } from "@/lib/utils";
+import typographyConfig from "./typography.json";
 
 // -----------------------------------------------------------------------------
 // Types
@@ -85,19 +86,26 @@ export type TypographyTokenName =
 
 export type TypographyTokens = Record<TypographyTokenName, TypographyStyle>;
 
-const defaultTypography: TypographyTokens = {
-  heroH1: { font: "display", size: 56, weight: 700, lineHeight: 1.2 },
-  heroH3: { font: "display", size: 40, weight: 700, lineHeight: 1.2 },
-  heroH4: { font: "display", size: 32, weight: 400, lineHeight: 1.2 },
-  headingH3: { font: "heading", size: 40, weight: 400, lineHeight: 1.2 },
-  headingH4: { font: "heading", size: 32, weight: 400, lineHeight: 1.2 },
-  bodyLSemibold: { font: "body", size: 18, weight: 600, lineHeight: 1.2 },
-  bodyL: { font: "body", size: 18, weight: 400, lineHeight: 1.2 },
-  bodySSemibold: { font: "body", size: 14, weight: 600, lineHeight: 1.2 },
-  bodyS: { font: "body", size: 14, weight: 400, lineHeight: 1.2 },
-  captionSMedium: { font: "caption", size: 12, weight: 500, lineHeight: 1.2 },
-  captionSBold: { font: "caption", size: 12, weight: 700, lineHeight: 1.2 },
-};
+/**
+ * Builds the type scale from `typography.json`. Line height is not repeated per
+ * variant on purpose: the design system requires 120% everywhere, so a single
+ * `lineHeight` in the JSON applies to every token.
+ */
+function buildTypographyTokens(): TypographyTokens {
+  return Object.fromEntries(
+    Object.entries(typographyConfig.variants).map(([name, variant]) => [
+      name,
+      {
+        font: variant.family as TypographyFontRole,
+        size: variant.size,
+        weight: variant.weight as TypographyStyle["weight"],
+        lineHeight: typographyConfig.lineHeight,
+      },
+    ]),
+  ) as TypographyTokens;
+}
+
+const defaultTypography: TypographyTokens = buildTypographyTokens();
 
 export interface Theme {
   label: string;
@@ -113,6 +121,11 @@ export interface Theme {
   captionFont?: string;
   /** Named type styles; sizes are in px and line heights are unitless. */
   typography?: TypographyTokens;
+  /**
+   * Default color for every typography token (the 2027 guide's "General
+   * Black"). Falls back to `semantic.foreground` when omitted.
+   */
+  typographyColor?: string;
   /** Optional repeating page background configured for the active theme. */
   pageBackground?: {
     image: string;
@@ -178,36 +191,19 @@ export const themes = {
 
   "2027": {
     label: "2027",
-    fontUrl:
-      "https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Margarine&family=Cause:wght@400;600&family=Poppins:wght@500;700&display=swap",
-    font: "'Cause', system-ui, sans-serif",
-    displayFont: "'Oleo Script', cursive",
-    headingFont: "'Margarine', system-ui, sans-serif",
-    bodyFont: "'Cause', system-ui, sans-serif",
-    captionFont: "'Poppins', system-ui, sans-serif",
+    fontUrl: typographyConfig.fontUrl,
+    font: typographyConfig.families.body.stack,
+    displayFont: typographyConfig.families.display.stack,
+    headingFont: typographyConfig.families.heading.stack,
+    bodyFont: typographyConfig.families.body.stack,
+    captionFont: typographyConfig.families.caption.stack,
+    typographyColor: typographyConfig.color,
     pageHeroArt: "/2027_images/landscape_main_art_airashi/background_art.webp",
     pageBackground: {
       image: "/2027_images/repeat_background.png",
       size: "3000px auto",
     },
-    typography: {
-      heroH1: { font: "display", size: 56, weight: 700, lineHeight: 1.2 },
-      heroH3: { font: "display", size: 40, weight: 700, lineHeight: 1.2 },
-      heroH4: { font: "display", size: 32, weight: 400, lineHeight: 1.2 },
-      headingH3: { font: "heading", size: 40, weight: 400, lineHeight: 1.2 },
-      headingH4: { font: "heading", size: 32, weight: 400, lineHeight: 1.2 },
-      bodyLSemibold: { font: "body", size: 18, weight: 600, lineHeight: 1.2 },
-      bodyL: { font: "body", size: 18, weight: 400, lineHeight: 1.2 },
-      bodySSemibold: { font: "body", size: 14, weight: 600, lineHeight: 1.2 },
-      bodyS: { font: "body", size: 14, weight: 400, lineHeight: 1.2 },
-      captionSMedium: {
-        font: "caption",
-        size: 12,
-        weight: 500,
-        lineHeight: 1.2,
-      },
-      captionSBold: { font: "caption", size: 12, weight: 700, lineHeight: 1.2 },
-    },
+    typography: defaultTypography,
     // BAH 2027 palette (all 500 / Main) + derived shades for contrast
     // Design: dark green header/footer, pale cream content area, orange accents
     brand: {
@@ -378,6 +374,7 @@ export function themeToCssVars(theme: Theme): Record<string, string> {
     "--font-heading": theme.headingFont ?? theme.font,
     "--font-body": theme.bodyFont ?? theme.font,
     "--font-caption": theme.captionFont ?? theme.font,
+    "--type-color": theme.typographyColor ?? theme.semantic.foreground,
     ...typographyVars,
   };
 }

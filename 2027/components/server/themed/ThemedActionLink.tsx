@@ -24,7 +24,7 @@ export default function ThemedActionLink({
   children,
 }: ThemedActionLinkProps) {
   const classes = cn(
-    "font-caption inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold tracking-wide uppercase transition-[opacity,transform] hover:-translate-y-px hover:opacity-90",
+    "font-display inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold tracking-wide uppercase transition-[opacity,transform] hover:-translate-y-px hover:opacity-90",
     tone === "inverse"
       ? "bg-brand-text text-brand-surface"
       : "bg-primary text-primary-foreground",

@@ -1,0 +1,40 @@
+{
+  "fontUrl": "https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Margarine&family=Cause:wght@400;600&family=Poppins:wght@500;700&display=swap",
+  "lineHeight": 1.2,
+  "color": "#000000",
+  "families": {
+    "display": {
+      "name": "Oleo Script",
+      "stack": "'Oleo Script', cursive",
+      "weights": [400, 700]
+    },
+    "heading": {
+      "name": "Margarine",
+      "stack": "'Margarine', system-ui, sans-serif",
+      "weights": [400]
+    },
+    "body": {
+      "name": "Cause",
+      "stack": "'Cause', system-ui, sans-serif",
+      "weights": [400, 600]
+    },
+    "caption": {
+      "name": "Poppins",
+      "stack": "'Poppins', system-ui, sans-serif",
+      "weights": [500, 700]
+    }
+  },
+  "variants": {
+    "heroH1": { "family": "display", "size": 56, "weight": 700 },
+    "heroH3": { "family": "display", "size": 40, "weight": 700 },
+    "heroH4": { "family": "display", "size": 32, "weight": 400 },
+    "headingH3": { "family": "heading", "size": 40, "weight": 400 },
+    "headingH4": { "family": "heading", "size": 32, "weight": 400 },
+    "bodyLSemibold": { "family": "body", "size": 18, "weight": 600 },
+    "bodyL": { "family": "body", "size": 18, "weight": 400 },
+    "bodySSemibold": { "family": "body", "size": 14, "weight": 600 },
+    "bodyS": { "family": "body", "size": 14, "weight": 400 },
+    "captionSMedium": { "family": "caption", "size": 12, "weight": 500 },
+    "captionSBold": { "family": "caption", "size": 12, "weight": 700 }
+  }
+}

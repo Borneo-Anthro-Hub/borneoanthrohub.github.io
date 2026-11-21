@@ -73,7 +73,7 @@ export default function VolunteerPage() {
                   <p className="font-caption text-xs font-bold tracking-[0.3em] uppercase opacity-80">
                     {clan.role}
                   </p>
-                  <h3 className="font-heading text-brand-text text-xl leading-tight">
+                  <h3 className="font-display text-brand-text text-xl leading-tight">
                     {clan.name}
                   </h3>
                 </div>
@@ -107,7 +107,7 @@ export default function VolunteerPage() {
                 </p>
 
                 <div className="mt-auto pt-4">
-                  <span className="border-card-foreground/20 text-card-foreground/75 font-caption inline-flex rounded-full border px-4 py-2 text-xs font-bold tracking-wide uppercase">
+                  <span className="border-card-foreground/20 text-card-foreground/75 font-display inline-flex rounded-full border px-4 py-2 text-xs font-bold tracking-wide uppercase">
                     {clan.status}
                   </span>
                 </div>
