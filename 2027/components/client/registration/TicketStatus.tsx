@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getApps, initializeApp } from "firebase/app";
 import { doc, getFirestore, onSnapshot } from "firebase/firestore";
-import { ChevronRight } from "lucide-react";
+import { Play } from "lucide-react";
 import ThemedPillLink from "@/components/server/themed/ThemedPillLink";
 import type { RegistrationTier } from "@/components/server/registration/RegistrationTierCard";
 
@@ -294,7 +294,7 @@ export function RegistrationTierAction({
       label="Accept this Invitation"
       ariaLabel={`Register for the ${name} tier (${price})`}
       className="registration-tier-cta"
-      tail={<ChevronRight aria-hidden="true" />}
+      tail={<Play aria-hidden="true" fill="currentColor" strokeWidth={0} />}
     />
   );
 }

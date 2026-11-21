@@ -11,6 +11,8 @@ export interface AboutArtwork {
   alt: string;
   width: number;
   height: number;
+  /** Handwritten-style label printed on the polaroid's bottom border. */
+  caption?: string;
 }
 
 export const aboutStory = {
@@ -73,4 +75,5 @@ export const aboutCommunityPhoto: AboutArtwork = {
   alt: "BAHpals gathered for a group photo at the furwalk",
   width: 1600,
   height: 900,
+  caption: "BAHpals at the furwalk",
 };

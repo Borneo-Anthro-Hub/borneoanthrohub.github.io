@@ -6,6 +6,7 @@ import MascotShowcase from "@/components/client/about/MascotShowcase";
 import PageHero from "@/components/server/layout/PageHero";
 import SocialLinks from "@/components/server/layout/SocialLinks";
 import ThemedBanner from "@/components/server/themed/ThemedBanner";
+import ThemedCard from "@/components/server/themed/ThemedCard";
 import {
   aboutCommunityPhoto,
   aboutContact,
@@ -15,19 +16,41 @@ import {
 import { requireFeature } from "@/lib/site-state/require-feature";
 import { withBasePath } from "@/lib/utils";
 
-/** Community snapshots stacked on the board's right-hand side. */
-const communitySnapshots = [
-  "about-snapshot-1",
-  "about-snapshot-2",
-  "about-snapshot-3",
+/** Flower sprigs tucked behind the community polaroid. */
+const SNAPSHOT_SPRIGS = [
+  {
+    src: "/2027_images/flowers/Group 1795.svg",
+    width: 333,
+    height: 375,
+    className: "about-snapshot-sprig-top",
+  },
+  {
+    src: "/2027_images/flowers/Group 1806.svg",
+    width: 327,
+    height: 277,
+    className: "about-snapshot-sprig-bottom",
+  },
 ];
+
+/** Foliage that closes off the community board and the mascots section. */
+const CARD_TREE_ART = {
+  src: "/2027_images/about/tree_bottom_card.svg",
+  width: 1520,
+  height: 1041,
+};
+
+const SECTION_TREE_ART = {
+  src: "/2027_images/about/tree_bottom_left.svg",
+  width: 1920,
+  height: 1582,
+};
 
 export default function AboutPage() {
   requireFeature("aboutUs");
 
   return (
     <div
-      className="themed-home about-page flex flex-1 flex-col"
+      className="themed-home about-page flex flex-1 scroll-mt-20 flex-col"
       id="organization"
     >
       <PageHero
@@ -42,9 +65,17 @@ export default function AboutPage() {
         className="about-community"
         aria-labelledby="about-community-title"
       >
-        <div className="about-board">
-          <div className="about-board-texture" aria-hidden="true" />
-          <div className="about-board-foliage" aria-hidden="true" />
+        <ThemedCard className="about-board">
+          <div className="about-board-foliage" aria-hidden="true">
+            <Image
+              src={withBasePath(CARD_TREE_ART.src)}
+              alt=""
+              width={CARD_TREE_ART.width}
+              height={CARD_TREE_ART.height}
+              sizes="(max-width: 900px) 110vw, 1300px"
+              className="about-board-foliage-art"
+            />
+          </div>
 
           <div className="about-board-inner">
             <ThemedBanner
@@ -59,23 +90,41 @@ export default function AboutPage() {
             </blockquote>
 
             <div className="about-snapshots">
-              {communitySnapshots.map((snapshot) => (
-                <figure key={snapshot} className={`about-photo ${snapshot}`}>
+              {SNAPSHOT_SPRIGS.map((sprig) => (
+                <span
+                  key={sprig.src}
+                  className={`about-snapshot-sprig ${sprig.className}`}
+                  aria-hidden="true"
+                >
                   <Image
-                    src={withBasePath(aboutCommunityPhoto.src)}
+                    src={withBasePath(sprig.src)}
                     alt=""
-                    width={aboutCommunityPhoto.width}
-                    height={aboutCommunityPhoto.height}
-                    sizes="(max-width: 900px) 80vw, 26vw"
-                    className="about-photo-image"
+                    width={sprig.width}
+                    height={sprig.height}
                   />
-                </figure>
+                </span>
               ))}
+
+              <figure className="about-photo about-snapshot">
+                <Image
+                  src={withBasePath(aboutCommunityPhoto.src)}
+                  alt={aboutCommunityPhoto.alt}
+                  width={aboutCommunityPhoto.width}
+                  height={aboutCommunityPhoto.height}
+                  sizes="(max-width: 900px) 88vw, 32vw"
+                  className="about-photo-image"
+                />
+                {aboutCommunityPhoto.caption && (
+                  <figcaption className="about-snapshot-caption">
+                    {aboutCommunityPhoto.caption}
+                  </figcaption>
+                )}
+              </figure>
             </div>
 
             <AboutReadMore paragraphs={aboutStory.paragraphs} />
 
-            <div id="contact" className="about-contact">
+            <ThemedCard id="contact" className="about-contact">
               <h2 className="about-contact-title">{aboutContact.heading}</h2>
               <p className="about-contact-subtitle">
                 {aboutContact.subheading}
@@ -102,21 +151,28 @@ export default function AboutPage() {
                   <span>{aboutContact.handle}</span>
                 </p>
               </div>
-            </div>
+            </ThemedCard>
           </div>
-        </div>
+        </ThemedCard>
       </section>
 
       {/* OUR MASCOTS — scrapbook gallery + swap-the-mascot plaque */}
       <section
         id="mascots"
-        className="about-mascots-section"
+        className="about-mascots-section scroll-mt-20"
         aria-label="Our Mascots"
       >
-        <MascotShowcase
-          mascots={aboutMascots}
-          communityPhoto={aboutCommunityPhoto}
-        />
+        <div className="about-mascots-tree" aria-hidden="true">
+          <Image
+            src={withBasePath(SECTION_TREE_ART.src)}
+            alt=""
+            width={SECTION_TREE_ART.width}
+            height={SECTION_TREE_ART.height}
+            sizes="100vw"
+            className="about-mascots-tree-art"
+          />
+        </div>
+        <MascotShowcase mascots={aboutMascots} />
       </section>
     </div>
   );

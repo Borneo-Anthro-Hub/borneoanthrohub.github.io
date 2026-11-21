@@ -479,17 +479,12 @@ body:has(.themed-home) header .text-brand-text {
   position: relative;
   z-index: 2;
   isolation: isolate;
-  background-color: var(--themed-cream);
-  background-image:
-    url("/2027_images/new_themed_homepage_assets/2-between-divider.svg"),
-    url("/2027_images/repeat_background.png");
-  background-repeat: no-repeat, repeat;
-  background-position:
-    center 14vw,
-    center top;
-  background-size:
-    100% auto,
-    var(--page-background-size, 3000px auto);
+  /* The parchment texture is painted once, by `.site-background`; only the
+     divider is drawn here so the repeating art stays at one app-wide scale. */
+  background-image: url("/2027_images/new_themed_homepage_assets/2-between-divider.svg");
+  background-repeat: no-repeat;
+  background-position: center 14vw;
+  background-size: 100% auto;
 }
 
 /* Grass + date divider that wraps the festival clearing. */
@@ -637,6 +632,7 @@ body:has(.themed-home) header .text-brand-text {
 
 .themed-pill-action {
   min-height: clamp(40px, 2.6vw, 50px);
+  overflow: hidden;
   background: #3a6f2d;
   padding: 4px clamp(12px, 0.95vw, 18px) 4px clamp(9px, 0.6vw, 12px);
   gap: clamp(4px, 0.45vw, 8px);
@@ -665,8 +661,8 @@ body:has(.themed-home) header .text-brand-text {
   place-items: center;
 }
 
-/* The artwork is a little taller than the pill, so the stitched hoop pokes
-   past the button's top and bottom edges, as in the reference. */
+/* The artwork is a little taller than the pill; the pill clips it so the
+   stitched hoop never spills onto the page background. */
 .themed-pill-paw img {
   width: auto;
   height: clamp(46px, 3.2vw, 62px);
@@ -693,14 +689,14 @@ body:has(.themed-home) header .text-brand-text {
 
 .themed-flower-left {
   bottom: 0;
-  left: -1vw;
-  width: clamp(90px, 13vw, 250px);
+  left: 2vw;
+  width: clamp(110px, 16.7vw, 360px);
 }
 
 .themed-flower-right {
-  right: 8.5vw;
+  right: 2.5vw;
   bottom: 10vw;
-  width: clamp(80px, 13vw, 250px);
+  width: clamp(100px, 13.5vw, 300px);
 }
 
 /* ---- Parchment section banners ------------------------------------------ */
@@ -1000,8 +996,9 @@ body:has(.themed-home) header .text-brand-text {
   position: relative;
   z-index: 2;
   padding: 129px 0 144px;
-  background: var(--themed-cream) url("/2027_images/repeat_background.png")
-    repeat;
+  /* The parchment texture comes from `.site-background`; painting a copy here
+     tiled it at the artwork's natural size, half the scale of every other
+     section, so this section stays transparent. */
 }
 
 .themed-guests-image {
@@ -1075,12 +1072,7 @@ body:has(.themed-home) header .text-brand-text {
   /* ---- Woodland scene ---- */
 
   .themed-landscape {
-    background-position:
-      center top,
-      center top;
-    background-size:
-      100% auto,
-      var(--page-background-size, 3000px auto);
+    background-position: center top;
   }
 
   /* Shifted down from -50.6vw so the grass band stops covering the rat
@@ -1875,14 +1867,11 @@ body:has(.themed-home) header .text-brand-text {
   margin-block: clamp(-5px, -1.4cqw, -3px);
 }
 
-/* Oleo Script runs narrower than the body face, which keeps the whole label on
-   one line at every card width. */
+/* Shares the serif label of the other pills; the size tracks the card so the
+   full title still fits on one line without breaking out of the pill. */
 .registration-tier-cta .themed-pill-label {
   flex: 0 0 auto;
-  font-family: var(--font-display);
-  font-size: clamp(0.9rem, 6.2cqw, 1.25rem);
-  font-style: normal;
-  font-weight: 700;
+  font-size: clamp(0.78rem, 5.6cqw, 1.1rem);
   line-height: 1.1;
   white-space: nowrap;
 }
@@ -2172,76 +2161,42 @@ body:has(.themed-home) header .text-brand-text {
   --about-paper: #ddb487;
   --about-paper-ink: #4b3220;
   --about-brown: #93623c;
+  --about-brown-deep: #6b4a2d;
   --about-cream: #fdf6e3;
-  --about-copy-fade: var(--themed-cream);
+  --about-copy-fade: var(--about-paper);
+  --about-gutter: clamp(12px, 3.6vw, 20px);
+  /* Bottom area of the board reserved for the tree; the plaque dips into it. */
+  --about-branch-pad: clamp(96px, 16vw, 200px);
 }
 
 /* ---- Community board ---------------------------------------------------- */
 
 .about-community {
-  padding: clamp(16px, 2.6vw, 40px) 0 clamp(8px, 1.4vw, 18px);
+  padding: clamp(14px, 2vw, 30px) 0 clamp(8px, 1.2vw, 16px);
 }
 
 .about-board {
-  position: relative;
-  isolation: isolate;
-  width: min(100% - 32px, 1180px);
+  width: min(100% - 24px, 1180px);
   margin: 0 auto;
-  padding: clamp(12px, 1.6vw, 22px);
-  overflow: hidden;
-  border-radius: clamp(18px, 2.2vw, 30px);
-  background: transparent;
+  padding: var(--about-gutter);
+  border-radius: clamp(22px, 2.6vw, 34px);
 }
 
-/* Parchment, thumbtack shadow and the sketchy outer rule only kick in once
-   the board has room for its two-column scrapbook layout. */
-.about-board::after {
-  position: absolute;
-  inset: clamp(6px, 0.9vw, 12px);
-  z-index: 3;
-  border: 3px solid rgb(253 246 227 / 70%);
-  border-radius: clamp(12px, 1.7vw, 22px);
-  content: "";
-  pointer-events: none;
-  opacity: 0;
-  box-shadow: 0 0 0 6px rgb(253 246 227 / 26%);
-}
-
-.about-board-texture {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: none;
-  background: url("/2027_images/repeat_background.png") center top / 560px auto
-    repeat;
-  mix-blend-mode: overlay;
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-/* Tree canopy + trunk along the board's bottom edge, sized off the artwork's
-   own aspect ratio and pushed down so only the foliage stays in frame. */
+/* Tree that closes off the board. It is clipped to the card and sits behind
+   the content; the artwork's transparent top keeps the story copy clean while
+   the contact plaque rests on the canopy. */
 .about-board-foliage {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: auto 0 0 0;
   z-index: 0;
-  display: none;
-  height: 44%;
+  line-height: 0;
   pointer-events: none;
 }
 
-.about-board-foliage::before {
-  position: absolute;
-  bottom: 0;
-  left: -2%;
-  width: 130%;
-  aspect-ratio: 3348 / 2547;
-  background: url("/2027_images/flowers/branch.svg") left top / 100% 100%
-    no-repeat;
-  content: "";
-  transform: translateY(67%);
+.about-board-foliage-art {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .about-board-inner {
@@ -2256,28 +2211,29 @@ body:has(.themed-home) header .text-brand-text {
     "contact";
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
-  gap: clamp(12px, 1.6vw, 22px);
-  padding: clamp(6px, 1.2vw, 20px) clamp(2px, 1vw, 14px);
+  gap: clamp(12px, 1.6vw, 20px);
+  padding: clamp(4px, 1vw, 14px) 0 var(--about-branch-pad);
 }
 
 /* ---- Section banners ---------------------------------------------------- */
 
 .about-banner {
   grid-area: banner;
-  width: min(100% - 8px, 480px);
-  aspect-ratio: 3.7 / 1;
+  width: calc(100% + 2 * var(--about-gutter) + 24px);
+  aspect-ratio: 2.45 / 1;
+  margin-inline: calc(-1 * var(--about-gutter) - 12px);
   justify-self: center;
 }
 
 .about-banner h2,
 .about-mascots-banner h2 {
   padding: 0 clamp(40px, 5vw, 64px);
-  font-size: clamp(1.2rem, 2.1vw, 1.9rem);
+  font-size: clamp(1.35rem, 5.6vw, 1.9rem);
 }
 
 .about-banner .themed-banner-text p,
 .about-mascots-banner .themed-banner-text p {
-  font-size: clamp(0.6rem, 0.85vw, 0.82rem);
+  font-size: clamp(0.72rem, 2.4vw, 0.82rem);
 }
 
 .about-banner .themed-sprig,
@@ -2298,7 +2254,7 @@ body:has(.themed-home) header .text-brand-text {
   color: #4a2f1c;
   text-align: center;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+  font-size: clamp(0.98rem, 4vw, 1.3rem);
   font-style: italic;
   font-weight: 700;
   line-height: 1.35;
@@ -2321,7 +2277,7 @@ body:has(.themed-home) header .text-brand-text {
   color: var(--about-paper-ink);
   text-align: center;
   font-family: var(--font-body);
-  font-size: clamp(0.74rem, 0.92vw, 0.9rem);
+  font-size: clamp(0.84rem, 3.5vw, 0.96rem);
   line-height: 1.55;
 }
 
@@ -2350,7 +2306,7 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 .about-copy-toggle .themed-pill-label {
-  font-size: clamp(0.78rem, 1vw, 1rem);
+  font-size: clamp(0.85rem, 3.4vw, 1rem);
 }
 
 /* ---- Snapshot polaroids ------------------------------------------------- */
@@ -2358,8 +2314,11 @@ body:has(.themed-home) header .text-brand-text {
 .about-snapshots {
   grid-area: snapshots;
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   align-self: center;
+  width: 100%;
 }
 
 .about-photo {
@@ -2379,30 +2338,74 @@ body:has(.themed-home) header .text-brand-text {
   border-radius: 2px;
 }
 
-.about-snapshot-1,
-.about-snapshot-3 {
-  display: none;
+/* The one community polaroid, tilted like a photo pinned to the board. */
+.about-snapshot {
+  z-index: 1;
+  width: min(100% - 12px, 420px);
+  transform: rotate(-2deg);
 }
 
-.about-snapshot-2 {
-  transform: rotate(-2.5deg);
+.about-snapshot-caption {
+  padding: clamp(7px, 1vw, 11px) clamp(6px, 1vw, 10px) clamp(1px, 0.2vw, 3px);
+  color: #7b5a3a;
+  font-family: var(--font-heading);
+  font-size: clamp(0.74rem, 2.4vw, 0.86rem);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Sprigs peeking out from behind the photo, echoing the section banners. */
+.about-snapshot-sprig {
+  position: absolute;
+  z-index: 0;
+  width: clamp(58px, 8vw, 96px);
+  pointer-events: none;
+}
+
+.about-snapshot-sprig img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-snapshot-sprig-top {
+  top: 0;
+  right: 2%;
+  transform: rotate(14deg) scaleX(-1);
+}
+
+.about-snapshot-sprig-bottom {
+  bottom: 0;
+  left: 1%;
+  transform: rotate(-12deg);
+}
+
+/* Tablets: pull the banners back inside the board so they keep a readable
+   aspect instead of stretching to the full card width. */
+@media (min-width: 560px) and (max-width: 899px) {
+  .about-banner,
+  .about-mascots-banner {
+    width: min(100%, 520px);
+    margin-inline: auto;
+    aspect-ratio: 3.1 / 1;
+  }
 }
 
 /* ---- Contact plaque ----------------------------------------------------- */
 
 .about-contact {
   grid-area: contact;
-  position: relative;
   justify-self: center;
   width: min(100%, 470px);
   margin-top: clamp(4px, 0.8vw, 12px);
   padding: clamp(12px, 1.5vw, 20px) clamp(12px, 1.5vw, 20px)
     clamp(14px, 1.8vw, 24px);
   border-radius: clamp(16px, 2vw, 26px);
+  border-color: rgb(253 246 227 / 45%);
   background: var(--about-brown);
   color: var(--about-cream);
   text-align: center;
-  box-shadow: 0 12px 20px rgb(45 35 24 / 30%);
   scroll-margin-top: 5rem;
 }
 
@@ -2410,16 +2413,16 @@ body:has(.themed-home) header .text-brand-text {
   margin: 0;
   color: var(--about-cream);
   font-family: var(--font-heading);
-  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-size: clamp(1.1rem, 4.6vw, 1.35rem);
   font-weight: 400;
   line-height: 1.2;
 }
 
 .about-contact-subtitle {
   margin: 2px 0 clamp(10px, 1.2vw, 14px);
-  color: rgb(253 246 227 / 85%);
+  color: rgb(253 246 227 / 88%);
   font-family: var(--font-body);
-  font-size: clamp(0.62rem, 0.8vw, 0.78rem);
+  font-size: clamp(0.68rem, 2.6vw, 0.78rem);
   line-height: 1.3;
 }
 
@@ -2437,45 +2440,42 @@ body:has(.themed-home) header .text-brand-text {
 .about-contact-inner {
   position: relative;
   display: grid;
-  gap: clamp(5px, 0.7vw, 9px);
-  padding: clamp(10px, 1.2vw, 15px) clamp(10px, 1.3vw, 18px);
-  border: 3px solid rgb(253 246 227 / 62%);
+  gap: clamp(6px, 0.8vw, 9px);
+  padding: clamp(12px, 1.4vw, 16px) clamp(12px, 1.4vw, 18px);
+  border: 2px dashed rgb(253 246 227 / 55%);
   border-radius: clamp(12px, 1.6vw, 20px);
-}
-
-.about-contact-inner::before {
-  position: absolute;
-  inset: 5px;
-  border: 2px solid rgb(253 246 227 / 32%);
-  border-radius: calc(clamp(12px, 1.6vw, 20px) - 6px);
-  content: "";
-  pointer-events: none;
+  background: #ebca9a;
+  color: var(--about-paper-ink);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%);
 }
 
 .about-contact-row {
+  position: relative;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   margin: 0;
-  color: var(--about-cream);
+  color: #43301d;
   font-family: var(--font-body);
-  font-size: clamp(0.62rem, 0.78vw, 0.78rem);
+  font-size: clamp(0.66rem, 2.5vw, 0.78rem);
   line-height: 1.3;
   text-decoration: none;
   transition: color 160ms ease;
 }
 
 a.about-contact-row:hover {
-  color: #fff;
+  color: #2b1d10;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .about-contact-row svg {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   flex: 0 0 auto;
+  color: #2f5c26;
 }
 
 .about-contact-social {
@@ -2485,32 +2485,43 @@ a.about-contact-row:hover {
 }
 
 .about-contact-social-link svg {
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
+  color: #2f5c26;
 }
 
-/* ---- Mascot showcase ---------------------------------------------------- */
+/* ---- Mascots section ---------------------------------------------------- */
 
 .about-mascots-section {
   position: relative;
   overflow: hidden;
-  padding: clamp(14px, 2vw, 30px) 0 clamp(30px, 4vw, 60px);
+  /* Tall enough to show the tree's canopy below the cards, edge to edge. */
+  min-height: 64vw;
+  padding: clamp(18px, 2vw, 30px) 0 clamp(40px, 7vw, 70px);
 }
 
-/* Tree canopy that hands the page over to the dark green footer. */
-.about-mascots-section::before {
+/* Tree that runs beneath the mascot gallery and plaque, all the way to the
+   page edges, then hands the page over to the dark green footer. */
+.about-mascots-tree {
   position: absolute;
-  bottom: 0;
-  left: -10%;
+  inset: auto 0 0 0;
   z-index: 0;
-  display: none;
-  width: 118%;
-  aspect-ratio: 1920 / 1621;
-  background: url("/2027_images/new_themed_homepage_assets/3-divider.svg") left
-    top / 100% 100% no-repeat;
-  content: "";
+  line-height: 0;
   pointer-events: none;
-  transform: translateY(78%);
+}
+
+.about-mascots-tree-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Stacked layout: keep room under the plaque so the canopy stays visible
+   instead of hiding behind it. */
+@media (max-width: 899px) {
+  .about-mascots-section {
+    padding-bottom: clamp(140px, 52vw, 260px);
+  }
 }
 
 .about-mascots {
@@ -2519,58 +2530,71 @@ a.about-contact-row:hover {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: clamp(16px, 2.4vw, 34px);
-  width: min(100% - 32px, 1180px);
+  width: min(100% - 24px, 1180px);
   margin: 0 auto;
   align-items: center;
 }
 
 .about-mascots-gallery {
-  position: relative;
-  display: block;
-}
-
-.about-mascots-photo-back,
-.about-mascots-photo-bottom {
   display: none;
 }
 
-.about-mascots-photo-front {
-  width: min(100% - 20px, 620px);
-  transform: rotate(-1.5deg);
+/* Stacked layout: the "Our Mascots" banner, then the mascot card itself. */
+.about-mascots-card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 2vw, 14px);
+  overflow: visible;
+  border: 0;
+  background: none;
+  box-shadow: none;
 }
 
-.about-mascots-card {
+.about-mascots-plaque {
   position: relative;
-  padding: clamp(14px, 1.8vw, 26px) clamp(14px, 1.8vw, 26px)
-    clamp(18px, 2.2vw, 30px);
-  border-radius: clamp(18px, 2.2vw, 30px);
-  background: var(--about-brown);
+}
+
+.about-mascots-story {
+  position: relative;
+  padding: 0 clamp(12px, 3.6vw, 18px) clamp(18px, 5vw, 26px);
+  border-radius: clamp(20px, 5.4vw, 30px);
+  background: var(--about-brown-deep);
   color: var(--about-cream);
   text-align: center;
   box-shadow: 0 16px 28px rgb(45 35 24 / 26%);
 }
 
+.about-mascots-photo-mobile {
+  margin: clamp(13px, 4vw, 17px) 0 clamp(14px, 4vw, 20px);
+  overflow: hidden;
+  border-radius: clamp(12px, 3.4vw, 18px);
+}
+
 .about-mascots-banner {
-  width: min(100% - 6px, 480px);
-  aspect-ratio: 3.2 / 1;
-  margin: 0 auto clamp(10px, 1.2vw, 16px);
+  width: calc(100% + 24px);
+  aspect-ratio: 2.45 / 1;
+  margin-inline: -12px;
 }
 
 .about-mascots-copy {
-  max-width: 40ch;
+  position: relative;
+  z-index: 5;
+  max-width: 42ch;
   margin: 0 auto clamp(12px, 1.4vw, 18px);
   color: rgb(253 246 227 / 92%);
   font-family: var(--font-body);
-  font-size: clamp(0.68rem, 0.82vw, 0.82rem);
+  font-size: clamp(0.76rem, 3.2vw, 0.86rem);
   line-height: 1.55;
 }
 
 .about-mascots-toggle {
+  position: relative;
+  z-index: 5;
   padding: 4px clamp(14px, 1.2vw, 18px);
 }
 
 .about-mascots-toggle .themed-pill-label {
-  font-size: clamp(0.78rem, 1vw, 1.02rem);
+  font-size: clamp(0.85rem, 3.4vw, 1.02rem);
 }
 
 .about-mascots-toggle-tail {
@@ -2583,22 +2607,8 @@ a.about-contact-row:hover {
 /* ---- Board layout from 900px up ----------------------------------------- */
 
 @media (min-width: 900px) {
-  .about-board {
-    padding: clamp(14px, 1.8vw, 26px);
-    border-radius: clamp(20px, 2.2vw, 30px);
-    background: var(--about-paper);
-    box-shadow: 0 16px 28px rgb(45 35 24 / 24%);
-    outline: 3px solid rgb(237 243 220 / 85%);
-    outline-offset: clamp(6px, 0.8vw, 11px);
-  }
-
-  .about-board-texture,
-  .about-board-foliage {
-    display: block;
-  }
-
-  .about-board::after {
-    opacity: 1;
+  .about-page {
+    --about-gutter: clamp(14px, 1.7vw, 24px);
   }
 
   .about-board-inner {
@@ -2607,11 +2617,36 @@ a.about-contact-row:hover {
       "quote     snapshots"
       "copy      snapshots"
       "contact   snapshots";
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    column-gap: clamp(22px, 3vw, 52px);
-    row-gap: clamp(8px, 1vw, 14px);
-    padding: clamp(12px, 1.6vw, 26px) clamp(12px, 1.6vw, 26px)
-      clamp(20px, 2.4vw, 36px);
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    column-gap: clamp(20px, 2.6vw, 46px);
+    row-gap: clamp(6px, 0.9vw, 12px);
+    padding: clamp(8px, 1.2vw, 18px) clamp(10px, 1.6vw, 24px)
+      var(--about-branch-pad);
+  }
+
+  .about-banner {
+    width: min(100%, 470px);
+    aspect-ratio: 3.7 / 1;
+    margin-inline: 0;
+    justify-self: center;
+  }
+
+  .about-banner h2,
+  .about-mascots-banner h2 {
+    font-size: clamp(1.2rem, 2.1vw, 1.9rem);
+  }
+
+  .about-banner .themed-banner-text p,
+  .about-mascots-banner .themed-banner-text p {
+    font-size: clamp(0.6rem, 0.85vw, 0.82rem);
+  }
+
+  .about-quote {
+    font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+  }
+
+  .about-copy-text p {
+    font-size: clamp(0.8rem, 0.95vw, 0.95rem);
   }
 
   .about-copy-text[data-expanded="false"] {
@@ -2628,39 +2663,35 @@ a.about-contact-row:hover {
   }
 
   .about-snapshots {
-    aspect-ratio: 1 / 1;
     align-self: center;
+    justify-self: center;
+    width: 100%;
+    padding-block: clamp(10px, 2.4vw, 34px);
   }
 
-  .about-photo {
-    position: absolute;
-    width: auto;
-    margin: 0;
+  .about-snapshot {
+    width: min(100%, 450px);
+    transform: rotate(-2.5deg);
   }
 
-  .about-snapshot-1 {
-    top: 0;
-    left: 16%;
-    display: block;
-    width: 58%;
-    transform: rotate(-8deg);
+  .about-snapshot-sprig {
+    width: clamp(64px, 5.4vw, 92px);
   }
 
-  .about-snapshot-2 {
-    top: 26%;
-    left: 4%;
-    z-index: 2;
-    width: 80%;
-    transform: rotate(-2deg);
-  }
-
-  .about-snapshot-3 {
+  .about-snapshot-sprig-top {
+    top: 1%;
     right: 0;
-    bottom: 0;
-    display: block;
-    z-index: 1;
-    width: 58%;
-    transform: rotate(6deg);
+  }
+
+  .about-snapshot-sprig-bottom {
+    bottom: 1%;
+    left: 0;
+  }
+
+  /* Mascot polaroids float over the gallery and overlap each other. */
+  .about-mascots-gallery .about-photo {
+    position: absolute;
+    margin: 0;
   }
 
   .about-contact {
@@ -2669,46 +2700,71 @@ a.about-contact-row:hover {
     margin-left: clamp(0px, 2vw, 34px);
   }
 
+  /* Side-by-side layout: photo stack on the left, plaque on the right. */
   .about-mascots {
-    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  }
-
-  .about-mascots-section::before {
-    display: block;
+    grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
   }
 
   .about-mascots-gallery {
-    aspect-ratio: 1 / 0.8;
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 0.78;
+  }
+
+  .about-mascots-card {
+    display: block;
+    overflow: hidden;
+    padding: clamp(12px, 1.4vw, 20px);
+    border: 3px dashed rgb(253 246 227 / 35%);
+    border-radius: clamp(20px, 2.2vw, 30px);
+    background: var(--about-brown-deep);
+    box-shadow: 0 16px 28px rgb(45 35 24 / 26%);
+  }
+
+  .about-mascots-plaque {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .about-mascots-photo-mobile {
+    display: none;
+  }
+
+  .about-mascots-story {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .about-mascots-banner {
+    width: min(100%, 470px);
+    aspect-ratio: 3.2 / 1;
+    margin: 0 auto clamp(10px, 1.2vw, 16px);
+  }
+
+  .about-mascots-copy {
+    position: relative;
+    z-index: 5;
+    max-width: 46ch;
+    font-size: clamp(0.78rem, 0.9vw, 0.9rem);
   }
 
   .about-mascots-photo-front {
-    position: absolute;
-    top: 26%;
+    top: 18%;
     left: 0;
     z-index: 2;
-    width: 80%;
-    transform: rotate(-1.5deg);
+    width: 76%;
+    transform: rotate(-2.5deg);
   }
 
   .about-mascots-photo-back {
-    position: absolute;
-    top: 2%;
-    left: 22%;
+    top: 0;
+    right: 0;
     display: block;
     z-index: 1;
-    width: 48%;
-    transform: rotate(4deg);
-  }
-
-  .about-mascots-photo-bottom {
-    position: absolute;
-    right: -2%;
-    bottom: -6%;
-    left: auto;
-    display: block;
-    z-index: 1;
-    width: 50%;
-    transform: rotate(-4deg);
+    width: 46%;
+    transform: rotate(6deg);
   }
 }
 

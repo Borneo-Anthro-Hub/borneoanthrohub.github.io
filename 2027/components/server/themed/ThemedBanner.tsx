@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { withBasePath } from "@/lib/utils";
 
-const SPRIG_SRC =
-  "/2027_images/new_themed_homepage_assets/1.5-missing-flower-divider.svg";
+const SPRIG_SRC = "/2027_images/flowers/Group 1806.svg";
 
 interface ThemedBannerProps {
   id?: string;

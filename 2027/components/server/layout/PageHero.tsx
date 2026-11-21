@@ -37,16 +37,16 @@ export default function PageHero({
               {index}
             </span>
           )}
-          {showEyebrow && (
+          {/* {showEyebrow && (
             <p className="text-muted-foreground text-xs tracking-widest uppercase">
               {eyebrow}
             </p>
-          )}
+          )} */}
         </div>
         <h1 className={titleClassName}>{title}</h1>
-        {showDescription && description && (
+        {/* {showDescription && description && (
           <p className="text-muted-foreground text-sm">{description}</p>
-        )}
+        )} */}
       </WireframeFrame>
     </section>
   );

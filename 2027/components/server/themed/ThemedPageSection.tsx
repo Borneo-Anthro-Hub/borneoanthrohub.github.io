@@ -18,7 +18,8 @@ interface ThemedPageSectionProps {
  *
  * Every color and font comes from the active theme's tokens (`primary`,
  * `foreground`, `font-heading`, ...), so a new yearly theme restyles the page
- * without editing this file or the page content.
+ * without editing this file or the page content. The section stays
+ * transparent so the app-wide `.site-background` texture shows through.
  */
 export default function ThemedPageSection({
   id,
@@ -34,10 +35,7 @@ export default function ThemedPageSection({
   return (
     <section
       id={id}
-      className={cn(
-        "bg-background scroll-mt-20 px-4 py-12 md:px-8 md:py-16",
-        className,
-      )}
+      className={cn("scroll-mt-20 px-4 py-12 md:px-8 md:py-16", className)}
     >
       <PageContainer size="lg">
         {hasHeader && (
