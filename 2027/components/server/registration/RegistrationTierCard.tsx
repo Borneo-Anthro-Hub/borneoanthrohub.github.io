@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
-import ThemedPillLink from "@/components/server/themed/ThemedPillLink";
+import { RegistrationTierAction } from "@/components/client/registration/TicketStatus";
 import { withBasePath } from "@/lib/utils";
 
 export interface RegistrationTierItem {
@@ -26,7 +25,6 @@ export interface RegistrationTier {
   description: string;
   card: string;
   icon: string;
-  formUrl: string;
   sections: RegistrationTierSection[];
 }
 
@@ -88,12 +86,10 @@ export default function RegistrationTierCard({
           </div>
         ))}
 
-        <ThemedPillLink
-          href={tier.formUrl}
-          label="Accept this Invitation"
-          ariaLabel={`Register for the ${tier.name} tier (${tier.price})`}
-          className="registration-tier-cta"
-          tail={<ChevronRight aria-hidden="true" />}
+        <RegistrationTierAction
+          id={tier.id}
+          name={tier.name}
+          price={tier.price}
         />
       </div>
     </article>

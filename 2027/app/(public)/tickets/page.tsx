@@ -8,13 +8,11 @@ import RegistrationTierCard, {
 } from "@/components/server/registration/RegistrationTierCard";
 import ScrollToTopButton from "@/components/client/layout/ScrollToTopButton";
 import RegistrationTierCarousel from "@/components/client/registration/RegistrationTierCarousel";
+import { TicketStatusProvider } from "@/components/client/registration/TicketStatus";
 import PageHero from "@/components/server/layout/PageHero";
 import ThemedBanner from "@/components/server/themed/ThemedBanner";
 import { requireFeature } from "@/lib/site-state/require-feature";
 import { withBasePath } from "@/lib/utils";
-
-// Placeholder shared by every tier until the live per-tier forms are ready.
-const REGISTRATION_FORM_URL = "https://forms.gle/ticket-registration";
 
 const tiers: RegistrationTier[] = [
   {
@@ -25,7 +23,6 @@ const tiers: RegistrationTier[] = [
       "Every great adventure begins with a single step. Wander into the Tinyverse and discover the wonders hidden among the leaves.",
     card: "/2027_images/registration_page/tiers/1_wanderer/card.svg",
     icon: "/2027_images/registration_page/tiers/1_wanderer/icon.svg",
-    formUrl: REGISTRATION_FORM_URL,
     sections: [
       {
         title: "Obtainable Boons",
@@ -45,7 +42,6 @@ const tiers: RegistrationTier[] = [
       "Get your hands dirty and help the little wonders of the garden flourish. There’s always something new to discover when you venture a little deeper.",
     card: "/2027_images/registration_page/tiers/2_gardener/card.svg",
     icon: "/2027_images/registration_page/tiers/2_gardener/icon.svg",
-    formUrl: REGISTRATION_FORM_URL,
     sections: [
       {
         title: "Obtainable Boons",
@@ -71,7 +67,6 @@ const tiers: RegistrationTier[] = [
       "Every little wonder needs someone to look after it. Embark on a deeper adventure and help keep the magic of Tinyverse Garden alive.",
     card: "/2027_images/registration_page/tiers/3_caretaker/card.svg",
     icon: "/2027_images/registration_page/tiers/3_caretaker/icon.svg",
-    formUrl: REGISTRATION_FORM_URL,
     sections: [
       {
         title: "Obtainable Boons",
@@ -136,11 +131,13 @@ export default function TicketsPage() {
           </p>
 
           <h2 className="registration-tiers-title">Hops to see you there!</h2>
-          <RegistrationTierCarousel
-            items={tiers.map((tier) => (
-              <RegistrationTierCard key={tier.id} tier={tier} />
-            ))}
-          />
+          <TicketStatusProvider>
+            <RegistrationTierCarousel
+              items={tiers.map((tier) => (
+                <RegistrationTierCard key={tier.id} tier={tier} />
+              ))}
+            />
+          </TicketStatusProvider>
         </RegistrationBoard>
 
         <Image

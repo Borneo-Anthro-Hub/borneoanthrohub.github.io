@@ -17,7 +17,7 @@ Added a rollout layer on top of the lifecycle matrix so the soft launch only exp
 | **Coming-soon pages** | `<NotReadyGate>` renders a hazard-tape "under construction" overlay instead of unfinished content; the route still resolves   |
 | **Hidden pages**      | BAHjet and the whole Contribution section are `hidden` — removed from the navigation and 404'd, with their code left in place |
 | **Homepage**          | Quick links use `isRoutable()`; coming-soon links open the overlay, hidden ones are dropped                                   |
-| **Deployment**        | `.github/workflows/deploy.yml` now builds with `WEBSITE_STATE=A` (Announcement)                                               |
+| **Deployment**        | The `WEBSITE_STATE` GitHub Actions variable sets the state for the static build                                               |
 
 ### Live at this rollout
 

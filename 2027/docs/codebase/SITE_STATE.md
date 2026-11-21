@@ -148,11 +148,11 @@ export function SomeWidget() {
 
 ### 7) Changing State
 
-| Environment                   | How                                                                                                                                                                                             |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **GitHub Pages (deployment)** | Set `WEBSITE_STATE` in the `Build static export` step of `.github/workflows/deploy.yml`. The static export bakes the state in, so changing it requires a new deployment (no runtime override).  |
-| **Local development**         | Set `WEBSITE_STATE` in `2027/.env.local` (copy `.env.example`), then restart `pnpm dev`. The `DevSiteStateSwitcher` dropdown in the navbar previews other states client-side without a restart. |
-| **Unset**                     | `WEBSITE_STATE` falls back to `"D"` (Dormant) with a console warning: evergreen features stay enabled and everything else 404s.                                                                 |
+| Environment                   | How                                                                                                                                                                       |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **GitHub Pages (deployment)** | Set the `WEBSITE_STATE` GitHub Actions repository variable. The static export bakes the state in, so changing it requires a new deployment (no runtime override).         |
+| **Local development**         | Set `WEBSITE_STATE` in `2027/.env.local`, then restart `pnpm dev`. The `DevSiteStateSwitcher` dropdown in the navbar previews other states client-side without a restart. |
+| **Unset**                     | `WEBSITE_STATE` falls back to `"D"` (Dormant) with a console warning: evergreen features stay enabled and everything else 404s.                                           |
 
 ### 8) Design Decisions
 

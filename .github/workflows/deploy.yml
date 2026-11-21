@@ -41,10 +41,15 @@ jobs:
         working-directory: 2027
         env:
           NEXT_BASE_PATH: /2027
-          # Website lifecycle state baked into the static export:
-          # D | T | A | TO | RC | FIR  (see `2027/lib/site-state/types.ts`)
-          WEBSITE_STATE: A
-        run: pnpm build
+          SITE_THEME: ${{ vars.SITE_THEME }}
+          WEBSITE_STATE: ${{ vars.WEBSITE_STATE }}
+          NEXT_PUBLIC_TICKET_START: ${{ vars.NEXT_PUBLIC_TICKET_START }}
+          NEXT_PUBLIC_TICKET_TEST_SECONDS: ${{ vars.NEXT_PUBLIC_TICKET_TEST_SECONDS }}
+        run: |
+          : "${SITE_THEME:?Set the SITE_THEME repository variable}"
+          : "${WEBSITE_STATE:?Set the WEBSITE_STATE repository variable}"
+          : "${NEXT_PUBLIC_TICKET_START:?Set the NEXT_PUBLIC_TICKET_START repository variable}"
+          pnpm build
 
       - name: Assemble Pages artifact
         run: |

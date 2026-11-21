@@ -55,7 +55,7 @@ pnpm format:check       # Check formatting without writing
   - `web_client/2027/lib/theme/site-config.ts` — Production theme (`ACTIVE_THEME`) + dev fallback
   - `web_client/2027/lib/theme/active-theme.ts` — Request-time theme resolution (dev-cookie aware)
   - `web_client/2027/lib/theme/themes.ts` — Theme color/font token definitions
-- **Required env vars:** None explicitly listed in a `.env.example` — the standalone server respects `PORT` (default 3000) and `HOSTNAME` (default `"0.0.0.0"`) set in Dockerfile.
+- **Build configuration:** `SITE_THEME`, `WEBSITE_STATE`, and `NEXT_PUBLIC_TICKET_START` are configured as GitHub Actions variables. The standalone server respects `PORT` (default 3000) and `HOSTNAME` (default `"0.0.0.0"`) set in Dockerfile.
 - **Docker runtime constraints:** Built in multi-stage Docker (`FROM node:22-alpine`), outputs standalone server to `.next/standalone`, runs as non-root `nextjs` user (UID 1001).
 
 ### 6) Evidence

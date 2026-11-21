@@ -1547,6 +1547,62 @@ body:has(.themed-home) header .text-brand-text {
   line-height: 1.2;
 }
 
+.registration-countdown {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto clamp(16px, 2vw, 26px);
+  border: 1px solid #a87a4f;
+  border-radius: 18px;
+  background: #f7e8ce;
+  padding: 12px 22px;
+  box-shadow: 0 4px 0 rgb(101 66 38 / 14%);
+  color: #4b3220;
+}
+
+.registration-countdown-spinner {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border: 3px solid #d6bd94;
+  border-top-color: #3a6f2d;
+  border-radius: 50%;
+  animation: registration-countdown-spin 1.2s linear infinite;
+}
+
+.registration-countdown-content {
+  text-align: left;
+}
+
+.registration-countdown-label {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.registration-countdown-time {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+@keyframes registration-countdown-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .registration-countdown-spinner {
+    animation: none;
+  }
+}
+
 .registration-tiers {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1796,21 +1852,44 @@ body:has(.themed-home) header .text-brand-text {
   mask: var(--registration-tier-bullet) center / contain no-repeat;
 }
 
+/* The label stays on one line, so the pill bleeds into the card's side padding
+   to buy the width it needs instead of wrapping. */
 .registration-tier-cta {
-  width: 100%;
+  width: calc(100% + 2 * clamp(4px, 4.8cqw, 18px));
+  min-width: fit-content;
   margin-top: auto;
+  margin-inline: calc(-1 * clamp(4px, 4.8cqw, 18px));
+  gap: 4px;
+  padding: 4px 10px 4px 8px;
+}
+
+.registration-tier-cta:disabled,
+.registration-tier-cta:disabled:hover {
+  background: #75866a;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .registration-tier-cta .themed-pill-paw img {
-  height: clamp(34px, 17.7cqw, 60px);
-  margin-block: clamp(-6px, -2cqw, -4px);
+  height: clamp(30px, 12cqw, 46px);
+  margin-block: clamp(-5px, -1.4cqw, -3px);
 }
 
+/* Oleo Script runs narrower than the body face, which keeps the whole label on
+   one line at every card width. */
 .registration-tier-cta .themed-pill-label {
-  font-family: var(--type-body-s-semibold-font-family, var(--font-body));
-  font-size: clamp(0.7rem, 6cqw, 1.25rem);
+  flex: 0 0 auto;
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 6.2cqw, 1.25rem);
   font-style: normal;
-  font-weight: var(--type-body-s-semibold-font-weight, 600);
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.registration-tier-cta svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* ---- FAQ ----------------------------------------------------------------- */
@@ -1991,29 +2070,6 @@ body:has(.themed-home) header .text-brand-text {
 .scroll-to-top svg {
   width: 20px;
   height: 20px;
-}
-
-/* Keep the three cards side by side on tablets without wrapping the CTA. */
-@media (min-width: 768px) and (max-width: 900px) {
-  .registration-tier-cta {
-    gap: 3px;
-    padding: 4px 8px;
-  }
-
-  .registration-tier-cta .themed-pill-paw img {
-    height: 32px;
-    margin-block: -3px;
-  }
-
-  .registration-tier-cta .themed-pill-label {
-    font-size: 0.68rem;
-    white-space: nowrap;
-  }
-
-  .registration-tier-cta svg {
-    width: 12px;
-    height: 12px;
-  }
 }
 
 @media (max-width: 767px) {
