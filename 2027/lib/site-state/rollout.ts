@@ -23,15 +23,14 @@ export type RolloutStatus = "live" | "coming-soon" | "hidden";
  * Current rollout status of every feature.
  *
  * The 2027 soft launch (Announcement) only exposes the pages that are
- * content-complete: the landing page, tickets, policies, event info with the
- * GOH teaser, and Travel Info.
+ * content-complete: the landing page, tickets, policies, event info, and
+ * Travel Info.
  */
 export const ROLLOUT_STATUS: Record<Feature, RolloutStatus> = {
   // ---- Live ---------------------------------------------------------------
   aboutUs: "live",
   activities: "live",
   ticketRegistration: "live",
-  guestOfHonor: "live",
   venue: "live",
   travelInformation: "live",
   codeOfConduct: "live",
@@ -39,6 +38,7 @@ export const ROLLOUT_STATUS: Record<Feature, RolloutStatus> = {
 
   // ---- Coming soon (route renders the overlay) ----------------------------
   themeLandingPage: "coming-soon",
+  guestOfHonor: "coming-soon",
   foodGuide: "coming-soon",
   destinations: "coming-soon",
   eventSchedule: "coming-soon",

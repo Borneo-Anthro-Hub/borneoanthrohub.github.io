@@ -77,7 +77,7 @@ The matrix above answers _"does this page belong to the active lifecycle state?"
 | `coming-soon` | ❌            | resolves | Renders `<NotReadyOverlay>` instead of content |
 | `hidden`      | ❌            | 404      | `requireFeature()` calls `notFound()`          |
 
-Current 2027 rollout (`WEBSITE_STATE=A`): landing, tickets, policies, event info, the GOH teaser, Venue and Travel Info are `live`; theme, food guide, destinations, schedule and the Dealer's Den pages are `coming-soon`; BAHjet and the whole Contribution section are `hidden`. Flip a status in `rollout.ts` as content lands — no page code changes.
+Current 2027 rollout (`WEBSITE_STATE=A`): landing, tickets, policies, event info, Venue and Travel Info are `live`; theme, GOH, food guide, destinations, schedule and the Dealer's Den pages are `coming-soon`; BAHjet and the whole Contribution section are `hidden`. Flip a status in `rollout.ts` as content lands — no page code changes.
 
 Coming-soon pages stay reachable on purpose: homepage quick links point at them, and visitors get the overlay instead of a 404. The Home page links every feature through `isRoutable()`, so hidden pages never appear.
 

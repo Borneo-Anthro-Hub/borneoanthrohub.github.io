@@ -200,8 +200,9 @@ export const themes = {
     typographyColor: typographyConfig.color,
     pageHeroArt: "/2027_images/landscape_main_art_airashi/background_art.webp",
     pageBackground: {
-      image: "/2027_images/repeat_background.png",
-      size: "3000px auto",
+      image: "/2027_images/new_repeat_background.svg",
+      // The SVG is a ~3.1x export of the 500px-wide design tile; render it at design scale.
+      size: "500px auto",
     },
     typography: defaultTypography,
     // BAH 2027 palette (all 500 / Main) + derived shades for contrast

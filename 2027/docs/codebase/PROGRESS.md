@@ -21,7 +21,7 @@ Added a rollout layer on top of the lifecycle matrix so the soft launch only exp
 
 ### Live at this rollout
 
-Landing page · Tickets · Policies (Code of Conduct, T&Cs) · Event Info + GOH teaser · Venue · Travel Guide → Travel Info.
+Landing page · Tickets · Policies (Code of Conduct, T&Cs) · Event Info · Venue · Travel Guide → Travel Info.
 
 ---
 

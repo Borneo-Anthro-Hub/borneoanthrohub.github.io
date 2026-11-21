@@ -8,6 +8,8 @@ interface ThemedPillLinkProps {
   tail?: React.ReactNode;
   className?: string;
   ariaLabel?: string;
+  /** Render the pill as a non-interactive "coming soon" action. */
+  disabled?: boolean;
 }
 
 /**
@@ -21,6 +23,7 @@ export default function ThemedPillLink({
   tail,
   className = "",
   ariaLabel,
+  disabled = false,
 }: ThemedPillLinkProps) {
   const classes = `themed-pill-action ${className}`.trim();
   const isExternal = /^https?:\/\//.test(href);
@@ -38,9 +41,23 @@ export default function ThemedPillLink({
         />
       </span>
       <span className="themed-pill-label">{label}</span>
-      {tail}
+      {disabled ? <span className="themed-pill-soon">Soon</span> : tail}
     </>
   );
+
+  if (disabled) {
+    return (
+      <span
+        aria-disabled="true"
+        aria-label={`${ariaLabel ?? label} — coming soon`}
+        title={`${label} — coming soon`}
+        data-coming-soon="true"
+        className={classes}
+      >
+        {contents}
+      </span>
+    );
+  }
 
   if (isExternal) {
     return (

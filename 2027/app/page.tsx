@@ -820,6 +820,7 @@ function ThemedHome() {
 
       {/* Section 2: Main landscape content wrapper */}
       <div className="themed-landscape">
+        <div className="themed-clearing" aria-hidden="true" />
         {/* 2A: Festival + venue feature section */}
         <section id="festival" className="themed-festival">
           <Image
@@ -938,6 +939,7 @@ function ThemedHome() {
             href="/guest-of-honor"
             label="Guests of Honour"
             tail={<ChevronRight aria-hidden="true" />}
+            disabled={!isLive("guestOfHonor")}
           />
         </ThemedBanner>
       </section>

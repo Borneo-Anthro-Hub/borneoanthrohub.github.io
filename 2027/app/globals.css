@@ -481,12 +481,47 @@ body:has(.themed-home) header .text-brand-text {
   position: relative;
   z-index: 2;
   isolation: isolate;
-  /* The parchment texture is painted once, by `.site-background`; only the
-     divider is drawn here so the repeating art stays at one app-wide scale. */
-  background-image: url("/2027_images/new_themed_homepage_assets/2-between-divider.svg");
+  /* The parchment texture is painted once, by `.site-background`; the map that
+     fills the clearing is drawn by `.themed-clearing` below. */
+}
+
+/* Out-of-focus park map that fills the festival clearing. As in Figma it is a
+   large tilted plane rather than a tile, so it reads as the ground the scene
+   stands on; this wrapper feathers it into the repeating parchment. */
+.themed-clearing {
+  position: absolute;
+  inset: 6vw -28vw 2vw;
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 18%,
+    #000 52%,
+    transparent 72%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 18%,
+    #000 52%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.themed-clearing::before {
+  position: absolute;
+  inset: -18%;
+  /* Parchment-toned base so the map's sheet edges blend into the page. */
+  background-color: #fdf6e3;
+  background-image: url("/2027_images/new_themed_homepage_assets/map_background.svg");
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: center 14vw;
-  background-size: 100% auto;
+  background-size: 120% auto;
+  filter: blur(4px);
+  opacity: 0.95;
+  transform: rotate(-10deg);
+  content: "";
 }
 
 /* Grass + date divider that wraps the festival clearing. */
@@ -674,6 +709,56 @@ body:has(.themed-home) header .text-brand-text {
 .themed-pill-action:hover {
   background: #458434;
   transform: translateY(-1px);
+}
+
+/* ---- Pill action: work in progress -------------------------------------- */
+/* Mirrors the disabled quick-link treatment so a coming-soon call to action
+   reads as unavailable while keeping the paw artwork. */
+
+.themed-pill-action[data-coming-soon] {
+  overflow: hidden;
+  border: 2px dashed rgb(255 246 224 / 60%);
+  background: #8b9a7f;
+  color: rgb(253 246 227 / 92%);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.themed-pill-action[data-coming-soon]::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(255 255 255 / 7%) 0 8px,
+    transparent 8px 16px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.themed-pill-action[data-coming-soon] > * {
+  position: relative;
+  z-index: 1;
+}
+
+.themed-pill-action[data-coming-soon]:hover {
+  background: #8b9a7f;
+  transform: none;
+}
+
+.themed-pill-soon {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--themed-cream);
+  color: var(--themed-brown);
+  font-family: var(--font-caption);
+  font-size: clamp(0.52rem, 0.55vw, 0.66rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
 .themed-mini-link:hover {
@@ -1069,10 +1154,6 @@ body:has(.themed-home) header .text-brand-text {
   }
 
   /* ---- Woodland scene ---- */
-
-  .themed-landscape {
-    background-position: center top;
-  }
 
   /* Shifted down from -50.6vw so the grass band stops covering the rat
      peeking out of the bottom-left of the hero artwork. Kept just inside the
