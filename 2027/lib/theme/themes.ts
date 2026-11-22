@@ -139,8 +139,25 @@ export interface Theme {
    * layout instead. Omit to get the plain themed hero.
    */
   pageHeroArt?: string;
+  /**
+   * Optional artwork used by the themed landing styles in `globals.css`. The
+   * paths are run through `withBasePath` in `themeToCssVars`, because CSS
+   * `url()` values cannot see the runtime base path on their own.
+   */
+  themedArt?: ThemedArt;
   brand: BrandTokens;
   semantic: SemanticTokens;
+}
+
+export interface ThemedArt {
+  /** Parchment map behind the festival clearing. */
+  clearingMap: string;
+  /** Grass + date divider that wraps the festival clearing. */
+  landscapeDivider: string;
+  /** Parchment background for the section banners. */
+  bannerBackground: string;
+  /** Tree canopy art framing the quick links and registration invitation. */
+  treeCanopy: string;
 }
 
 // -----------------------------------------------------------------------------
@@ -204,6 +221,13 @@ export const themes = {
       image: "/2027_images/new_repeat_background.svg",
       // The SVG is a ~3.1x export of the 500px-wide design tile; render it at design scale.
       size: "500px auto",
+    },
+    themedArt: {
+      clearingMap: "/2027_images/new_themed_homepage_assets/map_background.svg",
+      landscapeDivider: "/2027_images/new_themed_homepage_assets/1-divider.svg",
+      bannerBackground:
+        "/2027_images/new_themed_homepage_assets/sub-section-banner-background.svg",
+      treeCanopy: "/2027_images/new_themed_homepage_assets/3-divider.svg",
     },
     typography: defaultTypography,
     // BAH 2027 palette (all 500 / Main) + derived shades for contrast
@@ -338,6 +362,14 @@ export function themeToCssVars(theme: Theme): Record<string, string> {
     "--page-hero-image": theme.pageHeroArt
       ? `url("${withBasePath(theme.pageHeroArt)}")`
       : "none",
+    ...(theme.themedArt
+      ? {
+          "--themed-clearing-map": `url("${withBasePath(theme.themedArt.clearingMap)}")`,
+          "--themed-landscape-divider": `url("${withBasePath(theme.themedArt.landscapeDivider)}")`,
+          "--themed-banner-background": `url("${withBasePath(theme.themedArt.bannerBackground)}")`,
+          "--themed-tree-canopy": `url("${withBasePath(theme.themedArt.treeCanopy)}")`,
+        }
+      : {}),
     "--brand-bg": theme.brand.bg,
     "--brand-accent": theme.brand.accent,
     "--brand-text": theme.brand.text,

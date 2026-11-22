@@ -700,7 +700,7 @@ body:has(.themed-home) header .text-brand-text {
   inset: -18%;
   /* Parchment-toned base so the map's sheet edges blend into the page. */
   background-color: #fdf6e3;
-  background-image: url("/2027_images/new_themed_homepage_assets/map_background.svg");
+  background-image: var(--themed-clearing-map, none);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 120% auto;
@@ -718,8 +718,7 @@ body:has(.themed-home) header .text-brand-text {
   z-index: 0;
   width: 100%;
   aspect-ratio: 1920 / 2095;
-  background: url("/2027_images/new_themed_homepage_assets/1-divider.svg")
-    center / 100% 100% no-repeat;
+  background: var(--themed-landscape-divider, none) center / 100% 100% no-repeat;
   content: "";
   pointer-events: none;
 }
@@ -986,8 +985,7 @@ body:has(.themed-home) header .text-brand-text {
   margin: 0 auto;
   color: #1c3d1c;
   text-align: center;
-  background: url("/2027_images/new_themed_homepage_assets/sub-section-banner-background.svg")
-    center / 100% 100% no-repeat;
+  background: var(--themed-banner-background, none) center / 100% 100% no-repeat;
 }
 
 .themed-banner h2 {
@@ -1035,8 +1033,7 @@ body:has(.themed-home) header .text-brand-text {
   z-index: -1;
   width: 100%;
   aspect-ratio: 1920 / 1621;
-  background: url("/2027_images/new_themed_homepage_assets/3-divider.svg")
-    center top / 100% 100% no-repeat;
+  background: var(--themed-tree-canopy, none) center top / 100% 100% no-repeat;
   content: "";
   pointer-events: none;
 }
@@ -1666,8 +1663,7 @@ body:has(.themed-home) header .text-brand-text {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: url("/2027_images/new_themed_homepage_assets/3-divider.svg")
-    center top / 100% auto no-repeat;
+  background: var(--themed-tree-canopy, none) center top / 100% auto no-repeat;
   content: "";
   pointer-events: none;
 }
