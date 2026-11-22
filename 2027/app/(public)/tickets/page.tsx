@@ -130,7 +130,7 @@ export default function TicketsPage() {
             <Link href="/terms-and-conditions">Event Rules and T&amp;C</Link>.
           </p>
 
-          <h2 className="registration-tiers-title">Hops to see you there!</h2>
+          <h2 className="registration-tiers-title">Hope to see you there!</h2>
           <TicketStatusProvider>
             <RegistrationTierCarousel
               items={tiers.map((tier) => (
