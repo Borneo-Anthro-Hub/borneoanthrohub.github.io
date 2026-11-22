@@ -10,6 +10,7 @@ import {
   MapPin,
   Pause,
   Play,
+  SignpostBig,
   Ticket,
 } from "lucide-react";
 import Particles from "@/components/Particles";
@@ -98,8 +99,8 @@ const evergreenLinks = [
 /** A quick-link that is only offered while its feature resolves. */
 type QuickLink = { label: string; href: string; feature: Feature };
 
-/** Badge artwork for a quick-link card: a "?" or a location pin. */
-type QuickCardIcon = "question" | "pin";
+/** Badge artwork for a quick-link card. */
+type QuickCardIcon = "question" | "pin" | "signpost" | "ticket";
 
 /** "What to do when I'm in Sabah?" — sub-question under the What column. */
 const whatToDoButtons: QuickLink[] = [
@@ -724,13 +725,13 @@ function ThemedHome() {
     {
       title: "What",
       subtitle: "to do in Sabah?",
-      icon: "question" as const,
+      icon: "signpost" as const,
       links: whatToDoButtons,
     },
     {
       title: "How",
       subtitle: "to be part of BAH!",
-      icon: "question" as const,
+      icon: "ticket" as const,
       links: contributeButtons,
     },
   ];
@@ -948,6 +949,24 @@ function ThemedHome() {
   );
 }
 
+/** Badge artwork drawn inside the cream face of a quick-link card. */
+function QuickCardIconArt({ icon }: { icon: QuickCardIcon }) {
+  switch (icon) {
+    case "pin":
+      return <MapPin aria-hidden="true" />;
+    case "signpost":
+      return <SignpostBig aria-hidden="true" />;
+    case "ticket":
+      return <Ticket aria-hidden="true" />;
+    default:
+      return (
+        <span className="themed-quick-icon-mark" aria-hidden="true">
+          ?
+        </span>
+      );
+  }
+}
+
 function QuickLinkCard({
   card,
 }: {
@@ -964,13 +983,7 @@ function QuickLinkCard({
       <div className="themed-quick-card-title">
         <span className="themed-quick-icon">
           <span className="themed-quick-icon-face">
-            {card.icon === "pin" ? (
-              <MapPin aria-hidden="true" />
-            ) : (
-              <span className="themed-quick-icon-mark" aria-hidden="true">
-                ?
-              </span>
-            )}
+            <QuickCardIconArt icon={card.icon} />
           </span>
         </span>
         <div>

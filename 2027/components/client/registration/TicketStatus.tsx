@@ -81,7 +81,7 @@ export function TicketStatusProvider({
       statusDocument,
       (snapshot) => {
         const data = snapshot.data();
-        // console.debug("Ticket status:", data);
+        console.log("Ticket status:", data);
         if (
           !data ||
           typeof data.standard_soldout !== "boolean" ||
@@ -228,7 +228,9 @@ export function TicketStatusProvider({
               role="timer"
               aria-label="Time until registration opens"
             >
-              {formatCountdown(remaining)}
+              <span className="registration-countdown-time-value">
+                {formatCountdown(remaining)}
+              </span>
             </p>
           </div>
         </div>

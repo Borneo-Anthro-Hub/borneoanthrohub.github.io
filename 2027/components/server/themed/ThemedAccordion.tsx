@@ -10,11 +10,14 @@ export interface ThemedAccordionItem {
 interface ThemedAccordionProps {
   items: readonly ThemedAccordionItem[];
   className?: string;
+  /** Optional divider rendered above each answer, inside the panel. */
+  panelDivider?: React.ReactNode;
 }
 
 export default function ThemedAccordion({
   items,
   className,
+  panelDivider,
 }: ThemedAccordionProps) {
   return (
     <Accordion.Root className={cn("themed-accordion", className)}>
@@ -29,6 +32,7 @@ export default function ThemedAccordion({
             </Accordion.Trigger>
           </Accordion.Header>
           <Accordion.Panel className="themed-accordion-panel">
+            {panelDivider}
             {item.answer}
           </Accordion.Panel>
         </Accordion.Item>

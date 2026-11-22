@@ -1118,8 +1118,8 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 .themed-quick-icon-face svg {
-  width: 58%;
-  height: 58%;
+  width: 70%;
+  height: 70%;
 }
 
 .themed-quick-icon-mark {
@@ -1827,11 +1827,27 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 .registration-countdown-time {
+  display: inline-grid;
   margin: 0;
   font-family: var(--font-heading);
   font-size: clamp(1.2rem, 2.4vw, 1.6rem);
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
+  text-align: left;
+}
+
+/* The heading font has no tabular figures, so every digit has a different
+   width. The hidden placeholder reserves the widest possible value
+   (`DD HH:MM:SS`, all zeroes) so the card keeps its size while counting. */
+.registration-countdown-time::after {
+  content: "00D 00:00:00";
+  grid-area: 1 / 1;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.registration-countdown-time-value {
+  grid-area: 1 / 1;
 }
 
 @keyframes registration-countdown-spin {
@@ -2233,6 +2249,45 @@ body:has(.themed-home) header .text-brand-text {
   font-size: var(--type-body-s-font-size, 14px);
   font-weight: var(--type-body-s-font-weight, 400);
   line-height: 1.5;
+}
+
+/*
+ * Registration FAQ rows are a single card: the item owns the frame so the
+ * answer sits inside the bordered panel instead of below it.
+ */
+.registration-faq .themed-accordion-item {
+  overflow: hidden;
+  border: 2px solid #d8b58c;
+  border-radius: clamp(14px, 1.4vw, 20px);
+  background: var(--registration-faq);
+  box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
+  transition: background-color 160ms ease;
+}
+
+.registration-faq .themed-accordion-item:hover {
+  background: #f7e8ce;
+}
+
+.registration-faq .themed-accordion-trigger {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline-offset: -4px;
+}
+
+.registration-faq .themed-accordion-trigger:hover {
+  transform: none;
+}
+
+.registration-faq .themed-accordion-panel {
+  padding: 0 clamp(16px, 1.4vw, 22px) clamp(12px, 1.2vw, 16px);
+}
+
+/* Leaf divider under each FAQ question, sized to the accordion card. */
+.registration-faq-underline {
+  width: clamp(120px, 30%, 260px);
+  margin: 0 0 clamp(6px, 0.8vw, 10px);
 }
 
 .registration-faq-note {
@@ -2645,11 +2700,10 @@ body:has(.themed-home) header .text-brand-text {
   transform: rotate(-12deg);
 }
 
-/* Tablets: pull the banners back inside the board so they keep a readable
-   aspect instead of stretching to the full card width. */
+/* Tablets: pull the community banner back inside the board so it keeps a
+   readable aspect instead of stretching to the full card width. */
 @media (min-width: 560px) and (max-width: 899px) {
-  .about-banner,
-  .about-mascots-banner {
+  .about-banner {
     width: min(100%, 520px);
     margin-inline: auto;
     aspect-ratio: 3.1 / 1;
@@ -2786,6 +2840,12 @@ a.about-contact-row:hover {
   .about-mascots-section {
     padding-bottom: clamp(140px, 52vw, 260px);
   }
+
+  /* The stacked card is a bare wrapper around the plaque and the story panel,
+     so the shared stitched frame would float around them instead of a card. */
+  .about-mascots-card::before {
+    display: none;
+  }
 }
 
 .about-mascots {
@@ -2834,10 +2894,45 @@ a.about-contact-row:hover {
   border-radius: clamp(12px, 3.4vw, 18px);
 }
 
+/* The plaque artwork only draws its parchment across the middle ~49% of the
+   box, so the mascot name + species need more height than the shared
+   `.themed-banner` mobile height (100px) to stay on the plaque. */
 .about-mascots-banner {
-  width: calc(100% + 24px);
+  width: 100%;
+  height: auto;
+  max-height: 200px;
   aspect-ratio: 2.45 / 1;
-  margin-inline: -12px;
+  /* The parchment sits slightly above the box centre, so lift the text. */
+  padding-bottom: 3%;
+}
+
+.about-mascots-banner .themed-banner-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.about-mascots-banner .themed-banner-text h2 {
+  line-height: 1.1;
+}
+
+.about-mascots-banner .themed-banner-text p {
+  line-height: 1.15;
+}
+
+/* On phones the plaque spans the whole card, so the shared mobile sprig
+   offsets would push the artwork past the page edge and get clipped. */
+@media (max-width: 899px) {
+  /* Nothing sits above the plaque in the stacked layout, so its upward sprig
+     would read as a stray leaf floating under the community board. */
+  .about-mascots-banner .themed-sprig-left {
+    display: none;
+  }
+
+  .about-mascots-banner .themed-sprig-right {
+    right: 1.5%;
+  }
 }
 
 .about-mascots-copy {
@@ -3003,7 +3098,7 @@ a.about-contact-row:hover {
 
   .about-mascots-banner {
     width: min(100%, 470px);
-    aspect-ratio: 3.2 / 1;
+    aspect-ratio: 2.8 / 1;
     margin: 0 auto clamp(10px, 1.2vw, 16px);
   }
 

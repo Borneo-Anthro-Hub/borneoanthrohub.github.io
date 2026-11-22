@@ -1,3 +1,4 @@
+import RegistrationUnderline from "@/components/server/registration/RegistrationUnderline";
 import ThemedAccordion from "@/components/server/themed/ThemedAccordion";
 
 const faqs = [
@@ -35,5 +36,13 @@ const faqs = [
 ];
 
 export default function RegistrationFaq() {
-  return <ThemedAccordion items={faqs} className="registration-faq" />;
+  return (
+    <ThemedAccordion
+      items={faqs}
+      className="registration-faq"
+      panelDivider={
+        <RegistrationUnderline className="registration-faq-underline" />
+      }
+    />
+  );
 }
