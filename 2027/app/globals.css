@@ -650,6 +650,8 @@ body:has(.themed-home) header .text-brand-text {
   object-position: left bottom;
 }
 
+/* The artwork already paints its own drop shadow. A CSS filter would add an
+   extra offscreen raster pass, which softens the art at high zoom. */
 .themed-hero-title {
   position: absolute;
   top: -1.4vw;
@@ -658,7 +660,6 @@ body:has(.themed-home) header .text-brand-text {
   width: 68.75vw;
   height: auto;
   pointer-events: none;
-  filter: drop-shadow(0 6px 5px rgb(27 50 27 / 22%));
 }
 
 /* ---- Woodland scene ------------------------------------------------------ */
@@ -802,11 +803,12 @@ body:has(.themed-home) header .text-brand-text {
   align-items: stretch;
 }
 
+/* The artwork already paints its own drop shadow. A CSS filter would add an
+   extra offscreen raster pass, which softens the art at high zoom. */
 .themed-festival-banner {
   display: block;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 5px 6px rgb(45 35 24 / 22%));
 }
 
 .themed-paper-card {
