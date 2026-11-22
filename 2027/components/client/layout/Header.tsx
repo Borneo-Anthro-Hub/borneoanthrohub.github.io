@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
 import { Drawer } from "@base-ui/react/drawer";
 import { useRef, useState } from "react";
-import { ArrowRight, ChevronDown, Menu, PawPrint, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import DevThemeSwitcher from "@/components/client/DevThemeSwitcher";
 import DevSiteStateSwitcher from "@/components/client/DevSiteStateSwitcher";
 import { useSiteState } from "@/components/client/SiteStateProvider";
@@ -102,7 +102,7 @@ export default function Header() {
       ref={headerRef}
       className="border-brand-secondary/30 bg-brand-surface sticky top-0 z-20 border-b px-4 py-3 md:px-8"
     >
-      <div className="flex items-center">
+      <div className="relative flex items-center">
         {/* Logo — placeholder asset from public/2027_images, swap when final branding lands */}
         <Link
           href="/"
@@ -216,26 +216,28 @@ export default function Header() {
 
         {/* Right side: register CTA + dev tools + hamburger */}
         <div className="ml-auto flex items-center gap-3">
-          {/* Primary CTA — only while ticket registration is open */}
+          {/* Primary CTA — only while ticket registration is open. On mobile it
+              is centred in the bar between the logo and the drawer trigger;
+              from lg it sits inline with the other header actions. */}
           {isLive("ticketRegistration") && (
             <Link
               href="/tickets"
-              className="font-display text-brand-surface bg-brand-text hover:bg-brand-subtle hidden items-center gap-2 rounded-full py-1.5 pr-3 pl-4 text-sm font-bold shadow-sm transition-colors lg:inline-flex"
+              className="font-display text-brand-surface bg-brand-text hover:bg-brand-subtle absolute top-1/2 left-1/2 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full py-2.5 pr-3.5 pl-4 text-[1.0625rem] font-medium whitespace-nowrap shadow-sm transition-colors md:hidden lg:static lg:inline-flex lg:translate-x-0 lg:translate-y-0"
             >
-              <PawPrint aria-hidden="true" className="size-4" />
               Register
-              <span className="bg-brand-surface text-brand-text grid size-5 place-items-center rounded-full">
-                <ArrowRight aria-hidden="true" className="size-3" />
+              <span className="bg-brand-surface text-brand-text grid size-4.5 place-items-center rounded-full">
+                <ArrowUpRight aria-hidden="true" className="size-2.5" />
               </span>
             </Link>
           )}
 
-          {/* Dev-only switchers */}
+          {/* Dev-only switchers — hidden on very narrow screens, where the
+              centred Register CTA needs that space */}
           {process.env.NODE_ENV === "development" && (
-            <>
+            <div className="hidden items-center gap-3 min-[440px]:flex">
               <DevThemeSwitcher />
               <DevSiteStateSwitcher />
-            </>
+            </div>
           )}
 
           {/* ---- Mobile drawer (controlled, right side) ---- */}

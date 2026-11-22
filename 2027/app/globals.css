@@ -1325,8 +1325,15 @@ body:has(.themed-home) header .text-brand-text {
     height: auto;
   }
 
+  /* The mobile artwork has no baked-in theme lockup, so the hero title floats
+     over the canopy just below the header instead of being hidden. */
   .themed-hero-title {
-    display: none;
+    display: block;
+    top: calc(3.7rem + 9vw);
+    left: 6vw;
+    width: 66vw;
+    max-width: 420px;
+    transform: none;
   }
 
   /* ---- Woodland scene ---- */
