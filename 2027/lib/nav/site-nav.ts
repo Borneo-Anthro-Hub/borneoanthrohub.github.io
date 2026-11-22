@@ -30,6 +30,11 @@ export const navItems: ReadonlyArray<NavItem> = [
     href: "/activities",
     feature: "activities",
     children: [
+      {
+        label: "Registration",
+        href: "/tickets",
+        feature: "ticketRegistration",
+      },
       { label: "Schedule", href: "/schedule", feature: "eventSchedule" },
       {
         label: "Dealer's Den",

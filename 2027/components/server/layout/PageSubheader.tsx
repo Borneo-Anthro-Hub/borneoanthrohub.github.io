@@ -30,7 +30,7 @@ export default function PageSubheader({
     <section className="bg-brand-surface px-4 py-8 md:px-8 md:py-10">
       <div className="mx-auto flex max-w-2xl flex-col items-center gap-2 text-center">
         <PillBadge>{eyebrow}</PillBadge>
-        <h1 className="font-display text-3xl text-white md:text-4xl">
+        <h1 className="font-display text-brand-text text-3xl md:text-4xl">
           {title}
         </h1>
         {description && (

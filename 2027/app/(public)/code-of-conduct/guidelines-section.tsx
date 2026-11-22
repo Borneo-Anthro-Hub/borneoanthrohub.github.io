@@ -13,6 +13,8 @@ import {
   useCarousel,
 } from "@/components/ui/carousel";
 
+const CARD_BACKGROUND = withBasePath("/2027_images/card_bg.svg");
+
 const guidelines = [
   {
     rule: 1,
@@ -110,19 +112,25 @@ function CarouselDots() {
   }, [api]);
 
   return (
-    <div className="flex items-center gap-1.5">
+    <div className="flex items-center">
       {guidelines.map((_, i) => (
         <button
           key={i}
           type="button"
           aria-label={`Go to slide ${i + 1}`}
+          aria-current={i === current ? "true" : undefined}
           onClick={() => api?.scrollTo(i)}
-          className={`rounded-full transition-all ${
-            i === current
-              ? "bg-foreground h-2 w-2"
-              : "bg-foreground/30 h-1.5 w-1.5"
-          }`}
-        />
+          className="grid h-6 w-6 place-items-center rounded-full"
+        >
+          <span
+            aria-hidden="true"
+            className={`block rounded-full transition-all ${
+              i === current
+                ? "bg-foreground h-2 w-2"
+                : "bg-foreground/30 h-1.5 w-1.5"
+            }`}
+          />
+        </button>
       ))}
     </div>
   );
@@ -130,34 +138,41 @@ function CarouselDots() {
 
 function GuidelineCard({ g }: { g: (typeof guidelines)[number] }) {
   return (
-    <div className="group relative h-full overflow-hidden rounded-[20px] border border-[#7a4a2d]/80 bg-[#cf955a] p-2 shadow-[0_6px_0_#72462d,0_10px_18px_rgba(65,38,20,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_0_#72462d,0_12px_20px_rgba(65,38,20,0.14)]">
-      <div className="flex h-full flex-col overflow-hidden rounded-[16px] border border-[#72462d]/80 bg-[#f2dfb9]">
-        {g.image ? (
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f7eedf]">
+    // The artwork supplies the card surface, so it is stretched to the card
+    // box rather than clipped the way a cover image would be. The grid spacer
+    // maintains its portrait proportions without preventing content growth.
+    <article
+      className="group relative grid min-h-full bg-no-repeat drop-shadow-[0_6px_8px_rgb(45_35_24_/_0.3)] transition-transform duration-300 before:col-start-1 before:row-start-1 before:aspect-[277/426] before:w-full before:content-[''] hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+      style={{
+        backgroundImage: `url("${CARD_BACKGROUND}")`,
+        backgroundSize: "100% 100%",
+      }}
+    >
+      <div className="col-start-1 row-start-1 flex flex-col p-[clamp(24px,10%,40px)]">
+        <div className="relative min-h-32 w-full flex-1 overflow-hidden rounded-xl">
+          {g.image ? (
             <Image
               src={withBasePath(g.image)}
               alt={g.title}
               fill
-              sizes="(max-width: 640px) 85vw, 50vw"
-              className="object-contain p-4"
+              sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-contain"
             />
-          </div>
-        ) : (
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#f7eedf]">
+          ) : (
             <PlaceholderImage />
-          </div>
-        )}
+          )}
+        </div>
 
-        <div className="flex min-h-[150px] flex-1 items-stretch gap-3 bg-[#d8a96f] p-3 text-[#3e2a18]">
-          <div className="flex min-w-0 flex-1 flex-col justify-center">
-            <p className="type-body-l-semibold text-[#2f1d12]">{g.title}</p>
-            <p className="type-body-s mt-1 leading-relaxed text-[#563d2a]">
-              {g.text}
-            </p>
-          </div>
+        <div className="mt-auto p-6 pt-6">
+          <p className="type-body-l-semibold text-brand-text leading-tight text-pretty">
+            {g.title}
+          </p>
+          <p className="type-body-s text-brand-text mt-2 leading-relaxed text-pretty">
+            {g.text}
+          </p>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -167,14 +182,14 @@ export function GuidelinesSection() {
   if (isMobile) {
     return (
       <Carousel className="w-full" opts={{ loop: true }}>
-        <CarouselContent className="-ml-3 p-3">
+        <CarouselContent className="-ml-4 p-4">
           {guidelines.map((g) => (
-            <CarouselItem key={g.rule} className="basis-[85%] pl-3">
+            <CarouselItem key={g.rule} className="basis-[85%] pl-4">
               <GuidelineCard g={g} />
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className="mt-4 flex items-center justify-center gap-3">
+        <div className="mt-5 flex items-center justify-center gap-2">
           <CarouselPrevious className="static inset-auto translate-y-0" />
           <CarouselDots />
           <CarouselNext className="static inset-auto translate-y-0" />
@@ -184,9 +199,14 @@ export function GuidelinesSection() {
   }
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="flex flex-wrap justify-center gap-4">
       {guidelines.map((g) => (
-        <GuidelineCard key={g.rule} g={g} />
+        <div
+          key={g.rule}
+          className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]"
+        >
+          <GuidelineCard g={g} />
+        </div>
       ))}
     </div>
   );

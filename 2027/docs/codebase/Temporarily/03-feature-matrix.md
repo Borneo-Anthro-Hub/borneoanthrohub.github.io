@@ -19,7 +19,7 @@
 | Art Submission         |     | ✅  | ✅  |     |     |     | Google Form link |
 | Account Creation       |  —  |  —  |  —  |  —  |  —  |  —  | Reserved — 2028  |
 | Login                  |  —  |  —  |  —  |  —  |  —  |  —  | Reserved — 2028  |
-| Ticket Registration    |     |     |     | ✅  |     |     | Google Form link |
+| Ticket Registration    |     |     | ✅  | ✅  |     |     | Google Form link |
 | Profile Editing        |  —  |  —  |  —  |  —  |  —  |  —  | Reserved — 2028  |
 | Badge Pickup Selection |  —  |  —  |  —  |  —  |  —  |  —  | Reserved — 2028  |
 | Dealer Submission      |     |     |     |     | ✅  |     | Google Form link |

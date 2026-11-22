@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@base-ui/react/button";
+import { BahButton } from "@/components/ui/bah-button";
 
 function scrollTo(id: string) {
   if (typeof window !== "undefined") {
@@ -16,12 +16,9 @@ function scrollTo(id: string) {
 export default function HeroActions() {
   return (
     <div className="flex gap-3">
-      <Button
-        onClick={() => scrollTo("about")}
-        className="border-border hover:bg-brand-subtle hover:text-brand-surface focus-visible:ring-ring rounded border px-4 py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-      >
+      <BahButton variant="secondary" onClick={() => scrollTo("about")}>
         Learn More
-      </Button>
+      </BahButton>
     </div>
   );
 }

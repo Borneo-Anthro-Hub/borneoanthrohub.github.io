@@ -23,14 +23,14 @@ export default function GlobalError({
 
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="flex min-h-full flex-col items-center justify-center gap-4 bg-neutral-50 p-8 text-center font-sans text-neutral-900">
+      <body className="bg-background text-foreground flex min-h-full flex-col items-center justify-center gap-4 p-8 text-center font-sans">
         <h1 className="text-2xl font-bold">Something went wrong</h1>
-        <p className="text-sm text-neutral-500">
+        <p className="text-muted-foreground text-sm">
           An unexpected error occurred. Please try again.
         </p>
         <button
           onClick={() => unstable_retry()}
-          className="rounded border border-neutral-300 bg-white px-4 py-2 text-sm font-medium shadow-sm transition hover:bg-neutral-100"
+          className="bg-card text-card-foreground border-border hover:bg-muted font-display rounded border px-4 py-2 text-sm font-medium shadow-sm transition"
         >
           Try again
         </button>

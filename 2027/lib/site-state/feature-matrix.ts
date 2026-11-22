@@ -35,8 +35,10 @@ export const FEATURE_MATRIX: Record<Feature, readonly SiteState[]> = {
   profileEditing: [],
   badgePickupSelection: [],
 
-  // Ticket Registration — Google Form link in 2027, full integration in 2028
-  ticketRegistration: ["TO"],
+  // Ticket Registration — Google Form link in 2027, full integration in 2028.
+  // The tier page is posted with the announcement and stays up while
+  // registration is open.
+  ticketRegistration: ["A", "TO"],
 
   // Announcement onward (yearly theme details)
   themeLandingPage: ["A", "TO", "RC", "FIR"],

@@ -3,8 +3,8 @@
 // =============================================================================
 // Single top-level place to configure this deployment's theme and website
 // lifecycle state. Both are read from environment variables so shipping a
-// new year's build (or previewing a different lifecycle stage) only
-// requires editing `.env.local`, never source code.
+// new year's build uses GitHub Actions variables, while `.env.local` supplies
+// values for local previews.
 //
 //   SITE_THEME     — theme key from `lib/theme/themes.ts` (e.g. "2027")
 //   WEBSITE_STATE  — lifecycle state code:
@@ -15,8 +15,7 @@
 //                       RC  | Account Creation & Registration Close
 //                       FIR | Final Information Release
 //
-// See `.env.example` for a template. Each falls back to a safe default (with
-// a console warning) if its env var is unset or invalid.
+// Each falls back to a safe default if its env var is unset or invalid.
 //
 // This module is `server-only` — resolved once at module init on the
 // server. Client Components never import it directly; they receive the

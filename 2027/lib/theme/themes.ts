@@ -17,6 +17,8 @@
 // =============================================================================
 
 import { withBasePath } from "@/lib/utils";
+import { palettes } from "./palettes";
+import typographyConfig from "./typography.json";
 
 // -----------------------------------------------------------------------------
 // Types
@@ -85,19 +87,26 @@ export type TypographyTokenName =
 
 export type TypographyTokens = Record<TypographyTokenName, TypographyStyle>;
 
-const defaultTypography: TypographyTokens = {
-  heroH1: { font: "display", size: 56, weight: 700, lineHeight: 1.2 },
-  heroH3: { font: "display", size: 40, weight: 700, lineHeight: 1.2 },
-  heroH4: { font: "display", size: 32, weight: 400, lineHeight: 1.2 },
-  headingH3: { font: "heading", size: 40, weight: 400, lineHeight: 1.2 },
-  headingH4: { font: "heading", size: 32, weight: 400, lineHeight: 1.2 },
-  bodyLSemibold: { font: "body", size: 18, weight: 600, lineHeight: 1.2 },
-  bodyL: { font: "body", size: 18, weight: 400, lineHeight: 1.2 },
-  bodySSemibold: { font: "body", size: 14, weight: 600, lineHeight: 1.2 },
-  bodyS: { font: "body", size: 14, weight: 400, lineHeight: 1.2 },
-  captionSMedium: { font: "caption", size: 12, weight: 500, lineHeight: 1.2 },
-  captionSBold: { font: "caption", size: 12, weight: 700, lineHeight: 1.2 },
-};
+/**
+ * Builds the type scale from `typography.json`. Line height is not repeated per
+ * variant on purpose: the design system requires 120% everywhere, so a single
+ * `lineHeight` in the JSON applies to every token.
+ */
+function buildTypographyTokens(): TypographyTokens {
+  return Object.fromEntries(
+    Object.entries(typographyConfig.variants).map(([name, variant]) => [
+      name,
+      {
+        font: variant.family as TypographyFontRole,
+        size: variant.size,
+        weight: variant.weight as TypographyStyle["weight"],
+        lineHeight: typographyConfig.lineHeight,
+      },
+    ]),
+  ) as TypographyTokens;
+}
+
+const defaultTypography: TypographyTokens = buildTypographyTokens();
 
 export interface Theme {
   label: string;
@@ -113,11 +122,23 @@ export interface Theme {
   captionFont?: string;
   /** Named type styles; sizes are in px and line heights are unitless. */
   typography?: TypographyTokens;
+  /**
+   * Default color for every typography token (the 2027 guide's "General
+   * Black"). Falls back to `semantic.foreground` when omitted.
+   */
+  typographyColor?: string;
   /** Optional repeating page background configured for the active theme. */
   pageBackground?: {
     image: string;
     size: string;
   };
+  /**
+   * Optional artwork behind the shared `PageHero`. Year-specific: the 2027
+   * garden illustration lives under `/2027_images`, while the reusable
+   * content pages pull year-neutral art from `/shared_images` via their own
+   * layout instead. Omit to get the plain themed hero.
+   */
+  pageHeroArt?: string;
   brand: BrandTokens;
   semantic: SemanticTokens;
 }
@@ -171,73 +192,58 @@ export const themes = {
 
   "2027": {
     label: "2027",
-    fontUrl:
-      "https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Margarine&family=Cause:wght@400;600&family=Poppins:wght@500;700&display=swap",
-    font: "'Cause', system-ui, sans-serif",
-    displayFont: "'Oleo Script', cursive",
-    headingFont: "'Margarine', system-ui, sans-serif",
-    bodyFont: "'Cause', system-ui, sans-serif",
-    captionFont: "'Poppins', system-ui, sans-serif",
+    fontUrl: typographyConfig.fontUrl,
+    font: typographyConfig.families.body.stack,
+    displayFont: typographyConfig.families.display.stack,
+    headingFont: typographyConfig.families.heading.stack,
+    bodyFont: typographyConfig.families.body.stack,
+    captionFont: typographyConfig.families.caption.stack,
+    typographyColor: palettes.neutral[950],
+    pageHeroArt: "/2027_images/landscape_main_art_airashi/background_art.webp",
     pageBackground: {
-      image: "/2027_images/repeat_background.png",
-      size: "3000px auto",
+      image: "/2027_images/new_repeat_background.svg",
+      // The SVG is a ~3.1x export of the 500px-wide design tile; render it at design scale.
+      size: "500px auto",
     },
-    typography: {
-      heroH1: { font: "display", size: 56, weight: 700, lineHeight: 1.2 },
-      heroH3: { font: "display", size: 40, weight: 700, lineHeight: 1.2 },
-      heroH4: { font: "display", size: 32, weight: 400, lineHeight: 1.2 },
-      headingH3: { font: "heading", size: 40, weight: 400, lineHeight: 1.2 },
-      headingH4: { font: "heading", size: 32, weight: 400, lineHeight: 1.2 },
-      bodyLSemibold: { font: "body", size: 18, weight: 600, lineHeight: 1.2 },
-      bodyL: { font: "body", size: 18, weight: 400, lineHeight: 1.2 },
-      bodySSemibold: { font: "body", size: 14, weight: 600, lineHeight: 1.2 },
-      bodyS: { font: "body", size: 14, weight: 400, lineHeight: 1.2 },
-      captionSMedium: {
-        font: "caption",
-        size: 12,
-        weight: 500,
-        lineHeight: 1.2,
-      },
-      captionSBold: { font: "caption", size: 12, weight: 700, lineHeight: 1.2 },
-    },
+    typography: defaultTypography,
     // BAH 2027 palette (all 500 / Main) + derived shades for contrast
     // Design: dark green header/footer, pale cream content area, orange accents
     brand: {
-      bg: "#71a33d", // BAH Nature Green (brand identity)
-      accent: "#DDB487", // BAH Sunshine Yellow (CTA / active nav)
+      bg: palettes.natureGreen[500], // BAH Nature Green (brand identity)
+      accent: palettes.woodyEarth[300], // BAH Woody Earth (CTA / active nav)
       text: "#FFF3F0",
       hover: "#f7c44b", // lighter Sunshine Yellow
-      surface: "#235227", // deeper Nature Green (header / footer bar)
+      surface: palettes.natureGreen[800], // deeper Nature Green (header / footer bar)
       subtle: "#f3f6e6", // light green tint (soft surfaces)
-      secondary: "#ff836d", // BAH Floral Coral (logo border)
+      secondary: palettes.floralCoral[500], // BAH Floral Coral (logo border)
     },
     semantic: {
       background: "#fdf6e3", // warm pale cream (content area)
-      foreground: "#000000", // General Black typography from the 2027 guide
+      foreground: palettes.neutral[950], // warm near-black body text
       card: "#ffffff",
-      cardForeground: "#000000",
+      cardForeground: palettes.neutral[950],
       popover: "#fbf3e6", // warm cream (Woody Earth tint)
-      popoverForeground: "#000000",
-      primary: "#f5b425", // BAH Sunshine Yellow
+      popoverForeground: palettes.neutral[950],
+      primary: palettes.sunshineYellow[500], // BAH Sunshine Yellow
       primaryForeground: "#3a2d05", // dark on yellow (AA)
-      secondary: "#ff836d", // BAH Floral Coral
+      secondary: palettes.floralCoral[500], // BAH Floral Coral
       secondaryForeground: "#3f1609", // dark on coral (AA)
       muted: "#f5efe2", // light cream (muted surface on cream bg)
       mutedForeground: "#6b5f55", // warm gray on cream (5.3:1 AA)
-      accent: "#ffa7be", // BAH Floral Pink
+      accent: palettes.floralPink[500], // BAH Floral Pink
       accentForeground: "#40212c", // dark plum
       destructive: "#d94848", // accessible red (not in chart)
       border: "rgba(90, 76, 60, 0.18)", // warm neutral
       input: "rgba(90, 76, 60, 0.3)", // warm neutral
-      ring: "#40acdf", // BAH Sky Blue (focus)
+      ring: palettes.skyBlue[500], // BAH Sky Blue (focus)
       sidebar: "#ffffff",
       sidebarForeground: "#3a342b",
-      sidebarPrimary: "#71a33d", // BAH Nature Green
+      sidebarPrimary: palettes.natureGreen[500], // BAH Nature Green
       sidebarPrimaryForeground: "#ffffff",
       sidebarAccent: "#f3f6e6",
       sidebarAccentForeground: "#3a342b",
       sidebarBorder: "#e6e0d6",
-      sidebarRing: "#40acdf",
+      sidebarRing: palettes.skyBlue[500],
     },
   },
 
@@ -329,6 +335,9 @@ export function themeToCssVars(theme: Theme): Record<string, string> {
       ? `url("${withBasePath(theme.pageBackground.image)}")`
       : "none",
     "--page-background-size": theme.pageBackground?.size ?? "auto",
+    "--page-hero-image": theme.pageHeroArt
+      ? `url("${withBasePath(theme.pageHeroArt)}")`
+      : "none",
     "--brand-bg": theme.brand.bg,
     "--brand-accent": theme.brand.accent,
     "--brand-text": theme.brand.text,
@@ -367,6 +376,7 @@ export function themeToCssVars(theme: Theme): Record<string, string> {
     "--font-heading": theme.headingFont ?? theme.font,
     "--font-body": theme.bodyFont ?? theme.font,
     "--font-caption": theme.captionFont ?? theme.font,
+    "--type-color": theme.typographyColor ?? theme.semantic.foreground,
     ...typographyVars,
   };
 }

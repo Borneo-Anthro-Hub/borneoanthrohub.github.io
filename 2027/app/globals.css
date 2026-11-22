@@ -14,43 +14,92 @@
  * no-JS edge cases) still looks correct.
  */
 :root {
-  --brand-bg: #71a33d;
-  --brand-accent: #f5b425;
-  --brand-text: #ffffff;
+  --brand-bg: #70a33c;
+  --brand-accent: #ddb488;
+  --brand-text: #fff3f0;
   --brand-hover: #f7c44b;
-  --brand-surface: #3a5f1e;
+  --brand-surface: #225226;
   --brand-subtle: #f3f6e6;
   --brand-secondary: #ff836d;
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --card: #ffffff;
+  --card-foreground: #1e1a17;
+  --popover: #fbf3e6;
+  --popover-foreground: #1e1a17;
+  --primary: #f5b426;
+  --primary-foreground: #3a2d05;
+  --secondary: #ff836d;
+  --secondary-foreground: #3f1609;
+  --muted: #f5efe2;
+  --muted-foreground: #6b5f55;
+  --accent: #ffa7bf;
+  --accent-foreground: #40212c;
+  --destructive: #d94848;
+  --border: rgba(90, 76, 60, 0.18);
+  --input: rgba(90, 76, 60, 0.3);
+  --ring: #41ace0;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #3a342b;
+  --sidebar-primary: #70a33c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f6e6;
+  --sidebar-accent-foreground: #3a342b;
+  --sidebar-border: #e6e0d6;
+  --sidebar-ring: #41ace0;
 
-  --font-theme: "General Sans", system-ui, sans-serif;
-  --font-display: "General Sans", system-ui, sans-serif;
-  --font-heading: "General Sans", system-ui, sans-serif;
-  --font-body: "General Sans", system-ui, sans-serif;
-  --font-caption: "General Sans", system-ui, sans-serif;
+  --font-theme: "Cause", system-ui, sans-serif;
+  --font-display: "Oleo Script", cursive;
+  --font-heading: "Margarine", system-ui, sans-serif;
+  --font-body: "Cause", system-ui, sans-serif;
+  --font-caption: "Poppins", system-ui, sans-serif;
+  /* BAH 2027 body/UI text uses the warm neutral-950 ink. */
+  --type-color: #1e1a17;
+  /* Dotted floral emblem used by the bahPrimary / bahSecondary buttons.
+     The motif color is switched per state by the button token map. */
+  --bah-button-motif-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='2.4' fill='white'/><circle cx='12' cy='5.4' r='1.9' fill='white'/><circle cx='18.6' cy='12' r='1.9' fill='white'/><circle cx='12' cy='18.6' r='1.9' fill='white'/><circle cx='5.4' cy='12' r='1.9' fill='white'/><circle cx='12' cy='12' r='6.6' stroke='white' stroke-width='1.2' stroke-dasharray='1.2 2.2' stroke-linecap='round'/></svg>");
+  --type-hero-h1-font-family: var(--font-display);
+  --type-hero-h1-font-size: 56px;
+  --type-hero-h1-font-weight: 700;
+  --type-hero-h1-line-height: 1.2;
+  --type-hero-h3-font-family: var(--font-display);
+  --type-hero-h3-font-size: 40px;
+  --type-hero-h3-font-weight: 700;
+  --type-hero-h3-line-height: 1.2;
+  --type-hero-h4-font-family: var(--font-display);
+  --type-hero-h4-font-size: 32px;
+  --type-hero-h4-font-weight: 400;
+  --type-hero-h4-line-height: 1.2;
+  --type-heading-h3-font-family: var(--font-heading);
+  --type-heading-h3-font-size: 40px;
+  --type-heading-h3-font-weight: 400;
+  --type-heading-h3-line-height: 1.2;
+  --type-heading-h4-font-family: var(--font-heading);
+  --type-heading-h4-font-size: 32px;
+  --type-heading-h4-font-weight: 400;
+  --type-heading-h4-line-height: 1.2;
+  --type-body-l-semibold-font-family: var(--font-body);
+  --type-body-l-semibold-font-size: 18px;
+  --type-body-l-semibold-font-weight: 600;
+  --type-body-l-semibold-line-height: 1.2;
+  --type-body-l-font-family: var(--font-body);
+  --type-body-l-font-size: 18px;
+  --type-body-l-font-weight: 400;
+  --type-body-l-line-height: 1.2;
+  --type-body-s-semibold-font-family: var(--font-body);
+  --type-body-s-semibold-font-size: 14px;
+  --type-body-s-semibold-font-weight: 600;
+  --type-body-s-semibold-line-height: 1.2;
+  --type-body-s-font-family: var(--font-body);
+  --type-body-s-font-size: 14px;
+  --type-body-s-font-weight: 400;
+  --type-body-s-line-height: 1.2;
+  --type-caption-s-medium-font-family: var(--font-caption);
+  --type-caption-s-medium-font-size: 12px;
+  --type-caption-s-medium-font-weight: 500;
+  --type-caption-s-medium-line-height: 1.2;
+  --type-caption-s-bold-font-family: var(--font-caption);
+  --type-caption-s-bold-font-size: 12px;
+  --type-caption-s-bold-font-weight: 700;
+  --type-caption-s-bold-line-height: 1.2;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --chart-1: oklch(0.87 0 0);
@@ -69,6 +118,92 @@
   --color-brand-surface: var(--brand-surface);
   --color-brand-subtle: var(--brand-subtle);
   --color-brand-secondary: var(--brand-secondary);
+
+  /*
+   * BAH 2027 palette scales. The values are injected on <html> from
+   * `lib/theme/palettes.ts` (`paletteToCssVars`) so the TS module stays the
+   * single source of truth. Token classes: `bg-nature-green-500`,
+   * `text-floral-coral-700`, `ring-sunshine-yellow-500`, etc.
+   */
+  --color-nature-green-50: var(--palette-nature-green-50);
+  --color-nature-green-100: var(--palette-nature-green-100);
+  --color-nature-green-200: var(--palette-nature-green-200);
+  --color-nature-green-300: var(--palette-nature-green-300);
+  --color-nature-green-400: var(--palette-nature-green-400);
+  --color-nature-green-500: var(--palette-nature-green-500);
+  --color-nature-green-600: var(--palette-nature-green-600);
+  --color-nature-green-700: var(--palette-nature-green-700);
+  --color-nature-green-800: var(--palette-nature-green-800);
+  --color-nature-green-900: var(--palette-nature-green-900);
+  --color-nature-green-950: var(--palette-nature-green-950);
+  --color-sunshine-yellow-50: var(--palette-sunshine-yellow-50);
+  --color-sunshine-yellow-100: var(--palette-sunshine-yellow-100);
+  --color-sunshine-yellow-200: var(--palette-sunshine-yellow-200);
+  --color-sunshine-yellow-300: var(--palette-sunshine-yellow-300);
+  --color-sunshine-yellow-400: var(--palette-sunshine-yellow-400);
+  --color-sunshine-yellow-500: var(--palette-sunshine-yellow-500);
+  --color-sunshine-yellow-600: var(--palette-sunshine-yellow-600);
+  --color-sunshine-yellow-700: var(--palette-sunshine-yellow-700);
+  --color-sunshine-yellow-800: var(--palette-sunshine-yellow-800);
+  --color-sunshine-yellow-900: var(--palette-sunshine-yellow-900);
+  --color-sunshine-yellow-950: var(--palette-sunshine-yellow-950);
+  --color-floral-pink-50: var(--palette-floral-pink-50);
+  --color-floral-pink-100: var(--palette-floral-pink-100);
+  --color-floral-pink-200: var(--palette-floral-pink-200);
+  --color-floral-pink-300: var(--palette-floral-pink-300);
+  --color-floral-pink-400: var(--palette-floral-pink-400);
+  --color-floral-pink-500: var(--palette-floral-pink-500);
+  --color-floral-pink-600: var(--palette-floral-pink-600);
+  --color-floral-pink-700: var(--palette-floral-pink-700);
+  --color-floral-pink-800: var(--palette-floral-pink-800);
+  --color-floral-pink-900: var(--palette-floral-pink-900);
+  --color-floral-pink-950: var(--palette-floral-pink-950);
+  --color-floral-coral-50: var(--palette-floral-coral-50);
+  --color-floral-coral-100: var(--palette-floral-coral-100);
+  --color-floral-coral-200: var(--palette-floral-coral-200);
+  --color-floral-coral-300: var(--palette-floral-coral-300);
+  --color-floral-coral-400: var(--palette-floral-coral-400);
+  --color-floral-coral-500: var(--palette-floral-coral-500);
+  --color-floral-coral-600: var(--palette-floral-coral-600);
+  --color-floral-coral-700: var(--palette-floral-coral-700);
+  --color-floral-coral-800: var(--palette-floral-coral-800);
+  --color-floral-coral-900: var(--palette-floral-coral-900);
+  --color-floral-coral-950: var(--palette-floral-coral-950);
+  --color-sky-blue-50: var(--palette-sky-blue-50);
+  --color-sky-blue-100: var(--palette-sky-blue-100);
+  --color-sky-blue-200: var(--palette-sky-blue-200);
+  --color-sky-blue-300: var(--palette-sky-blue-300);
+  --color-sky-blue-400: var(--palette-sky-blue-400);
+  --color-sky-blue-500: var(--palette-sky-blue-500);
+  --color-sky-blue-600: var(--palette-sky-blue-600);
+  --color-sky-blue-700: var(--palette-sky-blue-700);
+  --color-sky-blue-800: var(--palette-sky-blue-800);
+  --color-sky-blue-900: var(--palette-sky-blue-900);
+  --color-sky-blue-950: var(--palette-sky-blue-950);
+  --color-woody-earth-50: var(--palette-woody-earth-50);
+  --color-woody-earth-100: var(--palette-woody-earth-100);
+  --color-woody-earth-200: var(--palette-woody-earth-200);
+  --color-woody-earth-300: var(--palette-woody-earth-300);
+  --color-woody-earth-400: var(--palette-woody-earth-400);
+  --color-woody-earth-500: var(--palette-woody-earth-500);
+  --color-woody-earth-600: var(--palette-woody-earth-600);
+  --color-woody-earth-700: var(--palette-woody-earth-700);
+  --color-woody-earth-800: var(--palette-woody-earth-800);
+  --color-woody-earth-900: var(--palette-woody-earth-900);
+  --color-woody-earth-950: var(--palette-woody-earth-950);
+  --color-neutral-50: var(--palette-neutral-50);
+  --color-neutral-100: var(--palette-neutral-100);
+  --color-neutral-200: var(--palette-neutral-200);
+  --color-neutral-300: var(--palette-neutral-300);
+  --color-neutral-400: var(--palette-neutral-400);
+  --color-neutral-500: var(--palette-neutral-500);
+  --color-neutral-600: var(--palette-neutral-600);
+  --color-neutral-700: var(--palette-neutral-700);
+  --color-neutral-800: var(--palette-neutral-800);
+  --color-neutral-900: var(--palette-neutral-900);
+  --color-neutral-950: var(--palette-neutral-950);
+  --color-bah-accent-disabled: var(--palette-bah-accent-disabled);
+  --color-bah-secondary-disabled: var(--palette-bah-secondary-disabled);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -165,6 +300,134 @@
 
 .dormant-sky-layer {
   mask-image: linear-gradient(to bottom, transparent, black 18%);
+}
+
+/* Shared themed card surface — aligned with themed-home paper/board cards. */
+.themed-card,
+.themed-card.bg-brand-surface,
+.themed-card.bg-brand-accent,
+.themed-card.bg-brand-subtle {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 0;
+  background: var(--themed-paper, #ddb487);
+  color: var(--themed-ink, #3c2a1e);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 16%),
+    0 6px 8px rgb(45 35 24 / 30%);
+}
+
+.themed-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Stitched paper frame -----------------------------------------------------
+   A plain `dashed` border renders dashes as long as they are thick, and gives
+   no control over the gap. So the frame is painted instead: a solid fill cut
+   into evenly spaced stitches, then reassembled from four edge strips and four
+   corner arcs. The strips stop at the corner tangent points so a stitch is
+   never sliced by the rounded corner, and each corner carries one solid arc
+   so the frame still wraps the card. Tune a surface with the `--stitch-*`
+   knobs. */
+.themed-card,
+.themed-paper-card,
+.themed-quick-card,
+.registration-board {
+  --stitch-inset: clamp(7px, 0.7vw, 11px);
+  --stitch-width: clamp(4px, 0.4vw, 6px);
+  --stitch-dash: clamp(16px, 1.5vw, 24px);
+  --stitch-gap: clamp(12px, 1.15vw, 19px);
+  --stitch-radius: clamp(7px, 0.8vw, 13px);
+  --stitch-color: var(--themed-paper-dark, #a76f45);
+  /* Length of the straight part of each edge (between the corner tangents). */
+  --stitch-run: calc(100% - 2 * var(--stitch-radius));
+  /* Inner radius of the corner arc, never below the stitch thickness. */
+  --stitch-band: max(1px, calc(var(--stitch-radius) - var(--stitch-width)));
+  --stitch-edge-x: repeating-linear-gradient(
+    90deg,
+    #000 0 var(--stitch-dash),
+    transparent var(--stitch-dash) calc(var(--stitch-dash) + var(--stitch-gap))
+  );
+  --stitch-edge-y: repeating-linear-gradient(
+    0deg,
+    #000 0 var(--stitch-dash),
+    transparent var(--stitch-dash) calc(var(--stitch-dash) + var(--stitch-gap))
+  );
+  --stitch-arc-tl: radial-gradient(
+    circle at 100% 100%,
+    transparent 0 var(--stitch-band),
+    #000 var(--stitch-band) var(--stitch-radius),
+    transparent var(--stitch-radius)
+  );
+  --stitch-arc-tr: radial-gradient(
+    circle at 0% 100%,
+    transparent 0 var(--stitch-band),
+    #000 var(--stitch-band) var(--stitch-radius),
+    transparent var(--stitch-radius)
+  );
+  --stitch-arc-bl: radial-gradient(
+    circle at 100% 0%,
+    transparent 0 var(--stitch-band),
+    #000 var(--stitch-band) var(--stitch-radius),
+    transparent var(--stitch-radius)
+  );
+  --stitch-arc-br: radial-gradient(
+    circle at 0% 0%,
+    transparent 0 var(--stitch-band),
+    #000 var(--stitch-band) var(--stitch-radius),
+    transparent var(--stitch-radius)
+  );
+  --stitch-mask-image:
+    var(--stitch-edge-x), var(--stitch-edge-x), var(--stitch-edge-y),
+    var(--stitch-edge-y), var(--stitch-arc-tl), var(--stitch-arc-tr),
+    var(--stitch-arc-bl), var(--stitch-arc-br);
+  --stitch-mask-size:
+    var(--stitch-run) var(--stitch-width),
+    var(--stitch-run) var(--stitch-width),
+    var(--stitch-width) var(--stitch-run),
+    var(--stitch-width) var(--stitch-run),
+    var(--stitch-radius) var(--stitch-radius),
+    var(--stitch-radius) var(--stitch-radius),
+    var(--stitch-radius) var(--stitch-radius),
+    var(--stitch-radius) var(--stitch-radius);
+  --stitch-mask-position:
+    center top, center bottom, left center, right center, left top, right top,
+    left bottom, right bottom;
+}
+
+/* Nests inside the card's own 8px corner. */
+.themed-paper-card {
+  --stitch-radius: 8px;
+}
+
+.registration-board {
+  --stitch-inset: clamp(8px, 1vw, 14px);
+  --stitch-radius: clamp(9px, 1.2vw, 17px);
+}
+
+.themed-card::before,
+.themed-paper-card::before,
+.themed-quick-card::before,
+.registration-board::before {
+  position: absolute;
+  inset: var(--stitch-inset);
+  z-index: 0;
+  border-radius: var(--stitch-radius);
+  background: var(--stitch-color);
+  content: "";
+  pointer-events: none;
+  -webkit-mask-image: var(--stitch-mask-image);
+  -webkit-mask-size: var(--stitch-mask-size);
+  -webkit-mask-position: var(--stitch-mask-position);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: source-over;
+  mask-image: var(--stitch-mask-image);
+  mask-size: var(--stitch-mask-size);
+  mask-position: var(--stitch-mask-position);
+  mask-repeat: no-repeat;
+  mask-composite: add;
 }
 
 .dormant-hero-parallax {
@@ -307,6 +570,2563 @@
   background-size: var(--page-background-size, auto);
 }
 
+/* Backdrop art behind the shared PageHero. Resolved from the active theme's
+   `pageHeroArt` token (`--page-hero-image`), so swapping the yearly theme
+   swaps the illustration with no component changes. */
+.page-hero-art {
+  background-image: var(--page-hero-image, none);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Bridges the positioner's 10px gap so moving from a nav trigger into its
+   dropdown does not count as leaving the menu. */
+.nav-popup::before {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  content: "";
+}
+
+/* =============================================================================
+   2027 THEMED LANDING — Tinyverse Garden
+   ============================================================================= */
+
+.themed-home {
+  --themed-cream: #fdf6e3;
+  --themed-paper: #ddb487;
+  --themed-paper-dark: #a76f45;
+  --themed-forest: #235227;
+  --themed-forest-light: #4f873c;
+  --themed-brown: #704925;
+  --themed-ink: #3c2a1e;
+  color: var(--themed-ink);
+  overflow-x: clip;
+}
+
+body:has(.themed-home),
+body:has(.themed-home) > .site-background {
+  width: 100%;
+  min-width: 0;
+}
+
+body:has(.themed-home) header {
+  background: #235227;
+  border-bottom-color: rgb(255 243 240 / 18%);
+}
+
+body:has(.themed-home) header .text-brand-text {
+  color: #fdf6e3;
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+
+.themed-hero {
+  position: relative;
+  z-index: 1;
+}
+
+.themed-hero-art {
+  position: relative;
+  aspect-ratio: 3960 / 2160;
+  overflow: hidden;
+  background: #78a7e8;
+}
+
+.themed-hero-mobile {
+  display: none;
+}
+
+.themed-hero-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+}
+
+.themed-hero-title {
+  position: absolute;
+  top: -1.4vw;
+  left: 0;
+  z-index: 3;
+  width: 68.75vw;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 5px rgb(27 50 27 / 22%));
+}
+
+/* ---- Woodland scene ------------------------------------------------------ */
+
+.themed-landscape {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  /* The parchment texture is painted once, by `.site-background`; the map that
+     fills the clearing is drawn by `.themed-clearing` below. */
+}
+
+/* Out-of-focus park map that fills the festival clearing. As in Figma it is a
+   large tilted plane rather than a tile, so it reads as the ground the scene
+   stands on; this wrapper feathers it into the repeating parchment. */
+.themed-clearing {
+  position: absolute;
+  inset: 6vw -28vw 2vw;
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 18%,
+    #000 52%,
+    transparent 72%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 18%,
+    #000 52%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.themed-clearing::before {
+  position: absolute;
+  inset: -18%;
+  /* Parchment-toned base so the map's sheet edges blend into the page. */
+  background-color: #fdf6e3;
+  background-image: url("/2027_images/new_themed_homepage_assets/map_background.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 120% auto;
+  filter: blur(4px);
+  opacity: 0.95;
+  transform: rotate(-10deg);
+  content: "";
+}
+
+/* Grass + date divider that wraps the festival clearing. */
+.themed-landscape::before {
+  position: absolute;
+  top: -23.39vw;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  aspect-ratio: 1920 / 2095;
+  background: url("/2027_images/new_themed_homepage_assets/1-divider.svg")
+    center / 100% 100% no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.themed-festival {
+  position: relative;
+  z-index: 1;
+  padding: 28.4vw 0 6.75vw;
+}
+
+.themed-festival-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 480px) minmax(0, 455px);
+  align-items: start;
+  justify-content: center;
+  gap: 20px;
+  width: min(100% - 48px, 955px);
+  margin: 0 auto;
+  transform: translateX(clamp(0px, 2.6vw, 50px));
+}
+
+.themed-venue {
+  position: relative;
+}
+
+.themed-venue-photo {
+  position: relative;
+  display: block;
+  padding: 11px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 16px rgb(45 35 24 / 32%);
+  transform: rotate(-0.6deg);
+}
+
+.themed-venue-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 460 / 525;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.themed-venue-label {
+  position: absolute;
+  top: 64%;
+  left: -23%;
+  display: flex;
+  width: 70%;
+  max-width: 333px;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 22px 10px;
+  border: 5px solid #fff;
+  border-radius: 999px;
+  outline: 2px solid var(--themed-paper-dark);
+  background: var(--themed-paper);
+  box-shadow: 0 6px 10px rgb(45 35 24 / 28%);
+  color: var(--themed-forest);
+  font-family: var(--font-heading);
+  transform: rotate(-2deg);
+}
+
+.themed-venue-label strong {
+  font-size: clamp(1.1rem, 2.1vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.themed-venue-label small {
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 0.85vw, 0.95rem);
+  line-height: 1.2;
+}
+
+.themed-festival-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.themed-festival-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 5px 6px rgb(45 35 24 / 22%));
+}
+
+.themed-paper-card {
+  position: relative;
+  padding: 42px 30px 44px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--themed-paper);
+  box-shadow: 6px 8px 10px rgb(45 35 24 / 26%);
+}
+
+.themed-paper-card p {
+  margin: 0 0 22px;
+  color: var(--themed-forest);
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 0.87vw, 1.05rem);
+  line-height: 1.62;
+}
+
+.themed-action-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.themed-pill-action,
+.themed-mini-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--themed-forest);
+  color: var(--themed-cream);
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
+  font-weight: var(--type-hero-h3-font-weight, 700);
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 3px 5px rgb(45 35 24 / 32%);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.themed-pill-action {
+  min-height: clamp(40px, 2.6vw, 50px);
+  overflow: hidden;
+  background: #3a6f2d;
+  padding: 4px clamp(12px, 0.95vw, 18px) 4px clamp(9px, 0.6vw, 12px);
+  gap: clamp(4px, 0.45vw, 8px);
+}
+
+.themed-pill-label {
+  flex: 1 1 auto;
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
+  font-size: clamp(0.95rem, 1.3vw, 1.55rem);
+  font-weight: var(--type-hero-h3-font-weight, 700);
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.themed-pill-action svg,
+.themed-mini-link svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.themed-pill-paw {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+}
+
+/* The artwork is a little taller than the pill; the pill clips it so the
+   stitched hoop never spills onto the page background. */
+.themed-pill-paw img {
+  width: auto;
+  height: clamp(46px, 3.2vw, 62px);
+  margin-block: clamp(-9px, -0.48vw, -6px);
+  max-width: none;
+}
+
+.themed-pill-action:hover {
+  background: #458434;
+  transform: translateY(-1px);
+}
+
+/* ---- Pill action: work in progress -------------------------------------- */
+/* Mirrors the disabled quick-link treatment so a coming-soon call to action
+   reads as unavailable while keeping the paw artwork. */
+
+.themed-pill-action[data-coming-soon] {
+  overflow: hidden;
+  border: 2px dashed rgb(255 246 224 / 60%);
+  background: #8b9a7f;
+  color: rgb(253 246 227 / 92%);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.themed-pill-action[data-coming-soon]::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(255 255 255 / 7%) 0 8px,
+    transparent 8px 16px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.themed-pill-action[data-coming-soon] > * {
+  position: relative;
+  z-index: 1;
+}
+
+.themed-pill-action[data-coming-soon]:hover {
+  background: #8b9a7f;
+  transform: none;
+}
+
+.themed-pill-soon {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--themed-cream);
+  color: var(--themed-brown);
+  font-family: var(--font-caption);
+  font-size: clamp(0.52rem, 0.55vw, 0.66rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.themed-mini-link:hover {
+  background: var(--themed-forest-light);
+  transform: translateY(-1px);
+}
+
+.themed-flower {
+  position: absolute;
+  z-index: 2;
+  height: auto;
+  pointer-events: none;
+}
+
+.themed-flower-left {
+  bottom: 0;
+  left: 2vw;
+  width: clamp(110px, 16.7vw, 360px);
+}
+
+.themed-flower-right {
+  right: 2.5vw;
+  bottom: 10vw;
+  width: clamp(100px, 13.5vw, 300px);
+}
+
+/* ---- Parchment section banners ------------------------------------------ */
+
+.themed-banner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(100% - 48px, 1541px);
+  aspect-ratio: 1541 / 285;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #1c3d1c;
+  text-align: center;
+  background: url("/2027_images/new_themed_homepage_assets/sub-section-banner-background.svg")
+    center / 100% 100% no-repeat;
+}
+
+.themed-banner h2 {
+  margin: 0;
+  padding: 0 96px;
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
+  font-size: clamp(1.3rem, 2.3vw, 2.8rem);
+  font-weight: var(--type-hero-h3-font-weight, 700);
+  line-height: var(--type-hero-h3-line-height, 1.2);
+  color: #123a12;
+}
+
+.themed-sprig {
+  position: absolute;
+  width: clamp(56px, 6vw, 112px);
+  height: auto;
+  pointer-events: none;
+}
+
+.themed-sprig-left {
+  top: -18%;
+  left: 0.5%;
+  transform: rotate(-10deg);
+}
+
+.themed-sprig-right {
+  right: 0.5%;
+  bottom: -22%;
+  transform: rotate(-10deg) scaleX(-1);
+}
+
+/* ---- Quick links --------------------------------------------------------- */
+
+.themed-quick-links {
+  position: relative;
+  z-index: 0;
+  padding-bottom: clamp(20px, 1.4vw, 27px);
+}
+
+/* Tree canopy framing the quick-link panel. */
+.themed-quick-links::before {
+  position: absolute;
+  top: -21vw;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  aspect-ratio: 1920 / 1621;
+  background: url("/2027_images/new_themed_homepage_assets/3-divider.svg")
+    center top / 100% 100% no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.themed-quick-panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(18px, 2.3vw, 45px);
+  width: min(100% - 48px, 1410px);
+  margin: -24px auto 0;
+  padding: clamp(24px, 3.6vw, 70px) clamp(20px, 9.4vw, 180px)
+    clamp(26px, 2.5vw, 47px);
+  border: 4px solid var(--themed-ink);
+  border-radius: clamp(18px, 2.1vw, 40px);
+  background: var(--themed-brown);
+  box-shadow: 0 12px 18px rgb(45 35 24 / 28%);
+}
+
+.themed-quick-panel::after {
+  position: absolute;
+  inset: clamp(6px, 0.8vw, 14px);
+  border: 1px solid rgb(255 236 208 / 30%);
+  border-radius: clamp(12px, 1.6vw, 32px);
+  content: "";
+  pointer-events: none;
+}
+
+.themed-quick-column {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.1vw, 20px);
+}
+
+.themed-quick-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(180px, 13vw, 250px);
+  padding: clamp(24px, 2.1vw, 34px);
+  border-radius: clamp(10px, 1vw, 18px);
+  background: var(--themed-paper);
+  box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
+}
+
+/* Flat card with the stitched inner border. */
+.themed-quick-column > .themed-quick-card:last-child {
+  min-height: clamp(200px, 15vw, 290px);
+}
+
+.themed-quick-card-title {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1vw, 16px);
+  margin-bottom: clamp(14px, 1.4vw, 22px);
+}
+
+.themed-quick-icon {
+  display: grid;
+  width: clamp(46px, 3.7vw, 70px);
+  height: clamp(46px, 3.7vw, 70px);
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--themed-brown);
+  color: var(--themed-brown);
+}
+
+/* White face inside the brown ring — the "?" and pin sit on it. */
+.themed-quick-icon-face {
+  display: grid;
+  width: 68%;
+  height: 68%;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--themed-cream);
+}
+
+.themed-quick-icon-face svg {
+  width: 70%;
+  height: 70%;
+}
+
+.themed-quick-icon-mark {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.6vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.themed-quick-card h3 {
+  margin: 0;
+  color: var(--themed-brown);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 3rem);
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+.themed-quick-card-title p {
+  margin: 6px 0 0;
+  color: var(--themed-ink);
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.75vw, 0.9rem);
+  line-height: 1.2;
+}
+
+.themed-quick-card-links {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(10px, 1.1vw, 18px);
+}
+
+.themed-mini-link {
+  width: auto;
+  max-width: 100%;
+  min-height: clamp(38px, 3vw, 52px);
+  justify-content: space-between;
+  padding: 8px clamp(8px, 0.7vw, 12px) 8px clamp(18px, 1.6vw, 28px);
+  gap: clamp(10px, 1vw, 16px);
+  font-size: clamp(0.8rem, 1.02vw, 1.1rem);
+  white-space: nowrap;
+}
+
+.themed-mini-label {
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+}
+
+.themed-mini-link .themed-mini-arrow {
+  display: grid;
+  width: clamp(22px, 1.9vw, 32px);
+  height: clamp(22px, 1.9vw, 32px);
+  margin-left: 2px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--themed-cream);
+  color: var(--themed-forest);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.themed-mini-link:hover .themed-mini-arrow {
+  background: #f7ddb9;
+  transform: translateX(2px);
+}
+
+.themed-mini-arrow svg {
+  width: 60%;
+  height: 60%;
+}
+
+/* ---- Quick-link: work in progress --------------------------------------- */
+/* Coming-soon pages stay clickable (the page shows the construction overlay)
+   but read as disabled: muted pill, dashed edge, hazard-tape wash and a
+   "Soon" chip in place of the arrow. */
+
+.themed-mini-link[data-coming-soon] {
+  overflow: hidden;
+  border: 2px dashed rgb(255 246 224 / 60%);
+  background: #8b9a7f;
+  color: rgb(253 246 227 / 92%);
+  box-shadow: none;
+}
+
+/* Flat dimming wash over the disabled pill. */
+.themed-mini-link[data-coming-soon]::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(255 255 255 / 7%) 0 8px,
+    transparent 8px 16px
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.themed-mini-link[data-coming-soon] .themed-mini-label {
+  z-index: 1;
+}
+
+.themed-mini-link[data-coming-soon]:hover {
+  background: #8b9a7f;
+  transform: none;
+}
+
+.themed-mini-link[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+.themed-mini-soon {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  margin-left: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--themed-cream);
+  color: var(--themed-brown);
+  font-family: var(--font-caption);
+  font-size: clamp(0.52rem, 0.55vw, 0.66rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* ---- Guests of honor ---------------------------------------------------- */
+
+.themed-guests {
+  position: relative;
+  z-index: 2;
+  padding: 129px 0 144px;
+  /* The parchment texture comes from `.site-background`; painting a copy here
+     tiled it at the artwork's natural size, half the scale of every other
+     section, so this section stays transparent. */
+}
+
+.themed-guests-image {
+  display: block;
+  width: min(1520px, 79%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.themed-banner-guests {
+  position: absolute;
+  /* 19px above the guests artwork, which starts at the section's 129px padding. */
+  top: 110px;
+  left: 50%;
+  z-index: 3;
+  padding: 0;
+  flex-direction: column;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+
+.themed-banner-guests .themed-pill-action {
+  min-height: 42px;
+  font-size: clamp(0.85rem, 1vw, 1.15rem);
+}
+
+@media (max-width: 767px) {
+  body:has(.themed-home) header {
+    padding: 14px 14px;
+  }
+
+  body:has(.themed-home) header > div > a {
+    width: 88px;
+    height: 30px;
+  }
+
+  body:has(.themed-home) header [aria-label="Switch theme"],
+  body:has(.themed-home) header [aria-label="Switch site state"] {
+    display: none;
+  }
+
+  body:has(.themed-home) header [aria-label="Open navigation menu"],
+  body:has(.themed-home) header [aria-label="Close navigation menu"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ---- Hero ---- */
+
+  /* The artwork tucks under the sticky header, as in the reference. */
+  .themed-hero {
+    margin-top: -59px;
+  }
+
+  /* Mobile uses its own illustrated composition, which already frames the
+     scene with the canopy, so the stacked desktop layers are not rendered. */
+  .themed-hero-art {
+    display: none;
+  }
+
+  .themed-hero-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .themed-hero-title {
+    display: none;
+  }
+
+  /* ---- Woodland scene ---- */
+
+  /* Shifted down from -50.6vw so the grass band stops covering the rat
+     peeking out of the bottom-left of the hero artwork. Kept just inside the
+     hero's bottom edge so no gap opens between the artwork and the grass. */
+  .themed-landscape::before {
+    top: -50.6vw;
+    /* top: -45vw; */
+    left: 50%;
+    width: 194vw;
+    transform: translateX(calc(-50% + 2vw));
+  }
+
+  .themed-festival {
+    /* Extra top padding matches the divider's shift so the date keeps its
+       original distance from the festival copy below it. */
+    padding: 47.5vw 0 55vw;
+    /* padding: 53.1vw 0 55vw; */
+  }
+
+  .themed-festival-inner {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .themed-festival-copy {
+    display: contents;
+  }
+
+  .themed-festival-banner {
+    order: -1;
+    width: 94%;
+  }
+
+  .themed-venue {
+    order: 0;
+    width: 89%;
+    margin-top: 2vw;
+  }
+
+  .themed-venue-photo {
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .themed-venue-image {
+    aspect-ratio: 320 / 375;
+  }
+
+  .themed-venue-label {
+    top: 62%;
+    left: -12%;
+    width: 62%;
+    padding: 8px 14px 7px;
+    border-width: 4px;
+  }
+
+  .themed-venue-label strong {
+    font-size: 1.15rem;
+  }
+
+  .themed-venue-label small {
+    font-size: 0.6rem;
+  }
+
+  .themed-paper-card {
+    order: 1;
+    width: 89%;
+    margin-top: 25vw;
+    padding: 32px 24px 90px;
+  }
+
+  .themed-paper-card p {
+    font-size: 0.95rem;
+    line-height: 1.72;
+  }
+
+  .themed-action-row {
+    align-items: center;
+  }
+
+  .themed-pill-action {
+    min-height: 38px;
+    font-size: 0.95rem;
+  }
+
+  .themed-flower {
+    display: none;
+  }
+
+  /* ---- Banners ---- */
+
+  .themed-banner {
+    width: calc(100% - 20px);
+    height: 100px;
+    aspect-ratio: auto;
+  }
+
+  .themed-banner h2 {
+    padding: 0 56px;
+    font-size: 1.75rem;
+  }
+
+  .themed-sprig {
+    width: 58px;
+  }
+
+  .themed-sprig-left {
+    top: -20%;
+    left: -1%;
+  }
+
+  .themed-sprig-right {
+    right: -1%;
+    bottom: -24%;
+  }
+
+  /* ---- Quick links ---- */
+
+  .themed-quick-links {
+    padding-bottom: 10vw;
+  }
+
+  .themed-quick-links::before {
+    top: -28vw;
+    left: 0;
+    width: 100%;
+  }
+
+  .themed-quick-panel {
+    display: flex;
+    width: calc(100% - 20px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 24px 14px 26px;
+    border-width: 3px;
+    border-radius: 24px;
+    background-position: right 8px top 8px;
+  }
+
+  .themed-quick-panel::after {
+    inset: 8px;
+    border-radius: 18px;
+  }
+
+  .themed-quick-column {
+    gap: 16px;
+  }
+
+  .themed-quick-card,
+  .themed-quick-column > .themed-quick-card:last-child {
+    min-height: 210px;
+    padding: 20px;
+  }
+
+  .themed-quick-card-title {
+    margin-bottom: 16px;
+  }
+
+  .themed-quick-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .themed-quick-card h3 {
+    font-size: 2.15rem;
+  }
+
+  .themed-quick-card-title p {
+    font-size: 0.76rem;
+  }
+
+  .themed-mini-link {
+    width: auto;
+    max-width: 100%;
+    min-height: 38px;
+    padding: 8px 10px 8px 18px;
+    font-size: 0.82rem;
+  }
+
+  /* ---- Guests ---- */
+
+  .themed-guests {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 40px;
+  }
+
+  .themed-banner-guests {
+    position: relative;
+    top: auto;
+    left: auto;
+    order: -1;
+    width: calc(100% - 20px);
+    min-height: 116px;
+    padding: 18px 0 14px;
+    gap: 8px;
+    transform: none;
+  }
+
+  .themed-banner-guests .themed-pill-action {
+    min-height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .themed-guests-image {
+    width: calc(100% - 38px);
+    aspect-ratio: 320 / 230;
+    margin-top: 8vw;
+    object-fit: cover;
+  }
+}
+
+.themed-footer {
+  background: var(--themed-forest, #235227);
+  border-top-color: rgb(255 243 240 / 18%);
+}
+
+.themed-footer-inner {
+  width: min(100%, 1180px);
+}
+
+@media (min-width: 1024px) {
+  .themed-footer .themed-footer-inner {
+    padding-top: 170px;
+    padding-bottom: 96px;
+  }
+
+  .themed-footer .type-body-s {
+    font-size: 1.02rem;
+  }
+
+  .themed-footer .type-caption-s-bold {
+    font-size: 0.82rem;
+  }
+
+  .themed-footer-brand > div:first-child {
+    width: 132px;
+    height: 82px;
+  }
+}
+
+@media (max-width: 767px) {
+  .themed-footer {
+    padding-bottom: 32px;
+  }
+
+  .themed-footer-inner {
+    gap: 40px;
+    align-items: center;
+    padding: 84px 18px 32px;
+    text-align: center;
+  }
+
+  .themed-footer-top {
+    width: 100%;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .themed-footer-brand {
+    order: 2;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .themed-footer-sitemap {
+    order: 1;
+    align-items: center;
+    gap: 0;
+  }
+
+  .themed-footer-sitemap > div:last-child {
+    display: none;
+  }
+
+  .themed-footer-sitemap > div:first-child {
+    text-align: center;
+  }
+
+  .themed-footer-sitemap > div:first-child ul {
+    justify-content: center;
+  }
+
+  .themed-footer .border-brand-text\/15 {
+    width: 100%;
+    padding-top: 12px;
+  }
+
+  .themed-footer .themed-footer-brand > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .themed-footer .themed-footer-brand .mb-3 {
+    justify-content: center;
+  }
+
+  .themed-footer .themed-footer-brand a {
+    justify-content: center;
+  }
+}
+
+/* =============================================================================
+   2027 REGISTRATION PAGE — /tickets
+   ============================================================================= */
+
+.registration-page {
+  --registration-board: #e8c9a6;
+  --registration-board-ink: #4b3220;
+  --registration-faq: #f0dec1;
+}
+
+/* ---- Invitation board ---------------------------------------------------- */
+
+.registration-invitation {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(14px, 2vw, 28px) 0 clamp(36px, 4.5vw, 72px);
+}
+
+/* Tree canopy framing the board, reused from the themed landing page.
+   Full-bleed: the artwork keeps its 1920:1621 ratio and is anchored to the
+   top, so it spans the whole viewport without distorting or overflowing. */
+.registration-invitation::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/2027_images/new_themed_homepage_assets/3-divider.svg")
+    center top / 100% auto no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.registration-banner {
+  width: min(100% - 32px, 1040px);
+}
+
+/* Both banners on this page use hero type (Oleo Script); the board headings
+   and the FAQ accordion keep the heading (Margarine) face. */
+.registration-banner h2 {
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
+  font-style: normal;
+  font-weight: var(--type-hero-h3-font-weight, 700);
+}
+
+.registration-banner .themed-banner-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.registration-banner .themed-banner-text p {
+  margin: 0;
+  color: #2f5426;
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 0.8vw, 0.9rem);
+  line-height: 1.2;
+}
+
+.registration-board {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 32px, 1040px);
+  margin: clamp(18px, 2.4vw, 32px) auto 0;
+  padding: clamp(16px, 2.2vw, 30px);
+  padding-bottom: clamp(16px, 2.2vw, 30px);
+  overflow: hidden;
+  border-radius: clamp(14px, 1.8vw, 24px);
+  background: var(--registration-board);
+  box-shadow: 0 12px 22px rgb(45 35 24 / 28%);
+}
+
+.registration-board-watermark {
+  position: absolute;
+  right: -3%;
+  bottom: -2%;
+  z-index: 0;
+  width: clamp(240px, 42%, 500px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.registration-board-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(24px, 3.2vw, 44px) clamp(12px, 1.7vw, 26px)
+    clamp(8px, 1.2vw, 16px);
+}
+
+.registration-board-content > p {
+  max-width: 680px;
+  margin: 0 auto clamp(8px, 1vw, 12px);
+  color: var(--registration-board-ink);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 0.86vw, 0.9rem);
+  line-height: 1.5;
+}
+
+.registration-board-content .registration-board-invited {
+  color: #3d2a1a;
+  text-align: center;
+  font-family: var(--type-heading-h4-font-family, var(--font-heading));
+  font-size: clamp(0.95rem, 1.25vw, 1.25rem);
+  font-style: normal;
+  font-weight: var(--type-heading-h4-font-weight, 400);
+  line-height: 1.2;
+}
+
+/* `card-underline.svg` mapped out by RegistrationUnderline — the row scales
+   with the width while the leaf count stays fixed. */
+.registration-board-underline {
+  display: block;
+  width: clamp(140px, 18vw, 320px);
+  height: auto;
+  margin: clamp(6px, 0.9vw, 11px) auto clamp(12px, 1.6vw, 18px);
+  overflow: visible;
+  color: #93623c;
+}
+
+.registration-board-content .registration-board-entry {
+  font-weight: 600;
+}
+
+.registration-board-content .registration-board-note {
+  max-width: 720px;
+  margin-bottom: clamp(12px, 1.6vw, 20px);
+  color: #6c4b2d;
+  font-size: clamp(0.6rem, 0.7vw, 0.74rem);
+  line-height: 1.45;
+}
+
+.registration-board-note a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Tier cards ---------------------------------------------------------- */
+
+.registration-tiers-title {
+  margin: clamp(8px, 1.2vw, 16px) 0 clamp(16px, 2vw, 26px);
+  color: #3d2a1a;
+  text-align: center;
+  font-family: var(--type-heading-h3-font-family, var(--font-heading));
+  font-size: clamp(1rem, 1.35vw, 1.3rem);
+  font-weight: var(--type-heading-h3-font-weight, 400);
+  line-height: 1.2;
+}
+
+.registration-countdown {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto clamp(16px, 2vw, 26px);
+  border: 1px solid #a87a4f;
+  border-radius: 18px;
+  background: #f7e8ce;
+  padding: 12px 22px;
+  box-shadow: 0 4px 0 rgb(101 66 38 / 14%);
+  color: #4b3220;
+}
+
+.registration-countdown-spinner {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border: 3px solid #d6bd94;
+  border-top-color: #3a6f2d;
+  border-radius: 50%;
+  animation: registration-countdown-spin 1.2s linear infinite;
+}
+
+.registration-countdown-content {
+  text-align: left;
+}
+
+.registration-countdown-label {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.registration-countdown-time {
+  display: inline-grid;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* The heading font has no tabular figures, so every digit has a different
+   width. The hidden placeholder reserves the widest possible value
+   (`DD HH:MM:SS`, all zeroes) so the card keeps its size while counting. */
+.registration-countdown-time::after {
+  content: "00D 00:00:00";
+  grid-area: 1 / 1;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.registration-countdown-time-value {
+  grid-area: 1 / 1;
+}
+
+@keyframes registration-countdown-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .registration-countdown-spinner {
+    animation: none;
+  }
+}
+
+.registration-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(12px, 1.7vw, 24px);
+}
+
+/* Mobile: the same swipeable carousel pattern as the Code of Conduct page. */
+.registration-tiers-carousel {
+  width: 100%;
+}
+
+/* Fill the slide so every card matches the tallest one — keeps the CTAs on a
+   single baseline while swiping. */
+.registration-tiers-carousel .registration-tier {
+  height: 100%;
+}
+
+.registration-tiers-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2.5vw, 14px);
+  margin-top: clamp(10px, 3vw, 16px);
+}
+
+.registration-tiers-controls [data-slot="carousel-previous"],
+.registration-tiers-controls [data-slot="carousel-next"] {
+  border-color: #c9a075;
+  background: #f7e8ce;
+  color: #4b3220;
+}
+
+.registration-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.registration-carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(75 50 32 / 30%);
+  cursor: pointer;
+  transition:
+    width 160ms ease,
+    height 160ms ease,
+    background-color 160ms ease;
+}
+
+.registration-carousel-dot[data-active="true"] {
+  width: 8px;
+  height: 8px;
+  background: #4b3220;
+}
+
+/* The card artwork already draws its own rounded outline and 1px border, so
+   the element must not clip or re-round it — the shadow follows the artwork's
+   transparent corners instead of a CSS box.
+   The 350:950 ratio keeps the SVG undistorted at every width; the card grows
+   past it if content ever needs more room, and the contents scale with the
+   card (cqw) so the card reads the same at 1024 and 1920. */
+.registration-tier {
+  position: relative;
+  display: grid;
+  grid-template-areas: "card";
+  container-type: inline-size;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  filter: drop-shadow(0 8px 10px rgb(45 35 24 / 28%));
+}
+
+/* The artwork ratio is a minimum, not a cap: longer copy grows the card
+   evenly across the row instead of pushing the CTA past the bottom edge. */
+.registration-tier::before {
+  grid-area: card;
+  padding-top: calc(950 / 350 * 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.registration-tier[data-tier="wanderer"] {
+  --registration-tier-ink: #5b3b22;
+}
+
+.registration-tier[data-tier="gardener"] {
+  --registration-tier-ink: #1e4a1c;
+}
+
+.registration-tier[data-tier="caretaker"] {
+  --registration-tier-ink: #5b3d05;
+}
+
+.registration-tier-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  grid-area: card;
+  align-items: center;
+  padding: clamp(16px, 13cqw, 48px) clamp(12px, 9.5cqw, 34px)
+    clamp(14px, 8.5cqw, 30px);
+  color: var(--registration-tier-ink);
+  text-align: center;
+}
+
+.registration-tier-name {
+  margin: 0;
+  color: var(--registration-tier-ink);
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
+  font-size: clamp(1.15rem, 10.9cqw, 2.6rem);
+  font-weight: var(--type-hero-h3-font-weight, 700);
+  line-height: 1;
+}
+
+.registration-tier-price {
+  margin: clamp(6px, 3.1cqw, 12px) 0 0;
+  color: var(--registration-tier-ink);
+  font-family: var(--type-heading-h4-font-family, var(--font-heading));
+  font-size: 24px;
+  font-weight: var(--type-heading-h4-font-weight, 400);
+  letter-spacing: 0.06em;
+}
+
+.registration-tier-icon {
+  display: block;
+  width: clamp(96px, 58cqw, 210px);
+  height: auto;
+  margin: clamp(12px, 8.2cqw, 28px) auto clamp(10px, 7.5cqw, 26px);
+}
+
+/* Card copy sits on tinted artwork, so keep the body size at a readable
+   floor (>= 12.8px) with generous leading instead of scaling down to fit. */
+.registration-tier-description {
+  /* Five lines reserved at every width so the section title below starts on
+     the same row across all three cards. */
+  min-height: 7.5em;
+  flex: 0 0 auto;
+  margin: 0 0 clamp(10px, 6.1cqw, 22px);
+  color: var(--registration-tier-ink);
+  font-family: var(--type-body-s-font-family, var(--font-body));
+  font-size: clamp(0.8rem, 4.9cqw, 1.05rem);
+  font-weight: var(--type-body-s-font-weight, 400);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.registration-tier-section {
+  width: 100%;
+}
+
+.registration-tier-section + .registration-tier-section {
+  margin-top: clamp(8px, 5.5cqw, 18px);
+}
+
+.registration-tier-section-title {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 2cqw, 8px);
+  margin: 0 0 clamp(8px, 4cqw, 14px);
+  font-family: var(--font-caption);
+  font-size: clamp(0.7rem, 3.9cqw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.registration-tier-section-title::before,
+.registration-tier-section-title::after,
+.registration-tier-section-rule::before,
+.registration-tier-section-rule::after {
+  flex: 1 1 auto;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+  content: "";
+}
+
+/* Rule beneath the title: a hairline either side of the chevron-and-diamond
+   ornament from `goodies_info_divider.svg` (masked to the card's ink). */
+.registration-tier-section-rule {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.6cqw, 8px);
+  margin: 0 0 clamp(8px, 4cqw, 14px);
+}
+
+/* Titles are optional: a continued group is introduced by the divider alone. */
+.registration-tier-section-rule:first-child {
+  margin-top: clamp(2px, 1.4cqw, 6px);
+}
+
+.registration-tier-section-divider {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(52px, 22cqw, 72px);
+  aspect-ratio: 90 / 21;
+  background-color: currentColor;
+  opacity: 0.75;
+  -webkit-mask: var(--registration-tier-divider) center / contain no-repeat;
+  mask: var(--registration-tier-divider) center / contain no-repeat;
+}
+
+.registration-tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 2.7cqw, 10px);
+  margin: 0 0 clamp(10px, 6.1cqw, 22px);
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.registration-tier-item {
+  display: grid;
+  grid-template-columns: clamp(18px, 9.4cqw, 32px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(4px, 2cqw, 8px);
+  font-family: var(--type-body-s-font-family, var(--font-body));
+  font-size: clamp(0.75rem, 4.2cqw, 0.95rem);
+  font-weight: var(--type-body-s-font-weight, 400);
+  line-height: 1.45;
+}
+
+/* Right-aligned so every item keeps the same text edge: a single diamond sits
+   next to the label and higher-level items grow the group leftwards. */
+.registration-tier-dots {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(1px, 0.6cqw, 3px);
+  padding-top: 0.34em;
+}
+
+/* Diamond bullets from `price_info_diamond_bullet.svg`; the count still marks
+   the tier level (1 = core, 2 = sponsor extra, 3 = caretaker exclusive). */
+.registration-tier-dot {
+  width: clamp(6px, 2.6cqw, 9px);
+  aspect-ratio: 9 / 8;
+  background-color: currentColor;
+  opacity: 0.85;
+  -webkit-mask: var(--registration-tier-bullet) center / contain no-repeat;
+  mask: var(--registration-tier-bullet) center / contain no-repeat;
+}
+
+/* The label stays on one line, so the pill bleeds into the card's side padding
+   to buy the width it needs instead of wrapping. */
+.registration-tier-cta {
+  width: calc(100% + 2 * clamp(4px, 4.8cqw, 18px));
+  min-width: fit-content;
+  margin-top: auto;
+  margin-inline: calc(-1 * clamp(4px, 4.8cqw, 18px));
+  gap: 4px;
+  padding: 4px 10px 4px 8px;
+}
+
+.registration-tier-cta:disabled,
+.registration-tier-cta:disabled:hover {
+  background: #75866a;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.registration-tier-cta .themed-pill-paw img {
+  height: clamp(30px, 12cqw, 46px);
+  margin-block: clamp(-5px, -1.4cqw, -3px);
+}
+
+/* Shares the body-semibold label of the other pills; the size tracks the card
+   so the full title still fits on one line without breaking out of the pill. */
+.registration-tier-cta .themed-pill-label {
+  flex: 0 0 auto;
+  font-size: clamp(0.78rem, 5.6cqw, 1.1rem);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.registration-tier-cta svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---- FAQ ----------------------------------------------------------------- */
+
+.registration-faq-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(16px, 2.2vw, 30px) 0 clamp(40px, 5vw, 72px);
+}
+
+.registration-faq,
+.themed-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.3vw, 15px);
+}
+
+.registration-faq {
+  width: min(100% - 48px, 760px);
+  margin: clamp(18px, 2.4vw, 30px) auto 0;
+}
+
+/*
+ * Base UI renders each accordion header as an <h3>. The trigger owns the
+ * typography, so the wrapper must not re-impose the global heading styles
+ * (family, size, weight) on the card header.
+ */
+.themed-accordion-item > :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  font: inherit;
+}
+
+.registration-faq-trigger,
+.themed-accordion-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: clamp(10px, 1vw, 14px) clamp(12px, 1vw, 16px) clamp(10px, 1vw, 14px)
+    clamp(16px, 1.4vw, 22px);
+  border: 2px solid #d8b58c;
+  border-radius: clamp(14px, 1.4vw, 20px);
+  background: var(--registration-faq);
+  color: #4b3220;
+  font-family: var(--type-heading-h3-font-family, var(--font-heading));
+  font-size: clamp(1.125rem, 1.7vw, 1.5rem);
+  font-weight: var(--type-heading-h3-font-weight, 400);
+  line-height: var(--type-heading-h3-line-height, 1.2);
+  text-align: left;
+  text-wrap: pretty;
+  box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.registration-faq-trigger:hover,
+.themed-accordion-trigger:hover {
+  background: #f7e8ce;
+  transform: translateY(-1px);
+}
+
+/* Registration FAQ rows are compact, so their labels use a smaller scale than
+   the shared accordion trigger. */
+.registration-faq .themed-accordion-trigger {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+}
+
+.registration-faq-icon,
+.themed-accordion-icon {
+  display: grid;
+  width: clamp(24px, 2.2vw, 30px);
+  height: clamp(24px, 2.2vw, 30px);
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #fbf3e2;
+  color: #7a5432;
+  box-shadow: 0 2px 4px rgb(45 35 24 / 18%);
+}
+
+.registration-faq-icon svg,
+.themed-accordion-icon svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 160ms ease;
+}
+
+.registration-faq-trigger[data-panel-open] .registration-faq-icon svg,
+.themed-accordion-trigger[data-panel-open] .themed-accordion-icon svg {
+  transform: rotate(180deg);
+}
+
+.registration-faq-panel,
+.themed-accordion-panel {
+  padding: 6px clamp(16px, 1.8vw, 24px) 2px;
+  color: #5a4029;
+  font-family: var(--type-body-s-font-family, var(--font-body));
+  font-size: var(--type-body-s-font-size, 14px);
+  font-weight: var(--type-body-s-font-weight, 400);
+  line-height: 1.5;
+}
+
+/*
+ * Registration FAQ rows are a single card: the item owns the frame so the
+ * answer sits inside the bordered panel instead of below it.
+ */
+.registration-faq .themed-accordion-item {
+  overflow: hidden;
+  border: 2px solid #d8b58c;
+  border-radius: clamp(14px, 1.4vw, 20px);
+  background: var(--registration-faq);
+  box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
+  transition: background-color 160ms ease;
+}
+
+.registration-faq .themed-accordion-item:hover {
+  background: #f7e8ce;
+}
+
+.registration-faq .themed-accordion-trigger {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline-offset: -4px;
+}
+
+.registration-faq .themed-accordion-trigger:hover {
+  transform: none;
+}
+
+.registration-faq .themed-accordion-panel {
+  padding: 0 clamp(16px, 1.4vw, 22px) clamp(12px, 1.2vw, 16px);
+}
+
+/* Leaf divider under each FAQ question, sized to the accordion card. */
+.registration-faq-underline {
+  width: clamp(120px, 30%, 260px);
+  margin: 0 0 clamp(6px, 0.8vw, 10px);
+}
+
+.registration-faq-note {
+  width: min(100% - 48px, 760px);
+  margin: clamp(14px, 1.8vw, 22px) auto 0;
+  color: #4b3220;
+  text-align: center;
+  font-family: var(--type-caption-s-medium-font-family, var(--font-caption));
+  font-size: var(--type-caption-s-medium-font-size, 12px);
+  font-weight: var(--type-caption-s-medium-font-weight, 500);
+  line-height: var(--type-caption-s-medium-line-height, 1.2);
+}
+
+.registration-faq-note a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Decorative flowers -------------------------------------------------- */
+
+.registration-flower {
+  position: absolute;
+  z-index: 2;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.registration-flower-1 {
+  top: 2%;
+  left: max(8px, calc(50% - 590px));
+  width: clamp(60px, 7vw, 108px);
+  transform: rotate(-14deg);
+}
+
+.registration-flower-2 {
+  top: 22%;
+  right: max(8px, calc(50% - 590px));
+  width: clamp(58px, 6.6vw, 102px);
+  transform: rotate(12deg);
+}
+
+.registration-flower-3 {
+  top: 48%;
+  left: max(8px, calc(50% - 620px));
+  width: clamp(54px, 6vw, 92px);
+  transform: rotate(10deg) scale(0.9);
+}
+
+.registration-flower-4 {
+  top: 66%;
+  right: max(8px, calc(50% - 590px));
+  width: clamp(60px, 6.8vw, 104px);
+  transform: rotate(-18deg);
+}
+
+/* ---- Scroll-to-top ------------------------------------------------------- */
+
+.scroll-to-top {
+  position: fixed;
+  right: clamp(14px, 2.4vw, 28px);
+  bottom: clamp(14px, 2.4vw, 28px);
+  z-index: 30;
+  display: grid;
+  width: clamp(38px, 3.6vw, 46px);
+  height: clamp(38px, 3.6vw, 46px);
+  place-items: center;
+  border: 2px solid #fdf6e3;
+  border-radius: 50%;
+  background: #2f6a35;
+  color: #fdf6e3;
+  box-shadow: 0 6px 12px rgb(45 35 24 / 32%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    background-color 160ms ease;
+}
+
+.scroll-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  background: #3d8343;
+}
+
+.scroll-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 767px) {
+  .registration-invitation {
+    padding: 10px 0 40px;
+  }
+
+  /* The canopy is scaled up on narrow screens so it still frames the board. */
+  .registration-invitation::before {
+    background-position: center 34px;
+    background-size: 210% auto;
+  }
+
+  .registration-banner {
+    width: calc(100% - 20px);
+    height: 104px;
+  }
+
+  .registration-banner .themed-banner-text h2 {
+    padding: 0 56px;
+    font-size: 1.35rem;
+  }
+
+  .registration-banner .themed-banner-text p {
+    font-size: 0.62rem;
+  }
+
+  .registration-board {
+    --stitch-inset: 6px;
+    width: calc(100% - 16px);
+    padding: 12px;
+  }
+
+  .registration-board-content {
+    padding: 26px 8px 6px;
+  }
+
+  .registration-board-watermark {
+    right: -10%;
+    bottom: 0;
+    width: 68%;
+  }
+
+  .registration-board-content > p {
+    font-size: 0.72rem;
+  }
+
+  .registration-board-content .registration-board-invited {
+    font-size: 0.95rem;
+  }
+
+  .registration-board-content .registration-board-note {
+    font-size: 0.6rem;
+  }
+
+  .registration-tiers-title {
+    font-size: 1rem;
+  }
+
+  .registration-tiers {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100%, 380px);
+    margin: 0 auto;
+    gap: 18px;
+  }
+
+  .registration-flower {
+    display: none;
+  }
+
+  .registration-faq-section {
+    padding: 10px 0 40px;
+  }
+
+  .registration-faq {
+    width: calc(100% - 24px);
+  }
+
+  .registration-faq .themed-accordion-trigger {
+    font-size: 0.7rem;
+  }
+
+  .registration-faq-note {
+    width: calc(100% - 32px);
+    font-size: 0.64rem;
+  }
+}
+
+/* =============================================================================
+   2027 ABOUT PAGE — /about
+   A scrapbook: a parchment community board (story + contact plaque) followed
+   by a mascot gallery and a swap-the-mascot plaque.
+   ============================================================================= */
+
+.about-page {
+  --about-paper: #ddb487;
+  --about-paper-ink: #4b3220;
+  --about-brown: #93623c;
+  --about-brown-deep: #6b4a2d;
+  --about-cream: #fdf6e3;
+  --about-copy-fade: var(--about-paper);
+  --about-gutter: clamp(12px, 3.6vw, 20px);
+  /* Bottom area of the board reserved for the tree; the plaque dips into it. */
+  --about-branch-pad: clamp(96px, 16vw, 200px);
+}
+
+/* ---- Community board ---------------------------------------------------- */
+
+.about-community {
+  padding: clamp(14px, 2vw, 30px) 0 clamp(8px, 1.2vw, 16px);
+}
+
+.about-board {
+  width: min(100% - 24px, 1180px);
+  margin: 0 auto;
+  padding: var(--about-gutter);
+  border-radius: clamp(22px, 2.6vw, 34px);
+}
+
+/* Tree that closes off the board. It is clipped to the card and sits behind
+   the content; the artwork's transparent top keeps the story copy clean while
+   the contact plaque rests on the canopy. */
+.about-board-foliage {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 0;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.about-board-foliage-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-board-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-areas:
+    "banner"
+    "quote"
+    "snapshots"
+    "copy"
+    "contact";
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(12px, 1.6vw, 20px);
+  padding: clamp(4px, 1vw, 14px) 0 var(--about-branch-pad);
+}
+
+/* ---- Section banners ---------------------------------------------------- */
+
+.about-banner {
+  grid-area: banner;
+  width: calc(100% + 2 * var(--about-gutter) + 24px);
+  aspect-ratio: 2.45 / 1;
+  margin-inline: calc(-1 * var(--about-gutter) - 12px);
+  justify-self: center;
+}
+
+.about-banner h2,
+.about-mascots-banner h2 {
+  padding: 0 clamp(40px, 5vw, 64px);
+  font-size: clamp(1.35rem, 5.6vw, 1.9rem);
+}
+
+.about-banner .themed-banner-text p,
+.about-mascots-banner .themed-banner-text p {
+  font-size: clamp(0.72rem, 2.4vw, 0.82rem);
+}
+
+.about-banner .themed-sprig,
+.about-mascots-banner .themed-sprig {
+  width: clamp(44px, 4.6vw, 76px);
+}
+
+.themed-banner-caption {
+  color: #5b7a4a;
+}
+
+/* ---- Quote + story ------------------------------------------------------ */
+
+.about-quote {
+  grid-area: quote;
+  max-width: 34rem;
+  margin: 0 auto;
+  color: #4a2f1c;
+  text-align: center;
+  font-family: var(--type-body-l-semibold-font-family, var(--font-body));
+  font-size: clamp(0.98rem, 4vw, 1.3rem);
+  font-weight: var(--type-body-l-semibold-font-weight, 600);
+  line-height: var(--type-body-l-semibold-line-height, 1.2);
+}
+
+.about-copy {
+  grid-area: copy;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-copy-text {
+  position: relative;
+  width: 100%;
+}
+
+.about-copy-text p {
+  margin: 0 0 clamp(8px, 1vw, 13px);
+  color: var(--about-paper-ink);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: clamp(0.84rem, 3.5vw, 0.96rem);
+  line-height: 1.55;
+}
+
+.about-copy-text[data-expanded="false"] {
+  max-height: 8.6em;
+  overflow: hidden;
+}
+
+.about-copy-text[data-expanded="false"]::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2.6em;
+  background: linear-gradient(
+    rgb(253 246 227 / 0%),
+    var(--about-copy-fade, #fdf6e3)
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.about-copy-toggle {
+  margin-top: clamp(8px, 1vw, 14px);
+  padding: 4px clamp(16px, 1.4vw, 22px);
+}
+
+.about-copy-toggle .themed-pill-label {
+  font-size: clamp(0.85rem, 3.4vw, 1rem);
+}
+
+/* ---- Snapshot polaroids ------------------------------------------------- */
+
+.about-snapshots {
+  grid-area: snapshots;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+}
+
+.about-photo {
+  position: relative;
+  width: min(100% - 20px, 440px);
+  margin: 0 auto;
+  padding: clamp(5px, 0.6vw, 9px);
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 10px 18px rgb(45 35 24 / 34%);
+}
+
+.about-photo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+/* The one community polaroid, tilted like a photo pinned to the board. */
+.about-snapshot {
+  z-index: 1;
+  width: min(100% - 12px, 420px);
+  transform: rotate(-2deg);
+}
+
+.about-snapshot-caption {
+  padding: clamp(7px, 1vw, 11px) clamp(6px, 1vw, 10px) clamp(1px, 0.2vw, 3px);
+  color: #7b5a3a;
+  font-family: var(--type-caption-s-medium-font-family, var(--font-caption));
+  font-size: clamp(0.74rem, 2.4vw, 0.86rem);
+  font-weight: var(--type-caption-s-medium-font-weight, 500);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Sprigs peeking out from behind the photo, echoing the section banners. */
+.about-snapshot-sprig {
+  position: absolute;
+  z-index: 0;
+  width: clamp(58px, 8vw, 96px);
+  pointer-events: none;
+}
+
+.about-snapshot-sprig img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-snapshot-sprig-top {
+  top: 0;
+  right: 2%;
+  transform: rotate(14deg) scaleX(-1);
+}
+
+.about-snapshot-sprig-bottom {
+  bottom: 0;
+  left: 1%;
+  transform: rotate(-12deg);
+}
+
+/* Tablets: pull the community banner back inside the board so it keeps a
+   readable aspect instead of stretching to the full card width. */
+@media (min-width: 560px) and (max-width: 899px) {
+  .about-banner {
+    width: min(100%, 520px);
+    margin-inline: auto;
+    aspect-ratio: 3.1 / 1;
+  }
+}
+
+/* ---- Contact plaque ----------------------------------------------------- */
+
+.about-contact {
+  grid-area: contact;
+  justify-self: center;
+  width: min(100%, 470px);
+  margin-top: clamp(4px, 0.8vw, 12px);
+  padding: clamp(12px, 1.5vw, 20px) clamp(12px, 1.5vw, 20px)
+    clamp(14px, 1.8vw, 24px);
+  border-radius: clamp(16px, 2vw, 26px);
+  border-color: rgb(253 246 227 / 45%);
+  background: var(--about-brown);
+  color: var(--about-cream);
+  text-align: center;
+  scroll-margin-top: 5rem;
+}
+
+.about-contact-title {
+  margin: 0;
+  color: var(--about-cream);
+  font-family: var(--type-hero-h3-font-family, var(--font-display));
+  font-size: clamp(1.1rem, 4.6vw, 1.35rem);
+  font-weight: var(--type-hero-h3-font-weight, 700);
+  line-height: 1.2;
+}
+
+.about-contact-subtitle {
+  margin: 2px 0 clamp(10px, 1.2vw, 14px);
+  color: rgb(253 246 227 / 88%);
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 2.6vw, 0.78rem);
+  line-height: 1.3;
+}
+
+/* Double dashed rule under the plaque heading. */
+.about-contact-subtitle::after {
+  display: block;
+  width: 54px;
+  height: 4px;
+  margin: clamp(4px, 0.6vw, 7px) auto 0;
+  border-top: 2px solid rgb(253 246 227 / 55%);
+  border-bottom: 2px solid rgb(253 246 227 / 35%);
+  content: "";
+}
+
+.about-contact-inner {
+  position: relative;
+  display: grid;
+  gap: clamp(6px, 0.8vw, 9px);
+  padding: clamp(12px, 1.4vw, 16px) clamp(12px, 1.4vw, 18px);
+  border: 2px dashed rgb(253 246 227 / 55%);
+  border-radius: clamp(12px, 1.6vw, 20px);
+  background: #ebca9a;
+  color: var(--about-paper-ink);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%);
+}
+
+.about-contact-row {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  color: #43301d;
+  font-family: var(--font-body);
+  font-size: clamp(0.66rem, 2.5vw, 0.78rem);
+  line-height: 1.3;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+a.about-contact-row:hover {
+  color: #2b1d10;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.about-contact-row svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  color: #2f5c26;
+}
+
+.about-contact-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.about-contact-social-link svg {
+  width: 14px;
+  height: 14px;
+  color: #2f5c26;
+}
+
+/* ---- Mascots section ---------------------------------------------------- */
+
+.about-mascots-section {
+  position: relative;
+  overflow: hidden;
+  /* Tall enough to show the tree's canopy below the cards, edge to edge. */
+  min-height: 64vw;
+  padding: clamp(18px, 2vw, 30px) 0 clamp(40px, 7vw, 70px);
+}
+
+/* Tree that runs beneath the mascot gallery and plaque, all the way to the
+   page edges, then hands the page over to the dark green footer. */
+.about-mascots-tree {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 0;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.about-mascots-tree-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Stacked layout: keep room under the plaque so the canopy stays visible
+   instead of hiding behind it. */
+@media (max-width: 899px) {
+  .about-mascots-section {
+    padding-bottom: clamp(140px, 52vw, 260px);
+  }
+
+  /* The stacked card is a bare wrapper around the plaque and the story panel,
+     so the shared stitched frame would float around them instead of a card. */
+  .about-mascots-card::before {
+    display: none;
+  }
+}
+
+.about-mascots {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(16px, 2.4vw, 34px);
+  width: min(100% - 24px, 1180px);
+  margin: 0 auto;
+  align-items: center;
+}
+
+.about-mascots-gallery {
+  display: none;
+}
+
+/* Stacked layout: the "Our Mascots" banner, then the mascot card itself. */
+.about-mascots-card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 2vw, 14px);
+  overflow: visible;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.about-mascots-plaque {
+  position: relative;
+}
+
+.about-mascots-story {
+  position: relative;
+  padding: 0 clamp(12px, 3.6vw, 18px) clamp(18px, 5vw, 26px);
+  border-radius: clamp(20px, 5.4vw, 30px);
+  background: var(--about-brown-deep);
+  color: var(--about-cream);
+  text-align: center;
+  box-shadow: 0 16px 28px rgb(45 35 24 / 26%);
+}
+
+.about-mascots-photo-mobile {
+  margin: clamp(13px, 4vw, 17px) 0 clamp(14px, 4vw, 20px);
+  overflow: hidden;
+  border-radius: clamp(12px, 3.4vw, 18px);
+}
+
+/* The plaque artwork only draws its parchment across the middle ~49% of the
+   box, so the mascot name + species need more height than the shared
+   `.themed-banner` mobile height (100px) to stay on the plaque. */
+.about-mascots-banner {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  aspect-ratio: 2.45 / 1;
+  /* The parchment sits slightly above the box centre, so lift the text. */
+  padding-bottom: 3%;
+}
+
+.about-mascots-banner .themed-banner-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.about-mascots-banner .themed-banner-text h2 {
+  line-height: 1.1;
+}
+
+.about-mascots-banner .themed-banner-text p {
+  line-height: 1.15;
+}
+
+/* On phones the plaque spans the whole card, so the shared mobile sprig
+   offsets would push the artwork past the page edge and get clipped. */
+@media (max-width: 899px) {
+  /* Nothing sits above the plaque in the stacked layout, so its upward sprig
+     would read as a stray leaf floating under the community board. */
+  .about-mascots-banner .themed-sprig-left {
+    display: none;
+  }
+
+  .about-mascots-banner .themed-sprig-right {
+    right: 1.5%;
+  }
+}
+
+.about-mascots-copy {
+  position: relative;
+  z-index: 5;
+  max-width: 42ch;
+  margin: 0 auto clamp(12px, 1.4vw, 18px);
+  color: rgb(253 246 227 / 92%);
+  font-family: var(--font-body);
+  font-size: clamp(0.76rem, 3.2vw, 0.86rem);
+  line-height: 1.55;
+}
+
+.about-mascots-toggle {
+  position: relative;
+  z-index: 5;
+  padding: 4px clamp(14px, 1.2vw, 18px);
+}
+
+.about-mascots-toggle .themed-pill-label {
+  font-size: clamp(0.85rem, 3.4vw, 1.02rem);
+}
+
+.about-mascots-toggle-tail {
+  width: clamp(14px, 1.2vw, 17px);
+  height: clamp(14px, 1.2vw, 17px);
+  flex: 0 0 auto;
+  opacity: 0.85;
+}
+
+/* ---- Board layout from 900px up ----------------------------------------- */
+
+@media (min-width: 900px) {
+  .about-page {
+    --about-gutter: clamp(14px, 1.7vw, 24px);
+  }
+
+  .about-board-inner {
+    grid-template-areas:
+      "banner    snapshots"
+      "quote     snapshots"
+      "copy      snapshots"
+      "contact   snapshots";
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    column-gap: clamp(20px, 2.6vw, 46px);
+    row-gap: clamp(6px, 0.9vw, 12px);
+    padding: clamp(8px, 1.2vw, 18px) clamp(10px, 1.6vw, 24px)
+      var(--about-branch-pad);
+  }
+
+  .about-banner {
+    width: min(100%, 470px);
+    aspect-ratio: 3.7 / 1;
+    margin-inline: 0;
+    justify-self: center;
+  }
+
+  .about-banner h2,
+  .about-mascots-banner h2 {
+    font-size: clamp(1.2rem, 2.1vw, 1.9rem);
+  }
+
+  .about-banner .themed-banner-text p,
+  .about-mascots-banner .themed-banner-text p {
+    font-size: clamp(0.6rem, 0.85vw, 0.82rem);
+  }
+
+  .about-quote {
+    font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+  }
+
+  .about-copy-text p {
+    font-size: clamp(0.8rem, 0.95vw, 0.95rem);
+  }
+
+  .about-copy-text[data-expanded="false"] {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .about-copy-text[data-expanded="false"]::after {
+    display: none;
+  }
+
+  .about-copy-toggle {
+    display: none;
+  }
+
+  .about-snapshots {
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    padding-block: clamp(10px, 2.4vw, 34px);
+  }
+
+  .about-snapshot {
+    width: min(100%, 450px);
+    transform: rotate(-2.5deg);
+  }
+
+  .about-snapshot-sprig {
+    width: clamp(64px, 5.4vw, 92px);
+  }
+
+  .about-snapshot-sprig-top {
+    top: 1%;
+    right: 0;
+  }
+
+  .about-snapshot-sprig-bottom {
+    bottom: 1%;
+    left: 0;
+  }
+
+  /* Mascot polaroids float over the gallery and overlap each other. */
+  .about-mascots-gallery .about-photo {
+    position: absolute;
+    margin: 0;
+  }
+
+  .about-contact {
+    justify-self: start;
+    margin-top: clamp(6px, 1vw, 16px);
+    margin-left: clamp(0px, 2vw, 34px);
+  }
+
+  /* Side-by-side layout: photo stack on the left, plaque on the right. */
+  .about-mascots {
+    grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  }
+
+  .about-mascots-gallery {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 0.78;
+  }
+
+  .about-mascots-card {
+    display: block;
+    overflow: hidden;
+    padding: clamp(12px, 1.4vw, 20px);
+    border: 3px dashed rgb(253 246 227 / 35%);
+    border-radius: clamp(20px, 2.2vw, 30px);
+    background: var(--about-brown-deep);
+    box-shadow: 0 16px 28px rgb(45 35 24 / 26%);
+  }
+
+  .about-mascots-plaque {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .about-mascots-photo-mobile {
+    display: none;
+  }
+
+  .about-mascots-story {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .about-mascots-banner {
+    width: min(100%, 470px);
+    aspect-ratio: 2.8 / 1;
+    margin: 0 auto clamp(10px, 1.2vw, 16px);
+  }
+
+  .about-mascots-copy {
+    position: relative;
+    z-index: 5;
+    max-width: 46ch;
+    font-size: clamp(0.78rem, 0.9vw, 0.9rem);
+  }
+
+  .about-mascots-photo-front {
+    top: 18%;
+    left: 0;
+    z-index: 2;
+    width: 76%;
+    transform: rotate(-2.5deg);
+  }
+
+  .about-mascots-photo-back {
+    top: 0;
+    right: 0;
+    display: block;
+    z-index: 1;
+    width: 46%;
+    transform: rotate(6deg);
+  }
+}
+
 @layer base {
   body,
   p,
@@ -319,24 +3139,35 @@
     line-height: 1.2;
   }
 
+  body {
+    color: var(--type-color, var(--foreground));
+  }
+
   h1,
   .h1 {
     font-family: var(--font-display);
     font-size: var(--type-hero-h1-font-size, 3.5rem);
     line-height: var(--type-hero-h1-line-height, 1.2);
     font-weight: var(--type-hero-h1-font-weight, 700);
-    color: var(--foreground);
+    color: var(--type-color, var(--foreground));
   }
 
   h2,
-  .h2,
-  h3,
-  .h3 {
+  .h2 {
     font-family: var(--font-heading);
     font-size: var(--type-heading-h3-font-size, 2.5rem);
     line-height: var(--type-heading-h3-line-height, 1.2);
     font-weight: var(--type-heading-h3-font-weight, 400);
-    color: var(--foreground);
+    color: var(--type-color, var(--foreground));
+  }
+
+  h3,
+  .h3 {
+    font-family: var(--font-heading);
+    font-size: var(--type-heading-h4-font-size, 2rem);
+    line-height: var(--type-heading-h4-line-height, 1.2);
+    font-weight: var(--type-heading-h4-font-weight, 400);
+    color: var(--type-color, var(--foreground));
   }
 
   h4,
@@ -345,7 +3176,7 @@
     font-size: var(--type-heading-h4-font-size, 2rem);
     line-height: var(--type-heading-h4-line-height, 1.2);
     font-weight: var(--type-heading-h4-font-weight, 400);
-    color: var(--foreground);
+    color: var(--type-color, var(--foreground));
   }
 }
 
@@ -355,6 +3186,7 @@
     font-size: var(--type-hero-h1-font-size, 56px);
     font-weight: var(--type-hero-h1-font-weight, 700);
     line-height: var(--type-hero-h1-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-hero-h3 {
@@ -362,6 +3194,7 @@
     font-size: var(--type-hero-h3-font-size, 40px);
     font-weight: var(--type-hero-h3-font-weight, 700);
     line-height: var(--type-hero-h3-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-hero-h4 {
@@ -369,6 +3202,7 @@
     font-size: var(--type-hero-h4-font-size, 32px);
     font-weight: var(--type-hero-h4-font-weight, 400);
     line-height: var(--type-hero-h4-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-heading-h3 {
@@ -376,6 +3210,7 @@
     font-size: var(--type-heading-h3-font-size, 40px);
     font-weight: var(--type-heading-h3-font-weight, 400);
     line-height: var(--type-heading-h3-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-heading-h4 {
@@ -383,6 +3218,7 @@
     font-size: var(--type-heading-h4-font-size, 32px);
     font-weight: var(--type-heading-h4-font-weight, 400);
     line-height: var(--type-heading-h4-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body-l-semibold {
@@ -390,6 +3226,7 @@
     font-size: var(--type-body-l-semibold-font-size, 18px);
     font-weight: var(--type-body-l-semibold-font-weight, 600);
     line-height: var(--type-body-l-semibold-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body-l {
@@ -397,6 +3234,15 @@
     font-size: var(--type-body-l-font-size, 18px);
     font-weight: var(--type-body-l-font-weight, 400);
     line-height: var(--type-body-l-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
+  }
+
+  .type-body {
+    font-family: var(--type-body-l-font-family, var(--font-body));
+    font-size: var(--type-body-l-font-size, 18px);
+    font-weight: var(--type-body-l-font-weight, 400);
+    line-height: var(--type-body-l-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body-s-semibold {
@@ -404,6 +3250,7 @@
     font-size: var(--type-body-s-semibold-font-size, 14px);
     font-weight: var(--type-body-s-semibold-font-weight, 600);
     line-height: var(--type-body-s-semibold-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-body-s {
@@ -411,6 +3258,7 @@
     font-size: var(--type-body-s-font-size, 14px);
     font-weight: var(--type-body-s-font-weight, 400);
     line-height: var(--type-body-s-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-caption-s-medium {
@@ -418,6 +3266,7 @@
     font-size: var(--type-caption-s-medium-font-size, 12px);
     font-weight: var(--type-caption-s-medium-font-weight, 500);
     line-height: var(--type-caption-s-medium-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
   }
 
   .type-caption-s-bold {
@@ -425,6 +3274,23 @@
     font-size: var(--type-caption-s-bold-font-size, 12px);
     font-weight: var(--type-caption-s-bold-font-weight, 700);
     line-height: var(--type-caption-s-bold-line-height, 1.2);
+    color: var(--type-color, var(--foreground));
+  }
+
+  /*
+   * Decorative dotted/floral emblem for the BAH primary & secondary buttons.
+   * Implemented as a pseudo-element so the same token classes work on both
+   * <button> and <Link> elements; the variant map swaps
+   * `--bah-button-motif-color` for hover / focus-visible / disabled.
+   */
+  .bah-button-motif::before {
+    width: 1.15em;
+    height: 1.15em;
+    flex: 0 0 auto;
+    background-color: var(--bah-button-motif-color, currentColor);
+    content: "";
+    -webkit-mask: var(--bah-button-motif-image) center / contain no-repeat;
+    mask: var(--bah-button-motif-image) center / contain no-repeat;
   }
 }
 
@@ -517,4 +3383,105 @@ a {
   html {
     @apply font-sans;
   }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .themed-quick-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 36px clamp(24px, 5vw, 64px) 40px;
+  }
+
+  .themed-quick-column {
+    display: contents;
+  }
+
+  .themed-quick-card {
+    min-height: 0;
+  }
+}
+
+/* ---- Not-ready pages (rollout overlay) ---------------------------------- */
+/*
+ * Used by <NotReadyOverlay> for pages that are still being built. The
+ * hazard-tape frame doubles as the "under construction" cue — colours come
+ * from the active theme so it works with every yearly palette.
+ */
+
+.not-ready-page {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: clamp(36px, 7vw, 104px) 16px;
+}
+
+.not-ready-tape {
+  width: 100%;
+  max-width: 40rem;
+  padding: clamp(10px, 1.4vw, 16px);
+  border-radius: clamp(14px, 2vw, 22px);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--brand-accent) 0 16px,
+    var(--brand-surface) 16px 32px
+  );
+  box-shadow: 0 16px 32px rgb(24 20 12 / 22%);
+}
+
+.not-ready-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(24px, 4.5vw, 44px);
+  border: 3px dashed var(--brand-surface);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--card-foreground);
+  text-align: center;
+}
+
+.not-ready-emoji {
+  font-size: clamp(2.5rem, 7vw, 3.75rem);
+  line-height: 1;
+}
+
+.not-ready-eyebrow {
+  margin: 0;
+  color: var(--brand-surface);
+  font-family: var(--font-caption);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.not-ready-title {
+  margin: 0;
+  color: var(--brand-surface);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.not-ready-message {
+  max-width: 30rem;
+  margin: 0;
+  color: var(--muted-foreground);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.not-ready-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
 }

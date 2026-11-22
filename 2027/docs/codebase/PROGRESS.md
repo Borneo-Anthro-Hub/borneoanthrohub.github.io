@@ -4,6 +4,27 @@
 
 ---
 
+## Phase 6 — 2027 Rollout Gating (November 2026)
+
+### What changed
+
+Added a rollout layer on top of the lifecycle matrix so the soft launch only exposes finished pages:
+
+| Area                  | Change                                                                                                                        |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Rollout config**    | New `lib/site-state/rollout.ts` with `live` / `coming-soon` / `hidden` per feature                                            |
+| **Navigation**        | Header, mobile drawer and footer sitemap now filter with `isLive()` — unfinished pages are unlisted                           |
+| **Coming-soon pages** | `<NotReadyGate>` renders a hazard-tape "under construction" overlay instead of unfinished content; the route still resolves   |
+| **Hidden pages**      | BAHjet and the whole Contribution section are `hidden` — removed from the navigation and 404'd, with their code left in place |
+| **Homepage**          | Quick links use `isRoutable()`; coming-soon links open the overlay, hidden ones are dropped                                   |
+| **Deployment**        | The `WEBSITE_STATE` GitHub Actions variable sets the state for the static build                                               |
+
+### Live at this rollout
+
+Landing page · Tickets · Policies (Code of Conduct, T&Cs) · Event Info · Venue · Travel Guide → Travel Info.
+
+---
+
 ## Phase 5 — 2027 Static Scope Refinement (July 2026)
 
 ### What changed
@@ -132,19 +153,19 @@ global-error.tsx          ← catches root layout itself
 
 ### Mapping
 
-| Route                   | 2026 Source                     | Content adapted                                                           |
-| ----------------------- | ------------------------------- | ------------------------------------------------------------------------- |
-| `/about`                | `8_AboutUs.html`                | Tagline + full mission statement about the "hub for connection"           |
-| `/venue`                | `3_Venue.html`                  | Horizon Hotel description, hotel website link, Google Maps link           |
-| `/code-of-conduct`      | `9_guidelines.html`             | 10 guideline cards in a 2-column grid with numbered badges                |
-| `/terms-and-conditions` | `11_Terms_Condition.html`       | Embedded Google Doc iframe                                                |
-| `/contribution`         | `6_JoinUs.html` — Totem Bearers | Volunteer role description                                                |
-| `/panel-submission`     | `6_JoinUs.html` — Shamans       | Panelist role description                                                 |
-| `/travel`               | `32_TravelInfo.html`            | 4 sections: intro, visa requirements, customs, logistics                  |
-| `/badge-pickup`         | `1_Ticket.html` FAQ Q4, Q8      | Badge customization + proxy collection info                               |
-| `/tickets`              | `1_Ticket.html`                 | 3 tier cards (Attendee/Sponsor/SuperSponsor) + 5 FAQ items with Accordion |
-| `/activities`           | `5_Activities.html`             | Event schedule description                                                |
-| `/theme`                | Theme concept                   | Yearly theme explanation                                                  |
+| Route                   | 2026 Source                     | Content adapted                                                                |
+| ----------------------- | ------------------------------- | ------------------------------------------------------------------------------ |
+| `/about`                | `8_AboutUs.html`                | Tagline + full mission statement about the "hub for connection"                |
+| `/venue`                | `3_Venue.html`                  | Horizon Hotel description, hotel website link, Google Maps link                |
+| `/code-of-conduct`      | `9_guidelines.html`             | 10 guideline cards in a 2-column grid with numbered badges                     |
+| `/terms-and-conditions` | `11_Terms_Condition.html`       | Embedded Google Doc iframe                                                     |
+| `/contribution`         | `6_JoinUs.html` — Totem Bearers | Volunteer role description                                                     |
+| `/panel-submission`     | `6_JoinUs.html` — Shamans       | Panelist role description                                                      |
+| `/travel`               | `32_TravelInfo.html`            | 4 sections: intro, visa requirements, customs, logistics                       |
+| `/badge-pickup`         | `1_Ticket.html` FAQ Q4, Q8      | Badge customization + proxy collection info                                    |
+| `/tickets`              | `1_Ticket.html`                 | 3 themed tier cards (Wanderer/Gardener/Caretaker) + 6 FAQ items with Accordion |
+| `/activities`           | `5_Activities.html`             | Event schedule description                                                     |
+| `/theme`                | Theme concept                   | Yearly theme explanation                                                       |
 
 ### Still placeholder (no 2026 source)
 
@@ -195,7 +216,7 @@ Then use the **dev site-state switcher** (coloured dot dropdown in the header �
 | ---------------------------- | ----------------------------------------------- | --------------------------------------------------- |
 | **D** (Dormant)              | Home, About, Login                              | `/about`, `/login` work; `/venue`, `/schedule` 404  |
 | **T** (Teaser)               | Home, About, Venue, Login                       | `/venue`, `/theme`, `/art-submission` work          |
-| **A** (Announcement)         | Activities, About, Venue, Login                 | `/register`, `/profile`, `/activities` work         |
+| **A** (Announcement)         | Activities, About, Venue, Login                 | `/tickets`, `/activities` work; `/register` 404     |
 | **TR** (Ticket Registration) | Home, About, Venue, Activities, Tickets, Login  | `/tickets`, `/profile` work; `/register` 404        |
 | **RC** (Registration Closed) | Home, About, Venue, Activities, Login           | `/dealer-submission`, `/panel-submission` work      |
 | **FIR** (Final Info Release) | Home, About, Venue, Activities, Schedule, Login | `/schedule`, `/badge-pickup`, `/dealer-layout` work |

@@ -4,13 +4,22 @@ import { useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import { Pause, Play } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronRight,
+  MapPin,
+  Pause,
+  Play,
+  SignpostBig,
+  Ticket,
+} from "lucide-react";
 import Particles from "@/components/Particles";
-import SplitText from "@/components/SplitText";
 import Section from "@/components/server/layout/Section";
-import PlaceholderImage from "@/components/server/home/PlaceholderImage";
-import HomeCta from "@/components/client/home/HomeCta";
+import ThemedBanner from "@/components/server/themed/ThemedBanner";
+import ThemedPillLink from "@/components/server/themed/ThemedPillLink";
 import { useSiteState } from "@/components/client/SiteStateProvider";
+import type { Feature } from "@/lib/site-state/types";
+import { themedButtonClasses } from "@/lib/theme/themed-button";
 import { withBasePath } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
@@ -87,26 +96,33 @@ const evergreenLinks = [
   { label: "Terms & Conditions", href: "/terms-and-conditions" },
 ];
 
-/** "What to do when I'm in Sabah?" — sub-question under the What column. */
-const whatToDoButtons = [
-  { label: "Food", href: "/food-guide" },
-  { label: "Destinations", href: "/destinations" },
-  { label: "Experiences", href: "/activities" },
-  { label: "BAHjet Guide", href: "/bahjet-guide" },
-];
+/** A quick-link that is only offered while its feature resolves. */
+type QuickLink = { label: string; href: string; feature: Feature };
 
-/** "Where is BAH held at?" — top question in the Where column. */
-const whereButtons = [
-  { label: "Activities", href: "/activities" },
-  { label: "How to get there?", href: "/travel" },
+/** Badge artwork for a quick-link card. */
+type QuickCardIcon = "question" | "pin" | "signpost" | "ticket";
+
+/** "What to do when I'm in Sabah?" — sub-question under the What column. */
+const whatToDoButtons: QuickLink[] = [
+  { label: "Food", href: "/food-guide", feature: "foodGuide" },
+  { label: "Destinations", href: "/destinations", feature: "destinations" },
+  { label: "BAHjet Guide", href: "/bahjet-guide", feature: "bahjetGuide" },
 ];
 
 /** "How to be a part of BAH!" — sub-question under the Where column. */
-const contributeButtons = [
-  { label: "Art Submission", href: "/art-submission", key: "art-submission" },
-  { label: "Panelist", href: "/panel-submission", key: "panelist" },
-  { label: "Volunteer", href: "/contribution", key: "volunteer" },
-  { label: "Dealer's Den", href: "/booth-listing", key: "dealer" },
+const contributeButtons: QuickLink[] = [
+  {
+    label: "Art Submission",
+    href: "/art-submission",
+    feature: "artSubmission",
+  },
+  { label: "Panelist", href: "/panel-submission", feature: "panelSubmission" },
+  {
+    label: "Volunteer",
+    href: "/contribution",
+    feature: "volunteerApplication",
+  },
+  { label: "Dealer's Den", href: "/booth-listing", feature: "boothListing" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -118,7 +134,7 @@ function PillLink({ label, href }: { label: string; href: string }) {
   return (
     <Link
       href={href}
-      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full border px-5 py-2 text-sm font-medium transition-colors"
+      className={themedButtonClasses("secondary", { size: "sm" })}
     >
       {label}
     </Link>
@@ -204,69 +220,6 @@ function MessageCard({
   );
 }
 
-/** Full-bleed placeholder banner (art asset drop-in later), optionally with overlaid text. */
-function FullBleedBanner({
-  aspectRatio,
-  label,
-  children,
-}: {
-  aspectRatio: string;
-  label: string;
-  children?: React.ReactNode;
-}) {
-  return (
-    <div className="relative w-full">
-      <PlaceholderImage
-        className="w-full"
-        aspectRatio={aspectRatio}
-        label={label}
-      />
-      {children && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
-
-/** Hanging "signpost" pair (heading plank + pill plank) used in the Explore grid. */
-function SignpostGroup({
-  icon,
-  title,
-  subtitle,
-  links,
-}: {
-  icon: string;
-  title: string;
-  subtitle: string;
-  links: { label: string; href: string; key?: string }[];
-}) {
-  return (
-    <div className="mx-auto flex w-full max-w-xs flex-col items-center">
-      <div className="bg-brand-surface text-brand-text w-full rounded-xl px-4 py-3 text-center shadow-md">
-        <span className="bg-brand-accent text-brand-surface mx-auto mb-1 flex h-8 w-8 items-center justify-center rounded-full text-sm">
-          {icon}
-        </span>
-        <p className="font-heading text-base leading-tight">{title}</p>
-        <p className="text-brand-text/70 text-[11px]">{subtitle}</p>
-      </div>
-      <div className="bg-brand-surface/40 h-4 w-px" aria-hidden="true" />
-      <div className="bg-brand-surface/90 flex w-full flex-wrap justify-center gap-2 rounded-xl px-3 py-3 shadow-md">
-        {links.map((l) => (
-          <Link
-            key={l.key ?? l.href}
-            href={l.href}
-            className="bg-primary text-primary-foreground rounded-full px-3 py-1 text-xs font-medium transition-opacity hover:opacity-90"
-          >
-            {l.label}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // Dormant landing (no theme — evergreen only)
 // ---------------------------------------------------------------------------
@@ -310,7 +263,7 @@ function DormantHome() {
             setAnimationOverride(nextPreference);
           }
         }}
-        className="bg-background/55 text-foreground hover:bg-background/75 fixed right-4 bottom-4 z-[60] inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-2 text-sm font-medium shadow-lg shadow-black/10 backdrop-blur-md transition-colors"
+        className="bg-background/55 text-foreground hover:bg-background/75 font-display fixed right-4 bottom-4 z-[60] inline-flex items-center gap-2 rounded-full border border-white/35 px-3 py-2 text-sm font-medium shadow-lg shadow-black/10 backdrop-blur-md transition-colors"
       >
         {animationsEnabled ? (
           <Pause aria-hidden="true" className="size-4" />
@@ -710,9 +663,9 @@ function ComingSoonHome() {
 
           {/* Teaser message */}
           <MessageCard className="max-w-lg p-6">
-            <p className="font-heading text-foreground mb-2 text-lg">
+            <h3 className="font-display text-foreground mb-2 text-lg">
               Something&rsquo;s Coming
-            </p>
+            </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               The theme has been chosen and the team is hard at work. Full
               convention details — venue, guests, activities, and travel guides
@@ -745,133 +698,329 @@ function ComingSoonHome() {
 // ---------------------------------------------------------------------------
 
 function ThemedHome() {
-  return (
-    <div className="flex flex-1 flex-col">
-      {/* ================================================================ */}
-      {/* THEME BANNERS — year theme art, replace placeholders with real  */}
-      {/* illustrations when ready.                                        */}
-      {/* ================================================================ */}
-      <FullBleedBanner aspectRatio="9/2" label="Tinyverse Garden Banner">
-        <p className="font-display text-brand-surface text-4xl drop-shadow-sm md:text-5xl">
-          Tinyverse Garden
-        </p>
-        <p className="font-heading text-brand-surface/80 mt-1 text-sm md:text-base">
-          to be lost in the big, big garden&hellip;
-        </p>
-      </FullBleedBanner>
-      <FullBleedBanner aspectRatio="16/5" label="Theme Illustration" />
+  const { isLive } = useSiteState();
+  // Every listed link is rendered: finished pages link through, coming-soon
+  // pages open the construction overlay, hidden ones render as disabled.
+  const quickCards = [
+    {
+      title: "What",
+      subtitle: "is BAH?",
+      icon: "question" as const,
+      links: [
+        { label: "About Us", href: "/about", feature: "aboutUs" as const },
+      ],
+    },
+    {
+      title: "Where",
+      subtitle: "is BAH held at?",
+      icon: "pin" as const,
+      links: [
+        {
+          label: "How to Get There?",
+          href: "/travel",
+          feature: "travelInformation" as const,
+        },
+      ],
+    },
+    {
+      title: "What",
+      subtitle: "to do in Sabah?",
+      icon: "signpost" as const,
+      links: whatToDoButtons,
+    },
+    {
+      title: "How",
+      subtitle: "to be part of BAH!",
+      icon: "ticket" as const,
+      links: contributeButtons,
+    },
+  ];
 
-      {/* ================================================================ */}
-      {/* HERO — name, date, tagline                                       */}
-      {/* ================================================================ */}
-      <section className="border-border relative border-b px-4 py-8 md:px-8 md:py-10">
-        <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
-          <LocationBadge />
-          <BrandTitle titleClassName="mb-2" taglineClassName="mb-8" />
-          <DateBadge />
+  return (
+    <div className="themed-home flex flex-1 flex-col">
+      {/* Section 1: Hero block (theme title + layered artwork) */}
+      <section className="themed-hero" aria-labelledby="themed-hero-title">
+        <h1 id="themed-hero-title" className="sr-only">
+          Tinyverse Garden
+        </h1>
+        {/* 1A: Mobile hero artwork */}
+        <Image
+          src={withBasePath(
+            "/2027_images/new_themed_homepage_assets/mobile-hero-art.svg",
+          )}
+          alt=""
+          width={360}
+          height={368}
+          priority
+          className="themed-hero-mobile"
+        />
+        {/* 1B: Desktop layered hero scene */}
+        <div className="themed-hero-art">
+          <Image
+            src={withBasePath(
+              "/2027_images/landscape_main_art_airashi/background_sky.webp",
+            )}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="themed-hero-layer"
+          />
+          <Image
+            src={withBasePath(
+              "/2027_images/landscape_main_art_airashi/background_house.webp",
+            )}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="themed-hero-layer"
+          />
+          <Image
+            src={withBasePath(
+              "/2027_images/landscape_main_art_airashi/background_plants.webp",
+            )}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="themed-hero-layer"
+          />
+          <Image
+            src={withBasePath(
+              "/2027_images/landscape_main_art_airashi/character_sean_and_aminah.webp",
+            )}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="themed-hero-layer"
+          />
+          <Image
+            src={withBasePath(
+              "/2027_images/landscape_main_art_airashi/character_the_rat.webp",
+            )}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="themed-hero-layer"
+          />
         </div>
+        {/* 1C: Hero title artwork overlay */}
+        <Image
+          src={withBasePath(
+            "/2027_images/new_themed_homepage_assets/0-hero-title.svg",
+          )}
+          alt=""
+          width={1320}
+          height={595}
+          priority
+          className="themed-hero-title"
+        />
       </section>
 
-      {/* ================================================================ */}
-      {/* FESTIVAL TEASER — venue photo + compass badge / ticket card      */}
-      {/* ================================================================ */}
-      <Section id="festival" index="01" eyebrow="Borneo&rsquo;s Next Festival">
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          {/* Venue photo + compass badge */}
-          <div className="relative mx-auto w-full max-w-sm">
-            <PlaceholderImage
-              className="border-card absolute -top-6 -left-4 z-10 h-20 w-20 rounded-full border-4 shadow-md"
-              aspectRatio="1/1"
-              label="Compass"
-            />
-            <PlaceholderImage
-              className="border-border rounded-lg border"
-              aspectRatio="4/3"
-              label="Mount Kinabalu"
-            />
-            <div className="bg-primary text-primary-foreground absolute bottom-3 left-3 rounded-md px-3 py-1.5 shadow">
-              <p className="text-xs font-bold">Mount Kinabalu</p>
-              <p className="text-[10px] font-normal opacity-90">Event Venue</p>
+      {/* Section 2: Main landscape content wrapper */}
+      <div className="themed-landscape">
+        <div className="themed-clearing" aria-hidden="true" />
+        {/* 2A: Festival + venue feature section */}
+        <section id="festival" className="themed-festival">
+          <Image
+            src={withBasePath(
+              "/2027_images/new_themed_homepage_assets/2.5-flower-1.svg",
+            )}
+            alt=""
+            width={368}
+            height={349}
+            className="themed-flower themed-flower-left"
+          />
+          <Image
+            src={withBasePath(
+              "/2027_images/new_themed_homepage_assets/2.5-flower-2.svg",
+            )}
+            alt=""
+            width={309}
+            height={272}
+            className="themed-flower themed-flower-right"
+          />
+          <div className="themed-festival-inner">
+            <div className="themed-venue">
+              <Link href="/venue" className="themed-venue-photo">
+                <Image
+                  src={withBasePath(
+                    "/2027_images/new_themed_homepage_assets/4-horizon-hotel-image.png",
+                  )}
+                  alt="Horizon Hotel in Kota Kinabalu"
+                  width={1022}
+                  height={766}
+                  className="themed-venue-image"
+                />
+                <span className="themed-venue-label">
+                  <strong>Horizon Hotel</strong>
+                  <small>Event Venue</small>
+                </span>
+              </Link>
+            </div>
+
+            <div className="themed-festival-copy">
+              <Image
+                src={withBasePath(
+                  "/2027_images/new_themed_homepage_assets/4-borneo-next-festival-banner.svg",
+                )}
+                alt="Borneo's next Festival"
+                width={509}
+                height={213}
+                className="themed-festival-banner"
+              />
+              <div className="themed-paper-card">
+                <p>
+                  The next chapter for Borneo unfolds. Once again, in the heart
+                  of Kota Kinabalu, the community gathers once more; continuing
+                  with an enriched vigor filled with hope, excitement, and joy.
+                  Here, the next chapter for East Malaysia quietly unfolds...
+                </p>
+                <div className="themed-action-row">
+                  {isLive("ticketRegistration") && (
+                    <ThemedPillLink
+                      href="/tickets"
+                      label="Register"
+                      tail={<Ticket aria-hidden="true" />}
+                    />
+                  )}
+                  <ThemedPillLink
+                    href="/venue"
+                    label="Venue"
+                    tail={<MapPin aria-hidden="true" />}
+                  />
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Ticket card */}
-          <div className="border-brand-accent bg-card mx-auto w-full max-w-sm rounded-2xl border-2 border-dashed p-6">
-            <p className="text-brand-accent mb-2 text-sm font-bold tracking-wide uppercase">
-              Borneo&rsquo;s Next Festival
-            </p>
-            <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-              The next chapter for East Malaysia unfolds. Borneo Anthro Hub
-              brings together fans, artists, and fursuiters for a weekend of
-              creativity and connection, set against the natural beauty of
-              Sabah.
-            </p>
-            <HomeCta />
+        {/* 2B: Explore quick-links section */}
+        <section
+          id="explore"
+          className="themed-quick-links"
+          aria-labelledby="quick-links-title"
+        >
+          <ThemedBanner id="quick-links-title" title="Quick Links" />
+
+          <div className="themed-quick-panel">
+            <div className="themed-quick-column">
+              <QuickLinkCard card={quickCards[0]} />
+              <QuickLinkCard card={quickCards[1]} />
+            </div>
+            <QuickLinkCard card={quickCards[2]} />
+            <QuickLinkCard card={quickCards[3]} />
           </div>
-        </div>
-      </Section>
+        </section>
+      </div>
 
-      {/* ================================================================ */}
-      {/* EXPLORE BAH — What? (left) / Where? (right), each paired with a */}
-      {/* sub-question sign, mirroring the hanging signpost layout mockup. */}
-      {/* ================================================================ */}
-      <Section
-        id="explore"
-        index="02"
-        eyebrow="Explore BAH"
-        className="bg-brand-subtle"
+      {/* Section 3: Guests of Honor spotlight section */}
+      <section
+        id="goh"
+        className="themed-guests"
+        aria-labelledby="guests-title"
       >
-        <div className="grid gap-8 md:grid-cols-2">
-          {/* What column */}
-          <div className="flex flex-col items-center gap-6">
-            <SignpostGroup
-              icon="?"
-              title="What?"
-              subtitle="is BAH?"
-              links={[{ label: "About Us", href: "/about" }]}
-            />
-            <SignpostGroup
-              icon="🍴"
-              title="What to do"
-              subtitle="when I&rsquo;m in Sabah?"
-              links={whatToDoButtons}
-            />
-          </div>
-
-          {/* Where column */}
-          <div className="flex flex-col items-center gap-6">
-            <SignpostGroup
-              icon="📍"
-              title="Where?"
-              subtitle="is BAH held at?"
-              links={whereButtons}
-            />
-            <SignpostGroup
-              icon="🎫"
-              title="How to be"
-              subtitle="a part of BAH!"
-              links={contributeButtons}
-            />
-          </div>
-        </div>
-      </Section>
-
-      {/* ================================================================ */}
-      {/* GUEST(S) OF HONOUR                                               */}
-      {/* ================================================================ */}
-      <Section id="goh" index="03" eyebrow="Guest(s) of Honour" noBorder>
-        <div className="mx-auto max-w-lg">
-          <PlaceholderImage
-            className="border-border mb-4 rounded-lg border"
-            aspectRatio="16/9"
+        <Image
+          src={withBasePath(
+            "/2027_images/new_themed_homepage_assets/5-guest-of-honor-image.png",
+          )}
+          alt="Guests of honour silhouettes in a forest clearing"
+          width={1520}
+          height={856}
+          className="themed-guests-image"
+        />
+        <ThemedBanner
+          id="guests-title"
+          title="Guests of Honor"
+          className="themed-banner-guests"
+        >
+          <ThemedPillLink
+            href="/guest-of-honor"
             label="Guests of Honour"
+            tail={<ChevronRight aria-hidden="true" />}
+            disabled={!isLive("guestOfHonor")}
           />
-          <div className="text-center">
-            <PillLink label="Guests of Honour" href="/guest-of-honor" />
-          </div>
-        </div>
-      </Section>
+        </ThemedBanner>
+      </section>
     </div>
+  );
+}
+
+/** Badge artwork drawn inside the cream face of a quick-link card. */
+function QuickCardIconArt({ icon }: { icon: QuickCardIcon }) {
+  switch (icon) {
+    case "pin":
+      return <MapPin aria-hidden="true" />;
+    case "signpost":
+      return <SignpostBig aria-hidden="true" />;
+    case "ticket":
+      return <Ticket aria-hidden="true" />;
+    default:
+      return (
+        <span className="themed-quick-icon-mark" aria-hidden="true">
+          ?
+        </span>
+      );
+  }
+}
+
+function QuickLinkCard({
+  card,
+}: {
+  card: {
+    title: string;
+    subtitle: string;
+    icon: QuickCardIcon;
+    links: QuickLink[];
+  };
+}) {
+  const { isLive } = useSiteState();
+  return (
+    <article className="themed-quick-card">
+      <div className="themed-quick-card-title">
+        <span className="themed-quick-icon">
+          <span className="themed-quick-icon-face">
+            <QuickCardIconArt icon={card.icon} />
+          </span>
+        </span>
+        <div>
+          <h3>{card.title}</h3>
+          <p>{card.subtitle}</p>
+        </div>
+      </div>
+      <div className="themed-quick-card-links">
+        {card.links.map((link) => {
+          // Only finished pages are clickable — everything work-in-progress
+          // renders as a disabled pill.
+          if (!isLive(link.feature)) {
+            return (
+              <span
+                key={link.href}
+                className="themed-mini-link"
+                data-coming-soon="true"
+                aria-disabled="true"
+                title={`${link.label} — coming soon`}
+              >
+                <span className="themed-mini-label">{link.label}</span>
+                <span className="themed-mini-soon">Soon</span>
+              </span>
+            );
+          }
+
+          return (
+            <Link key={link.href} href={link.href} className="themed-mini-link">
+              <span className="themed-mini-label">{link.label}</span>
+              <span className="themed-mini-arrow">
+                <ArrowUpRight aria-hidden="true" />
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+    </article>
   );
 }
 

@@ -12,7 +12,6 @@ export default function CodeOfConductPage() {
         eyebrow="Community Guidelines"
         title="Code of Conduct"
         description="Our commitment to a safe and inclusive environment for everyone."
-        titleClassName="type-hero-h1"
       />
 
       <Section index="01" eyebrow="Guidelines">

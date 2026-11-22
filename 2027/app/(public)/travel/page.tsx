@@ -1,87 +1,156 @@
+import Image from "next/image";
 import PageHero from "@/components/server/layout/PageHero";
-import Section from "@/components/server/layout/Section";
+import ThemedActionLink from "@/components/server/themed/ThemedActionLink";
+import ThemedCallout from "@/components/server/themed/ThemedCallout";
+import ThemedCard from "@/components/server/themed/ThemedCard";
+import ThemedIconCard from "@/components/server/themed/ThemedIconCard";
+import ThemedPageSection from "@/components/server/themed/ThemedPageSection";
+import { travelPage } from "@/lib/content/travel";
+import { isFeatureRoutable } from "@/lib/site-state/get-site-state";
 import { requireFeature } from "@/lib/site-state/require-feature";
+import { withBasePath } from "@/lib/utils";
 
 export default function TravelPage() {
   requireFeature("travelInformation");
 
+  const { hero, intro, entry, customs, logistics, payments, relatedGuides } =
+    travelPage;
+
   return (
     <div className="flex flex-1 flex-col">
-      <PageHero
-        eyebrow="Getting Here"
-        title="Travel Information"
-        description="Everything you need to know about getting to Kota Kinabalu."
-      />
+      <PageHero {...hero} showEyebrow showDescription />
 
-      <Section index="01" eyebrow="International Travelers Guide">
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          Welcome to Sabah, &ldquo;The Land Below the Wind&rdquo; &mdash; calm
-          tropical climate, rainforests, diverse wildlife, mountain landscapes
-          and remote islands.
-        </p>
-      </Section>
-
-      <Section index="02" eyebrow="Entry &amp; Visa Requirements">
-        <ul className="text-muted-foreground list-inside list-disc space-y-2 text-sm">
-          <li>
-            <strong className="text-foreground">
-              West Malaysians / Locals:
-            </strong>{" "}
-            No visa needed. MyKad required. Journey/Visit Pass Slip issued for
-            up to 90 days.
-          </li>
-          <li>
-            <strong className="text-foreground">Foreign Nationals:</strong>{" "}
-            Check eligibility at the official Malaysia immigration portal.
-          </li>
-          <li>
-            <strong className="text-foreground">Passport validity:</strong> Must
-            be valid for at least 6 months on arrival.
-          </li>
-          <li>
-            <strong className="text-foreground">MDAC:</strong> All travellers
-            (except Singapore citizens) must complete the Malaysia Digital
-            Arrival Card within 3 days prior to arrival.
-          </li>
-        </ul>
-      </Section>
-
-      <Section index="03" eyebrow="Customs Declarations">
-        <ol className="text-muted-foreground list-inside list-decimal space-y-2 text-sm">
-          <li>All dutiable or prohibited goods must be declared.</li>
-          <li>Pork products are not allowed in or out of the state.</li>
-          <li>Fresh produce is not allowed into the state.</li>
-          <li>
-            Cannot bring cash exceeding USD 10,000 (or equivalent) without BNM
-            approval.
-          </li>
-          <li>
-            Penalties for non-compliance: up to RM 3 million fine or 5 years
-            imprisonment.
-          </li>
-        </ol>
-      </Section>
-
-      <Section index="04" eyebrow="Travel Logistics" noBorder>
-        <div className="text-muted-foreground grid gap-2 text-sm">
-          <p>
-            <strong className="text-foreground">Airport:</strong> KKIA (BKI)
-            &mdash; Kota Kinabalu International Airport
-          </p>
-          <p>
-            <strong className="text-foreground">Timezone:</strong> GMT+8
-          </p>
-          <p>
-            <strong className="text-foreground">Arrival:</strong> Arrive
-            2&ndash;3 hours before domestic flights, 3&ndash;4 hours for
-            international.
-          </p>
-          <p>
-            <strong className="text-foreground">Power:</strong> Type-G plugs,
-            240V / 50Hz.
-          </p>
+      {/* INTRODUCTION â€” why Sabah is worth the trip */}
+      <ThemedPageSection id="introduction" title={intro.title}>
+        <div className="space-y-4">
+          {intro.paragraphs.map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 32)}
+              className="text-foreground/80 font-body max-w-4xl text-sm leading-relaxed md:text-base"
+            >
+              {paragraph}
+            </p>
+          ))}
         </div>
-      </Section>
+        <Image
+          src={withBasePath(intro.art.src)}
+          alt={intro.art.alt}
+          width={intro.art.width}
+          height={intro.art.height}
+          sizes="(max-width: 1024px) 90vw, 60vw"
+          className="mx-auto mt-8 h-auto w-full max-w-2xl opacity-90"
+        />
+      </ThemedPageSection>
+
+      {/* ENTRY & VISA */}
+      <ThemedPageSection id="entry" eyebrow={entry.eyebrow} title={entry.title}>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {entry.groups.map((group) => (
+            <ThemedIconCard
+              key={group.title}
+              title={group.title}
+              footer={
+                group.links && group.links.length > 0 ? (
+                  <div className="flex flex-col items-start gap-2">
+                    {group.links.map((link) => (
+                      <ThemedActionLink key={link.href} href={link.href}>
+                        {link.label}
+                      </ThemedActionLink>
+                    ))}
+                  </div>
+                ) : undefined
+              }
+            >
+              <ul className="list-disc space-y-2 pl-4">
+                {group.points.map((point) => (
+                  <li key={point.slice(0, 24)}>{point}</li>
+                ))}
+              </ul>
+            </ThemedIconCard>
+          ))}
+        </div>
+      </ThemedPageSection>
+
+      {/* CUSTOMS */}
+      <ThemedPageSection
+        id="customs"
+        eyebrow={customs.eyebrow}
+        title={customs.title}
+      >
+        <ThemedCard className="p-6 md:p-8">
+          <ol className="text-card-foreground/80 font-body list-decimal space-y-3 pl-5 text-sm leading-relaxed">
+            {customs.points.map((point) => (
+              <li key={point.slice(0, 24)}>{point}</li>
+            ))}
+          </ol>
+        </ThemedCard>
+      </ThemedPageSection>
+
+      {/* LOGISTICS */}
+      <ThemedPageSection
+        id="logistics"
+        eyebrow={logistics.eyebrow}
+        title={logistics.title}
+      >
+        <div className="grid gap-5 md:grid-cols-2">
+          {logistics.cards.map((card) => (
+            <ThemedIconCard key={card.title} title={card.title}>
+              <ul className="list-disc space-y-2 pl-4">
+                {card.points.map((point) => (
+                  <li key={point.slice(0, 24)}>{point}</li>
+                ))}
+              </ul>
+            </ThemedIconCard>
+          ))}
+        </div>
+        <ThemedCallout title="Important" tone="accent" className="mt-5">
+          {logistics.warning}
+        </ThemedCallout>
+      </ThemedPageSection>
+
+      {/* PAYMENTS */}
+      <ThemedPageSection
+        id="payments"
+        eyebrow={payments.eyebrow}
+        title={payments.title}
+      >
+        <div className="grid gap-5 md:grid-cols-2">
+          {payments.cards.map((card) => (
+            <ThemedIconCard key={card.title} title={card.title}>
+              <ul className="list-disc space-y-2 pl-4">
+                {card.points.map((point) => (
+                  <li key={point.slice(0, 24)}>{point}</li>
+                ))}
+              </ul>
+            </ThemedIconCard>
+          ))}
+        </div>
+      </ThemedPageSection>
+
+      {/* WHERE TO NEXT */}
+      <div className="px-4 pb-14 md:px-8 md:pb-20">
+        <ThemedCard className="bg-brand-surface text-brand-text mx-auto w-full max-w-6xl rounded-3xl border-none px-6 py-8 shadow-none md:px-10 md:py-10">
+          <h2 className="font-display text-brand-text text-xl leading-tight font-bold md:text-2xl">
+            {relatedGuides.title}
+          </h2>
+          <p className="font-body mt-3 max-w-3xl text-sm leading-relaxed opacity-90 md:text-base">
+            {relatedGuides.lead}
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {relatedGuides.links
+              .filter((link) => isFeatureRoutable(link.feature))
+              .map((link) => (
+                <ThemedActionLink
+                  key={link.href}
+                  href={link.href}
+                  tone="inverse"
+                >
+                  {link.label}
+                </ThemedActionLink>
+              ))}
+          </div>
+        </ThemedCard>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/client/ThemeProvider";
 import { SiteStateProvider } from "@/components/client/SiteStateProvider";
 import { getActiveTheme, getActiveThemeKey } from "@/lib/theme/active-theme";
 import { getSiteState } from "@/lib/site-state/get-site-state";
+import { paletteToCssVars } from "@/lib/theme/palettes";
 import { themeToCssVars } from "@/lib/theme/themes";
 import "./globals.css";
 import Header from "@/components/client/layout/Header";
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   const themeKey = getActiveThemeKey();
   const theme = getActiveTheme();
-  const cssVars = themeToCssVars(theme);
+  const cssVars = { ...paletteToCssVars(), ...themeToCssVars(theme) };
   const siteState = getSiteState();
 
   return (
