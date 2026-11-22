@@ -58,6 +58,7 @@ jobs:
           cp -a 404.html CNAME LICENSE favicon.ico index.html timelineSchedule.html "$RUNNER_TEMP/pages-site/"
           cp -a email_avatar "$RUNNER_TEMP/pages-site/"
           cp -a 2027/out/. "$RUNNER_TEMP/pages-site/2027/"
+          cp -a 2027/email_asset "$RUNNER_TEMP/pages-site/2027/"
           touch "$RUNNER_TEMP/pages-site/.nojekyll"
 
       - name: Upload Pages artifact
