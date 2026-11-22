@@ -81,7 +81,7 @@ export function TicketStatusProvider({
       statusDocument,
       (snapshot) => {
         const data = snapshot.data();
-        console.log("Ticket status:", data);
+        // console.debug("Ticket status:", data);
         if (
           !data ||
           typeof data.standard_soldout !== "boolean" ||
