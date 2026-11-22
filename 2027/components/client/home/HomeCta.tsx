@@ -22,7 +22,7 @@ export default function HomeCta() {
           Register
         </Link>
       )}
-      <Link href="/venue" className={themedButtonClasses("outline")}>
+      <Link href="/venue" className={themedButtonClasses("secondary")}>
         Venue
       </Link>
     </div>

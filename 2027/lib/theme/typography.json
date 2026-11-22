@@ -1,7 +1,7 @@
 {
   "fontUrl": "https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Margarine&family=Cause:wght@400;600&family=Poppins:wght@500;700&display=swap",
   "lineHeight": 1.2,
-  "color": "#000000",
+  "color": "#1E1A17",
   "families": {
     "display": {
       "name": "Oleo Script",

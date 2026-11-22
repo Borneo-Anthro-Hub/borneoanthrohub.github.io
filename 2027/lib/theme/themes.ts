@@ -17,6 +17,7 @@
 // =============================================================================
 
 import { withBasePath } from "@/lib/utils";
+import { palettes } from "./palettes";
 import typographyConfig from "./typography.json";
 
 // -----------------------------------------------------------------------------
@@ -197,7 +198,7 @@ export const themes = {
     headingFont: typographyConfig.families.heading.stack,
     bodyFont: typographyConfig.families.body.stack,
     captionFont: typographyConfig.families.caption.stack,
-    typographyColor: typographyConfig.color,
+    typographyColor: palettes.neutral[950],
     pageHeroArt: "/2027_images/landscape_main_art_airashi/background_art.webp",
     pageBackground: {
       image: "/2027_images/new_repeat_background.svg",
@@ -208,41 +209,41 @@ export const themes = {
     // BAH 2027 palette (all 500 / Main) + derived shades for contrast
     // Design: dark green header/footer, pale cream content area, orange accents
     brand: {
-      bg: "#71a33d", // BAH Nature Green (brand identity)
-      accent: "#DDB487", // BAH Sunshine Yellow (CTA / active nav)
+      bg: palettes.natureGreen[500], // BAH Nature Green (brand identity)
+      accent: palettes.woodyEarth[300], // BAH Woody Earth (CTA / active nav)
       text: "#FFF3F0",
       hover: "#f7c44b", // lighter Sunshine Yellow
-      surface: "#235227", // deeper Nature Green (header / footer bar)
+      surface: palettes.natureGreen[800], // deeper Nature Green (header / footer bar)
       subtle: "#f3f6e6", // light green tint (soft surfaces)
-      secondary: "#ff836d", // BAH Floral Coral (logo border)
+      secondary: palettes.floralCoral[500], // BAH Floral Coral (logo border)
     },
     semantic: {
       background: "#fdf6e3", // warm pale cream (content area)
-      foreground: "#000000", // General Black typography from the 2027 guide
+      foreground: palettes.neutral[950], // warm near-black body text
       card: "#ffffff",
-      cardForeground: "#000000",
+      cardForeground: palettes.neutral[950],
       popover: "#fbf3e6", // warm cream (Woody Earth tint)
-      popoverForeground: "#000000",
-      primary: "#f5b425", // BAH Sunshine Yellow
+      popoverForeground: palettes.neutral[950],
+      primary: palettes.sunshineYellow[500], // BAH Sunshine Yellow
       primaryForeground: "#3a2d05", // dark on yellow (AA)
-      secondary: "#ff836d", // BAH Floral Coral
+      secondary: palettes.floralCoral[500], // BAH Floral Coral
       secondaryForeground: "#3f1609", // dark on coral (AA)
       muted: "#f5efe2", // light cream (muted surface on cream bg)
       mutedForeground: "#6b5f55", // warm gray on cream (5.3:1 AA)
-      accent: "#ffa7be", // BAH Floral Pink
+      accent: palettes.floralPink[500], // BAH Floral Pink
       accentForeground: "#40212c", // dark plum
       destructive: "#d94848", // accessible red (not in chart)
       border: "rgba(90, 76, 60, 0.18)", // warm neutral
       input: "rgba(90, 76, 60, 0.3)", // warm neutral
-      ring: "#40acdf", // BAH Sky Blue (focus)
+      ring: palettes.skyBlue[500], // BAH Sky Blue (focus)
       sidebar: "#ffffff",
       sidebarForeground: "#3a342b",
-      sidebarPrimary: "#71a33d", // BAH Nature Green
+      sidebarPrimary: palettes.natureGreen[500], // BAH Nature Green
       sidebarPrimaryForeground: "#ffffff",
       sidebarAccent: "#f3f6e6",
       sidebarAccentForeground: "#3a342b",
       sidebarBorder: "#e6e0d6",
-      sidebarRing: "#40acdf",
+      sidebarRing: palettes.skyBlue[500],
     },
   },
 

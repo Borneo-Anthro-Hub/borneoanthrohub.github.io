@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { themedButtonClasses } from "@/lib/theme/themed-button";
 
 interface NotReadyOverlayProps {
   /** Page name shown as the overlay heading, e.g. "Venue". */
@@ -28,11 +29,14 @@ export default function NotReadyOverlay({
           <div className="not-ready-actions">
             <Link
               href="/"
-              className="not-ready-button not-ready-button-primary"
+              className={themedButtonClasses("primary", { size: "sm" })}
             >
               Back to Home
             </Link>
-            <Link href="/activities" className="not-ready-button">
+            <Link
+              href="/activities"
+              className={themedButtonClasses("secondary", { size: "sm" })}
+            >
               What&rsquo;s On
             </Link>
           </div>

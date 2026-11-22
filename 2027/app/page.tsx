@@ -18,6 +18,7 @@ import ThemedBanner from "@/components/server/themed/ThemedBanner";
 import ThemedPillLink from "@/components/server/themed/ThemedPillLink";
 import { useSiteState } from "@/components/client/SiteStateProvider";
 import type { Feature } from "@/lib/site-state/types";
+import { themedButtonClasses } from "@/lib/theme/themed-button";
 import { withBasePath } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
@@ -132,7 +133,7 @@ function PillLink({ label, href }: { label: string; href: string }) {
   return (
     <Link
       href={href}
-      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full border px-5 py-2 text-sm font-medium transition-colors"
+      className={themedButtonClasses("secondary", { size: "sm" })}
     >
       {label}
     </Link>

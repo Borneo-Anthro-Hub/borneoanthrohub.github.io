@@ -14,45 +14,48 @@
  * no-JS edge cases) still looks correct.
  */
 :root {
-  --brand-bg: #71a33d;
-  --brand-accent: #f5b425;
-  --brand-text: #ffffff;
+  --brand-bg: #70a33c;
+  --brand-accent: #ddb488;
+  --brand-text: #fff3f0;
   --brand-hover: #f7c44b;
-  --brand-surface: #3a5f1e;
+  --brand-surface: #225226;
   --brand-subtle: #f3f6e6;
   --brand-secondary: #ff836d;
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --card: #ffffff;
+  --card-foreground: #1e1a17;
+  --popover: #fbf3e6;
+  --popover-foreground: #1e1a17;
+  --primary: #f5b426;
+  --primary-foreground: #3a2d05;
+  --secondary: #ff836d;
+  --secondary-foreground: #3f1609;
+  --muted: #f5efe2;
+  --muted-foreground: #6b5f55;
+  --accent: #ffa7bf;
+  --accent-foreground: #40212c;
+  --destructive: #d94848;
+  --border: rgba(90, 76, 60, 0.18);
+  --input: rgba(90, 76, 60, 0.3);
+  --ring: #41ace0;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #3a342b;
+  --sidebar-primary: #70a33c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f6e6;
+  --sidebar-accent-foreground: #3a342b;
+  --sidebar-border: #e6e0d6;
+  --sidebar-ring: #41ace0;
 
   --font-theme: "Cause", system-ui, sans-serif;
   --font-display: "Oleo Script", cursive;
   --font-heading: "Margarine", system-ui, sans-serif;
   --font-body: "Cause", system-ui, sans-serif;
   --font-caption: "Poppins", system-ui, sans-serif;
-  /* General Black - the default color for every typography token. */
-  --type-color: #000000;
+  /* BAH 2027 body/UI text uses the warm neutral-950 ink. */
+  --type-color: #1e1a17;
+  /* Dotted floral emblem used by the bahPrimary / bahSecondary buttons.
+     The motif color is switched per state by the button token map. */
+  --bah-button-motif-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='2.4' fill='white'/><circle cx='12' cy='5.4' r='1.9' fill='white'/><circle cx='18.6' cy='12' r='1.9' fill='white'/><circle cx='12' cy='18.6' r='1.9' fill='white'/><circle cx='5.4' cy='12' r='1.9' fill='white'/><circle cx='12' cy='12' r='6.6' stroke='white' stroke-width='1.2' stroke-dasharray='1.2 2.2' stroke-linecap='round'/></svg>");
   --type-hero-h1-font-family: var(--font-display);
   --type-hero-h1-font-size: 56px;
   --type-hero-h1-font-weight: 700;
@@ -115,6 +118,92 @@
   --color-brand-surface: var(--brand-surface);
   --color-brand-subtle: var(--brand-subtle);
   --color-brand-secondary: var(--brand-secondary);
+
+  /*
+   * BAH 2027 palette scales. The values are injected on <html> from
+   * `lib/theme/palettes.ts` (`paletteToCssVars`) so the TS module stays the
+   * single source of truth. Token classes: `bg-nature-green-500`,
+   * `text-floral-coral-700`, `ring-sunshine-yellow-500`, etc.
+   */
+  --color-nature-green-50: var(--palette-nature-green-50);
+  --color-nature-green-100: var(--palette-nature-green-100);
+  --color-nature-green-200: var(--palette-nature-green-200);
+  --color-nature-green-300: var(--palette-nature-green-300);
+  --color-nature-green-400: var(--palette-nature-green-400);
+  --color-nature-green-500: var(--palette-nature-green-500);
+  --color-nature-green-600: var(--palette-nature-green-600);
+  --color-nature-green-700: var(--palette-nature-green-700);
+  --color-nature-green-800: var(--palette-nature-green-800);
+  --color-nature-green-900: var(--palette-nature-green-900);
+  --color-nature-green-950: var(--palette-nature-green-950);
+  --color-sunshine-yellow-50: var(--palette-sunshine-yellow-50);
+  --color-sunshine-yellow-100: var(--palette-sunshine-yellow-100);
+  --color-sunshine-yellow-200: var(--palette-sunshine-yellow-200);
+  --color-sunshine-yellow-300: var(--palette-sunshine-yellow-300);
+  --color-sunshine-yellow-400: var(--palette-sunshine-yellow-400);
+  --color-sunshine-yellow-500: var(--palette-sunshine-yellow-500);
+  --color-sunshine-yellow-600: var(--palette-sunshine-yellow-600);
+  --color-sunshine-yellow-700: var(--palette-sunshine-yellow-700);
+  --color-sunshine-yellow-800: var(--palette-sunshine-yellow-800);
+  --color-sunshine-yellow-900: var(--palette-sunshine-yellow-900);
+  --color-sunshine-yellow-950: var(--palette-sunshine-yellow-950);
+  --color-floral-pink-50: var(--palette-floral-pink-50);
+  --color-floral-pink-100: var(--palette-floral-pink-100);
+  --color-floral-pink-200: var(--palette-floral-pink-200);
+  --color-floral-pink-300: var(--palette-floral-pink-300);
+  --color-floral-pink-400: var(--palette-floral-pink-400);
+  --color-floral-pink-500: var(--palette-floral-pink-500);
+  --color-floral-pink-600: var(--palette-floral-pink-600);
+  --color-floral-pink-700: var(--palette-floral-pink-700);
+  --color-floral-pink-800: var(--palette-floral-pink-800);
+  --color-floral-pink-900: var(--palette-floral-pink-900);
+  --color-floral-pink-950: var(--palette-floral-pink-950);
+  --color-floral-coral-50: var(--palette-floral-coral-50);
+  --color-floral-coral-100: var(--palette-floral-coral-100);
+  --color-floral-coral-200: var(--palette-floral-coral-200);
+  --color-floral-coral-300: var(--palette-floral-coral-300);
+  --color-floral-coral-400: var(--palette-floral-coral-400);
+  --color-floral-coral-500: var(--palette-floral-coral-500);
+  --color-floral-coral-600: var(--palette-floral-coral-600);
+  --color-floral-coral-700: var(--palette-floral-coral-700);
+  --color-floral-coral-800: var(--palette-floral-coral-800);
+  --color-floral-coral-900: var(--palette-floral-coral-900);
+  --color-floral-coral-950: var(--palette-floral-coral-950);
+  --color-sky-blue-50: var(--palette-sky-blue-50);
+  --color-sky-blue-100: var(--palette-sky-blue-100);
+  --color-sky-blue-200: var(--palette-sky-blue-200);
+  --color-sky-blue-300: var(--palette-sky-blue-300);
+  --color-sky-blue-400: var(--palette-sky-blue-400);
+  --color-sky-blue-500: var(--palette-sky-blue-500);
+  --color-sky-blue-600: var(--palette-sky-blue-600);
+  --color-sky-blue-700: var(--palette-sky-blue-700);
+  --color-sky-blue-800: var(--palette-sky-blue-800);
+  --color-sky-blue-900: var(--palette-sky-blue-900);
+  --color-sky-blue-950: var(--palette-sky-blue-950);
+  --color-woody-earth-50: var(--palette-woody-earth-50);
+  --color-woody-earth-100: var(--palette-woody-earth-100);
+  --color-woody-earth-200: var(--palette-woody-earth-200);
+  --color-woody-earth-300: var(--palette-woody-earth-300);
+  --color-woody-earth-400: var(--palette-woody-earth-400);
+  --color-woody-earth-500: var(--palette-woody-earth-500);
+  --color-woody-earth-600: var(--palette-woody-earth-600);
+  --color-woody-earth-700: var(--palette-woody-earth-700);
+  --color-woody-earth-800: var(--palette-woody-earth-800);
+  --color-woody-earth-900: var(--palette-woody-earth-900);
+  --color-woody-earth-950: var(--palette-woody-earth-950);
+  --color-neutral-50: var(--palette-neutral-50);
+  --color-neutral-100: var(--palette-neutral-100);
+  --color-neutral-200: var(--palette-neutral-200);
+  --color-neutral-300: var(--palette-neutral-300);
+  --color-neutral-400: var(--palette-neutral-400);
+  --color-neutral-500: var(--palette-neutral-500);
+  --color-neutral-600: var(--palette-neutral-600);
+  --color-neutral-700: var(--palette-neutral-700);
+  --color-neutral-800: var(--palette-neutral-800);
+  --color-neutral-900: var(--palette-neutral-900);
+  --color-neutral-950: var(--palette-neutral-950);
+  --color-bah-accent-disabled: var(--palette-bah-accent-disabled);
+  --color-bah-secondary-disabled: var(--palette-bah-secondary-disabled);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -221,7 +310,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border: 3px dashed var(--themed-paper-dark, #a76f45);
+  border: 0;
   background: var(--themed-paper, #ddb487);
   color: var(--themed-ink, #3c2a1e);
   box-shadow:
@@ -229,19 +318,116 @@
     0 6px 8px rgb(45 35 24 / 30%);
 }
 
-.themed-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: transparent;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .themed-card > * {
   position: relative;
   z-index: 1;
+}
+
+/* Stitched paper frame -----------------------------------------------------
+   A plain `dashed` border renders dashes as long as they are thick, and gives
+   no control over the gap. So the frame is painted instead: a solid fill cut
+   into evenly spaced stitches, then reassembled from four edge strips and four
+   corner arcs. The strips stop at the corner tangent points so a stitch is
+   never sliced by the rounded corner, and each corner carries one solid arc
+   so the frame still wraps the card. Tune a surface with the `--stitch-*`
+   knobs. */
+.themed-card,
+.themed-paper-card,
+.themed-quick-card,
+.registration-board {
+  --stitch-inset: clamp(7px, 0.7vw, 11px);
+  --stitch-width: clamp(4px, 0.4vw, 6px);
+  --stitch-dash: clamp(16px, 1.5vw, 24px);
+  --stitch-gap: clamp(12px, 1.15vw, 19px);
+  --stitch-radius: clamp(7px, 0.8vw, 13px);
+  --stitch-color: var(--themed-paper-dark, #a76f45);
+  /* Length of the straight part of each edge (between the corner tangents). */
+  --stitch-run: calc(100% - 2 * var(--stitch-radius));
+  /* Inner radius of the corner arc, never below the stitch thickness. */
+  --stitch-band: max(1px, calc(var(--stitch-radius) - var(--stitch-width)));
+  --stitch-edge-x: repeating-linear-gradient(
+    90deg,
+    #000 0 var(--stitch-dash),
+    transparent var(--stitch-dash) calc(var(--stitch-dash) + var(--stitch-gap))
+  );
+  --stitch-edge-y: repeating-linear-gradient(
+    0deg,
+    #000 0 var(--stitch-dash),
+    transparent var(--stitch-dash) calc(var(--stitch-dash) + var(--stitch-gap))
+  );
+  --stitch-arc-tl: radial-gradient(
+    circle at 100% 100%,
+    transparent 0 var(--stitch-band),
+    #000 var(--stitch-band) var(--stitch-radius),
+    transparent var(--stitch-radius)
+  );
+  --stitch-arc-tr: radial-gradient(
+    circle at 0% 100%,
+    transparent 0 var(--stitch-band),
+    #000 var(--stitch-band) var(--stitch-radius),
+    transparent var(--stitch-radius)
+  );
+  --stitch-arc-bl: radial-gradient(
+    circle at 100% 0%,
+    transparent 0 var(--stitch-band),
+    #000 var(--stitch-band) var(--stitch-radius),
+    transparent var(--stitch-radius)
+  );
+  --stitch-arc-br: radial-gradient(
+    circle at 0% 0%,
+    transparent 0 var(--stitch-band),
+    #000 var(--stitch-band) var(--stitch-radius),
+    transparent var(--stitch-radius)
+  );
+  --stitch-mask-image:
+    var(--stitch-edge-x), var(--stitch-edge-x), var(--stitch-edge-y),
+    var(--stitch-edge-y), var(--stitch-arc-tl), var(--stitch-arc-tr),
+    var(--stitch-arc-bl), var(--stitch-arc-br);
+  --stitch-mask-size:
+    var(--stitch-run) var(--stitch-width),
+    var(--stitch-run) var(--stitch-width),
+    var(--stitch-width) var(--stitch-run),
+    var(--stitch-width) var(--stitch-run),
+    var(--stitch-radius) var(--stitch-radius),
+    var(--stitch-radius) var(--stitch-radius),
+    var(--stitch-radius) var(--stitch-radius),
+    var(--stitch-radius) var(--stitch-radius);
+  --stitch-mask-position:
+    center top, center bottom, left center, right center, left top, right top,
+    left bottom, right bottom;
+}
+
+/* Nests inside the card's own 8px corner. */
+.themed-paper-card {
+  --stitch-radius: 8px;
+}
+
+.registration-board {
+  --stitch-inset: clamp(8px, 1vw, 14px);
+  --stitch-radius: clamp(9px, 1.2vw, 17px);
+}
+
+.themed-card::before,
+.themed-paper-card::before,
+.themed-quick-card::before,
+.registration-board::before {
+  position: absolute;
+  inset: var(--stitch-inset);
+  z-index: 0;
+  border-radius: var(--stitch-radius);
+  background: var(--stitch-color);
+  content: "";
+  pointer-events: none;
+  -webkit-mask-image: var(--stitch-mask-image);
+  -webkit-mask-size: var(--stitch-mask-size);
+  -webkit-mask-position: var(--stitch-mask-position);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: source-over;
+  mask-image: var(--stitch-mask-image);
+  mask-size: var(--stitch-mask-size);
+  mask-position: var(--stitch-mask-position);
+  mask-repeat: no-repeat;
+  mask-composite: add;
 }
 
 .dormant-hero-parallax {
@@ -625,8 +811,9 @@ body:has(.themed-home) header .text-brand-text {
 }
 
 .themed-paper-card {
+  position: relative;
   padding: 42px 30px 44px;
-  border: 3px dashed var(--themed-paper-dark);
+  border: 0;
   border-radius: 8px;
   background: var(--themed-paper);
   box-shadow: 6px 8px 10px rgb(45 35 24 / 26%);
@@ -634,6 +821,7 @@ body:has(.themed-home) header .text-brand-text {
 
 .themed-paper-card p {
   margin: 0 0 22px;
+  color: var(--themed-forest);
   font-family: var(--font-body);
   font-size: clamp(0.82rem, 0.87vw, 1.05rem);
   line-height: 1.62;
@@ -896,16 +1084,7 @@ body:has(.themed-home) header .text-brand-text {
   box-shadow: 0 4px 8px rgb(45 35 24 / 22%);
 }
 
-/* Flat card with the dashed line as an inner border. */
-.themed-quick-card::before {
-  position: absolute;
-  inset: clamp(7px, 0.7vw, 11px);
-  border: clamp(4px, 0.45vw, 6px) dashed var(--themed-paper-dark);
-  border-radius: clamp(7px, 0.8vw, 13px);
-  content: "";
-  pointer-events: none;
-}
-
+/* Flat card with the stitched inner border. */
 .themed-quick-column > .themed-quick-card:last-child {
   min-height: clamp(200px, 15vw, 290px);
 }
@@ -1526,20 +1705,11 @@ body:has(.themed-home) header .text-brand-text {
   width: min(100% - 32px, 1040px);
   margin: clamp(18px, 2.4vw, 32px) auto 0;
   padding: clamp(16px, 2.2vw, 30px);
+  padding-bottom: clamp(16px, 2.2vw, 30px);
   overflow: hidden;
   border-radius: clamp(14px, 1.8vw, 24px);
   background: var(--registration-board);
   box-shadow: 0 12px 22px rgb(45 35 24 / 28%);
-}
-
-.registration-board::before {
-  position: absolute;
-  inset: clamp(8px, 1vw, 14px);
-  z-index: 0;
-  border: 3px dashed var(--themed-paper-dark);
-  border-radius: clamp(9px, 1.2vw, 17px);
-  content: "";
-  pointer-events: none;
 }
 
 .registration-board-watermark {
@@ -2024,6 +2194,12 @@ body:has(.themed-home) header .text-brand-text {
   transform: translateY(-1px);
 }
 
+/* Registration FAQ rows are compact, so their labels use a smaller scale than
+   the shared accordion trigger. */
+.registration-faq .themed-accordion-trigger {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+}
+
 .registration-faq-icon,
 .themed-accordion-icon {
   display: grid;
@@ -2179,13 +2355,9 @@ body:has(.themed-home) header .text-brand-text {
   }
 
   .registration-board {
+    --stitch-inset: 6px;
     width: calc(100% - 16px);
     padding: 12px;
-  }
-
-  .registration-board::before {
-    inset: 6px;
-    border-width: 2px;
   }
 
   .registration-board-content {
@@ -2233,7 +2405,7 @@ body:has(.themed-home) header .text-brand-text {
     width: calc(100% - 24px);
   }
 
-  .registration-faq-trigger {
+  .registration-faq .themed-accordion-trigger {
     font-size: 0.7rem;
   }
 
@@ -3009,6 +3181,22 @@ a.about-contact-row:hover {
     line-height: var(--type-caption-s-bold-line-height, 1.2);
     color: var(--type-color, var(--foreground));
   }
+
+  /*
+   * Decorative dotted/floral emblem for the BAH primary & secondary buttons.
+   * Implemented as a pseudo-element so the same token classes work on both
+   * <button> and <Link> elements; the variant map swaps
+   * `--bah-button-motif-color` for hover / focus-visible / disabled.
+   */
+  .bah-button-motif::before {
+    width: 1.15em;
+    height: 1.15em;
+    flex: 0 0 auto;
+    background-color: var(--bah-button-motif-color, currentColor);
+    content: "";
+    -webkit-mask: var(--bah-button-motif-image) center / contain no-repeat;
+    mask: var(--bah-button-motif-image) center / contain no-repeat;
+  }
 }
 
 /* Cursor styles for interactive elements */
@@ -3201,35 +3389,4 @@ a {
   justify-content: center;
   gap: 10px;
   margin-top: 8px;
-}
-
-.not-ready-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 22px;
-  border: 2px solid var(--brand-surface);
-  border-radius: 9999px;
-  color: var(--brand-surface);
-  font-family: var(--type-hero-h3-font-family, var(--font-display));
-  font-size: 13px;
-  font-weight: var(--type-hero-h3-font-weight, 700);
-  text-decoration: none;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.not-ready-button:hover {
-  background: var(--brand-subtle);
-}
-
-.not-ready-button-primary {
-  background: var(--brand-surface);
-  color: var(--brand-subtle);
-}
-
-.not-ready-button-primary:hover {
-  background: var(--brand-bg);
-  color: var(--brand-subtle);
 }

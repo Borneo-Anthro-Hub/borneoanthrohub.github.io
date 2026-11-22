@@ -1,6 +1,6 @@
 "use client";
 
-import { themedButtonClasses } from "@/lib/theme/themed-button";
+import { BahButton } from "@/components/ui/bah-button";
 
 function scrollTo(id: string) {
   if (typeof window !== "undefined") {
@@ -16,13 +16,9 @@ function scrollTo(id: string) {
 export default function HeroActions() {
   return (
     <div className="flex gap-3">
-      <button
-        type="button"
-        onClick={() => scrollTo("about")}
-        className={themedButtonClasses("outline")}
-      >
+      <BahButton variant="secondary" onClick={() => scrollTo("about")}>
         Learn More
-      </button>
+      </BahButton>
     </div>
   );
 }

@@ -2,6 +2,8 @@ import { cn } from "@/lib/utils";
 
 interface ThemedCardProps {
   id?: string;
+  /** Element to render. Callouts use `aside` to keep landmark semantics. */
+  as?: "div" | "aside";
   className?: string;
   children: React.ReactNode;
 }
@@ -13,11 +15,12 @@ interface ThemedCardProps {
  */
 export default function ThemedCard({
   id,
+  as: Component = "div",
   className,
   children,
 }: ThemedCardProps) {
   return (
-    <div
+    <Component
       id={id}
       className={cn(
         "themed-card bg-card text-card-foreground border-card-foreground/15 rounded-2xl border shadow-sm",
@@ -25,6 +28,6 @@ export default function ThemedCard({
       )}
     >
       {children}
-    </div>
+    </Component>
   );
 }

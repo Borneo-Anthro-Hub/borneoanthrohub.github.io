@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import {
+  themedButtonClasses,
+  type BahButtonSize,
+  type BahButtonVariant,
+} from "@/lib/theme/themed-button";
 
 interface ThemedActionLinkProps {
   href: string;
@@ -8,33 +12,39 @@ interface ThemedActionLinkProps {
    * on a `brand-surface` panel.
    */
   tone?: "primary" | "inverse";
+  size?: BahButtonSize;
   className?: string;
   children: React.ReactNode;
 }
 
+const toneVariants = {
+  primary: "bahPrimary",
+  inverse: "bahSecondary",
+} as const satisfies Record<
+  NonNullable<ThemedActionLinkProps["tone"]>,
+  BahButtonVariant
+>;
+
 /**
- * Pill call-to-action used by the reusable content pages. Both tones pair a
- * branded surface with the foreground token designed for it, so contrast
- * holds for every yearly theme.
+ * Pill call-to-action used by the reusable content pages (travel, venue,
+ * BAHjet guide, …). It delegates to the shared BAH 2027 button token map, so
+ * every subpage uses the same geometry, states, and palette.
  */
 export default function ThemedActionLink({
   href,
   tone = "primary",
+  size = "sm",
   className,
   children,
 }: ThemedActionLinkProps) {
-  const classes = cn(
-    "font-display inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold tracking-wide uppercase transition-[opacity,transform] hover:-translate-y-px hover:opacity-90",
-    tone === "inverse"
-      ? "bg-brand-text text-brand-surface"
-      : "bg-primary text-primary-foreground",
-    className,
-  );
+  const classes = themedButtonClasses(toneVariants[tone], { size, className });
 
   const label = (
     <>
       {children}
-      <span aria-hidden="true">&rarr;</span>
+      <span aria-hidden="true" className="text-[0.9em] leading-none">
+        ▸
+      </span>
     </>
   );
 

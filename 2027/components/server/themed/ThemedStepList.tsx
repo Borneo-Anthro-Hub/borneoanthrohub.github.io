@@ -28,7 +28,7 @@ function StepBadge({ index }: { index: number }) {
   return (
     <span
       aria-hidden="true"
-      className="bg-primary text-primary-foreground font-caption inline-grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-bold"
+      className="bg-secondary text-primary-foreground font-caption inline-grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-bold"
     >
       {index + 1}
     </span>
@@ -71,18 +71,21 @@ export default function ThemedStepList({
         <li key={step.title}>
           <ThemedCard className="flex h-full flex-col overflow-hidden">
             {step.image && (
-              <div className="bg-muted relative aspect-[4/3] w-full">
-                <Image
-                  src={withBasePath(step.image.src)}
-                  alt={step.image.alt}
-                  width={step.image.width}
-                  height={step.image.height}
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                  className="h-full w-full object-cover"
-                />
+              // Inset the photo so the card's stitched frame stays visible.
+              <div className="p-8 pb-0">
+                <div className="bg-muted relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                  <Image
+                    src={withBasePath(step.image.src)}
+                    alt={step.image.alt}
+                    width={step.image.width}
+                    height={step.image.height}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             )}
-            <div className="flex flex-1 flex-col gap-2 p-5">
+            <div className="flex flex-1 flex-col gap-2 p-8">
               <div className="flex items-center gap-2">
                 <StepBadge index={index} />
                 <h3 className="font-display text-card-foreground text-base leading-tight">
