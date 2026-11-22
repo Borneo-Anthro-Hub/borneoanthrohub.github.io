@@ -22,16 +22,18 @@ export default function TravelPage() {
 
       {/* INTRODUCTION â€” why Sabah is worth the trip */}
       <ThemedPageSection id="introduction" title={intro.title}>
-        <div className="space-y-4">
-          {intro.paragraphs.map((paragraph) => (
-            <p
-              key={paragraph.slice(0, 32)}
-              className="text-foreground/80 font-body max-w-4xl text-sm leading-relaxed md:text-base"
-            >
-              {paragraph}
-            </p>
-          ))}
-        </div>
+        <ThemedCard className="p-6 md:p-8">
+          <div className="space-y-4">
+            {intro.paragraphs.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 32)}
+                className="text-card-foreground/80 font-body max-w-4xl text-sm leading-relaxed md:text-base"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </ThemedCard>
         <Image
           src={withBasePath(intro.art.src)}
           alt={intro.art.alt}

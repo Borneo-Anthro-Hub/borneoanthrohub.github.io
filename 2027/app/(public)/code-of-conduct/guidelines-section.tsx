@@ -49,7 +49,7 @@ const guidelines = [
   {
     rule: 6,
     title: "No Contraband",
-    text: "Contraband or being under the influence of one may result in ejection.",
+    text: "The possession or consumption of illegal, prohibited, or dangerous substances is strictly forbidden.",
     image: "/2027_images/guideline_latest/6.png",
   },
   {
@@ -139,17 +139,16 @@ function CarouselDots() {
 function GuidelineCard({ g }: { g: (typeof guidelines)[number] }) {
   return (
     // The artwork supplies the card surface, so it is stretched to the card
-    // box rather than clipped the way a cover image would be. The grid spacer
-    // maintains its portrait proportions without preventing content growth.
+    // box rather than clipped the way a cover image would be.
     <article
-      className="group relative grid min-h-full bg-no-repeat drop-shadow-[0_6px_8px_rgb(45_35_24_/_0.3)] transition-transform duration-300 before:col-start-1 before:row-start-1 before:aspect-[277/426] before:w-full before:content-[''] hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+      className="group relative grid min-h-full bg-no-repeat drop-shadow-[0_6px_8px_rgb(45_35_24_/_0.3)] transition-transform duration-300 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
       style={{
         backgroundImage: `url("${CARD_BACKGROUND}")`,
         backgroundSize: "100% 100%",
       }}
     >
-      <div className="col-start-1 row-start-1 flex flex-col p-[clamp(24px,10%,40px)]">
-        <div className="relative min-h-32 w-full flex-1 overflow-hidden rounded-xl">
+      <div className="flex min-w-0 flex-col p-[clamp(24px,10%,40px)]">
+        <div className="relative aspect-square w-full overflow-hidden rounded-xl">
           {g.image ? (
             <Image
               src={withBasePath(g.image)}
@@ -163,7 +162,7 @@ function GuidelineCard({ g }: { g: (typeof guidelines)[number] }) {
           )}
         </div>
 
-        <div className="mt-auto p-6 pt-6">
+        <div className="p-6">
           <p className="type-body-l-semibold text-brand-text leading-tight text-pretty">
             {g.title}
           </p>
